@@ -1,10 +1,21 @@
-// Define variables for your color scheme
+// COLORS
+$blue: #1267FB;
+$blue_hover: #4185FC; // button hover
+$blue_light: #B1CDFD; // h3 highlights
+$blue_bkg: #F1F6FD;
 
-// For example:
+$yellow: #FEE74C; // h2 highlights
+$yellow_hover: #FEEC70; // button hover
+
+$grey_dark: rgb(33, 33, 33); // body font
+$grey_light: rgb(145, 145, 145);
+
+
+// Bootstrap/LeWagon colors
 $red: #FD1015;
-$blue: #167FFB;
-$yellow: #FFC65A;
+// $blue: #167FFB;
+// $yellow: #FFC65A;
 $orange: #E67E22;
 $green: #1EDD88;
-$gray: #0E0000;
-$light-gray: #F4F4F4;
+// $gray: #0E0000;
+// $light-gray: #F4F4F4;
