@@ -1,0 +1,40 @@
+footer {
+  background-color: $blue;
+  color: $blue_light;
+  font-weight:  300;
+  padding: 3em 0;
+}
+
+footer li {
+  padding-right: 10px;
+}
+
+footer i {
+  font-size: 28px;
+}
+
+.footer-link {
+  color: $blue_light;
+}
+
+.footer-link:hover {
+  color: white;
+}
+
+.footer-email {
+  margin-bottom: 0;
+}
+
+.footer-origins {
+  margin: auto 0 0 0;
+}
+
+@media (max-width: 880px) {
+  footer {
+    text-align: center;
+  }
+
+  .footer-origins {
+    margin-top: 30px;
+  }
+}
