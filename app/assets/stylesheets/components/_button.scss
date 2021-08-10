@@ -1,0 +1,29 @@
+.btn-all {
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 15px 40px;
+  border-radius: 30px;
+  border: none;
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+.btn-prim {
+  color: #FFF;
+  background-color: $blue;
+}
+
+.btn-prim:hover {
+  background-color: $blue_hover;
+}
+
+.btn-yllw {
+  color: $blue;
+  background-color: $yellow;
+}
+
+.btn-yllw:hover {
+  background-color: $yellow_hover;
+}
