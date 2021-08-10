@@ -6,11 +6,11 @@
 // General style
 $font-family-sans-serif:  $body-font;
 $headings-font-family:    $headers-font;
-$body-bg:                 #FFF;
+$body-bg:                 $grey_light;
 $font-size-base: 1rem;
 
 // Colors
-$body-color: $grey_dark;
+$body-color: #FFF;
 $primary:    $blue;
 $success:    $green;
 $info:       $yellow;
