@@ -16,3 +16,11 @@
   max-height: 350px;
   max-width: 100%;
 }
+
+@media (max-width: 880px) {
+  .container-half {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+}
