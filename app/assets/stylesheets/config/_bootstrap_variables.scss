@@ -22,4 +22,13 @@ $border-radius:    30px;
 $border-radius-lg: 30px;
 $border-radius-sm: 30px;
 
+// Container
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1000px,
+  xxl: 1000px
+);
+
 // Override other variables below!
