@@ -1,0 +1,9 @@
+.container-short {
+  max-width: 760px;
+  padding: 0 15px; // change to 30px if we manage to change bootstrap padding variable
+  margin:  0 auto;
+}
+
+.container-short h2 {
+  text-align: center;
+}

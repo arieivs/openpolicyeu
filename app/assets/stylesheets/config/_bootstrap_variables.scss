@@ -27,8 +27,10 @@ $container-max-widths: (
   sm: 540px,
   md: 720px,
   lg: 960px,
-  xl: 1000px,
-  xxl: 1000px
-);
+  xl: 1030px,
+  xxl: 1030px
+); // change to 1060px if padding starts working
+
+$container-padding-x: 30px; // Not working atm
 
 // Override other variables below!
