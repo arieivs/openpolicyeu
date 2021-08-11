@@ -3,24 +3,56 @@
 // 2. These variables are defined with default value (see https://robots.thoughtbot.com/sass-default)
 // 3. You can override them below!
 
-// General style
-$font-family-sans-serif:  $body-font;
-$headings-font-family:    $headers-font;
-$body-bg:                 #FFF;
-$font-size-base: 1rem;
 
-// Colors
+// Colors - From LW boilerplate
 $body-color: $grey_dark;
 $primary:    $blue;
 $success:    $green;
 $info:       $yellow;
 $danger:     $red;
 $warning:    $orange;
+$body-bg:    #FFF;
+
+
+// Font
+$font-family-sans-serif:  $body-font;
+$headings-font-family:    $headers-font;
+$font-size-base:  1.125rem; // 18px
+$line-height-base:  1.7;
+$h1-font-size:    $font-size-base * 2;
+$h2-font-size:    $font-size-base * 1.5;
+$h3-font-size:    $font-size-base * 1.3;
+$h4-font-size:    $font-size-base * 1.2;
+$h5-font-size:    $font-size-base * 1.1;
+$h6-font-size:    $font-size-base;
+
+// Original HTML:
+// h1 is 2 em
+// h2 is 1.5 em
+// h3 is 1.3 em
+// h4 is 1 em
+// h5 is 0.8 em
+// h6 is 0.7 em
+
+$headings-margin-bottom: 1.5rem;
+
+
+// Spacing (Margin & Padding)
+$spacer: 1rem !default;
+$spacers: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3.5,
+);
 
 // Buttons & inputs' radius
 $border-radius:    30px;
 $border-radius-lg: 30px;
 $border-radius-sm: 30px;
+
 
 // Container
 $container-max-widths: (
@@ -30,7 +62,7 @@ $container-max-widths: (
   xl: 1030px,
   xxl: 1030px
 ); // change to 1060px if padding starts working
-
 $container-padding-x: 30px; // Not working atm
+
 
 // Override other variables below!
