@@ -48,17 +48,29 @@ $spacers: (
   5: $spacer * 3.5,
 );
 
+
 // Buttons & inputs' radius
 $border-radius:    30px;
 $border-radius-lg: 30px;
 $border-radius-sm: 30px;
 
 
+// Breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 440px,
+  md: 600px,
+  lg: 880px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+
 // Container
 $container-max-widths: (
-  sm: 540px,
-  md: 720px,
-  lg: 960px,
+  sm: 404px,
+  md: 552px,
+  lg: 854px,
   xl: 1030px,
   xxl: 1030px
 ); // change to 1060px if padding starts working
