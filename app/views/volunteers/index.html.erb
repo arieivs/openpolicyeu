@@ -64,18 +64,17 @@
   </section>
   <section class="container py-5 text-center">
     <h2><mark class="mark-yllw">Meet your future team</mark></h2>
-    <div class="d-flex flex-wrap pt-4">
+    <div class="row pt-4">
       <% @volunteers.each do |volunteer| %>
-        <div class="volunteer">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 volunteer">
           <img src="https://res.cloudinary.com/dhnsnkxbe/image/upload/v1594374591/lewagon_bootcamp/ozcvcy17scy2gbkioj2nwgwcqi4q.jpg" alt="" class="avatar-large">
           <p><strong><%= volunteer.name %></strong></p>
-          <p><em><%= volunteer.role %></em></p>
+          <p class="volunteer-role"><em><%= volunteer.role %></em></p>
           <% if volunteer.linked_link %>
-            <%= link_to volunteer.linked_link, class:"icon-link" do %>
+            <%= link_to volunteer.linked_link, target:"_blank", aria_label:"LinkedIn", class:"icon-link" do %>
               <i class="fab fa-linkedin"></i>
             <% end %>
           <% end %>
-          <p><a href="https://www.linkedin.com/company/openpolicy-europe/" target="_blank" aria-label="LinkedIn" class="footer-link"><i class="fab fa-linkedin"></i></a></p>
         </div>
       <% end %>
     </div>

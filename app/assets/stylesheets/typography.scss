@@ -53,6 +53,14 @@ mark::after {
   color: $blue_hover;
 }
 
+.icon-link {
+  font-size: 24px;
+  color: $blue_light;
+  &:hover {
+    color: $blue_hover;
+  }
+}
+
 @media (max-width: 440px) {
   h2 {
     font-size: 24px;
