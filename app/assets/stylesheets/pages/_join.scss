@@ -13,6 +13,18 @@
   }
 }
 
+.volunteer {
+  width: 150px;
+  margin: 20px;
+  img {
+    margin-bottom: 10px;
+  }
+  p {
+    margin: 0;
+  }
+}
+
+
 @media (max-width: 880px) {
   .icon-large {
     font-size: 60px;
