@@ -1,0 +1,51 @@
+.icon-large {
+  font-size: 80px;
+  width: 90px;
+  color: #B1CDFD;
+  padding-top: 10px;
+  margin-right: 50px;
+}
+
+.team-description {
+  max-width: 700px;
+  p {
+    margin-top: 1.5rem;
+  }
+}
+
+.volunteer {
+  margin: 20px 0;
+  img {
+    margin-bottom: 10px;
+  }
+  p {
+    margin: 0 0 0.5em 0;
+    line-height: 1.1em;
+  }
+}
+
+.volunteer-role {
+  font-size: 16px;
+}
+
+@media (max-width: 880px) {
+  .icon-large {
+    font-size: 60px;
+  }
+
+  .team-description {
+    position: relative;
+  }
+
+  .team-description h3 {
+    position: absolute;
+    top: -60px;
+    left: 100px;
+  }
+}
+
+@media (max-width: 440px) {
+  .team-description h3 {
+    top: -60;
+  }
+}

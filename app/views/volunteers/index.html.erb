@@ -1,0 +1,82 @@
+<main>
+  <div class="container">
+    <h1 class="my-5">Join us</h1>
+    <p style="max-width: 800px;">Are you passionate about youth participation in policymaking? Are you ready to catalyze youth engagement with key policies to shape our future? <strong>You’re in the right place</strong>, keep reading.</p>
+  </div>
+  <section class="py-5">
+    <div class="container d-flex justify-content-between flex-column flex-lg-row">
+      <div class="container-half">
+        <h2><mark class="mark-yllw">What's in it for me?</mark></h2>
+        <p>We asked ourselves what motivates us to be here. Here are the most common reasons:</p>
+        <ul>
+          <li><strong>Understand policymaking</strong>, and learn about its actors and outcomes</li>
+          <li>Work in an <strong>international environment</strong> and meet like-minded people</li>
+          <li>The opportunity to <strong>make a difference</strong></li>
+          <li>The belief that <strong>policymaking should be more collaborative and inclusive</strong>, and commitment  to increasing awareness and closing the knowledge gap</li>
+        </ul>
+      </div>
+      <div class="container-half d-flex justify-content-center align-items-center">
+        <img src="https://res.cloudinary.com/dhnsnkxbe/image/upload/v1628700838/openpolicyeu/day_dream_ptlngs.png">
+      </div>
+    </div>
+    <div class="container-short">
+      <p>In other words… Do you want to learn more about policymaking or help others to do so? Do you fancy a challenge? Do you (warning: cliché sentence coming) want to be the change you wish to see in the world? Then find out how you can contribute:</p>
+    </div>
+  </section>
+  <section class="bkg-blue py-5">
+    <div class="container d-flex flex-column">
+      <h2><mark class="mark-yllw">How can I help?</mark></h2>
+      <p>You can help by joining one of the following teams:</p>
+      <div class="d-flex flex-column flex-lg-row align-self-start my-5">
+        <i class="fas fa-gavel icon-large"></i>
+        <div class="team-description">
+          <h3><mark class="mark-blue">Policy Analysis</mark></h3>
+          <p>We create the content for the tool by <strong>analysing and coding major policies</strong>. Until September, we are focusing on energy, climate and youth policies in place in the European Union, Portugal, Germany, Slovenia and Italy. We also research the main institutions involved and their role. Finally, we wish to follow the evolution of a specific policy plan, to fully understand and show the process behind it.</p>
+        </div>
+      </div>
+      <div class="d-flex flex-column flex-lg-row align-self-end mb-5">
+        <i class="fas fa-laptop-code icon-large"></i>
+        <div class="team-description">
+          <h3><mark class="mark-blue">Web Development</mark> & <mark class="mark-blue">UX Design</mark></h3>
+          <p>Our job is to effectively <strong>create the platform</strong> where it all takes place. After designing the first version of our website and user testing it, we will code it from scratch. Experience in UX design or full-stack development is required to join this team - our stack is Ruby on Rails.</p>
+        </div>
+      </div>
+      <div class="d-flex flex-column flex-lg-row align-self-start mb-5">
+        <i class="fas fa-comments icon-large"></i>
+        <div class="team-description">
+          <h3><mark class="mark-blue">Marketing</mark> & <mark class="mark-blue">Communication</mark></h3>
+          <p>One of the biggest challenges our institutional partners have is <strong>how to reach youth</strong>. In this team you can shape the outreach strategy, create content to spread the word, assure all written content is aligned with our voice or help fine tuning our ambassadorship programme and looking for potential ambassadors for our tool.</p>
+        </div>
+      </div>
+      <div class="d-flex flex-column flex-lg-row align-self-end mb-5">
+        <i class="fas fa-handshake icon-large"></i>
+        <div class="team-description">
+          <h3><mark class="mark-blue">Partnerships</mark></h3>
+          <p>Support us in <strong>building long-term partnerships</strong> to make OpenPolicy Europe successful. We’re seeking to collaborate with a diverse range of partners, such as think tanks, academia, government institutions or policy advocacy organisations. As part of the partnerships team, you’ll have the chance to think creatively, shape our outreach strategy and engage with interesting organisations across Europe.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="container py-5 text-center">
+    <h2><mark class="mark-yllw">How can I join?</mark></h2>
+    <p>Fill in the application form below. We look forward to hearing from you!</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScHd9nco1X4KzRDsMO_0_SGmtZtfyliD-1qy9NFb--38m6NDg/viewform?usp=sf_link" target="_blank"><button class="btn-all btn-prim">Apply</button></a>
+  </section>
+  <section class="container py-5 text-center">
+    <h2><mark class="mark-yllw">Meet your future team</mark></h2>
+    <div class="row pt-4">
+      <% @volunteers.each do |volunteer| %>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 volunteer">
+          <%= cl_image_tag volunteer.photo.key, crop: :thumb, height: 300, width: 300, class:"avatar-large" %>
+          <p><strong><%= volunteer.name %></strong></p>
+          <p class="volunteer-role"><em><%= volunteer.role %></em></p>
+          <% if volunteer.linked_link %>
+            <%= link_to volunteer.linked_link, target:"_blank", aria_label:"LinkedIn", class:"icon-link" do %>
+              <i class="fab fa-linkedin"></i>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </section>
+</main>
