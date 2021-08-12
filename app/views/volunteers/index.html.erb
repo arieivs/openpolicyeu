@@ -67,7 +67,7 @@
     <div class="row pt-4">
       <% @volunteers.each do |volunteer| %>
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 volunteer">
-          <img src="https://res.cloudinary.com/dhnsnkxbe/image/upload/v1594374591/lewagon_bootcamp/ozcvcy17scy2gbkioj2nwgwcqi4q.jpg" alt="" class="avatar-large">
+          <%= cl_image_tag volunteer.photo.key, crop: :thumb, height: 300, width: 300, class:"avatar-large" %>
           <p><strong><%= volunteer.name %></strong></p>
           <p class="volunteer-role"><em><%= volunteer.role %></em></p>
           <% if volunteer.linked_link %>
