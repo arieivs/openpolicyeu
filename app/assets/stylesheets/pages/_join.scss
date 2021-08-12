@@ -8,6 +8,9 @@
 
 .team-description {
   max-width: 700px;
+  p {
+    margin-top: 1.5rem;
+  }
 }
 
 @media (max-width: 880px) {
@@ -21,8 +24,8 @@
 
   .team-description h3 {
     position: absolute;
-    top: -50;
-    left: 100;
+    top: -60px;
+    left: 100px;
   }
 }
 
