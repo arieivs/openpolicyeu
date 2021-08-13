@@ -1,10 +1,25 @@
 <header class="header-banner">
-  <%= render 'shared/navbar' %>
+
   <div class="container banner">
     <div class="container-half">
       <h1>OpenPolicy Europe</h1>
       <p>The digital hub for understanding and engaging with policymaking</p>
       <a href="join.html"><button class="btn-all btn-yllw">Join us</button></a>
+
+      <%= simple_form_for :country_topic, method: :get do |f| %>
+        <div class="country-topic">
+            <div id="country-filter">
+              <%= f.input :country, required: true, collection: Country.all, input_html: {class: "select2"} %>
+            </div>
+            <div id="topic-filter">
+              <%= f.input :topic, required: true, collection: Topic.all, input_html: {class: "select2"} %>
+            </div>
+          </div>
+          <%= f.submit "Explore",formaction: policy_making_path(1), class: "btn-all btn-yllw" %>
+          <%= f.submit "Engage", formaction: about_path, class: "btn-all btn-yllw" %>
+          <!-- path to be modified to opportunity_path when available -->
+        </div>
+      <% end %>
     </div>
   </div>
 </header>

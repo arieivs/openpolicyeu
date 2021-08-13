@@ -1,0 +1,44 @@
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Country</th>
+      <th>Topic</th>
+      <th>Ambassador</th>
+      <th>Update</th>
+      <!-- Delete ? -->
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @policy_makings.each do |policy_making| %>
+      <tr>
+        <td><%= policy_making.id %></td>
+        <td><%= policy_making.country.name %></td>
+        <td><%= policy_making.topic.name %></td>
+        <td><%= policy_making.ambassador.name %></td>
+        <td><%= link_to ('<i class="far fa-edit"></i>').html_safe, edit_policy_making_path(policy_making) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<style>
+  table {
+    width:80%;
+    margin: 40px auto;
+    border: 1px solid;
+    border-collapse: collapse;
+  }
+  th {
+    text-align: center;
+  }
+  th, td {
+    border: 1px solid;
+  }
+  .fa-edit {
+    width: 100%;
+    text-align: center;
+  }
+</style>
