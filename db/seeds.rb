@@ -55,10 +55,10 @@ PolicyMaking.destroy_all
 puts "Creating policy makings..."
 PolicyMaking.new(country_id: 1, topic_id: 1, ambassador_id: 1, content: "blah blah blah").save
 PolicyMaking.new(country_id: 1, topic_id: 2, ambassador_id: 1, content: "blah blah blah").save
-PolicyMaking.new(country_id: 1, topic_id: 1, ambassador_id: 3, content: "blah blah blah").save
-PolicyMaking.new(country_id: 2, topic_id: 1, ambassador_id: 1, content: "blah blah blah").save
-PolicyMaking.new(country_id: 3, topic_id: 1, ambassador_id: 1, content: "blah blah blah").save
-PolicyMaking.new(country_id: 4, topic_id: 1, ambassador_id: 1, content: "blah blah blah").save
+PolicyMaking.new(country_id: 1, topic_id: 3, ambassador_id: 2, content: "blah blah blah").save
+PolicyMaking.new(country_id: 2, topic_id: 1, ambassador_id: 3, content: "blah blah blah").save
+PolicyMaking.new(country_id: 3, topic_id: 1, ambassador_id: 4, content: "blah blah blah").save
+PolicyMaking.new(country_id: 4, topic_id: 1, ambassador_id: 5, content: "blah blah blah").save
 puts "#{PolicyMaking.count} policy makings created! \n\n"
 
 # --------------- VOLUNTEERS ---------------

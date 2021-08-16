@@ -1,11 +1,8 @@
 <h1>PolicyMakings#show</h1>
 
-<% if @policy_making.nil? %>
-  <p>No policy making has been added yet for this country/topic pair !</p>
-<% else %>
-  <p> Policy Making id : <%= @policy_making.id %> </p>
-  <p> Country: <%= @policy_making.country.name %> </p>
-  <p> Topic: <%= @policy_making.topic.name %> </p>
-  <p> Ambassador: <%= @policy_making.ambassador.name %> </p>
-  <p> Content: <%= @policy_making.content %> </p>
-<% end %>
+<p> Policy Making id : <%= @policy_making.id %> </p>
+<p> Country: <%= @policy_making.country.name %> </p>
+<p> Topic: <%= @policy_making.topic.name %> </p>
+<p> Ambassador: <%= @policy_making.ambassador.name %> </p>
+<p> Content: <%= @policy_making.content %> </p>
+

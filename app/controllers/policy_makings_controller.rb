@@ -6,15 +6,7 @@ class PolicyMakingsController < ApplicationController
   end
 
   def show
-    if params[:country_topic].present? # Request comes from the search bar (home page)
-      if params[:country_topic][:country].empty? || params[:country_topic][:topic].empty?
-        render 'pages/home' # Should we display error messages ?
-      else
-        @policy_making = PolicyMaking.find_by(country_id: params[:country_topic][:country], topic_id: params[:country_topic][:topic])
-      end
-    else # Request comes from a link (or redirection after create, etc.)
-      set_policy_making
-    end
+    set_policy_making
   end
 
   def new
