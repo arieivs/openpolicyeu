@@ -1,0 +1,10 @@
+<h1>PolicyMakings#new</h1>
+
+<%= simple_form_for @policy_making do |f| %>
+  <%= f.input :country_id, required: true, collection: Country.all %>
+  <%= f.input :topic_id, required: true, collection: Topic.all %>
+  <%= f.input :content, as: :text, :input_html => { :cols => 5, :rows => 10 } %>
+  <%= f.input :ambassador_id, required: true, collection: Ambassador.all %>
+
+  <%= f.button :submit, "Add", class: 'btn-all btn-yllw' %>
+<% end %>

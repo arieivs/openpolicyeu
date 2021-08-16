@@ -1,0 +1,12 @@
+<h1>PolicyMakings#edit</h1>
+
+<p> Policy Making id : <%= @policy_making.id %> </p>
+<p> Country: <%= @policy_making.country.name %> </p>
+<p> Topic: <%= @policy_making.topic.name %> </p>
+
+<%= simple_form_for @policy_making do |f| %>
+  <%= f.input :content, as: :text, label: "New content", required: false, :input_html => { :cols => 5, :rows => 10 } %>
+  <%= f.input :ambassador_id, label: "New ambassador", required: false, collection: Ambassador.all, input_html: {class: "select2"} %>
+
+  <div class="btn-container"><%= f.button :submit, "Update", class: 'btn-all btn-yllw' %></div>
+<% end %>
