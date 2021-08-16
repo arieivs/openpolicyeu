@@ -50,6 +50,6 @@ class PolicyMakingsController < ApplicationController
   end
 
   def policy_making_params
-    params.require(:policy_making).permit(:country_id, :topic_id, :content, :ambassador_id)
+    params.require(:policy_making).permit(:country_id, :topic_id, :content, :ambassador_id, :video_url, :video_alt_text, :video:source)
   end
 end
