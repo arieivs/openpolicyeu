@@ -23,11 +23,8 @@ class PolicyMakingsController < ApplicationController
   end
 
   def edit
-    # raise
     set_policy_making
-    @new_question = Question.new # To create a new question
-    @content_question = @policy_making.questions.find_by(scope: "content") # To display and edit the "content" question (evaluates to nil if no question has been added yet)
-    @institutions_question = @policy_making.questions.find_by(scope: "institutions") # To display and edit the "institutions" question (evaluates to nil if no question has been added yet)
+    prepare_data_for_policymaking_edit # Private method in Application Controller (also called in Questions & Answers controllers)
   end
 
   def update

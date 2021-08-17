@@ -14,7 +14,7 @@
 
   <body>
 
-    <% if !current_page?(controller: 'pages', action: 'home') %>
+    <% if !current_page?(controller: '/pages', action: 'home') %>
       <%= render 'shared/navbar' %>
     <% end %>
     <%= render 'shared/flashes' %>

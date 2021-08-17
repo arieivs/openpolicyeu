@@ -18,7 +18,9 @@
 <p>Question on "How does it work?" </p>
 
 <% if @content_question.nil? %>
-
+  <!-- Form to add a new "content" question :
+    - This form is only visible if no "content" question has been added
+    - Scope is added automatically (hidden field) -->
   <%= simple_form_for [@policy_making, @new_question] do |f| %>
     <%= f.input :question, required: true %>
     <%= f.input :scope, as: :hidden,  input_html: {value: "content"} %>
@@ -26,29 +28,62 @@
   <% end %>
 
 <% else %>
-
+  <!-- Form to edit the "content" question :
+    - This form becomes visible as soon as the "content" question has been added
+    - This form is pre-filled with the current "content" question -->
   <%= simple_form_for @content_question do |f| %>
     <%= f.input :question, required: true %>
     <%= f.button :submit, "SAVE", class: 'btn-all btn-yllw' %>
   <% end %>
 
-  <p>Add an answer:</p>
+  <!-- All answers are displayed here -->
+  <% @content_question.answers.each_with_index do |answer, i| %>
+    <div>
+      <div>
+        <p>Answer <%= i+1 %> (<%= answer.right ? 'Correct' : 'Wrong' %>):</p>
+        <%= answer.answer %>
+      </div>
+      <div>
+        <p>Explanation:</p>
+      <%= answer.explanation %>
+      </div>
+    </div>
+  <% end %>
 
+  <p><strong>Add an answer:</strong></p>
+  <!-- Form to add a new answer :
+    - This form is always visible (the user can add as many answers as they wish)
+    - This form is always empty by default
+    - There can be multiple "right" answers -->
+  <%= simple_form_for [@policy_making, @content_question, @new_answer] do |f| %>
+    <%= f.input :answer, required: true %>
+    <%= f.input :explanation, required: true %>
+    <p>Is this answer correct? <%= f.radio_button :right, true,  required: true %> Yes
+    <%= f.radio_button :right, false, required: true %> No </p>
+    <%= f.button :submit, "SAVE", class: 'btn-all btn-yllw' %>
+  <% end %>
 
 <% end %>
 
 
 <h2>Institutions</h2>
 
+
+<!-- ... -->
+
 <!-- Institution presentation to be added here... -->
 
 <!-- Institution creation form to be added here... -->
 
+<!-- ... -->
 
-<p>Question on the institutions </p>
+
+<p>Question on the Institutions </p>
 
 <% if @institutions_question.nil? %>
-
+  <!-- Form to add a new "institutions" question :
+    - This form is only visible if no "institutions" question has been added
+    - Scope is added automatically (hidden field) -->
   <%= simple_form_for [@policy_making, @new_question] do |f| %>
     <%= f.input :question, required: true %>
     <%= f.input :scope, as: :hidden,  input_html: {value: "institutions"} %>
@@ -56,13 +91,40 @@
   <% end %>
 
 <% else %>
-
+  <!-- Form to edit the "institutions" question :
+    - This form becomes visible as soon as the "institutions" question has been added
+    - This form is pre-filled with the current "institutions" question -->
   <%= simple_form_for @institutions_question do |f| %>
     <%= f.input :question, required: true %>
     <%= f.button :submit, "SAVE", class: 'btn-all btn-yllw' %>
   <% end %>
 
-  <p>Add an answer:</p>
+  <!-- All answers are displayed here -->
+  <% @institutions_question.answers.each_with_index do |answer, i| %>
+    <div>
+      <div>
+        <p>Answer <%= i+1 %> (<%= answer.right ? 'Correct' : 'Wrong' %>):</p>
+        <%= answer.answer %>
+      </div>
+      <div>
+        <p>Explanation:</p>
+      <%= answer.explanation %>
+      </div>
+    </div>
+  <% end %>
+
+  <p><strong>Add an answer:</strong></p>
+  <!-- Form to add a new answer :
+    - This form is always visible (the user can add as many answers as they wish)
+    - This form is always empty by default
+    - There can be multiple "right" answers -->
+  <%= simple_form_for [@policy_making, @institutions_question, @new_answer] do |f| %>
+    <%= f.input :answer, required: true %>
+    <%= f.input :explanation, required: true %>
+    <p>Is this answer correct? <%= f.radio_button :right, true,  required: true %> Yes
+    <%= f.radio_button :right, false, required: true %> No </p>
+    <%= f.button :submit, "SAVE", class: 'btn-all btn-yllw' %>
+  <% end %>
 
 
 <% end %>
