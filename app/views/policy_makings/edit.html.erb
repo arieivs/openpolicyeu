@@ -1,12 +1,68 @@
-<h1>PolicyMakings#edit</h1>
+<h1>Edit <%= @policy_making.topic.name %> Policymaking in <%= @policy_making.country.name %></h1>
 
-<p> Policy Making id : <%= @policy_making.id %> </p>
-<p> Country: <%= @policy_making.country.name %> </p>
-<p> Topic: <%= @policy_making.topic.name %> </p>
+<h2>How does it work?</h2>
 
 <%= simple_form_for @policy_making do |f| %>
-  <%= f.input :content, as: :text, label: "New content", required: false, :input_html => { :cols => 5, :rows => 10 } %>
-  <%= f.input :ambassador_id, label: "New ambassador", required: false, collection: Ambassador.all, input_html: {class: "select2"} %>
+  <%= f.input :content, as: :text, label: "Description", required: true, :input_html => { :cols => 5, :rows => 10 } %>
+  <!-- Number of characters (min/max) for "conntent" to be implemented later -->
+  <%= f.input :video_url, label: "Video URL", required: false %>
+  <%= f.input :video_alt_text, label: "Video short description", required: false %>
+  <!-- Number of characters (min/max) for "video_alt_text" to be implemented later -->
+  <%= f.input :video_source, label: "Who’s the creator/holds the rights to the video?", required: false %>
+  <%= f.input :ambassador_id, required: false, collection: Ambassador.all %>
 
-  <div class="btn-container"><%= f.button :submit, "Update", class: 'btn-all btn-yllw' %></div>
+  <div class="btn-container"><%= f.button :submit, "SAVE", class: 'btn-all btn-yllw' %></div>
+<% end %>
+
+
+<p>Question on "How does it work?" </p>
+
+<% if @content_question.nil? %>
+
+  <%= simple_form_for [@policy_making, @new_question] do |f| %>
+    <%= f.input :question, required: true %>
+    <%= f.input :scope, as: :hidden,  input_html: {value: "content"} %>
+    <%= f.button :submit, "SAVE", class: 'btn-all btn-yllw' %>
+  <% end %>
+
+<% else %>
+
+  <%= simple_form_for @content_question do |f| %>
+    <%= f.input :question, required: true %>
+    <%= f.button :submit, "SAVE", class: 'btn-all btn-yllw' %>
+  <% end %>
+
+  <p>Add an answer:</p>
+
+
+<% end %>
+
+
+<h2>Institutions</h2>
+
+<!-- Institution presentation to be added here... -->
+
+<!-- Institution creation form to be added here... -->
+
+
+<p>Question on the institutions </p>
+
+<% if @institutions_question.nil? %>
+
+  <%= simple_form_for [@policy_making, @new_question] do |f| %>
+    <%= f.input :question, required: true %>
+    <%= f.input :scope, as: :hidden,  input_html: {value: "institutions"} %>
+    <%= f.button :submit, "SAVE", class: 'btn-all btn-yllw' %>
+  <% end %>
+
+<% else %>
+
+  <%= simple_form_for @institutions_question do |f| %>
+    <%= f.input :question, required: true %>
+    <%= f.button :submit, "SAVE", class: 'btn-all btn-yllw' %>
+  <% end %>
+
+  <p>Add an answer:</p>
+
+
 <% end %>

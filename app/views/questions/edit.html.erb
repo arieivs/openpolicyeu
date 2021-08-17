@@ -1,0 +1,7 @@
+<h1>Edit a question</h1>
+
+<%= simple_form_for [@policy_making, @question] do |f| %>
+  <%= f.input :question, required: true %>
+  <%= f.input :scope, required: false, collection: ["content", "institutions"] %>
+  <%= f.button :submit, "SAVE", class: 'btn-all btn-yllw' %>
+<% end %>
