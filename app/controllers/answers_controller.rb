@@ -15,16 +15,18 @@ class AnswersController < ApplicationController
   end
 
   def edit
+
+    @answer = Answer.find(params[:id])
   end
 
-  # def update
-  #   @question = Question.find(params[:id])
-  #   if @question.update(question_params)
-  #     redirect_to edit_policy_making_path(@question.policy_making)
-  #   else
-  #     render :edit
-  #   end
-  # end
+  def update
+    @answer = Answer.find(params[:id])
+    if @answer.update(answer_params)
+      redirect_to edit_policy_making_path(@answer.question.policy_making)
+    else
+      render :edit
+    end
+  end
 
   private
 
