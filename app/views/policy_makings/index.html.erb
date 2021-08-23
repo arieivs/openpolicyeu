@@ -1,26 +1,42 @@
-<table>
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Country</th>
-      <th>Topic</th>
-      <th>Ambassador</th>
-      <th>Update</th>
-      <!-- Delete ? -->
-    </tr>
-  </thead>
+<h1>Policymakings</h1>
 
-  <tbody>
-    <% @policy_makings.each do |policy_making| %>
-      <tr>
-        <td><%= policy_making.id %></td>
-        <td><%= policy_making.country.name %></td>
-        <td><%= policy_making.topic.name %></td>
-        <td><%= policy_making.ambassador.name %></td>
-        <td><%= link_to ('<i class="far fa-edit"></i>').html_safe, edit_policy_making_path(policy_making) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<p>Add an explanation for Policymaking in a new region and topic:</p>
+
+<%= link_to "NEW", new_policy_making_path, class: 'btn btn-prim' %>
+
+<p>Or look for an existing Policymaking explanation, Policy Plan or Strategy:</p>
+
+<%= simple_form_for @policy_making, url: policy_makings_path, method: :get do |f| %>
+
+  <%= f.input :country_id, required: false, collection: Country.all %>
+  <%= f.input :topic_id, required: false, collection: Topic.all %>
+
+<%= f.submit "FILTER", class: "btn-all btn-yllw" %>
+  </div>
+<% end %>
+
+<% @policy_makings.each do |policy_making| %>
+  <p> <%= policy_making.topic.name %> in <%= policy_making.country.name %> </p>
+  <div class="policy-making-see-edit">
+    <%= policy_making.topic.name %> Policymaking in <%= policy_making.country.name %>
+    <%= link_to "SEE PAGE", policy_making_path(policy_making), class: 'btn-all' %>
+    <%= link_to "EDIT", edit_policy_making_path(policy_making), class: 'btn-all btn-prim' %>
+  </div>
+
+  <div class="policy-plan-see-edit">
+    <!-- TO DO -->
+  </div>
+
+  <!-- Condition here -->
+  <p>Add a Policy Plan</p>
+  <p>There are still no Policy Plans for Energy in Germany! Add one:</p>
+<% end %>
+
+
+
+<p>
+  Couldn’t find an explanation for Policymaking in the region and topic you were looking for? Add it:
+  <%= link_to "NEW", new_policy_making_path, class: 'btn-all btn-prim' %>
+</p>
 
 
