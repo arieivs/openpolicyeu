@@ -6,6 +6,7 @@ class PolicyMaking < ApplicationRecord
   has_many :policies
   has_many :policy_making_institutions
   has_many :institutions, through: :policy_making_institutions
+  has_many :questions
 
   validates :content, presence: true
   validates :country, uniqueness: { scope: :topic }

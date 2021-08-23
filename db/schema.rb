@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_12_133821) do
+ActiveRecord::Schema.define(version: 2021_08_17_110424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,16 @@ ActiveRecord::Schema.define(version: 2021_08_12_133821) do
     t.string "social_profile_link"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "answers", force: :cascade do |t|
+    t.bigint "question_id", null: false
+    t.string "answer"
+    t.string "explanation"
+    t.boolean "right"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -116,6 +126,15 @@ ActiveRecord::Schema.define(version: 2021_08_12_133821) do
     t.index ["topic_id"], name: "index_policy_makings_on_topic_id"
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.bigint "policy_making_id", null: false
+    t.string "scope"
+    t.string "question"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["policy_making_id"], name: "index_questions_on_policy_making_id"
+  end
+
   create_table "topics", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -156,6 +175,7 @@ ActiveRecord::Schema.define(version: 2021_08_12_133821) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "answers", "questions"
   add_foreign_key "categories", "topics"
   add_foreign_key "institutions", "ambassadors"
   add_foreign_key "institutions", "countries"
@@ -166,6 +186,7 @@ ActiveRecord::Schema.define(version: 2021_08_12_133821) do
   add_foreign_key "policy_makings", "ambassadors"
   add_foreign_key "policy_makings", "countries"
   add_foreign_key "policy_makings", "topics"
+  add_foreign_key "questions", "policy_makings"
   add_foreign_key "user_policy_makings", "policy_makings"
   add_foreign_key "user_policy_makings", "users"
 end

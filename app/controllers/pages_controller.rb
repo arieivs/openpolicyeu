@@ -22,6 +22,4 @@ class PagesController < ApplicationController
   end
 
   def about; end
-
-  def contribute; end # Page for managing data (creating, updating policy makings...)
 end

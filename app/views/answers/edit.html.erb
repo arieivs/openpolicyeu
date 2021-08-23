@@ -1,0 +1,7 @@
+<%= simple_form_for @answer do |f| %>
+    <%= f.input :answer, required: true %>
+    <%= f.input :explanation, required: true %>
+    <p>Is this answer correct? <%= f.radio_button :right, true,  required: true %> Yes
+    <%= f.radio_button :right, false, required: true %> No </p>
+    <%= f.button :submit, "SAVE", class: 'btn-all btn-yllw' %>
+  <% end %>

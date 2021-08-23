@@ -3,6 +3,16 @@ class PolicyMakingsController < ApplicationController
 
   def index
     @policy_makings = PolicyMaking.all
+
+    # For the filters (to search for a policymaking in a specific country or topic)
+    @policy_making = PolicyMaking.new
+    if params[:policy_making].present?
+      country_id = params[:policy_making][:country_id]
+      topic_id = params[:policy_making][:topic_id]
+      @policy_makings = @policy_makings.where(country_id: country_id) unless country_id.empty?
+      @policy_makings = @policy_makings.where(topic_id: topic_id) unless topic_id.empty?
+    end
+
   end
 
   def show
@@ -24,6 +34,7 @@ class PolicyMakingsController < ApplicationController
 
   def edit
     set_policy_making
+    prepare_data_for_policymaking_edit # Private method in Application Controller (also called in Questions & Answers controllers)
   end
 
   def update
