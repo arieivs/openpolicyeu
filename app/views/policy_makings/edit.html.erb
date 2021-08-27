@@ -4,7 +4,7 @@
 
 <%= simple_form_for @policy_making do |f| %>
   <%= f.input :content, as: :text, label: "Description", required: true, :input_html => { :cols => 5, :rows => 10 } %>
-  <!-- Number of characters (min/max) for "conntent" to be implemented later -->
+  <!-- Number of characters (min/max) for "content" to be implemented later -->
   <%= f.input :video_url, label: "Video URL", required: false %>
   <%= f.input :video_alt_text, label: "Video short description", required: false %>
   <!-- Number of characters (min/max) for "video_alt_text" to be implemented later -->

@@ -42,7 +42,7 @@ class PolicyMakingsController < ApplicationController
     if @policy_making.update(policy_making_params)
       redirect_to policy_making_path(@policy_making)
     else
-      render :edit # Probably useless here...
+      render :edit
     end
   end
 
