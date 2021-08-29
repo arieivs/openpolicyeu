@@ -1,4 +1,21 @@
-<h1>PolicyMakings#show</h1>
+<main>
+  <section class="bkg-blue py-5">
+    <div class="container">
+      <h1><%= @policy_making.topic.name %> Policymaking in <%= @policy_making.topic.name %></h1>
+      <h2><mark class="mark-yllw">How does it work?</mark></h2>
+      <div class="container-short">
+        <iframe class="video my-5" src="https://www.youtube.com/watch?v=_4kHxtiuML0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <% if @policy_making.video_url %>
+          <!-- <iframe class="video my-5" src="<%= @policy_making.video_url %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+          <% if @policy_making.video_source %>
+            <p><em>by </em><%= @policy_making.video_source %></p>
+          <% end %>
+        <% end %>
+        <p><%= @policy_making.content %></p>
+      </div>
+    </div>
+  </section>
+</main>
 
 <p> Policy Making id : <%= @policy_making.id %> </p>
 <p> Country: <%= @policy_making.country.name %> </p>
