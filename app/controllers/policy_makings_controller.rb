@@ -18,6 +18,7 @@ class PolicyMakingsController < ApplicationController
     set_policy_making
     @content_question = Question.where(policy_making: @policy_making).find_by(scope: 'content')
     @content_answers = Answer.where(question: @content_question)
+    @policymaking_institutions = PolicyMakingInstitution.where(policy_making: @policy_making)
     @institution_question = Question.where(policy_making: @policy_making).find_by(scope: 'institutions')
     @institution_answers = Answer.where(question: @institution_question)
   end
