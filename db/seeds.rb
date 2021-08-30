@@ -35,17 +35,19 @@ puts "#{Topic.count} topics created! \n\n"
 
 # --------------- AMBASSADORS ---------------
 
-puts "Cleaning AMBASSADORS database..."
-Ambassador.destroy_all
+# puts "Cleaning AMBASSADORS database..."
+# Ambassador.destroy_all
 
-puts "Creating ambassadors..."
-5.times do
-  new_ambassador = Ambassador.new(name: Faker::Superhero.name, description: Faker::Superhero.power, social_profile_link:"")
-  file = URI.open("https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80")
-  new_ambassador.photo.attach(io: file, filename: "profilepic.png", content_type: 'image/png')
-  new_ambassador.save
-end
-puts "#{Ambassador.count} ambassadors created! \n\n"
+# puts "Creating ambassadors..."
+# 5.times do
+#   new_ambassador = Ambassador.new(name: Faker::Superhero.name, description: Faker::Superhero.power, social_profile_link:"")
+#   file = URI.open("https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80")
+#   new_ambassador.photo.attach(io: file, filename: "profilepic.png", content_type: 'image/png')
+#   new_ambassador.save
+# end
+# puts "#{Ambassador.count} ambassadors created! \n\n"
+
+# --------------- INSTITUIONS ---------------
 
 # --------------- POLICY MAKINGS ---------------
 
@@ -53,13 +55,33 @@ puts "Cleaning POLICY_MAKINGS database..."
 PolicyMaking.destroy_all
 
 puts "Creating policy makings..."
-PolicyMaking.new(country_id: 1, topic_id: 1, ambassador_id: 1, content: "blah blah blah").save
-PolicyMaking.new(country_id: 1, topic_id: 2, ambassador_id: 1, content: "blah blah blah").save
-PolicyMaking.new(country_id: 1, topic_id: 3, ambassador_id: 2, content: "blah blah blah").save
-PolicyMaking.new(country_id: 2, topic_id: 1, ambassador_id: 3, content: "blah blah blah").save
-PolicyMaking.new(country_id: 3, topic_id: 1, ambassador_id: 4, content: "blah blah blah").save
-PolicyMaking.new(country_id: 4, topic_id: 1, ambassador_id: 5, content: "blah blah blah").save
+PolicyMaking.new(country_id: 1, topic_id: 1, video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10)).save
+PolicyMaking.new(country_id: 1, topic_id: 2, video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10)).save
+PolicyMaking.new(country_id: 1, topic_id: 3, video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10)).save
+PolicyMaking.new(country_id: 2, topic_id: 1, video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10)).save
+PolicyMaking.new(country_id: 3, topic_id: 1, video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10)).save
+PolicyMaking.new(country_id: 4, topic_id: 1, video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10)).save
 puts "#{PolicyMaking.count} policy makings created! \n\n"
+
+# ----------- QUESTIONS & ANSWERS ----------
+
+puts "Cleaning QUESTIONS & ANSWERS database..."
+Answer.destroy_all
+Question.destroy_all
+
+puts "Creating questions and answers for policymaking..."
+(1..PolicyMaking.count).to_a.each do |pm_id|
+  question_content = Question.new(policy_making_id: pm_id, scope: 'content', question: "#{Faker::Quotes::Shakespeare.hamlet}?").save
+  Answer.new(question: question_content, answer: Faker::TvShows::BojackHorseman.quote, explanation: Faker::Movies::HitchhikersGuideToTheGalaxy.quote, right: true).save
+  rand(2..4).times do
+    Answer.new(question: question_content, answer: Faker::TvShows::BojackHorseman.quote, explanation: Faker::Movies::HitchhikersGuideToTheGalaxy.quote, right: false).save
+  end
+  question_institution = Question.new(policy_making_id: pm_id, scope: 'institution', question: "#{Faker::Quotes::Shakespeare.hamlet}?").save
+  Answer.new(question: question_institution, answer: Faker::TvShows::BojackHorseman.quote, explanation: Faker::Movies::HitchhikersGuideToTheGalaxy.quote, right: true).save
+  rand(2..4).times do
+    Answer.new(question: question_institution, answer: Faker::TvShows::BojackHorseman.quote, explanation: Faker::Movies::HitchhikersGuideToTheGalaxy.quote, right: false).save
+  end
+end
 
 # --------------- VOLUNTEERS ---------------
 

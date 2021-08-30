@@ -17,6 +17,7 @@ class PolicyMakingsController < ApplicationController
 
   def show
     set_policy_making
+    @question_content = Question.where(policy_making_id: @policy_making).find_by(scope: 'content')
   end
 
   def new
