@@ -12,12 +12,14 @@ class PolicyMakingsController < ApplicationController
       @policy_makings = @policy_makings.where(country_id: country_id) unless country_id.empty?
       @policy_makings = @policy_makings.where(topic_id: topic_id) unless topic_id.empty?
     end
-
   end
 
   def show
     set_policy_making
-    @question_content = Question.where(policy_making_id: @policy_making).find_by(scope: 'content')
+    @content_question = Question.where(policy_making: @policy_making).find_by(scope: 'content')
+    @content_answers = Answer.where(question: @content_question)
+    @institution_question = Question.where(policy_making: @policy_making).find_by(scope: 'institutions')
+    @institution_answers = Answer.where(question: @institution_question)
   end
 
   def new

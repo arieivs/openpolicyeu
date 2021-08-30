@@ -4,22 +4,28 @@
       <h1><%= @policy_making.topic.name %> Policymaking in <%= @policy_making.topic.name %></h1>
       <h2><mark class="mark-yllw">How does it work?</mark></h2>
       <div class="container-short">
-        <iframe class="video my-5" src="https://www.youtube.com/watch?v=_4kHxtiuML0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <% if @policy_making.video_url %>
-          <!-- <iframe class="video my-5" src="<%= @policy_making.video_url %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-          <% if @policy_making.video_source %>
-            <p><em>by </em><%= @policy_making.video_source %></p>
-          <% end %>
+          <div class="my-5">
+            <iframe class="video" src="<%= @policy_making.video_url %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <% if @policy_making.video_source %>
+              <p class="subtitle"><em>by <%= @policy_making.video_source %></em></p>
+            <% end %>
+          </div>
         <% end %>
         <p><%= @policy_making.content %></p>
+        <% if @content_question %>
+          <p class="mt-5"><strong><%= @content_question.question %></strong></p>
+          <% @content_answers.each do |answer| %>
+            <div class="d-flex card-all card-answer">
+              <button class="selector"></button>
+              <p><%= answer.answer %></p>
+            </div>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </section>
 </main>
 
-<p> Policy Making id : <%= @policy_making.id %> </p>
-<p> Country: <%= @policy_making.country.name %> </p>
-<p> Topic: <%= @policy_making.topic.name %> </p>
-<p> Ambassador: <%= @policy_making.ambassador.name %> </p>
-<p> Content: <%= @policy_making.content %> </p>
+
 

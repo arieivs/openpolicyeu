@@ -61,6 +61,11 @@ mark::after {
   }
 }
 
+.subtitle {
+  font-size: 14px;
+  margin: 0.5em 0;
+}
+
 @media (max-width: 440px) {
   h2 {
     font-size: 24px;
