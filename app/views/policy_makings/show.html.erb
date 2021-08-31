@@ -41,6 +41,21 @@
           <% end %>
         </div>
       </div>
+      <div class="d-flex card-all card-large">
+        <div>
+          <h3><mark class="mark-blue"><%= @policymaking_institutions.first.institution.name %></mark></h3>
+          <p><%= @policymaking_institutions.first.description %></p>
+          <%= link_to "Learn more", @policymaking_institutions.first.institution.website_url, target: "_blank", class: "text-link" %>
+        </div>
+        <% if @policymaking_institutions.first.institution.video_url %>
+          <div class="container-half">
+            <iframe class="video" src="<%= @policymaking_institutions.first.institution.video_url %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <% if @policy_making.video_source %>
+              <p class="subtitle"><em>by <%= @policymaking_institutions.first.institution.video_source %></em></p>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </section>
 </main>
