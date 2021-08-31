@@ -2,6 +2,7 @@
   background-color: #fff;
   border-radius: 35px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 20px;
 }
 
 .card-clickable:hover {
@@ -14,14 +15,17 @@
 }
 
 .card-large {
-  margin: 20px 0;
-  padding: 20px;
+  margin: 30px 15px;
+}
+
+.card-large-column {
+  padding: 0 20px;
 }
 
 .card-square {
+  min-width: 220px;
   width: 220px;
   height: 220px;
-  padding: 20px;
   text-align: center;
   img {
     margin-bottom: 20px;
@@ -35,10 +39,13 @@
 .card-answer {
   margin: 10px 0;
   align-items: center;
+  p {
+    margin: 0 0 0 1em;
+    line-height: 1.1em;
+  }
 }
 
 .selector {
-  margin: 1rem 25px;
   min-width: 25px;
   width: 25px;
   height: 25px;

@@ -1,7 +1,7 @@
 <main>
   <section class="bkg-blue py-5">
     <div class="container">
-      <h1><%= @policy_making.topic.name %> Policymaking in <%= @policy_making.topic.name %></h1>
+      <h1><%= @policy_making.topic.name %> Policymaking in <%= @policy_making.country.name %></h1>
       <h2><mark class="mark-yllw">How does it work?</mark></h2>
       <div class="container-short">
         <% if @policy_making.video_url %>
@@ -30,7 +30,7 @@
       <h2><mark class="mark-yllw">Institutions</mark></h2>
       <p>Who are the actors involved and what role do they play?</p>
       <div class="container d-flex">
-        <div class="row pt-4">
+        <div class="row w-100 pt-4">
           <% @policymaking_institutions.each do |pmi| %>
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
               <div class="card-all card-square card-clickable">
@@ -41,19 +41,30 @@
           <% end %>
         </div>
       </div>
-      <div class="d-flex card-all card-large">
-        <div>
+      <div class="d-flex justify-content-between card-all card-large">
+        <div class="<%= @policymaking_institutions.first.institution.video_url ? 'container-half' : '' %> card-large-column">
           <h3><mark class="mark-blue"><%= @policymaking_institutions.first.institution.name %></mark></h3>
           <p><%= @policymaking_institutions.first.description %></p>
           <%= link_to "Learn more", @policymaking_institutions.first.institution.website_url, target: "_blank", class: "text-link" %>
         </div>
         <% if @policymaking_institutions.first.institution.video_url %>
-          <div class="container-half">
+          <div class="container-half card-large-column">
             <iframe class="video" src="<%= @policymaking_institutions.first.institution.video_url %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <% if @policy_making.video_source %>
               <p class="subtitle"><em>by <%= @policymaking_institutions.first.institution.video_source %></em></p>
             <% end %>
           </div>
+        <% end %>
+      </div>
+      <div class="container-short">
+        <% if @institution_question %>
+          <p class="mt-5"><strong><%= @institution_question.question %></strong></p>
+          <% @institution_answers.each do |answer| %>
+            <div class="d-flex card-all card-answer">
+              <button class="selector"></button>
+              <p><%= answer.answer %></p>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>
