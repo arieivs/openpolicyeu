@@ -1,0 +1,8 @@
+<% answers.each do |answer| %>
+  <div class="d-flex card-all card-answer">
+    <%= link_to select_answer_quiz_path(question_id: question.id, answer_id: answer.id), remote: true do %>
+      <button class="selector"></button>
+    <% end %>
+    <p><%= answer.answer %></p>
+  </div>
+<% end %>

@@ -15,12 +15,11 @@
         <p><%= @policy_making.content %></p>
         <% if @content_question %>
           <p class="mt-5"><strong><%= @content_question.question %></strong></p>
-          <% @content_answers.each do |answer| %>
-            <div class="d-flex card-all card-answer">
-              <button class="selector"></button>
-              <p><%= answer.answer %></p>
-            </div>
-          <% end %>
+          <div id="answers-question-<%= @content_question.id %>">
+            <%= render 'shared/answers_before',
+                question: @content_question,
+                answers: @content_answers %>
+          </div>
         <% end %>
       </div>
     </div>
@@ -43,12 +42,11 @@
       <div class="container-short">
         <% if @institution_question %>
           <p class="mt-5"><strong><%= @institution_question.question %></strong></p>
-          <% @institution_answers.each do |answer| %>
-            <div class="d-flex card-all card-answer">
-              <button class="selector"></button>
-              <p><%= answer.answer %></p>
-            </div>
-          <% end %>
+          <div id="answers-question-<%= @institution_question.id %>">
+            <%= render 'shared/answers_before',
+                question: @institution_question,
+                answers: @institution_answers %>
+          </div>
         <% end %>
       </div>
     </div>

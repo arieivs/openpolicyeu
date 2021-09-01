@@ -1,0 +1,11 @@
+<% answers.each do |answer| %>
+  <div class="d-flex card-all card-answer <%= answer.right ? 'card-answer-right' : 'card-answer-wrong' %>">
+    <% if answer.id == selected_answer.id %>
+      <button class="selector <%= answer.right ? 'selector-right' : 'selector-wrong' %>"></button>
+    <% else %>
+      <button class="selector"></button>
+    <% end %>
+    <p><%= answer.answer %></p>
+  </div>
+<% end %>
+<p><%= selected_answer.explanation %></p>

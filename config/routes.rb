@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :answers, only: [:create, :edit, :update]
     end
   end
+  get 'questions/:question_id/select_answer_quiz/:answer_id/', to: 'questions#select_answer_quiz', as: :select_answer_quiz
   resources :institutions, except: [:show, :destroy]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
