@@ -50,6 +50,14 @@
   }
 }
 
+.card-answer-right {
+  box-shadow: 0 2px 10px $green;
+}
+
+.card-answer-wrong {
+  box-shadow: 0 2px 10px $red-50;
+}
+
 .selector {
   min-width: 25px;
   width: 25px;
@@ -58,3 +66,15 @@
   background-color: #fff;
   border: solid 1px $grey_dark;
 }
+
+.selector-right {
+  background-color: $green;
+  border: solid 1px $green;
+}
+
+.selector-wrong {
+  background-color: $red;
+  border: solid 1px $red;
+}
+
+
