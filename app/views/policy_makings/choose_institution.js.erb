@@ -1,1 +1,2 @@
+document.getElementById('institutions-list').innerHTML = "<%= j render 'policy_makings/partials/institutions_list', policy_making: @policy_making, policy_making_institutions: @policy_making_institutions, pmi_selected: @policy_making_institution %>";
 document.getElementById('institution-description').innerHTML = "<%= j render 'policy_makings/partials/institution_description', policy_making: @policy_making, policy_making_institution: @policy_making_institution %>";

@@ -54,6 +54,7 @@ class PolicyMakingsController < ApplicationController
     # when the user clicks in one of the institutions cards
     # we call this method and pass the needed ids in the params
     @policy_making = PolicyMaking.find(params[:policy_making_id])
+    @policy_making_institutions = PolicyMakingInstitution.where(policy_making: @policy_making)
     @policy_making_institution = PolicyMakingInstitution.find(params[:policy_making_institution_id])
     # then it renders choose_institution.js.erb automatically
     # which in turn renders the institution_description.html.erb partial
