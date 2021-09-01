@@ -1,1 +1,1 @@
-document.getElementById('answers-question-<%= @question.id %>').innerHTML = "<%= j render 'shared/answers_after', answers: @answers, selected_answer: @selected_answer %>";
+document.getElementById('answers-question-<%= @question.id %>').innerHTML = "<%= j render 'shared/answers_after', question: @question, answers: @answers, selected_answer: @selected_answer %>";

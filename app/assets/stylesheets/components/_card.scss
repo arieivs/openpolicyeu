@@ -48,6 +48,14 @@
     margin: 0 0 0 1em;
     line-height: 1.1em;
   }
+  a {
+    margin-bottom: -5px;
+  }
+}
+
+.selector {
+  font-size: 25px;
+  color: $grey_dark;
 }
 
 .card-answer-right {
@@ -58,23 +66,14 @@
   box-shadow: 0 2px 10px $red-50;
 }
 
-.selector {
-  min-width: 25px;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background-color: #fff;
-  border: solid 1px $grey_dark;
-}
-
 .selector-right {
-  background-color: $green;
-  border: solid 1px $green;
+  color: $green;
+  font-size: 25px;
 }
 
 .selector-wrong {
-  background-color: $red;
-  border: solid 1px $red;
+  color: $red;
+  font-size: 25px;
 }
 
 
