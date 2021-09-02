@@ -6,8 +6,67 @@
 
 .banner {
   height: 70vh;
-  display: flex;
-  align-items: center;
+  // display: flex;
+  // align-items: center;
   color: white;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
 }
+
+.country-topic {
+  flex-grow: 1;
+}
+
+.country-topic-field {
+  width: 50%;
+  margin-bottom: 4px;
+  margin-right: 10px;
+}
+
+.country-topic-submit {
+  height: calc(2em + 0.75rem + 2px);
+  align-self: end;
+}
+
+.policy-definition {
+  position: relative;
+}
+
+.img-decorative {
+  width: 100px;
+  object-fit: contain;
+}
+
+.policy-definition .img-bottom {
+  position: absolute;
+  bottom: -30px;
+  left: -80px;
+}
+
+.policy-definition .img-top {
+  position: absolute;
+  top: -30px;
+  right: -80px;
+}
+
+.policy-description .icon-decorative {
+  font-size: 100px;
+  color: $yellow;
+  margin: 1rem 1rem 0 0;
+}
+
+.number {
+  background-color: $blue;
+  color: #fff;
+  width: 50px;
+  min-width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+

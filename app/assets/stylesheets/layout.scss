@@ -2,10 +2,18 @@
   max-width: 760px;
   padding: 0 15px; // change to 30px if we manage to change bootstrap padding variable
   margin:  0 auto;
+  h2 {
+    text-align: center;
+  }
 }
 
-.container-short h2 {
-  text-align: center;
+.container-tiny {
+  max-width: 460px;
+  padding: 0 15px;
+  margin:  0 auto;
+  h2 {
+    text-align: center;
+  }
 }
 
 .container-half {
