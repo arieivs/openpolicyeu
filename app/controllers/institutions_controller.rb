@@ -33,7 +33,7 @@ class InstitutionsController < ApplicationController
   private
 
   def institution_params
-    params.require(:institution).permit(:country_id, :name, :description, :website_url, :video_url, :video_alt_text, :video_source, :ambassador_id)
+    params.require(:institution).permit(:country_id, :name, :website_url, :video_url, :video_alt_text, :video_source, :ambassador_id)
   end
 
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_17_110424) do
+ActiveRecord::Schema.define(version: 2021_08_26_143842) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,7 +78,6 @@ ActiveRecord::Schema.define(version: 2021_08_17_110424) do
   create_table "institutions", force: :cascade do |t|
     t.bigint "country_id", null: false
     t.string "name"
-    t.string "description"
     t.string "website_url"
     t.string "video_url"
     t.string "video_alt_text"
@@ -107,6 +106,7 @@ ActiveRecord::Schema.define(version: 2021_08_17_110424) do
     t.bigint "institution_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "description"
     t.index ["institution_id"], name: "index_policy_making_institutions_on_institution_id"
     t.index ["policy_making_id"], name: "index_policy_making_institutions_on_policy_making_id"
   end

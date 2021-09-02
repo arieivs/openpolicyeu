@@ -56,7 +56,7 @@
     - This form is always visible (the user can add as many answers as they wish)
     - This form is always empty by default
     - There can be multiple "right" answers -->
-  <%= simple_form_for [@policy_making, @content_question, @new_answer] do |f| %>
+  <%= simple_form_for [@content_question, @new_answer] do |f| %>
     <%= f.input :answer, required: true %>
     <%= f.input :explanation, required: true %>
     <p>Is this answer correct? <%= f.radio_button :right, true,  required: true %> Yes
@@ -70,13 +70,7 @@
 <h2>Institutions</h2>
 
 
-<!-- ... -->
-
-<!-- Institution presentation to be added here... -->
-
-<!-- Institution creation form to be added here... -->
-
-<!-- ... -->
+<p><strong>Browse through institutions</strong></p>
 
 
 <p>Question on the Institutions </p>
