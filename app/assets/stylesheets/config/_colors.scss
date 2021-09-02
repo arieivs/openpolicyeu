@@ -10,16 +10,19 @@ $yellow_hover: #FEEC70; // button hover
 $grey_dark: rgb(33, 33, 33); // body font
 $grey_light: rgb(145, 145, 145);
 
+$green: rgb(47, 186, 35); // right answers
+$red: rgb(220, 0, 0);
+$red-50: rgba(220, 0, 0, 0.5); // wrong answers
 
 .bkg-blue {
   background-color: #F1F6FD;
 }
 
 // Bootstrap/LeWagon colors
-$red: #FD1015;
+// $red: #FD1015;
 // $blue: #167FFB;
 // $yellow: #FFC65A;
 $orange: #E67E22;
-$green: #1EDD88;
+// $green: #1EDD88;
 // $gray: #0E0000;
 // $light-gray: #F4F4F4;
