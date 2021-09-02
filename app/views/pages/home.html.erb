@@ -48,42 +48,42 @@
     </div>
     <div class="container">
       <div class="row">
-        <div class="col-12 col-sm-6 col-md-6 col-lg-6 d-flex mt-3">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 d-flex mt-3 policy-step">
           <div class="number">1</div>
           <div>
             <h3><mark class="mark-blue">Problem emergence</mark></h3>
             <p>A crisis (financial, sanitary, etc) or a long-existing problem which previous policies did not solve comes to the forefront of a government political agenda.</p>
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-md-6 col-lg-6 d-flex mt-3">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 d-flex mt-3 policy-step">
           <div class="number">2</div>
           <div>
             <h3><mark class="mark-blue">Agenda-setting</mark></h3>
             <p>Based on government priorities and availability of resources to dedicate to the problem. Public opinion (yours!) and the media can influence agenda-setting (e.g: Fridays for Future).</p>
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-md-6 col-lg-6 d-flex mt-3">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 d-flex mt-3 policy-step">
           <div class="number">3</div>
           <div>
-            <h3><mark class="mark-blue">Consideration of policy options</mark></h3>
+            <h3><mark class="mark-blue">Consideration</mark> of <mark class="mark-blue">policy options</mark></h3>
             <p>Policy makers assess possible solutions based on available information or commissioned independent research and studies. This leads to a policy proposal which is then submitted to the competent authority as a draft legislation. The proposal should be chosen following the "rational choice" theory (evaluation of costs and benefits). Yet in practice, it's often conditioned by political beliefs.</p>
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-md-6 col-lg-6 d-flex mt-3">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 d-flex mt-3 policy-step">
           <div class="number">4</div>
           <div>
             <h3><mark class="mark-blue">Decision-making process</mark></h3>
             <p>This is a legislative process of its own, involving many institutions and stakeholders which changes from country to country. In the end, a country’s legislative authorities will vote on the proposal, giving it the green light (or not) to proceed with becoming law. If the proposal is voted down, in some cases policymakers will amend their proposal and submit it again.</p>
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-md-6 col-lg-6 d-flex mt-3">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 d-flex mt-3 policy-step">
           <div class="number">5</div>
           <div>
             <h3><mark class="mark-blue">Implementation</mark></h3>
             <p>The executive body has authority over implementation and decides which is the best method to put the adopted legislation into practice. A variety of procedures or regulatory bodies are at governments’ disposal to enforce the adopted policy, and in most cases they need to be harmonized among different levels (e.g. national and EU levels).</p>
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-md-6 col-lg-6 d-flex mt-3">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 d-flex mt-3 policy-step">
           <div class="number">6</div>
           <div>
             <h3><mark class="mark-blue">Evaluation</mark></h3>
@@ -94,16 +94,26 @@
     </div>
   </section>
   <section class="py-5 bkg-blue">
-    <div class="container">
+    <div class="container text-center">
       <h2><mark class="mark-yllw">What's New?</mark></h2>
       <p>Explore our most recent and updated content on policymaking around Europe:</p>
-      <div class="container">
+      <div class="container mt-4">
         <div class="row">
-          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card-square">
-
+          <% @recent_policy_makings.each do |pm| %>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
+              <%= link_to policy_making_path(pm), class: 'card-link' do %>
+                <div class="card-all card-square card-clickable policy-recent d-flex flex-column justify-content-between mx-auto">
+                  <i class="fas fa-bolt"></i>
+                  <div>
+                    <p><strong><%= pm.topic.name %></strong></p>
+                    <p>Policymaking in</p>
+                    <p><strong><%= pm.country.name %></strong></p>
+                  </div>
+                  <img src="https://www.bestcustomflags.com/wp-content/uploads/2016/06/portugal-flag.jpg" alt="">
+                </div>
+              <% end %>
             </div>
-          </div>
+          <% end %>
         </div>
       </div>
     </div>
