@@ -1,0 +1,19 @@
+<% answers.each do |answer| %>
+  <% if answer.id == selected_answer.id %>
+    <div class="d-flex card-all card-answer <%= answer.right ? 'card-answer-right' : 'card-answer-wrong' %>">
+  <% else %>
+    <div class="d-flex card-all card-answer">
+  <% end %>
+      <%= link_to select_answer_quiz_path(question_id: question.id, answer_id: answer.id), remote: true do %>
+        <% if answer.id == selected_answer.id && answer.right %>
+          <i class="selector-right fas fa-check-circle"></i>
+        <% elsif answer.id == selected_answer.id %>
+          <i class="selector-wrong fas fa-times-circle"></i>
+        <% else %>
+          <i class="selector far fa-circle"></i>
+        <% end %>
+      <% end %>
+      <p><%= answer.answer %></p>
+    </div>
+<% end %>
+<p><%= selected_answer.explanation %></p>

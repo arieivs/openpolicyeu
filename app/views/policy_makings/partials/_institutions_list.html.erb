@@ -1,0 +1,14 @@
+<div class="container d-flex">
+  <div class="row w-100 pt-4">
+    <% policy_making_institutions.each do |pmi| %>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <%= link_to pm_choose_institution_path(policy_making_id: policy_making.id, policy_making_institution_id: pmi.id), remote: true, class: 'card-link' do %>
+          <div class="card-all card-square card-clickable <%= pmi.id == pmi_selected.id ? 'card-selected' : '' %>">
+            <%= cl_image_tag pmi.institution.logo.key, crop: :thumb, height: 300, width: 300, class:"avatar-large" %>
+            <p><%= pmi.institution.name %></p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
