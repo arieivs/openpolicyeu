@@ -1,8 +1,6 @@
 <%= simple_form_for @institution do |f| %>
   <%= f.input :country_id, placeholder: "Choose a country/region", required: true, collection: Country.all %>
   <%= f.input :name, label: "Name", required: true %>
-  <%= f.input :description, as: :text, label: "Description", required: true, :input_html => { :cols => 5, :rows => 10 } %>
-  <!-- TO DO : Number of characters (min/max) for "description" to be implemented later -->
   <%= f.input :website_url, label: "Website URL", required: false %>
   <%= f.input :video_url, label: "Video URL", required: false %>
   <%= f.input :video_alt_text, label: "Video short description", required: false %>
