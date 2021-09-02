@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-light navbar-all #{current_page?(controller: '/pages', action: 'home') ? 'navbar-transp' : 'navbar-white'}">
+<nav class="navbar navbar-expand-sm navbar-light navbar-all <%= current_page?(controller: '/pages', action: 'home') ? 'navbar-transp' : 'navbar-white' %>">
   <div class="container horizontal-list">
     <ul>
       <li><%= link_to "Home", root_path, class: current_page?(controller: '/pages', action: 'home') ? 'active' : '' %></li>
