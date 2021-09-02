@@ -103,13 +103,13 @@
             <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
               <%= link_to policy_making_path(pm), class: 'card-link' do %>
                 <div class="card-all card-square card-clickable policy-recent d-flex flex-column justify-content-between mx-auto">
-                  <i class="fas fa-bolt"></i>
+                  <i class="<%= pm.topic.icon %> <%= pm.topic.icon_color %>"></i>
                   <div>
                     <p><strong><%= pm.topic.name %></strong></p>
                     <p>Policymaking in</p>
                     <p><strong><%= pm.country.name %></strong></p>
                   </div>
-                  <img src="https://www.bestcustomflags.com/wp-content/uploads/2016/06/portugal-flag.jpg" alt="">
+                  <%= cl_image_tag pm.country.flag.key %>
                 </div>
               <% end %>
             </div>
