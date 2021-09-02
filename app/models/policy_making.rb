@@ -1,7 +1,6 @@
 class PolicyMaking < ApplicationRecord
   belongs_to :country
   belongs_to :topic
-  belongs_to :ambassador
   has_many :users, through: :user_policy_makings
   has_many :policies
   has_many :policy_making_institutions
@@ -10,5 +9,4 @@ class PolicyMaking < ApplicationRecord
 
   validates :content, presence: true
   validates :country, uniqueness: { scope: :topic }
-
 end

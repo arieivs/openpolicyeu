@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:select_answer_quiz]
+
   def create
     @policy_making = PolicyMaking.find(params[:policy_making_id])
     @new_question = Question.new(question_params)
@@ -20,6 +22,14 @@ class QuestionsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def select_answer_quiz
+    # when the user clicks in one of the answers from anywhere but the Gamebook
+    @question = Question.find(params[:question_id])
+    @answers = Answer.where(question: @question)
+    @selected_answer = Answer.find(params[:answer_id])
+    # then it renders questions > select_answer_quiz.js.erb automatically
   end
 
   private
