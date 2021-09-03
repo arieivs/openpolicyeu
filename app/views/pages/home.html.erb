@@ -1,27 +1,32 @@
 <header class="header-banner">
   <%= render 'shared/navbar' %>
   <div class="container banner">
-    <h1>OpenPolicy Europe</h1>
-    <p>The digital hub for understanding and engaging with policymaking.</p>
-    <p>Choose a country (or Europe) and a topic to start exploring:</p>
-
-    <%= simple_form_for @policy_making, url: root_path, method: :get do |f| %>
-      <div class="d-flex w-75">
-        <div class="d-flex form-all country-topic">
-          <div class="form-field country-topic-field" id="country-filter">
-            <%= f.input :country_id, required: true, collection: Country.all %>
+    <div>
+      <h1>OpenPolicy Europe</h1>
+      <p class="slogan">The digital hub for understanding and engaging with policymaking</p>
+    </div>
+    <div class="py-4">
+      <p>Choose a country (or Europe) and a topic to start exploring:</p>
+      <%= simple_form_for @policy_making, url: root_path, method: :get do |f| %>
+        <div class="d-flex w-75">
+          <div class="d-flex form-all country-topic">
+            <div class="form-field country-topic-field" id="country-filter">
+              <%= f.input :country_id, required: true, collection: Country.all %>
+            </div>
+            <div class="form-field country-topic-field" id="topic-filter">
+              <%= f.input :topic_id, required: true, collection: Topic.all %>
+            </div>
           </div>
-          <div class="form-field country-topic-field" id="topic-filter">
-            <%= f.input :topic_id, required: true, collection: Topic.all %>
-          </div>
+          <%= f.submit "Explore", class: "btn-all btn-yllw country-topic-submit" %>
         </div>
-        <%= f.submit "Explore", class: "btn-all btn-yllw country-topic-submit" %>
-      </div>
-    <% end %>
-
-    <div class="container-half">
+      <% end %>
+    </div>
+    <div class="container-half pb-3">
       <p>Do you want to find out how you can get actively involved? Engage in policymaking today:</p>
-      <button class="btn-all btn-prim">Engage</button>
+      <button class="btn-all btn-prim my-0">Engage</button>
+    </div>
+    <div class="text-center">
+      <i class="fas fa-chevron-down"></i>
     </div>
   </div>
 </header>

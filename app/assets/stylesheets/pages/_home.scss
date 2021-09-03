@@ -5,11 +5,26 @@
 }
 
 .banner {
-  height: 70vh;
-  // display: flex;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   // align-items: center;
+  padding-top: 70px;
+  padding-bottom: 10px;
   color: white;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  // p {
+  //   margin: 0;
+  // }
+  i {
+    font-size: 50px;
+    align-self: end;
+  }
+}
+
+.slogan {
+  font-family: 'Montserrat', sans-serif;
 }
 
 .country-topic {
