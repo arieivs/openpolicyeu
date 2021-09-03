@@ -8,7 +8,7 @@
     <div class="py-4">
       <p>Choose a country (or Europe) and a topic to start exploring:</p>
       <%= simple_form_for @policy_making, url: root_path, method: :get do |f| %>
-        <div class="d-flex w-75">
+        <div class="d-flex flex-column flex-md-row country-topic-form">
           <div class="d-flex form-all country-topic">
             <div class="form-field country-topic-field" id="country-filter">
               <%= f.input :country_id, required: true, collection: Country.all %>
@@ -26,12 +26,12 @@
       <button class="btn-all btn-prim my-0">Engage</button>
     </div>
     <div class="text-center">
-      <i class="fas fa-chevron-down"></i>
+      <a href="#policy"><i class="fas fa-chevron-down"></i></a>
     </div>
   </div>
 </header>
 <main>
-  <section class="py-5">
+  <section class="py-5" id="policy">
     <div class="container text-center">
       <h2><mark class="mark-yllw">What is a Policy?</mark></h2>
       <div class="container-tiny d-flex policy-definition">
@@ -48,7 +48,7 @@
   </section>
   <section class="py-5">
     <div class="container-short">
-      <h2><mark class="mark-yllw">How does policymaking work?</mark></h2>
+      <h2><mark class="mark-yllw">How does</mark> <mark class="mark-yllw">policymaking work?</mark></h2>
       <p>In parliamentary democracies, the policy process is not linear, as it is based on the information available and new discoveries. This process is a flexible and collaborative framework. That’s how it goes:</p>
     </div>
     <div class="container">
