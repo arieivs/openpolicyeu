@@ -114,7 +114,7 @@
     - This form is always visible (the user can add as many answers as they wish)
     - This form is always empty by default
     - There can be multiple "right" answers -->
-  <%= simple_form_for [@policy_making, @institutions_question, @new_answer] do |f| %>
+  <%= simple_form_for [@institutions_question, @new_answer] do |f| %>
     <%= f.input :answer, required: true %>
     <%= f.input :explanation, required: true %>
     <p>Is this answer correct? <%= f.radio_button :right, true,  required: true %> Yes
