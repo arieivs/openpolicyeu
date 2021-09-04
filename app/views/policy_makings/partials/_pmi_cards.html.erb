@@ -1,0 +1,5 @@
+<% policy_making_institutions.each do |pmi| %>
+  <div id="pmi-<%= pmi.id %>-card">
+    <%= render 'policy_makings/partials/pmi_card', pmi: pmi %>
+  </div>
+<% end %>

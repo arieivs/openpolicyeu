@@ -7,14 +7,11 @@
       <a href="join.html"><button class="btn-all btn-yllw">Join us</button></a>
 
       <%= simple_form_for @policy_making, url: root_path, method: :get do |f| %>
-        <div class="country-topic">
-          <div id="country-filter">
+
             <%= f.input :country_id, required: true, collection: Country.all %>
-          </div>
-          <div id="topic-filter">
+
             <%= f.input :topic_id, required: true, collection: Topic.all %>
-          </div>
-        </div>
+
         <%= f.submit "Explore", class: "btn-all btn-yllw" %>
       <% end %>
     </div>

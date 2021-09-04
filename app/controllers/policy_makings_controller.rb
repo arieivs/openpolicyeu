@@ -39,6 +39,9 @@ class PolicyMakingsController < ApplicationController
   def edit
     set_policy_making
     prepare_data_for_policymaking_edit # Private method in Application Controller (also called in Questions & Answers controllers)
+    @policy_making_institution = PolicyMakingInstitution.new
+    @institution = Institution.new
+    @policy_making_institutions = PolicyMakingInstitution.where(policy_making: @policy_making)
   end
 
   def update

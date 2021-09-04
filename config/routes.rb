@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :questions, only: [:create, :update], shallow: true do
       resources :answers, only: [:create, :edit, :update]
     end
+    resources :policy_making_institutions, only: [:create, :edit, :update, :destroy]
   end
   get 'questions/:question_id/select_answer_quiz/:answer_id/', to: 'questions#select_answer_quiz', as: :select_answer_quiz
   resources :institutions, except: [:show, :destroy]
