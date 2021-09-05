@@ -33,9 +33,10 @@ puts "Empty database \n\n"
 
 puts "Creating topics..."
 # TOPICS = ['Energy', 'Climate', 'Education', 'Health & food safety', 'Mobility', 'Interregional cooperation', 'Defense, Industry, Space']
-TOPICS = ['Energy', 'Climate', 'Youth']
+TOPICS = [{name:'Energy & Climate', icon: 'fas fa-bolt', icon_color: 'yellow'},
+          {name:'Youth', icon: 'fas fa-child', icon_color: 'blue'}]
 TOPICS.each do |topic|
-  Topic.new(name: topic).save
+  Topic.new(name: topic[:name], icon: topic[:icon], icon_color: topic[:icon_color]).save
 end
 puts "#{Topic.count} topics created! \n\n"
 
@@ -43,9 +44,15 @@ puts "#{Topic.count} topics created! \n\n"
 
 puts "Creating countries and institutions..."
 # COUNTRIES = ['Europe', 'Austria', 'Belgium', 'Bulgaria', 'Croatia', 'Republic of Cyprus', 'Czech Republic', 'Denmark', 'Estonia', 'Finland', 'France', 'Germany', 'Greece', 'Hungary', 'Ireland', 'Italy', 'Latvia', 'Lithuania', 'Luxembourg', 'Malta', 'Netherlands', 'Poland', 'Portugal', 'Romania', 'Slovakia', 'Slovenia', 'Spain', 'Sweden']
-COUNTRIES = ['Europe', 'Germany', 'Portugal', 'Italy', 'Slovenia']
+COUNTRIES = [{name: 'Europe', flag_url: 'https://www.flags.co.uk/client/uploads/5/european-union.png'},
+             {name: 'Germany', flag_url: 'https://2.bp.blogspot.com/-sq6_up5jZ4I/T-iZxEPPX6I/AAAAAAAAEk4/031CmrTmj4Y/s1600/Germany+Flag.jpg'},
+             {name: 'Portugal', flag_url: 'https://www.bestcustomflags.com/wp-content/uploads/2016/06/portugal-flag.jpg'},
+             {name: 'Italy', flag_url: 'https://cdn.freelogovectors.net/wp-content/uploads/2012/05/italy-flag.jpg'},
+             {name: 'Slovenia', flag_url: 'https://i1.wp.com/worldflags.com/wp-content/uploads/Slovenia-flag.gif?fit=850%2C564'}]
 COUNTRIES.each do |country|
-  new_country = Country.new(name: country) # Add flags ?
+  new_country = Country.new(name: country[:name])
+  file = URI.open(country[:flag_url])
+  new_country.flag.attach(io: file, filename: "flag.png", content_type: 'image/png')
   new_country.save
   3.times do
     new_institution = Institution.new(country: new_country, name: Faker::Company.name, website_url: Faker::Internet.url, video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", video_alt_text: "bla")
@@ -76,16 +83,16 @@ pms.push(pm)
 pm = PolicyMaking.new(country: Country.first, topic: Topic.second, video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
 pm.save
 pms.push(pm)
-pm = PolicyMaking.new(country: Country.first, topic: Topic.third, video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
+pm = PolicyMaking.new(country: Country.second, topic: Topic.first, video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
 pm.save
 pms.push(pm)
 pm = PolicyMaking.new(country: Country.second, topic: Topic.second, video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
 pm.save
 pms.push(pm)
-pm = PolicyMaking.new(country: Country.second, topic: Topic.third, video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
+pm = PolicyMaking.new(country: Country.third, topic: Topic.first, video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
 pm.save
 pms.push(pm)
-pm = PolicyMaking.new(country: Country.third, topic: Topic.third, video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
+pm = PolicyMaking.new(country: Country.third, topic: Topic.second, video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
 pm.save
 pms.push(pm)
 puts "#{PolicyMaking.count} policymakings created! \n\n"

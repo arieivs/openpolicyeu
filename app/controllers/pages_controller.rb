@@ -19,6 +19,7 @@ class PagesController < ApplicationController
         end
       end
     end
+    @recent_policy_makings = PolicyMaking.all.order(updated_at: :desc).slice(0..3)
   end
 
   def about; end
