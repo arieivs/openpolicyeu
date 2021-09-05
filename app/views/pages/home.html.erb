@@ -1,23 +1,143 @@
 <header class="header-banner">
   <%= render 'shared/navbar' %>
   <div class="container banner">
-    <div class="container-half">
-      <h1>OpenPolicy Europe</h1>
-      <p>The digital hub for understanding and engaging with policymaking</p>
-      <a href="join.html"><button class="btn-all btn-yllw">Join us</button></a>
-
+    <div>
+      <h1 class="title">OpenPolicy Europe</h1>
+      <p class="slogan">The digital hub for understanding and engaging with policymaking</p>
+    </div>
+    <div class="py-4">
+      <p>Choose a country (or Europe) and a topic to start exploring:</p>
       <%= simple_form_for @policy_making, url: root_path, method: :get do |f| %>
-        <div class="country-topic">
-          <div id="country-filter">
-            <%= f.input :country_id, required: true, collection: Country.all %>
+        <div class="d-flex flex-column flex-md-row country-topic-form">
+          <div class="d-flex form-all country-topic">
+            <div class="form-field country-topic-field" id="country-filter">
+              <%= f.input :country_id, required: true, collection: Country.all %>
+            </div>
+            <div class="form-field country-topic-field" id="topic-filter">
+              <%= f.input :topic_id, required: true, collection: Topic.all %>
+            </div>
           </div>
-          <div id="topic-filter">
-            <%= f.input :topic_id, required: true, collection: Topic.all %>
-          </div>
+          <%= f.submit "Explore", class: "btn-all btn-yllw country-topic-submit" %>
         </div>
-        <%= f.submit "Explore", class: "btn-all btn-yllw" %>
       <% end %>
+    </div>
+    <div class="container-half pb-3">
+      <p>Do you want to find out how you can get actively involved? Engage in policymaking today:</p>
+      <button class="btn-all btn-prim my-0">Engage</button>
+    </div>
+    <div class="text-center">
+      <a href="#policy"><i class="fas fa-chevron-down"></i></a>
     </div>
   </div>
 </header>
+<main>
+  <section class="py-5" id="policy">
+    <div class="container text-center">
+      <h2><mark class="mark-yllw">What is a Policy?</mark></h2>
+      <div class="container-tiny d-flex policy-definition">
+        <img src="https://res.cloudinary.com/dhnsnkxbe/image/upload/v1630600287/openpolicyeu/aspas_vdpjfy.png" alt="" class="img-decorative img-bottom">
+        <p>A <a href="https://www.collinsdictionary.com/dictionary/english/policy" target="_blank" class="text-link">policy</a> is a set of ideas or plans that is used as a basis for making decisions, especially in politics, economics, or business.</p>
+        <img src="https://res.cloudinary.com/dhnsnkxbe/image/upload/v1630598205/openpolicyeu/thinking_smile_gbpqnu.png" alt="" class="img-decorative img-top">
+      </div>
+      <div class="d-flex align-items-center pt-5 policy-description">
+        <i class="far fa-hand-point-right icon-decorative"></i>
+        <p>In politics, a policy is a set of regulations or laws which defines how a government strategy will be implemented.  Policymaking is a process where negotiations and compromises are necessary to reach an agreement and  to deliver change.</p>
+        <img src="https://res.cloudinary.com/dhnsnkxbe/image/upload/v1630600913/openpolicyeu/dashes_mwni0a.png" alt="" class="img-decorative">
+      </div>
+    </div>
+  </section>
+  <section class="py-5">
+    <div class="container-short">
+      <h2><mark class="mark-yllw">How does</mark> <mark class="mark-yllw">policymaking work?</mark></h2>
+      <p>In parliamentary democracies, the policy process is not linear, as it is based on the information available and new discoveries. This process is a flexible and collaborative framework. That’s how it goes:</p>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 d-flex mt-3 policy-step">
+          <div class="number">1</div>
+          <div>
+            <h3><mark class="mark-blue">Problem emergence</mark></h3>
+            <p>A crisis (financial, sanitary, etc) or a long-existing problem which previous policies did not solve comes to the forefront of a government political agenda.</p>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 d-flex mt-3 policy-step">
+          <div class="number">2</div>
+          <div>
+            <h3><mark class="mark-blue">Agenda-setting</mark></h3>
+            <p>Based on government priorities and availability of resources to dedicate to the problem. Public opinion (yours!) and the media can influence the agenda (e.g: Fridays for Future).</p>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 d-flex mt-3 policy-step">
+          <div class="number">3</div>
+          <div>
+            <h3><mark class="mark-blue">Consideration</mark> of <mark class="mark-blue">policy options</mark></h3>
+            <p>Policy makers inform themselves on the topic (and ask for independent research if needed), to draft a policy proposal. Ideally, one of the proposals is chosen only by looking at each costs and benefits ("rational choice" theory). In practice, political beliefs also come into play.</p>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 d-flex mt-3 policy-step">
+          <div class="number">4</div>
+          <div>
+            <h3><mark class="mark-blue">Decision-making process</mark></h3>
+            <p>The legislative process varies a lot from country to country, but it always ends with the legislative authorities voting on the proposal. If it gets a green light, we move to the next step. If not, sometimes it can be changed and re-submitted.</p>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 d-flex mt-3 policy-step">
+          <div class="number">5</div>
+          <div>
+            <h3><mark class="mark-blue">Implementation</mark></h3>
+            <p>The executive body decides what's the best way to put the adopted legislation into practice, and applies it using different procedures and regulatory bodies. Usually it needs to be harmonized among different levels (e.g: national and EU levels).</p>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 d-flex mt-3 policy-step">
+          <div class="number">6</div>
+          <div>
+            <h3><mark class="mark-blue">Evaluation</mark></h3>
+            <p>Determination of the results of the implemented policy (also ex-post <a href="https://www.collinsdictionary.com/dictionary/english/policy" target="_blank" class="text-link">policy analysis</a>). There are dedicated bodies to monitor these results (the effects, the costs...). Sometimes, there are unexpected outcomes (positive or negative)!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="py-5 bkg-blue">
+    <div class="container text-center">
+      <h2><mark class="mark-yllw">What's New?</mark></h2>
+      <p>Explore our most recent and updated content on policymaking around Europe:</p>
+      <div class="container mt-4">
+        <div class="row">
+          <% @recent_policy_makings.each do |pm| %>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
+              <%= link_to policy_making_path(pm), class: 'card-link' do %>
+                <div class="card-all card-square card-clickable policy-recent d-flex flex-column justify-content-between mx-auto">
+                  <i class="<%= pm.topic.icon %> <%= pm.topic.icon_color %>"></i>
+                  <div>
+                    <p><strong><%= pm.topic.name %></strong></p>
+                    <p>Policymaking in</p>
+                    <p><strong><%= pm.country.name %></strong></p>
+                  </div>
+                  <%= cl_image_tag pm.country.flag.key %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="py-5">
+    <div class="container-short text-center">
+      <h2><mark class="mark-yllw">Get involved!</mark></h2>
+      <p>Discover volunteering, internship or job opportunities where you can be actively involved with policymaking across Europe.</p>
+      <p>Find out how and with who <strong>you can make a meaningful impact:</strong></p>
+      <button class="btn-all btn-prim">Engage</button>
+    </div>
+  </section>
+  <section class="py-5 bkg-blue">
+    <div class="container-short text-center">
+      <h2><mark class="mark-yllw">Join OpenPolicy Europe</mark></h2>
+      <p>We are looking for more people to <strong>help us turn this idea into reality</strong>.</p>
+      <p>Do you believe that policymaking should be more collaborative and inclusive? Find out how you can make it happen:</p>
+      <%= link_to join_path(anchor: 'nav') do %><button class="btn-all btn-yllw">Join us</button><% end %>
+    </div>
+  </section>
+</main>
 

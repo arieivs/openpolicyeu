@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  get 'about', to: 'pages#about'
-  get 'join', to: 'volunteers#index'
+  get 'about', to: 'pages#about', as: :about
+  get 'join', to: 'volunteers#index', as: :join
   get 'policy_makings/:policy_making_id/choose_institution/:policy_making_institution_id', to: 'policy_makings#choose_institution', as: :pm_choose_institution
   resources :policy_makings, except: [:destroy], shallow: true do
     resources :questions, only: [:create, :update], shallow: true do

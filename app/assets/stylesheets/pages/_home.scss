@@ -1,13 +1,143 @@
 .header-banner {
-  background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.6) 25%, rgba(0, 0, 0, 0) 100%), url(https://images.unsplash.com/photo-1559589688-6ba6beafe1e5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=848&q=80);
+  background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0) 100%), url(https://images.unsplash.com/photo-1559589688-6ba6beafe1e5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=848&q=80);
   background-size: cover;
   background-position: center;
 }
 
 .banner {
-  height: 70vh;
+  min-height: 90vh;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding-top: 80px;
+  padding-bottom: 10px;
+  font-size: 18px;
   color: white;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  i {
+    font-size: 50px;
+    align-self: end;
+    color: #fff;
+  }
 }
+
+.title {
+  font-size: 36px;
+}
+
+.slogan {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.country-topic-form {
+  max-width: 75%;
+}
+
+.country-topic {
+  flex-grow: 1;
+}
+
+.country-topic-field {
+  width: 50%;
+  margin-bottom: 4px;
+  margin-right: 10px;
+}
+
+.country-topic-submit {
+  height: calc(2em + 0.75rem + 2px);
+  align-self: end;
+}
+
+.img-decorative {
+  width: 100px;
+  object-fit: contain;
+}
+
+.policy-definition {
+  position: relative;
+}
+
+.policy-definition .img-bottom {
+  position: absolute;
+  bottom: -30px;
+  left: -80px;
+}
+
+.policy-definition .img-top {
+  position: absolute;
+  top: -30px;
+  right: -80px;
+}
+
+.policy-description .icon-decorative {
+  font-size: 100px;
+  color: $yellow;
+  margin: 1rem 1rem 0 0;
+}
+
+.policy-step .number {
+  background-color: $blue;
+  color: #fff;
+  width: 50px;
+  min-width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.policy-recent {
+  i {
+    font-size: 50px;
+    transform: rotate(-10deg);
+    align-self: start;
+  }
+  p {
+    margin: 0;
+  }
+  img {
+    width: 60px;
+    border: solid 0.5px #CDCDCD;
+    border-radius: 5px;
+    margin: 0;
+    transform: rotate(10deg);
+    align-self: end;
+  }
+}
+
+@media (max-width: 880px) {
+  .country-topic-form {
+    max-width: 100%;
+  }
+
+  .policy-description img {
+    display: none;
+  }
+}
+
+@media (max-width: 630px) {
+  .policy-definition .img-top {
+    display: none;
+  }
+
+  .policy-definition .img-bottom {
+    display: none;
+  }
+
+  .policy-description .icon-decorative {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .country-topic-submit {
+    align-self: start;
+    margin: 0;
+  }
+}
+
+
