@@ -77,7 +77,7 @@
       <h2><mark class="mark-yllw">How are</mark> <mark class="mark-yllw">laws adopted</mark> <mark class="mark-yllw">in the EU?</mark></h2>
       <p>The EU is a unique political entity and its process to adopt laws is called <a href="https://www.consilium.europa.eu/en/council-eu/decision-making/ordinary-legislative-procedure/" target="_blank" class="text-link">Ordinary Legislative Procedure</a>.</p>
       <div class="my-3">
-        <iframe class="video" src="https://newsroomcdnakamai.azureedge.net/video-files/8cc351b0-6fee-ef40-2067-c8c201ad2590.mp4" title="Video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe class="video" src="https://newsroomcdnakamai.azureedge.net/video-files/8cc351b0-6fee-ef40-2067-c8c201ad2590.mp4" title="Video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <p class="subtitle"><em>by Council of the European Union</em></p>
       </div>
     </div>
@@ -151,7 +151,55 @@
   <section class="bkg-blue py-5">
     <div class="container-short">
       <h2><mark class="mark-yllw">Areas of EU competences</mark></h2>
-      <p>Depending on the policy area, the EU may be the only one who can legislate, it may share that power with the Member States, or not be able to legislate at all. Check which areas fall into each category below:</p>
+      <p>Depending on the policy area, the EU may be the only one who can legislate, it may share that power with the Member States, or not be able to legislate at all. Check out the <a href="https://ec.europa.eu/info/about-european-commission/what-european-commission-does/law/areas-eu-action_en" target="_blank" class="text-link">full list of the different areas of EU action</a> or the <a href="https://eur-lex.europa.eu/summary/glossary/competences.html" target="_blank" class="text-link">distribution of competences at EUR-LEX</a>.</p>
+    </div>
+    <div class="container d-flex flex-column">
+      <div class="d-flex flex-column flex-md-row my-3 competence-area">
+        <img src="https://res.cloudinary.com/dhnsnkxbe/image/upload/v1630960370/openpolicyeu/eu_power_copy_xrpspa.png" alt="">
+        <div class="d-flex flex-column justify-content-center">
+          <h3 class="mb-0"><mark class="mark-blue">Only EU can legislate</mark></h3>
+          <p>Only the EU can legislate on these areas yet, Member States can do so if the Union allows it. More on <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A12016E003" target="_blank" class="text-link">exclusive competences: Art 2(1); 3 TFEU</a>.</p>
+        </div>
+      </div>
+      <div class="d-flex flex-column flex-md-row my-3 competence-area">
+        <img src="https://res.cloudinary.com/dhnsnkxbe/image/upload/v1630950890/openpolicyeu/toes_ewlbak.png" alt="">
+        <div class="d-flex flex-column justify-content-center">
+          <h3 class="mb-0"><mark class="mark-blue">Shared/concurrent</mark> <mark class="mark-blue">competences</mark></h3>
+          <p>The Union and the Member States can both legislate on these areas. The EU and Member States cannot step on each other's toes and must respect the limits of their competences. Where the Member State has authority then it shall be the one legislating and vice versa with the EU. Find out more: <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A12016E003" target="_blank" class="text-link">Art 2(2); 4 TFEU</a> and <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A12016E005" target="_blank" class="text-link">Provision for EURO</a>.</p>
+        </div>
+      </div>
+      <div class="d-flex flex-column flex-md-row my-3 competence-area">
+        <img src="https://res.cloudinary.com/dhnsnkxbe/image/upload/v1630960370/openpolicyeu/eu_advisor_copy_uld3du.png" alt="">
+        <div class="d-flex flex-column justify-content-center">
+          <h3 class="mb-0"><mark class="mark-blue">Member countries legislate,</mark> <mark class="mark-blue">EU helps</mark></h3>
+          <p>The Union’s role is to coordinate, support or supplement the actions of the Member States. More on <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A12016E006" target="_blank" class="text-link">complementary/coordinating competences: Art 2(3); 6 TFEU</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="py-5">
+    <div class="container text-center">
+      <h2><mark class="mark-yllw">What's New?</mark></h2>
+      <p>Explore our most recent and updated content on policymaking around Europe:</p>
+      <div class="container mt-4">
+        <div class="row">
+          <% @recent_policy_makings.each do |pm| %>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
+              <%= link_to policy_making_path(pm), class: 'card-link' do %>
+                <div class="card-all card-square card-clickable policy-recent d-flex flex-column justify-content-between mx-auto">
+                  <i class="<%= pm.topic.icon %> <%= pm.topic.icon_color %>"></i>
+                  <div>
+                    <p><strong><%= pm.topic.name %></strong></p>
+                    <p>Policymaking in</p>
+                    <p><strong><%= pm.country.name %></strong></p>
+                  </div>
+                  <%= cl_image_tag pm.country.flag.key %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </section>
 </main>
