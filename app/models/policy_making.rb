@@ -2,11 +2,15 @@ class PolicyMaking < ApplicationRecord
   belongs_to :country
   belongs_to :topic
   has_many :users, through: :user_policy_makings
-  has_many :policies
-  has_many :policy_making_institutions
+  has_many :policies, dependent: :destroy
+  has_many :policy_making_institutions, dependent: :destroy
   has_many :institutions, through: :policy_making_institutions
-  has_many :questions
+  has_many :questions, dependent: :destroy
 
   validates :content, presence: true
   validates :country, uniqueness: { scope: :topic }
+
+  def question(scope)
+    questions.find_by(scope: scope)
+  end
 end

@@ -1,0 +1,7 @@
+ <!-- Form to edit the "content" question :
+    - This form becomes visible as soon as the "content" question has been added
+    - This form is pre-filled with the current "content" question -->
+  <%= simple_form_for question, remote: true do |f| %>
+    <%= f.input :question, label: false, required: true %>
+    <%= f.button :submit, "SAVE", class: 'btn-all btn-yllw' %>
+  <% end %>

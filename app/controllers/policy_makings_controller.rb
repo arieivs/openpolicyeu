@@ -30,7 +30,7 @@ class PolicyMakingsController < ApplicationController
   def create
     @policy_making = PolicyMaking.new(policy_making_params)
     if @policy_making.save
-      redirect_to policy_making_path(@policy_making)
+      redirect_to edit_policy_making_path(@policy_making)
     else
       render :new
     end
@@ -38,16 +38,12 @@ class PolicyMakingsController < ApplicationController
 
   def edit
     set_policy_making
-    prepare_data_for_policymaking_edit # Private method in Application Controller (also called in Questions & Answers controllers)
-    @policy_making_institution = PolicyMakingInstitution.new
-    @institution = Institution.new
-    @policy_making_institutions = PolicyMakingInstitution.where(policy_making: @policy_making)
+    prepare_data_for_policymaking_edit
   end
 
   def update
     set_policy_making
     @policy_making.update(policy_making_params)
-    prepare_data_for_policymaking_edit
     respond_to { |format| format.js }
   end
 
@@ -69,5 +65,13 @@ class PolicyMakingsController < ApplicationController
 
   def policy_making_params
     params.require(:policy_making).permit(:country_id, :topic_id, :content, :ambassador_id, :video_url, :video_alt_text, :video_source)
+  end
+
+  def prepare_data_for_policymaking_edit
+    @question = Question.new
+    @new_answer = Answer.new
+    @policy_making_institution = PolicyMakingInstitution.new
+    @institution = Institution.new
+    @policy_making_institutions = PolicyMakingInstitution.where(policy_making: @policy_making)
   end
 end
