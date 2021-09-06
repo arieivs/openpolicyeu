@@ -2,17 +2,9 @@
 
 <h2>How does it work?</h2>
 
-<%= simple_form_for @policy_making do |f| %>
-  <%= f.input :content, as: :text, label: "Description", required: true, :input_html => { :cols => 5, :rows => 10 } %>
-  <!-- Number of characters (min/max) for "content" to be implemented later -->
-  <%= f.input :video_url, label: "Video URL", required: false %>
-  <%= f.input :video_alt_text, label: "Video short description", required: false %>
-  <!-- Number of characters (min/max) for "video_alt_text" to be implemented later -->
-  <%= f.input :video_source, label: "Who’s the creator/holds the rights to the video?", required: false %>
-  <%= f.input :ambassador_id, required: false, collection: Ambassador.all %>
-
-  <div class="btn-container"><%= f.button :submit, "SAVE", class: 'btn-all btn-yllw' %></div>
-<% end %>
+<div id="edit-policy-making">
+  <%= render 'policy_makings/partials/edit_policy_making', policy_making: @policy_making %>
+</div>
 
 
 <p>Question on "How does it work?" </p>
@@ -69,7 +61,7 @@
 
 <h2>Institutions</h2>
 
-<div id="institutions-cards">
+<div id="pmi-cards">
   <%= render 'policy_makings/partials/pmi_cards', policy_making_institutions: @policy_making_institutions %>
 </div>
 

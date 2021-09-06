@@ -46,11 +46,9 @@ class PolicyMakingsController < ApplicationController
 
   def update
     set_policy_making
-    if @policy_making.update(policy_making_params)
-      redirect_to policy_making_path(@policy_making)
-    else
-      render :edit
-    end
+    @policy_making.update(policy_making_params)
+    prepare_data_for_policymaking_edit
+    respond_to { |format| format.js }
   end
 
   def choose_institution

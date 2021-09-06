@@ -17,5 +17,8 @@ class ApplicationController < ActionController::Base
     @content_question = @policy_making.questions.find_by(scope: "content") # To display and edit the "content" question (evaluates to nil if no question has been added yet)
     @institutions_question = @policy_making.questions.find_by(scope: "institutions") # To display and edit the "institutions" question (evaluates to nil if no question has been added yet)
     @new_answer = Answer.new # Needed for the answer creation form
+    @policy_making_institution = PolicyMakingInstitution.new
+    @institution = Institution.new
+    @policy_making_institutions = PolicyMakingInstitution.where(policy_making: @policy_making)
   end
 end
