@@ -69,8 +69,21 @@
 
 <h2>Institutions</h2>
 
+<div id="institutions-cards">
+  <%= render 'policy_makings/partials/pmi_cards', policy_making_institutions: @policy_making_institutions %>
+</div>
 
-<p><strong>Browse through institutions</strong></p>
+<p>Add an Institution to <%= @policy_making.topic.name %> in <%= @policy_making.country.name %> </p>
+
+<div id="new-pmi-form">
+  <%= render 'policy_makings/partials/new_policy_making_institution', policy_making: @policy_making, policy_making_institution: @policy_making_institution %>
+</div>
+
+<p>Can't find the Institution you are looking for? <strong>Add a new Institution:</strong></p>
+
+<div id="new-institution-form">
+  <%= render 'policy_makings/partials/new_institution', institution: @institution, policy_making: @policy_making %>
+</div>
 
 
 <p>Question on the Institutions </p>

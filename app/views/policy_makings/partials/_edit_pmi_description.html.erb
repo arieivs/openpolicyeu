@@ -1,0 +1,11 @@
+<p><%= policy_making_institution.institution.name %></p>
+
+<%= simple_form_for policy_making_institution, remote: true do |f| %>
+
+  <%= f.input :description, as: :text, :input_html => { :cols => 5, :rows => 10 } %>
+  <!-- Number of characters (min/max) for "description" to be implemented later -->
+
+  <%= f.button :submit, "SAVE", class: 'btn-all btn-prim' %>
+
+<% end %>
+

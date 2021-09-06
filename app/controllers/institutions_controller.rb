@@ -10,11 +10,16 @@ class InstitutionsController < ApplicationController
 
   def create
     @institution = Institution.new(institution_params)
-    if @institution.save
-      redirect_to institutions_path
+
+    if params[:institution][:policy_making_id].present? #If this action is called from PolicyMakings#edit
+      @policy_making = PolicyMaking.find(params[:institution][:policy_making_id])
+      @institution.save
+      @new_policy_making_institution = PolicyMakingInstitution.new
+      respond_to { |format| format.js }
     else
-      render :new
+      @institution.save ? (redirect_to institutions_path) : (render :new)
     end
+
   end
 
   def edit

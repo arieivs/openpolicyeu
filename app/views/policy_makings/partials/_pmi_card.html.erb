@@ -1,0 +1,4 @@
+    <p><%= pmi.institution.name %></p>
+    <p><%= pmi.description %></p>
+    <%= link_to 'EDIT', edit_policy_making_institution_path(pmi), remote: true, class: 'btn-all btn-prim' %>
+    <%= link_to 'REMOVE', policy_making_institution_path(pmi), method: :delete, remote: true, class: 'btn-all btn-prim' %>
