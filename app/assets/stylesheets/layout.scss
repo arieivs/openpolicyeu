@@ -25,8 +25,19 @@ html {
 }
 
 .container-half img {
-  max-height: 350px;
   max-width: 100%;
+}
+
+.img-height-300 {
+  max-height: 300px;
+}
+
+.img-height-350 {
+  max-height: 350px;
+}
+
+.img-height-400 {
+  max-height: 400px;
 }
 
 @media (max-width: 880px) {
@@ -34,5 +45,9 @@ html {
     width: 100%;
     max-width: 700px;
     margin: 0 auto;
+  }
+
+  .img-height-400 {
+    max-height: 350px;
   }
 }
