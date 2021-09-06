@@ -1,0 +1,157 @@
+<main>
+  <section class="bkg-blue py-5">
+    <div class="container">
+      <h1>Explore</h1>
+      <div class="pt-4 country-topic-form mx-auto">
+      <p>Choose a country (or Europe) and a topic to start exploring:</p>
+      <%= simple_form_for @policy_making, url: root_path, method: :get do |f| %>
+        <div class="d-flex flex-column flex-md-row">
+          <div class="d-flex form-all country-topic">
+            <div class="form-field country-topic-field" id="country-filter">
+              <%= f.input :country_id, required: true, collection: Country.all %>
+            </div>
+            <div class="form-field country-topic-field" id="topic-filter">
+              <%= f.input :topic_id, required: true, collection: Topic.all %>
+            </div>
+          </div>
+          <%= f.submit "Explore", class: "btn-all btn-yllw country-topic-submit" %>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </section>
+  <section class="py-5">
+    <div class="container-short">
+      <h2><mark class="mark-yllw">How does</mark> <mark class="mark-yllw">policymaking work?</mark></h2>
+      <p>In parliamentary democracies, the policy process is not linear, as it is based on the information available and new discoveries. This process is a flexible and collaborative framework. That’s how it goes:</p>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 d-flex mt-3 policy-step">
+          <div class="number">1</div>
+          <div>
+            <h3><mark class="mark-blue">Problem emergence</mark></h3>
+            <p>A crisis (financial, sanitary, etc) or a long-existing problem which previous policies did not solve comes to the forefront of a government political agenda.</p>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 d-flex mt-3 policy-step">
+          <div class="number">2</div>
+          <div>
+            <h3><mark class="mark-blue">Agenda-setting</mark></h3>
+            <p>Based on government priorities and availability of resources to dedicate to the problem. Public opinion (yours!) and the media can influence the agenda (e.g: Fridays for Future).</p>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 d-flex mt-3 policy-step">
+          <div class="number">3</div>
+          <div>
+            <h3><mark class="mark-blue">Consideration</mark> of <mark class="mark-blue">policy options</mark></h3>
+            <p>Policy makers inform themselves on the topic (and ask for independent research if needed), to draft a policy proposal. Ideally, one of the proposals is chosen only by looking at each costs and benefits ("rational choice" theory). In practice, political beliefs also come into play.</p>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 d-flex mt-3 policy-step">
+          <div class="number">4</div>
+          <div>
+            <h3><mark class="mark-blue">Decision-making process</mark></h3>
+            <p>The legislative process varies a lot from country to country, but it always ends with the legislative authorities voting on the proposal. If it gets a green light, we move to the next step. If not, sometimes it can be changed and re-submitted.</p>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 d-flex mt-3 policy-step">
+          <div class="number">5</div>
+          <div>
+            <h3><mark class="mark-blue">Implementation</mark></h3>
+            <p>The executive body decides what's the best way to put the adopted legislation into practice, and applies it using different procedures and regulatory bodies. Usually it needs to be harmonized among different levels (e.g: national and EU levels).</p>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 d-flex mt-3 policy-step">
+          <div class="number">6</div>
+          <div>
+            <h3><mark class="mark-blue">Evaluation</mark></h3>
+            <p>Determination of the results of the implemented policy (also ex-post <a href="https://www.collinsdictionary.com/dictionary/english/policy" target="_blank" class="text-link">policy analysis</a>). There are dedicated bodies to monitor these results (the effects, the costs...). Sometimes, there are unexpected outcomes (positive or negative)!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="pb-5">
+    <div class="container-short">
+      <h2><mark class="mark-yllw">How are</mark> <mark class="mark-yllw">laws adopted</mark> <mark class="mark-yllw">in the EU?</mark></h2>
+      <p>The EU is a unique political entity and its process to adopt laws is called <a href="https://www.consilium.europa.eu/en/council-eu/decision-making/ordinary-legislative-procedure/" target="_blank" class="text-link">Ordinary Legislative Procedure</a>.</p>
+      <div class="my-3">
+        <iframe class="video" src="https://newsroomcdnakamai.azureedge.net/video-files/8cc351b0-6fee-ef40-2067-c8c201ad2590.mp4" title="Video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <p class="subtitle"><em>by Council of the European Union</em></p>
+      </div>
+    </div>
+  </section>
+  <section class="pb-5">
+    <div class="container-short">
+      <h2><mark class="mark-yllw">EU Power of Legislation</mark></h2>
+      <p>For the EU to legislate and carry out policy decisions, the competent authorities need to provide the Union with the powers to do so. Only the Member States - being sovereign states - can do that and by doing so they lose part of their authority on specific matters.</p>
+      <p>EU power of legislation must respect certain limits and principles:</p>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 d-flex mt-3 policy-step">
+          <div class="number"><i class="fas fa-balance-scale"></i></div>
+          <div>
+            <h3><mark class="mark-blue">Legal basis</mark></h3>
+            <p>The EU cannot decide to intervene in a specific policy area outside the express permission granted to it in the Treaties. Checks and balances are put in place to oversee this aspect.</p>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 d-flex mt-3 policy-step">
+          <div class="number"><i class="fas fa-university"></i></div>
+          <div>
+            <h3><mark class="mark-blue">Principle</mark> of <mark class="mark-blue">subsidiarity</mark></h3>
+            <p>The most effective institutions should take legislative action at the most appropriate level (e.g. the EU has control  over environment policy, but waste management is overseen by a local or regional authority). Find out <a href="https://www.europarl.europa.eu/factsheets/en/sheet/7/the-principle-of-subsidiarity" target="_blank" class="text-link">more here</a>.</p>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 d-flex mt-3 policy-step">
+          <div class="number"><i class="fas fa-file-contract"></i></div>
+          <div>
+            <h3><mark class="mark-blue">Principle</mark> of <mark class="mark-blue">proportionality</mark></h3>
+            <p>Connected with the principle of subsidiarity, the EU has power to act only towards the objectives of the Treaties. Check out <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02016M%2FTXT-20200301&qid=1630749090880#tocId15" target="_blank" class="text-link">Protocol No2, Art 5 TEU</a> to find out more.</p>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 d-flex mt-3 policy-step">
+          <div class="number"><i class="fas fa-handshake"></i></div>
+          <div>
+            <h3><mark class="mark-blue">Shared</mark> <mark class="mark-blue">legislative authority</mark></h3>
+            <p>The European Parliament and Council of the EU must agree on legislative drafts and amendments (before known as co-decision procedure).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container d-flex justify-content-between flex-column flex-lg-row pt-5">
+      <div class="container-half">
+        <h3><mark class="mark-blue">EU legislation</mark></h3>
+        <p>The body of EU law is also known as <a href="https://eur-lex.europa.eu/summary/glossary/acquis.html" target="_blank" class="text-link"><em>acquis communautaire</em></a> and must be included into national legislation for new Member States, it is non-negotiable and fundamental for joining the EU. Current Member States are also required to implement EU regulations and directives into their national legislation by the process of <a href="https://ec.europa.eu/info/law/law-making-process/applying-eu-law_en" target="_blank" class="text-link">transposition</a>.</p>
+        <p>The Commission monitors procedures and correct implementation. The process varies from one Member State to another.  Member States hold a monopoly of executive power for policies adopted by ordinary legislative procedure, although failing to implement EU legislation into national one may result in judiciary actions (e.g. <a href="https://ec.europa.eu/info/law/law-making-process/applying-eu-law/infringement-procedure_en" target="_blank" class="text-link">Infringement Procedure</a>).</p>
+        <p>For more information on how specific EU law (mostly directives) is transposed in national countries, visit the <a href="https://eur-lex.europa.eu/advanced-search-form.html?action=update&qid=1629886569855" target="_blank" class="text-link">EUR-LEX database</a>.</p>
+      </div>
+      <div class="container-half d-flex justify-content-center align-items-center">
+        <img src="https://res.cloudinary.com/dhnsnkxbe/image/upload/v1630946978/openpolicyeu/law_jilf3r.png">
+      </div>
+    </div>
+    <div class="container pt-5">
+      <h3><mark class="mark-blue">Forms of EU law</mark></h3>
+      <p>The EU policymaking process results in a unique kind of politics, given its nuances and different institutional mixes and behaviours. Therefore, to better understand it there is a need for specific terminology defining the types of legal acts of the Union.</p>
+      <div class="d-flex justify-content-between flex-column flex-lg-row">
+        <div class="container-half">
+          <iframe class="video" src="https://www.youtube.com/watch?v=CZAC_uEJWfY" title="Youtube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <p class="subtitle"><em>by Ciceroni</em></p>
+        </div>
+        <div class="container-half">
+          <p>Directives and regulations are the types of legislation adopted with the EU ordinary legislative procedure.</p>
+          <p><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=LEGISSUM:l14522" target="_blank" class="text-link"><strong>Regulation</strong></a> = most similar to national legislation as it is binding for all Member States and overrules national laws. It defines the goals and its methods for achieving it.</p>
+          <p><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=LEGISSUM:l14527" target="_blank" class="text-link"><strong>Directive</strong></a> = it defines the objective but the methods for implementation are under national authority and choice. It is integrated with national laws.</p>
+          <p><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=LEGISSUM:ai0036" target="_blank" class="text-link"><strong>Decision</strong></a> = binding only for Member States or companies addressed specifically. It sets the goals and methods of implementation. Only the Commission can issue a decision.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="bkg-blue py-5">
+    <div class="container-short">
+      <h2><mark class="mark-yllw">Areas of EU competences</mark></h2>
+      <p>Depending on the policy area, the EU may be the only one who can legislate, it may share that power with the Member States, or not be able to legislate at all. Check which areas fall into each category below:</p>
+    </div>
+  </section>
+</main>
