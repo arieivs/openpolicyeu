@@ -34,9 +34,7 @@
         <div id="create-institutions-question">
           <%= render 'policy_makings/partials/create_question', policy_making: @policy_making, question_scope: "institutions", question: @question %>
         </div>
-        <div id="show-institutions-question">
-          <%= render 'policy_makings/partials/show_question', policy_making: @policy_making, question_scope: "institutions", new_answer: @new_answer %>
-        </div>
+        <%= render 'policy_makings/partials/show_question', policy_making: @policy_making, question_scope: "institutions", new_answer: @new_answer %>
       </div>
     </div>
   </section>
