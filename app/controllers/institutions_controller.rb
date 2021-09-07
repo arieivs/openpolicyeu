@@ -14,7 +14,7 @@ class InstitutionsController < ApplicationController
       @institution.save
       @new_policy_making_institution = PolicyMakingInstitution.new
       @new_institution = Institution.new
-      respond_to { |format| format.js }
+      respond_to { |format| format.js { flash[:notice] = "Institution created! It's ready to be selected above." } }
     else
       @institution.save ? (redirect_to institutions_path) : (render :new)
     end
