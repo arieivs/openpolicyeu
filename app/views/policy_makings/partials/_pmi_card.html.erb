@@ -1,4 +1,15 @@
-    <p><%= pmi.institution.name %></p>
+<div class="card-all my-3">
+  <div class="px-4">
+    <h3><mark class="mark-blue"><%= pmi.institution.name %></mark></h3>
     <p><%= pmi.description %></p>
-    <%= link_to 'EDIT', edit_policy_making_institution_path(pmi), remote: true, class: 'btn-all btn-prim' %>
-    <%= link_to 'REMOVE', policy_making_institution_path(pmi), method: :delete, remote: true, class: 'btn-all btn-prim' %>
+    <%= link_to edit_policy_making_institution_path(pmi), remote: true do %>
+      <button class='btn-all btn-sec'>EDIT</button>
+    <% end %>
+    <%= link_to policy_making_institution_path(pmi),
+        method: :delete,
+        data: { confirm: "Are you sure you want to delete this Institution?" },
+        remote: true do %>
+      <button class='btn-all btn-sec'>REMOVE</button>
+    <% end %>
+  </div>
+</div>
