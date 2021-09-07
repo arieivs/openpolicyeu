@@ -1,3 +1,9 @@
-.form-all {
+.form-control {
   font-family: 'Roboto', sans-serif;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+textarea {
+  resize: none;
 }
