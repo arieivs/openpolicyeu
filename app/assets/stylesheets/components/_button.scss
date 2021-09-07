@@ -14,18 +14,28 @@
 .btn-prim {
   color: #FFF;
   background-color: $blue;
+  &:hover {
+    color: #FFF;
+    background-color: $blue_hover;
+  }
 }
 
-.btn-prim:hover {
-  color: #FFF;
-  background-color: $blue_hover;
+.btn-sec {
+  color: $blue;
+  border: solid 2px $blue;
+  background-color: #fff;
+  &:hover {
+    color: #FFF;
+    background-color: $blue;
+  }
 }
 
 .btn-yllw {
   color: $blue;
   background-color: $yellow;
+  &:hover {
+    color: $blue;
+    background-color: $yellow_hover;
+  }
 }
 
-.btn-yllw:hover {
-  background-color: $yellow_hover;
-}
