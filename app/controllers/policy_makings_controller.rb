@@ -32,6 +32,15 @@ class PolicyMakingsController < ApplicationController
     if @policy_making.save
       redirect_to edit_policy_making_path(@policy_making)
     else
+      if params[:policy_making][:country_id].empty?
+        flash[:alert] = "Please select a country."
+      elsif params[:policy_making][:topic_id].empty?
+        flash[:alert] = "Please select a topic."
+      elsif PolicyMaking.where(country_id: params[:policy_making][:country_id]).find_by(topic_id: params[:policy_making][:topic_id])
+        flash[:alert] = "There is already a policymaking page for this country/topic pair!"
+      elsif params[:policy_making][:content].empty?
+        flash[:alert] = "Please describe how does policymaking work in this region/country for this topic."
+      end
       render :new
     end
   end
