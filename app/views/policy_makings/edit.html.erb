@@ -11,9 +11,7 @@
         <div id="create-content-question">
           <%= render 'policy_makings/partials/create_question', policy_making: @policy_making, question_scope: "content", question: @question %>
         </div>
-        <div id="show-content-question">
-          <%= render 'policy_makings/partials/show_question', policy_making: @policy_making, question_scope: "content", new_answer: @new_answer %>
-        </div>
+        <%= render 'policy_makings/partials/show_question', policy_making: @policy_making, question_scope: "content", new_answer: @new_answer %>
       </div>
     </div>
   </section>
