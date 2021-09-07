@@ -1,11 +1,7 @@
-<div>
-  <%= answer.answer %>
-  <p><em>(this answer is <%= answer.right ? 'correct' : 'wrong' %>)</em></p>
-</div>
-
-<div>
-  <p>Explanation:</p>
-<%= answer.explanation %>
-</div>
-
-<%= link_to "EDIT", edit_answer_path(answer), remote: true, class: 'btn-all btn-prim' %>
+<p><%= answer.answer %></p>
+<p><strong>Explanation:</strong></p>
+<p><%= answer.explanation %></p>
+<p class="<%= answer.right ? 'green' : 'red' %>"><%= answer.right ? 'Correct' : 'Wrong' %> answer</p>
+<%= link_to edit_answer_path(answer), remote: true do %>
+  <button class="btn-all btn-sec">EDIT</button>
+<% end %>
