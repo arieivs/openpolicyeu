@@ -1,0 +1,10 @@
+<% if @policy_making.question(question_scope).nil? %>
+  <!-- Form to add a new "content" question :
+    - This form is only visible if no "content" question has been added
+    - Scope is added automatically (hidden field) -->
+  <%= simple_form_for [policy_making, question], remote: true do |f| %>
+    <%= f.input :question, required: true %>
+    <%= f.input :scope, as: :hidden,  input_html: {value: question_scope} %>
+    <%= f.button :submit, "SAVE", class: 'btn-all btn-yllw' %>
+  <% end %>
+<% end %>
