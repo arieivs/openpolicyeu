@@ -2,7 +2,7 @@
   justify-content: space-between;
   font-size: 16px;
   font-weight: 300;
-  padding: 14px 0;
+  padding-bottom: 0;
   li {
     padding-right: 40px;
   }
@@ -42,3 +42,18 @@
     border-bottom: 2px solid $yellow;
   }
 }
+
+// Overwriting Bootstrap
+
+.nav-item-ours {
+  padding-right: 50px !important;
+}
+
+.nav-link-ours {
+  padding: 1rem 0 !important;
+}
+
+
+
+
+
