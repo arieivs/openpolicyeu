@@ -11,7 +11,7 @@
     </button>
 
     <div class="horizontal-list collapse navbar-collapse" id="navbarSupportedContent navbarNavDropdown">
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav align-items-center mr-auto">
         <% if user_signed_in? %>
           <!-- Institutions -->
           <li class="nav-item nav-item-ours"><%= link_to "Policymakings", policy_makings_path, class: "nav-link nav-link-ours #{current_page?(controller: '/policy_makings') ? 'active' : ''}" %></li>
