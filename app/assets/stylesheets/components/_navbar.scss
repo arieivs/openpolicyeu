@@ -45,6 +45,10 @@
 }
 
 // Overwriting Bootstrap
+.navbar-nav-ours {
+  align-items: center;
+}
+
 .nav-link-ours {
   padding: 1rem 0 !important;
   display: inline-block;
@@ -54,7 +58,26 @@
   padding-right: 50px !important;
 }
 
+.dropdown-menu-ours {
+  // padding: 1.5rem 0;
+  border: none;
+  a {
+    color: $blue !important;
+  }
+  a:hover {
+    color: $blue_hover !important;
+  }
+}
+
+.dropdown-item-ours:hover {
+  background-color: rgba(255, 255, 255, 0);
+}
+
 @media (max-width: 600px) {
+  .navbar-nav-ours {
+    align-items: start; // I would like to put end, but looks strange in Desktop
+  }
+
   .nav-link-ours {
     padding: 0.2rem 0 !important;
   }
@@ -62,6 +85,7 @@
   .nav-item-ours {
     padding-top: 0.8rem;
     padding-bottom: 0.8rem;
+    // padding-right: 10px !important; // if I put end above
   }
 }
 

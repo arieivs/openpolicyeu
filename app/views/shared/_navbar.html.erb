@@ -10,8 +10,8 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="horizontal-list collapse navbar-collapse" id="navbarSupportedContent navbarNavDropdown">
-      <ul class="navbar-nav align-items-center mr-auto">
+    <div class="horizontal-list collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav navbar-nav-ours mr-auto">
         <% if user_signed_in? %>
           <!-- Institutions -->
           <li class="nav-item nav-item-ours"><%= link_to "Policymakings", policy_makings_path, class: "nav-link nav-link-ours #{current_page?(controller: '/policy_makings') ? 'active' : ''}" %></li>
@@ -19,10 +19,9 @@
           <!-- Take Action -->
           <li class="nav-item dropdown">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            <div class="dropdown-menu dropdown-menu-ours card-all dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <%= link_to "My Profile", "#", class: "dropdown-item dropdown-item-ours" %>
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item dropdown-item-ours" %>
             </div>
           </li>
         <% else %>
