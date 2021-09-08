@@ -16,9 +16,9 @@
 }
 
 .navbar-white a {
-  color: $blue;
+  color: $blue !important;
   &:hover {
-    color: $blue_hover;
+    color: $blue_hover !important;
   }
 }
 
@@ -30,9 +30,9 @@
 }
 
 .navbar-transp a {
-  color: white;
+  color: white !important;
   &:hover {
-    color: $yellow;
+    color: $yellow !important;
   }
 }
 
@@ -44,16 +44,25 @@
 }
 
 // Overwriting Bootstrap
+.nav-link-ours {
+  padding: 1rem 0 !important;
+  display: inline-block;
+}
 
 .nav-item-ours {
   padding-right: 50px !important;
 }
 
-.nav-link-ours {
-  padding: 1rem 0 !important;
+@media (max-width: 600px) {
+  .nav-link-ours {
+    padding: 0.2rem 0 !important;
+  }
+
+  .nav-item-ours {
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+  }
 }
-
-
 
 
 
