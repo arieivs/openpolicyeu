@@ -29,9 +29,9 @@
       <% @policy_makings.each do |policy_making| %>
         <div class="my-4">
           <h3><mark class="mark-blue"><%= policy_making.topic.name %> in <%= policy_making.country.name %></mark></h3>
-          <div class="card-all d-flex justify-content-between align-items-center my-3">
-            <p><%= policy_making.topic.name %> Policymaking in <%= policy_making.country.name %></p>
-            <div>
+          <div class="card-all d-flex flex-column flex-lg-row justify-content-between align-items-center my-3">
+            <p class="align-self-start"><%= policy_making.topic.name %> Policymaking in <%= policy_making.country.name %></p>
+            <div class="align-self-end">
               <%= link_to policy_making_path(policy_making) do %>
                 <button class="btn-all btn-sec my-0 mr-3">SEE PAGE</button>
               <% end %>
@@ -41,13 +41,15 @@
             </div>
           </div>
           <!-- if policy_plans with this policy_making -->
-          <div class="card-all d-flex align-items-center my-3">
-            <!-- if it's a policy plan (strategy is false) -->
-            <p class="tag tag-yllw">Policy Plan</p>
-            <!-- else (strategy is true) -->
-            <!-- <p class="tag tag-blue">Strategy</p> -->
-            <p class="flex-grow-1">Policy Plan Name</p>
-            <div>
+          <div class="card-all d-flex flex-column flex-lg-row justify-content-between align-items-center my-3">
+            <div class="d-flex align-self-start">
+              <!-- if it's a policy plan (strategy is false) -->
+              <p class="tag tag-yllw">Policy Plan</p>
+              <!-- else (strategy is true) -->
+              <!-- <p class="tag tag-blue">Strategy</p> -->
+              <p>Policy Plan Name</p>
+            </div>
+            <div class="align-self-end">
               <button class="btn-all btn-sec my-0 mr-3">SEE PAGE</button>
               <button class="btn-all btn-prim my-0">EDIT</button>
             </div>
