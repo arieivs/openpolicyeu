@@ -14,7 +14,7 @@
       <div class="country-topic-form mb-4 mx-auto">
         <%= simple_form_for @policy_making, url: policy_makings_path, method: :get do |f| %>
           <div class="d-flex flex-column flex-md-row">
-            <div class="d-flex form-all country-topic">
+            <div class="d-flex country-topic">
               <div class="country-topic-field">
                 <%= f.input :country_id, required: false, collection: Country.all %>
               </div>

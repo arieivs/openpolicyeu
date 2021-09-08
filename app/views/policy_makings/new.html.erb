@@ -4,10 +4,14 @@
       <h1>Create a new Policymaking</h1>
       <h2><mark class="mark-yllw">Policymaking details</mark></h2>
       <%= simple_form_for @policy_making do |f| %>
-        <div class="form-all">
-          <div class="d-flex">
-            <%= f.input :country_id, required: true, collection: Country.all %>
-            <%= f.input :topic_id, required: true, collection: Topic.all %>
+        <div>
+          <div class="d-flex country-topic country-topic-form">
+            <div class="country-topic-field">
+              <%= f.input :country_id, required: true, collection: Country.all %>
+            </div>
+            <div class="country-topic-field">
+              <%= f.input :topic_id, required: true, collection: Topic.all %>
+            </div>
           </div>
           <p><em>Can’t find the Region/Country or Topic you’re looking for? Talk to an administrator.</em></p>
           <%= f.input :content, as: :text, label: "Description", required: true, :input_html => { :cols => 5, :rows => 5 } %>
