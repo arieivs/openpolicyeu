@@ -29,25 +29,6 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-.country-topic-form {
-  max-width: 75%;
-}
-
-.country-topic {
-  flex-grow: 1;
-}
-
-.country-topic-field {
-  width: 50%;
-  margin-bottom: 4px;
-  margin-right: 10px;
-}
-
-.country-topic-submit {
-  height: calc(2em + 0.75rem + 2px);
-  align-self: end;
-}
-
 .img-decorative {
   width: 100px;
   object-fit: contain;
@@ -110,10 +91,6 @@
 }
 
 @media (max-width: 880px) {
-  .country-topic-form {
-    max-width: 100%;
-  }
-
   .policy-description img {
     display: none;
   }
@@ -132,12 +109,3 @@
     display: none;
   }
 }
-
-@media (max-width: 600px) {
-  .country-topic-submit {
-    align-self: start;
-    margin: 0;
-  }
-}
-
-

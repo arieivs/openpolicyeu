@@ -2,6 +2,7 @@
   <div class="container horizontal-list">
     <ul>
       <li><%= link_to "Home", root_path, class: current_page?(controller: '/pages', action: 'home') ? 'active' : '' %></li>
+      <li><%= link_to "Explore", explore_path, class: current_page?(controller: '/pages', action: 'explore') ? 'active' : '' %></li>
       <li><%= link_to "About us", about_path, class: current_page?(controller: '/pages', action: 'about') ? 'active' : '' %></li>
       <li><%= link_to "Join us", join_path, class: current_page?(controller: '/volunteers', action: 'index') ? 'active' : '' %></li>
     </ul>

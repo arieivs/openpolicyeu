@@ -9,16 +9,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
-
   </head>
 
   <body>
-
     <% if !current_page?(controller: '/pages', action: 'home') %>
       <%= render 'shared/navbar' %>
     <% end %>
     <%= render 'shared/flashes' %>
     <%= yield %>
+    <% if !current_page?(controller: '/volunteers', action: 'index') %>
+      <%= render 'shared/join_us_section' %>
+    <% end %>
     <%= render 'shared/footer' %>
   </body>
 </html>
