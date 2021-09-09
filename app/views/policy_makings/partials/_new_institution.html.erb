@@ -7,10 +7,8 @@
   <!-- TO DO : Number of characters (min/max) for "video_alt_text" to be implemented later -->
   <%= f.input :video_source, label: "Who’s the creator/holds the rights to the video?", required: false %>
   <%= f.input :ambassador_id, required: false, collection: Ambassador.all %>
-
+  <%= f.input :logo, as: :file, label:"Add a logo", required: true %>
   <%= f.input :policy_making_id, as: :hidden, input_html: { value: policy_making.id }  %>
 
-  <div class="btn-container"><%= f.button :submit, "SAVE", class: 'btn-all btn-prim' %></div>
+  <%= f.button :submit, "SAVE", class: 'btn-all btn-prim' %>
 <% end %>
-
-<!-- TO DO : attach logo (cloudinary) -->
