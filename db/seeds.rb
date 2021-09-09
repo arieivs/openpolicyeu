@@ -12,9 +12,13 @@ require 'open-uri'
 
 puts "Cleaning ANSWERS database..."
 Answer.destroy_all
+GameAnswer.destroy_all
 puts "Cleaning QUESTIONS database..."
 Question.destroy_all
+GameQuestion.destroy_all
 puts "Cleaning POLICY_PLANS database..."
+Goal.destroy_all
+Timestep.destroy_all
 PolicyPlanInstitution.destroy_all
 PolicyPlan.destroy_all
 puts "Cleaning POLICY_MAKINGS database..."
@@ -127,6 +131,37 @@ pms.each do |pm|
   end
 end
 puts "#{Question.count} questions and #{Answer.count} answers created! \n\n"
+
+# --------------- POLICY PLANS ---------------
+
+puts "Creating policy plans, time steps, goals and gamebook..."
+pps = []
+pms.each do |pm|
+  policy_plan = PolicyPlan.new(policy_making: pm, name: Faker::Movies::HarryPotter.character, content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10), video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", strategy: false)
+  policy_plan.save
+  pps.push(policy_plan)
+  (1..10).to_a.each do |i|
+    Timestep.new(date: Faker::Date.between(from: '2014-09-23', to: '2016-09-25'), name: Faker::Movies::StarWars.character, description: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10), policy_plan: policy_plan).save
+    Goal.new(name: Faker::Movies::StarWars.character, description: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10), policy_plan: policy_plan, order: i).save
+    question = GameQuestion.new(policy_plan: policy_plan, name: Faker::Movies::StarWars.character, context: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10), question: "#{Faker::GreekPhilosophers.quote}?", order: i)
+    question.save
+    GameAnswer.new(game_question: question, answer: Faker::Movies::HarryPotter.quote, explanation: Faker::Movies::Ghostbusters.quote, right: true).save
+    rand(2..4).times do
+      GameAnswer.new(game_question: question, answer: Faker::Movies::HarryPotter.quote, explanation: Faker::Movies::Ghostbusters.quote, right: false).save
+  end
+  end
+end
+
+puts "#{PolicyPlan.all} policy plans with #{Timestep.all} time steps, #{Goal.all} goals, #{GameQuestion.count} gamebook questions and #{GameAnswer.count} answers created! \n\n"
+
+puts "Associating institutions to policyplans..."
+pps.each do |pp|
+  institutions = Institution.where(country: pp.policy_making.country)
+  institutions.each do |i|
+    PolicyPlanInstitution.new(policy_plan: pp, institution: i, description: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10)).save
+  end
+end
+puts "#{PolicyPlanInstitution.count} policy_plan_institutions created! \n\n"
 
 # --------------- VOLUNTEERS ---------------
 
