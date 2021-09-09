@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_09_161816) do
+ActiveRecord::Schema.define(version: 2021_09_09_181530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -236,9 +236,19 @@ ActiveRecord::Schema.define(version: 2021_09_09_161816) do
   create_table "volunteers", force: :cascade do |t|
     t.string "name"
     t.string "role"
-    t.string "linked_link"
+    t.string "linkedin_link"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "young_contributors", force: :cascade do |t|
+    t.string "name"
+    t.string "how_contributed"
+    t.string "linkedin_link"
+    t.bigint "policy_plan_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["policy_plan_id"], name: "index_young_contributors_on_policy_plan_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -265,4 +275,5 @@ ActiveRecord::Schema.define(version: 2021_09_09_161816) do
   add_foreign_key "timesteps", "policy_plans"
   add_foreign_key "user_policy_makings", "policy_makings"
   add_foreign_key "user_policy_makings", "users"
+  add_foreign_key "young_contributors", "policy_plans"
 end
