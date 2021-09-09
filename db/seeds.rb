@@ -14,6 +14,9 @@ puts "Cleaning ANSWERS database..."
 Answer.destroy_all
 puts "Cleaning QUESTIONS database..."
 Question.destroy_all
+puts "Cleaning POLICY_PLANS database..."
+PolicyPlanInstitution.destroy_all
+PolicyPlan.destroy_all
 puts "Cleaning POLICY_MAKINGS database..."
 PolicyMakingInstitution.destroy_all
 PolicyMaking.destroy_all
