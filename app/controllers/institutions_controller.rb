@@ -1,5 +1,4 @@
 class InstitutionsController < ApplicationController
-
   def index
     @institutions = Institution.all
   end
@@ -10,16 +9,15 @@ class InstitutionsController < ApplicationController
 
   def create
     @institution = Institution.new(institution_params)
-
-    if params[:institution][:policy_making_id].present? #If this action is called from PolicyMakings#edit
+    if params[:institution][:policy_making_id].present? # If this action is called from PolicyMakings#edit
       @policy_making = PolicyMaking.find(params[:institution][:policy_making_id])
       @institution.save
       @new_policy_making_institution = PolicyMakingInstitution.new
-      respond_to { |format| format.js }
+      @new_institution = Institution.new
+      respond_to { |format| format.js { flash[:notice] = "Institution created! It's ready to be selected above." } }
     else
       @institution.save ? (redirect_to institutions_path) : (render :new)
     end
-
   end
 
   def edit

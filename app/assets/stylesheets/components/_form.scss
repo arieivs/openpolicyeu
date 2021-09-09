@@ -1,5 +1,11 @@
-.form-all {
+.form-control {
   font-family: 'Roboto', sans-serif;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+textarea {
+  resize: none;
 }
 
 .country-topic-form {
@@ -17,7 +23,7 @@
 }
 
 .country-topic-submit {
-  height: calc(2em + 0.75rem + 2px);
+  height: calc(2.8rem + 2px);
   align-self: end;
 }
 

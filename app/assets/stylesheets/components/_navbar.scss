@@ -2,7 +2,8 @@
   justify-content: space-between;
   font-size: 16px;
   font-weight: 300;
-  padding: 14px 0;
+  padding-top: 0;
+  padding-bottom: 0;
   li {
     padding-right: 40px;
   }
@@ -16,9 +17,9 @@
 }
 
 .navbar-white a {
-  color: $blue;
+  color: $blue !important;
   &:hover {
-    color: $blue_hover;
+    color: $blue_hover !important;
   }
 }
 
@@ -30,9 +31,9 @@
 }
 
 .navbar-transp a {
-  color: white;
+  color: white !important;
   &:hover {
-    color: $yellow;
+    color: $yellow !important;
   }
 }
 
@@ -42,3 +43,51 @@
     border-bottom: 2px solid $yellow;
   }
 }
+
+// Overwriting Bootstrap
+.navbar-nav-ours {
+  align-items: center;
+}
+
+.nav-link-ours {
+  padding: 1rem 0 !important;
+  display: inline-block;
+}
+
+.nav-item-ours {
+  padding-right: 50px !important;
+}
+
+.dropdown-menu-ours {
+  // padding: 1.5rem 0;
+  border: none;
+  a {
+    color: $blue !important;
+  }
+  a:hover {
+    color: $blue_hover !important;
+  }
+}
+
+.dropdown-item-ours:hover {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+@media (max-width: 600px) {
+  .navbar-nav-ours {
+    align-items: start; // I would like to put end, but looks strange in Desktop
+  }
+
+  .nav-link-ours {
+    padding: 0.2rem 0 !important;
+  }
+
+  .nav-item-ours {
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    // padding-right: 10px !important; // if I put end above
+  }
+}
+
+
+

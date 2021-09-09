@@ -1,0 +1,4 @@
+<p><%= policy_making.question(question_scope).question %></p>
+<%= link_to edit_question_path(policy_making.question(question_scope)), remote: true do %>
+  <button class="btn-all btn-sec">EDIT</button>
+<% end %>

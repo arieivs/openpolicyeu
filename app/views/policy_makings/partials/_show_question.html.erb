@@ -1,32 +1,35 @@
 <% unless policy_making.question(question_scope).nil? %>
-  <p><strong>Question:</strong></p>
+  <div class="card-all">
+    <div class="px-4">
+      <p><strong>Question:</strong></p>
+      <div id="show-<%= question_scope %>-question">
+        <%= render 'policy_makings/partials/show_question_inner', policy_making: policy_making, question_scope: question_scope %>
+      </div>
 
-  <%= policy_making.question(question_scope).question %>
+      <!-- All answers are displayed here -->
+      <% policy_making.question(question_scope).answers.each_with_index do |answer, i| %>
+        <div class="card-all my-3">
+          <div class="px-4">
+            <p><strong>Answer <%= i+1 %></strong>:</p>
+            <div id="answer-<%= answer.id %>">
+              <%= render 'policy_makings/partials/answer_card', answer: answer, i: i %>
+            </div>
+          </div>
+        </div>
+      <% end %>
 
-  <%= link_to "EDIT", edit_question_path(policy_making.question(question_scope)), remote: true, class: 'btn-all btn-prim' %>
-
-
-<!-- All answers are displayed here -->
-<% policy_making.question(question_scope).answers.each_with_index do |answer, i| %>
-    <p>Answer <%= i+1 %>:</p>
-  <div id="answer-<%= answer.id %>">
-    <%= render 'policy_makings/partials/answer_card', answer: answer, i: i %>
+      <p><strong>Add an answer:</strong></p>
+      <!-- Form to add a new answer :
+        - This form is always visible (the user can add as many answers as they wish)
+        - This form is always empty by default
+        - There can be multiple "right" answers -->
+      <%= simple_form_for [policy_making.question(question_scope), new_answer], remote: true do |f| %>
+        <%= f.input :answer, required: true %>
+        <%= f.input :explanation, required: true %>
+        <p>Is this answer correct? <%= f.radio_button :right, true,  required: true %> Yes
+        <%= f.radio_button :right, false, required: true %> No </p>
+        <%= f.button :submit, "SAVE", class: 'btn-all btn-prim' %>
+      <% end %>
+    </div>
   </div>
-<% end %>
-
-<p><strong>Add an answer:</strong></p>
-<!-- Form to add a new answer :
-  - This form is always visible (the user can add as many answers as they wish)
-  - This form is always empty by default
-  - There can be multiple "right" answers -->
-<%= simple_form_for [policy_making.question(question_scope), new_answer], remote: true do |f| %>
-  <%= f.input :answer, required: true %>
-  <%= f.input :explanation, required: true %>
-  <p>Is this answer correct? <%= f.radio_button :right, true,  required: true %> Yes
-  <%= f.radio_button :right, false, required: true %> No </p>
-  <%= f.button :submit, "SAVE", class: 'btn-all btn-yllw' %>
-<% end %>
-
-
-
 <% end %>

@@ -6,11 +6,11 @@
       <p>Choose a country (or Europe) and a topic to start exploring:</p>
       <%= simple_form_for @policy_making, url: root_path, method: :get do |f| %>
         <div class="d-flex flex-column flex-md-row">
-          <div class="d-flex form-all country-topic">
-            <div class="form-field country-topic-field" id="country-filter">
+          <div class="d-flex country-topic">
+            <div class="country-topic-field">
               <%= f.input :country_id, required: true, collection: Country.all %>
             </div>
-            <div class="form-field country-topic-field" id="topic-filter">
+            <div class="country-topic-field">
               <%= f.input :topic_id, required: true, collection: Topic.all %>
             </div>
           </div>

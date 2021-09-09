@@ -1,42 +1,92 @@
-<h1>Policymakings</h1>
+<main>
+  <section class="py-5">
+    <div class="container">
+      <h1>Policymakings</h1>
+      <div class="container-short text-center">
+        <div class="d-flex justify-content-center align-items-center">
+          <p>Add an explanation for Policymaking in a new region and topic:</p>
+          <%= link_to new_policy_making_path do %>
+            <button class="btn-all btn-sec mx-3">NEW</button>
+          <% end %>
+        </div>
+        <p>Or look for an existing Policymaking explanation, Policy Plan or Strategy:</p>
+      </div>
+      <div class="country-topic-form mb-4 mx-auto">
+        <%= simple_form_for @policy_making, url: policy_makings_path, method: :get do |f| %>
+          <div class="d-flex flex-column flex-md-row">
+            <div class="d-flex country-topic">
+              <div class="country-topic-field">
+                <%= f.input :country_id, required: false, collection: Country.all %>
+              </div>
+              <div class="country-topic-field">
+                <%= f.input :topic_id, required: false, collection: Topic.all %>
+              </div>
+            </div>
+            <%= f.submit "SEARCH", class: "btn-all btn-prim country-topic-submit" %>
+          </div>
+        <% end %>
+      </div>
+      <% @policy_makings.each do |policy_making| %>
+        <div class="my-4">
+          <h3><mark class="mark-blue"><%= policy_making.topic.name %> in <%= policy_making.country.name %></mark></h3>
+          <div class="card-all d-flex flex-column flex-lg-row justify-content-between align-items-center my-3">
+            <p class="align-self-start"><%= policy_making.topic.name %> Policymaking in <%= policy_making.country.name %></p>
+            <div class="align-self-end">
+              <%= link_to policy_making_path(policy_making) do %>
+                <button class="btn-all btn-sec my-0 mr-3">SEE PAGE</button>
+              <% end %>
+              <%= link_to edit_policy_making_path(policy_making) do %>
+                <button class="btn-all btn-prim my-0">EDIT</button>
+              <% end %>
+            </div>
+          </div>
+          <!-- if policy_plans with this policy_making -->
+          <div class="card-all d-flex flex-column flex-lg-row justify-content-between align-items-center my-3">
+            <div class="d-flex align-self-start">
+              <!-- if it's a policy plan (strategy is false) -->
+              <p class="tag tag-yllw">Policy Plan</p>
+              <!-- else (strategy is true) -->
+              <!-- <p class="tag tag-blue">Strategy</p> -->
+              <p>Policy Plan Name</p>
+            </div>
+            <div class="align-self-end">
+              <button class="btn-all btn-sec my-0 mr-3">SEE PAGE</button>
+              <button class="btn-all btn-prim my-0">EDIT</button>
+            </div>
+          </div>
+          <!-- <div class="d-flex align-items-center">
+            <p>Add a Policy Plan:</p>
+            <button class="btn-all btn-sec mx-3">NEW</button>
+          </div> -->
+          <!-- else (there's no policy plans not strategies yet) -->
+          <div class="d-flex align-items-center">
+            <p>There are still no Policy Plans for <%= policy_making.topic.name %> in <%= policy_making.country.name %>! Add one:</p>
+            <button class="btn-all btn-prim mx-3">NEW</button>
+          </div>
+        </div>
+      <% end %>
+      <div class="container-short text-center">
+        <p>Couldn’t find an explanation for Policymaking in the region and topic you were looking for? Add it:</p>
+        <%= link_to new_policy_making_path do %>
+          <button class="btn-all btn-prim">NEW</button>
+        <% end %>
+      </div>
+    </div>
+  </section>
+</main>
 
-<p>Add an explanation for Policymaking in a new region and topic:</p>
-
-<%= link_to "NEW", new_policy_making_path, class: 'btn btn-prim' %>
-
-<p>Or look for an existing Policymaking explanation, Policy Plan or Strategy:</p>
-
-<%= simple_form_for @policy_making, url: policy_makings_path, method: :get do |f| %>
-
-  <%= f.input :country_id, required: false, collection: Country.all %>
-  <%= f.input :topic_id, required: false, collection: Topic.all %>
-
-<%= f.submit "FILTER", class: "btn-all btn-yllw" %>
-  </div>
-<% end %>
-
-<% @policy_makings.each do |policy_making| %>
-  <p> <%= policy_making.topic.name %> in <%= policy_making.country.name %> </p>
-  <div class="policy-making-see-edit">
-    <%= policy_making.topic.name %> Policymaking in <%= policy_making.country.name %>
-    <%= link_to "SEE PAGE", policy_making_path(policy_making), class: 'btn-all' %>
-    <%= link_to "EDIT", edit_policy_making_path(policy_making), class: 'btn-all btn-prim' %>
-  </div>
-
-  <div class="policy-plan-see-edit">
-    <!-- TO DO -->
-  </div>
-
-  <!-- Condition here -->
-  <p>Add a Policy Plan</p>
-  <p>There are still no Policy Plans for Energy in Germany! Add one:</p>
-<% end %>
 
 
 
-<p>
-  Couldn’t find an explanation for Policymaking in the region and topic you were looking for? Add it:
-  <%= link_to "NEW", new_policy_making_path, class: 'btn-all btn-prim' %>
-</p>
+
+
+
+
+
+
+
+
+
+
 
 

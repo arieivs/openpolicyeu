@@ -1,10 +1,31 @@
-<h1>PolicyMakings#new</h1>
+<main>
+  <section class="py-5">
+    <div class="container">
+      <h1>Create a new Policymaking</h1>
+      <h2><mark class="mark-yllw">Policymaking details</mark></h2>
+      <%= simple_form_for @policy_making do |f| %>
+        <div class="d-flex country-topic country-topic-form">
+          <div class="country-topic-field">
+            <%= f.input :country_id, required: true, collection: Country.all %>
+          </div>
+          <div class="country-topic-field">
+            <%= f.input :topic_id, required: true, collection: Topic.all %>
+          </div>
+        </div>
+        <p><em>Can’t find the Region/Country or Topic you’re looking for? Talk to an administrator.</em></p>
+        <%= f.input :content, as: :text, label: "Description", required: true, :input_html => { :cols => 5, :rows => 5 } %>
+        <!-- Number of characters (min/max) for "content" to be implemented later -->
+        <%= f.input :video_url, label: "Video URL", required: false %>
+        <%= f.input :video_alt_text, label: "Video short description", required: false %>
+        <!-- Number of characters (min/max) for "video_alt_text" to be implemented later -->
+        <%= f.input :video_source, label: "Who’s the creator/holds the rights to the video?", required: false %>
+        <!-- Ambassador to be added once we have ambassadors -->
+        <%= f.button :submit, "Save", class: 'btn-all btn-prim' %>
+      <% end %>
+      <p class="text-center">Save to then proceed by adding institutions and quizzes!</p>
+    </div>
+  </section>
+</main>
 
-<%= simple_form_for @policy_making do |f| %>
-  <%= f.input :country_id, required: true, collection: Country.all %>
-  <%= f.input :topic_id, required: true, collection: Topic.all %>
-  <%= f.input :content, as: :text, :input_html => { :cols => 5, :rows => 10 } %>
-  <%= f.input :ambassador_id, required: true, collection: Ambassador.all %>
 
-  <%= f.button :submit, "Add", class: 'btn-all btn-yllw' %>
-<% end %>
+
