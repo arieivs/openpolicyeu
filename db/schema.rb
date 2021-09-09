@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_09_153342) do
+ActiveRecord::Schema.define(version: 2021_09_09_161816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,37 @@ ActiveRecord::Schema.define(version: 2021_09_09_153342) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "game_answers", force: :cascade do |t|
+    t.string "answer"
+    t.string "explanation"
+    t.boolean "right"
+    t.bigint "game_question_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["game_question_id"], name: "index_game_answers_on_game_question_id"
+  end
+
+  create_table "game_questions", force: :cascade do |t|
+    t.integer "order"
+    t.string "name"
+    t.string "context"
+    t.string "question"
+    t.bigint "policy_plan_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["policy_plan_id"], name: "index_game_questions_on_policy_plan_id"
+  end
+
+  create_table "goals", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "order"
+    t.bigint "policy_plan_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["policy_plan_id"], name: "index_goals_on_policy_plan_id"
   end
 
   create_table "institutions", force: :cascade do |t|
@@ -160,6 +191,16 @@ ActiveRecord::Schema.define(version: 2021_09_09_153342) do
     t.index ["policy_making_id"], name: "index_questions_on_policy_making_id"
   end
 
+  create_table "timesteps", force: :cascade do |t|
+    t.date "date"
+    t.string "name"
+    t.string "description"
+    t.bigint "policy_plan_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["policy_plan_id"], name: "index_timesteps_on_policy_plan_id"
+  end
+
   create_table "topics", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -204,6 +245,9 @@ ActiveRecord::Schema.define(version: 2021_09_09_153342) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "answers", "questions"
   add_foreign_key "categories", "topics"
+  add_foreign_key "game_answers", "game_questions"
+  add_foreign_key "game_questions", "policy_plans"
+  add_foreign_key "goals", "policy_plans"
   add_foreign_key "institutions", "ambassadors"
   add_foreign_key "institutions", "countries"
   add_foreign_key "policies", "categories"
@@ -218,6 +262,7 @@ ActiveRecord::Schema.define(version: 2021_09_09_153342) do
   add_foreign_key "policy_plans", "ambassadors"
   add_foreign_key "policy_plans", "policy_makings"
   add_foreign_key "questions", "policy_makings"
+  add_foreign_key "timesteps", "policy_plans"
   add_foreign_key "user_policy_makings", "policy_makings"
   add_foreign_key "user_policy_makings", "users"
 end
