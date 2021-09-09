@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_02_221120) do
-
+ActiveRecord::Schema.define(version: 2021_09_09_151359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -127,6 +126,21 @@ ActiveRecord::Schema.define(version: 2021_09_02_221120) do
     t.index ["topic_id"], name: "index_policy_makings_on_topic_id"
   end
 
+  create_table "policy_plans", force: :cascade do |t|
+    t.string "name"
+    t.string "content"
+    t.string "video_url"
+    t.string "video_alt_text"
+    t.string "video_source"
+    t.boolean "strategy"
+    t.bigint "policy_making_id", null: false
+    t.bigint "ambassador_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ambassador_id"], name: "index_policy_plans_on_ambassador_id"
+    t.index ["policy_making_id"], name: "index_policy_plans_on_policy_making_id"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.bigint "policy_making_id", null: false
     t.string "scope"
@@ -189,6 +203,8 @@ ActiveRecord::Schema.define(version: 2021_09_02_221120) do
   add_foreign_key "policy_makings", "ambassadors"
   add_foreign_key "policy_makings", "countries"
   add_foreign_key "policy_makings", "topics"
+  add_foreign_key "policy_plans", "ambassadors"
+  add_foreign_key "policy_plans", "policy_makings"
   add_foreign_key "questions", "policy_makings"
   add_foreign_key "user_policy_makings", "policy_makings"
   add_foreign_key "user_policy_makings", "users"
