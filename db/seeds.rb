@@ -62,7 +62,7 @@ COUNTRIES.each do |country|
   new_country.flag.attach(io: file, filename: "flag.png", content_type: 'image/png')
   new_country.save
   3.times do
-    new_institution = Institution.new(country: new_country, name: Faker::Company.name, website_url: Faker::Internet.url, video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", video_alt_text: "bla")
+    new_institution = Institution.new(country: new_country, name: Faker::Company.name, website_url: Faker::Internet.url, video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", video_alt_text: "bla")
     file = URI.open("https://globalaccessibilitynews.com/files/2013/03/European-Commission-logo.png")
     new_institution.logo.attach(io: file, filename: "profilepic.png", content_type: 'image/png')
     new_institution.save
@@ -84,22 +84,22 @@ puts "#{Country.count} countries and #{Institution.count} institutions created! 
 
 puts "Creating policymakings..."
 pms = []
-pm = PolicyMaking.new(country: Country.first, topic: Topic.first, video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
+pm = PolicyMaking.new(country: Country.first, topic: Topic.first, video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
 pm.save
 pms.push(pm)
-pm = PolicyMaking.new(country: Country.first, topic: Topic.second, video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
+pm = PolicyMaking.new(country: Country.first, topic: Topic.second, video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
 pm.save
 pms.push(pm)
-pm = PolicyMaking.new(country: Country.second, topic: Topic.first, video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
+pm = PolicyMaking.new(country: Country.second, topic: Topic.first, video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
 pm.save
 pms.push(pm)
-pm = PolicyMaking.new(country: Country.second, topic: Topic.second, video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
+pm = PolicyMaking.new(country: Country.second, topic: Topic.second, video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
 pm.save
 pms.push(pm)
-pm = PolicyMaking.new(country: Country.third, topic: Topic.first, video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
+pm = PolicyMaking.new(country: Country.third, topic: Topic.first, video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
 pm.save
 pms.push(pm)
-pm = PolicyMaking.new(country: Country.third, topic: Topic.second, video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
+pm = PolicyMaking.new(country: Country.third, topic: Topic.second, video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
 pm.save
 pms.push(pm)
 puts "#{PolicyMaking.count} policymakings created! \n\n"
@@ -137,7 +137,7 @@ puts "#{Question.count} questions and #{Answer.count} answers created! \n\n"
 puts "Creating policy plans, time steps, goals and gamebook..."
 pps = []
 pms.each do |pm|
-  policy_plan = PolicyPlan.new(policy_making: pm, name: Faker::Movies::HarryPotter.character, content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10), video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", strategy: false)
+  policy_plan = PolicyPlan.new(policy_making: pm, name: Faker::Movies::HarryPotter.character, content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10), video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", strategy: false)
   policy_plan.save
   pps.push(policy_plan)
   (1..10).to_a.each do |i|
