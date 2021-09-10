@@ -1,0 +1,19 @@
+<main>
+  <section class="pt-3 pb-5 bkg-blue">
+    <div class="container">
+      <p class="pb-5 breadcrumbs"><%= link_to "#{@policy_making.topic.name} in #{@policy_making.country.name}", policy_making_path(@policy_making) %> / <%= @policy_plan.name %></p>
+      <h1><%= @policy_plan.name %></h1>
+      <div class="container-short">
+        <p><%= @policy_plan.content %></p>
+        <% if @policy_plan.video_url && !@policy_plan.video_url.empty? %>
+          <div class="my-5">
+            <iframe class="video" src="<%= @policy_plan.video_url %>" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+            <% if @policy_plan.video_source && !@policy_plan.video_source.empty? %>
+              <p class="subtitle"><em>by <%= @policy_plan.video_source %></em></p>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+</main>
