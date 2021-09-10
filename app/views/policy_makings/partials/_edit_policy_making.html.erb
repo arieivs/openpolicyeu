@@ -1,10 +1,10 @@
 <%= simple_form_for policy_making, remote: true do |f| %>
   <%= f.input :content, as: :text, label: "Description", required: true, :input_html => { :cols => 5, :rows => 5 } %>
   <!-- Number of characters (min/max) for "content" to be implemented later -->
-  <%= f.input :video_url, label: "Video URL", required: false %>
+  <%= f.input :video_url, label: "Video URL", hint: "If it's an Youtube video, make sure to change \"watch?v=\" into \"embed/\"", required: false %>
   <%= f.input :video_alt_text, label: "Video short description", required: false %>
   <!-- Number of characters (min/max) for "video_alt_text" to be implemented later -->
   <%= f.input :video_source, label: "Who’s the creator/holds the rights to the video?", required: false %>
   <!-- Ambassador to be added once we have ambassadors -->
-  <div class="btn-container"><%= f.button :submit, "SAVE", class: 'btn-all btn-prim' %></div>
+  <%= f.button :submit, "SAVE", class: 'btn-all btn-prim' %>
 <% end %>
