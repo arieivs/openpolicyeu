@@ -16,4 +16,23 @@
       </div>
     </div>
   </section>
+  <% if !@policy_plan_institutions.empty? %>
+    <section class="py-5">
+      <div class="container">
+        <h2><mark class="mark-yllw">Institutions</mark></h2>
+        <p>Who was involved and how?</p>
+        <div id="institutions-list">
+          <%= render 'policy_plans/partials/institutions_list',
+              policy_plan: @policy_plan,
+              policy_plan_institutions: @policy_plan_institutions,
+              ppi_selected: @policy_plan_institutions.first %>
+        </div>
+        <div id="institution-description">
+          <%= render 'policy_plans/partials/institution_description',
+              policy_plan: @policy_plan,
+              policy_plan_institution: @policy_plan_institutions.first %>
+        </div>
+      </div>
+    </section>
+  <% end %>
 </main>
