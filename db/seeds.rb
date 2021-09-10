@@ -17,6 +17,7 @@ puts "Cleaning QUESTIONS database..."
 Question.destroy_all
 GameQuestion.destroy_all
 puts "Cleaning POLICY_PLANS database..."
+YoungContributor.destroy_all
 Goal.destroy_all
 Timestep.destroy_all
 PolicyPlanInstitution.destroy_all
@@ -148,11 +149,21 @@ pms.each do |pm|
     GameAnswer.new(game_question: question, answer: Faker::Movies::HarryPotter.quote, explanation: Faker::Movies::Ghostbusters.quote, right: true).save
     rand(2..4).times do
       GameAnswer.new(game_question: question, answer: Faker::Movies::HarryPotter.quote, explanation: Faker::Movies::Ghostbusters.quote, right: false).save
-  end
+    end
   end
 end
+puts "#{PolicyPlan.count} policy plans with #{Timestep.count} time steps, #{Goal.count} goals, #{GameQuestion.count} gamebook questions and #{GameAnswer.count} answers created! \n\n"
 
-puts "#{PolicyPlan.all} policy plans with #{Timestep.all} time steps, #{Goal.all} goals, #{GameQuestion.count} gamebook questions and #{GameAnswer.count} answers created! \n\n"
+puts "Creating young contributors..."
+pps.each do |pp|
+  2.times do
+    contributor = YoungContributor.new(policy_plan: pp, name: "Fridays for Future (FFF)", description: "FFF is a youth-led organised movement that started in August 2018. FFF activists have very strongly criticised the economic stimulus packages, the EU's agricultural reforms and the recent 'Fit for 55' package . Their mass protests have been crucial way for young people to enter the political sphere, and these movements continue to put pressure on  decision-makers, leading to improved communication between policymakers and youth.", website_url: "https://www.iedonline.eu/download/climate-crisis/Tenti_Duccio_IED-Climate-Paper_2019.pdf")
+    file = URI.open("https://globalaccessibilitynews.com/files/2013/03/European-Commission-logo.png")
+    contributor.logo.attach(io: file, filename: "logo.png", content_type: 'image/png')
+    contributor.save
+  end
+end
+puts "#{YoungContributor.count} young contributors created! \n\n"
 
 puts "Associating institutions to policyplans..."
 pps.each do |pp|
