@@ -21,6 +21,7 @@ class PolicyMakingsController < ApplicationController
     @policy_making_institutions = PolicyMakingInstitution.where(policy_making: @policy_making)
     @institution_question = Question.where(policy_making: @policy_making).find_by(scope: 'institutions')
     @institution_answers = Answer.where(question: @institution_question)
+    @policy_plans = PolicyPlan.where(policy_making: @policy_making)
   end
 
   def new
