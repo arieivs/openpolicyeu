@@ -138,7 +138,7 @@ puts "#{Question.count} questions and #{Answer.count} answers created! \n\n"
 puts "Creating policy plans, time steps, goals and gamebook..."
 pps = []
 pms.each do |pm|
-  policy_plan = PolicyPlan.new(policy_making: pm, name: Faker::Movies::HarryPotter.character, content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10), video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", strategy: false)
+  policy_plan = PolicyPlan.new(policy_making: pm, name: Faker::Movies::HarryPotter.character, short_description: "With 75\% of its GHG emissions coming from the energy sector, the EU has launched the European Green Deal in an effort to become the first climate-neutral continent by 2050.", content: "The Deal comprises multiple strategies towards reaching climate neutrality. With the goal of cleaner energies, it is focused on ensuring a secure energy supply, promoting renewables and increasing energy efficiency. The objectives of the Deal are legally binding through the Climate Law. Supplementary strategies, such as the Climate Pact, are formulated to ensure that all member states have equal access to knowledge to guide them towards a sustainable future.", video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", strategy: false)
   policy_plan.save
   pps.push(policy_plan)
   (1..10).to_a.each do |i|
