@@ -5,9 +5,9 @@ class PolicyPlansController < ApplicationController
     set_policy_plan
     @policy_making = @policy_plan.policy_making
     @policy_plan_institutions = PolicyPlanInstitution.where(policy_plan: @policy_plan)
-    @goals = Goal.where(policy_plan: @policy_plan)
-    @timesteps = Timestep.where(policy_plan: @policy_plan)
-    @game_questions = GameQuestion.where(policy_plan: @policy_plan)
+    @goals = Goal.where(policy_plan: @policy_plan).order(:order)
+    @timesteps = Timestep.where(policy_plan: @policy_plan).order(:date)
+    @game_questions = GameQuestion.where(policy_plan: @policy_plan).order(:order)
   end
 
   def choose_institution

@@ -40,12 +40,13 @@
   <% elsif !@timesteps.empty? && !@game_questions.empty? %>
     <!-- render Gamebook with Timeline -->
     <section class="py-5">
-      <div class="container">
+      <div class="container pb-5">
         <div class="tab">
           <button class="btn-all tab-nonselected">Gamebook</button>
           <button class="btn-all tab-selected">Timeline</button>
         </div>
       </div>
+      <%= render 'policy_plans/partials/timeline', timesteps: @timesteps %>
     </section>
   <% elsif !@timesteps.empty? %>
     <!-- render Timeline -->

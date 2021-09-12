@@ -1,0 +1,22 @@
+<div class="container">
+  <h2><mark class="mark-yllw">Timeline</mark></h2>
+  <% timesteps.each do |timestep| %>
+    <div class="d-flex timestep">
+      <div class="timestep-date">
+        <p><%= timestep.date.strftime('%d %b %Y') %></p>
+      </div>
+      <div class="timestep-separator">
+        <div class="timestep-circle-outer">
+          <div class="timestep-circle-inner"></div>
+        </div>
+        <div class="<%= (timestep.id == timesteps[-1].id) ? '' : 'timestep-line' %>"></div>
+      </div>
+      <div class="timestep-card card-all my-3">
+        <div class="px-4">
+          <h2><%= timestep.name %></h2>
+          <p><%= timestep.description %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
