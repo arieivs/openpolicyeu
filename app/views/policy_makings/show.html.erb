@@ -16,7 +16,7 @@
         <% if @content_question %>
           <p class="mt-5"><strong><%= @content_question.question %></strong></p>
           <div id="answers-question-<%= @content_question.id %>">
-            <%= render 'shared/answers_before',
+            <%= render 'policy_makings/partials/answers_before',
                 question: @content_question,
                 answers: @content_answers %>
           </div>
@@ -44,7 +44,7 @@
           <% if @institution_question %>
             <p class="mt-5"><strong><%= @institution_question.question %></strong></p>
             <div id="answers-question-<%= @institution_question.id %>">
-              <%= render 'shared/answers_before',
+              <%= render 'policy_makings/partials/answers_before',
                   question: @institution_question,
                   answers: @institution_answers %>
             </div>
