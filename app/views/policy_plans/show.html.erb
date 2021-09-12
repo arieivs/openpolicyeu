@@ -46,9 +46,13 @@
           <button class="btn-all tab-selected">Timeline</button>
         </div>
       </div>
-      <%= render 'policy_plans/partials/timeline', timesteps: @timesteps %>
+      <div id="gamebook-timeline">
+        <%= render 'policy_plans/partials/gamebook', game_questions: @game_questions %>
+      </div>
     </section>
   <% elsif !@timesteps.empty? %>
-    <!-- render Timeline -->
+    <section class="py-5">
+      <%= render 'policy_plans/partials/timeline', timesteps: @timesteps %>
+    </section>
   <% end %>
 </main>
