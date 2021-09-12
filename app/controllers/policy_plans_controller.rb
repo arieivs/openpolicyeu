@@ -7,7 +7,10 @@ class PolicyPlansController < ApplicationController
     @policy_plan_institutions = PolicyPlanInstitution.where(policy_plan: @policy_plan)
     @goals = Goal.where(policy_plan: @policy_plan).order(:order)
     @timesteps = Timestep.where(policy_plan: @policy_plan).order(:date)
-    @game_questions = GameQuestion.where(policy_plan: @policy_plan).order(:order)
+    @game_questions = GameQuestion.where(policy_plan: @policy_plan)
+    @game_questions = @policy_plan.strategy ? @game_questions.order(:order) : @game_questions.order(:date)
+    @next_question = @game_questions.first
+    @next_answers = GameAnswer.where(game_question: @next_question)
   end
 
   def choose_institution

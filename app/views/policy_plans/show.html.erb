@@ -47,7 +47,7 @@
         </div>
       </div>
       <div id="gamebook-timeline">
-        <%= render 'policy_plans/partials/gamebook', game_questions: @game_questions %>
+        <%= render 'policy_plans/partials/gamebook', game_questions: @game_questions, next_question: @next_question, next_answers: @next_answers %>
       </div>
     </section>
   <% elsif !@timesteps.empty? %>
