@@ -5,5 +5,4 @@ class GameQuestion < ApplicationRecord
   validates :name, presence: true
   validates :context, presence: true
   validates :question, presence: true
-  validates :order, presence: true
 end

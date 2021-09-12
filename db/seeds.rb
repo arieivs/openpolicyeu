@@ -117,6 +117,7 @@ puts "#{PolicyMakingInstitution.count} policymaking_institutions created! \n\n"
 # ----------- QUESTIONS & ANSWERS ----------
 
 puts "Creating questions and answers for policymakings..."
+
 pms.each do |pm|
   content_question = Question.new(policy_making: pm, scope: 'content', question: "#{Faker::Quotes::Shakespeare.hamlet}?")
   content_question.save
@@ -135,14 +136,30 @@ puts "#{Question.count} questions and #{Answer.count} answers created! \n\n"
 
 # --------------- POLICY PLANS ---------------
 
-puts "Creating policy plans, time steps, goals and gamebook..."
+puts "Creating policy plans, time steps and gamebook..."
 pps = []
-pms.each do |pm|
+PolicyMaking.where(topic: Topic.where(name:'Energy & Climate')).each do |pm|
   policy_plan = PolicyPlan.new(policy_making: pm, name: Faker::Movies::HarryPotter.character, short_description: "With 75\% of its GHG emissions coming from the energy sector, the EU has launched the European Green Deal in an effort to become the first climate-neutral continent by 2050.", content: "The Deal comprises multiple strategies towards reaching climate neutrality. With the goal of cleaner energies, it is focused on ensuring a secure energy supply, promoting renewables and increasing energy efficiency. The objectives of the Deal are legally binding through the Climate Law. Supplementary strategies, such as the Climate Pact, are formulated to ensure that all member states have equal access to knowledge to guide them towards a sustainable future.", video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", strategy: false)
   policy_plan.save
   pps.push(policy_plan)
   (1..10).to_a.each do |i|
     Timestep.new(date: Faker::Date.between(from: '2014-09-23', to: '2016-09-25'), name: Faker::Movies::StarWars.character, description: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10), policy_plan: policy_plan).save
+    question = GameQuestion.new(date: Faker::Date.between(from: '2014-09-23', to: '2016-09-25'), policy_plan: policy_plan, name: Faker::Movies::StarWars.character, context: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10), question: "#{Faker::GreekPhilosophers.quote}?")
+    question.save
+    GameAnswer.new(game_question: question, answer: Faker::Movies::HarryPotter.quote, explanation: Faker::Movies::Ghostbusters.quote, right: true).save
+    rand(2..4).times do
+      GameAnswer.new(game_question: question, answer: Faker::Movies::HarryPotter.quote, explanation: Faker::Movies::Ghostbusters.quote, right: false).save
+    end
+  end
+end
+puts "#{PolicyPlan.count} policy plans with #{Timestep.count} time steps, #{Goal.count} goals, #{GameQuestion.count} gamebook questions and #{GameAnswer.count} answers created! \n\n"
+
+puts "Creating strategies, goals and quizzes..."
+PolicyMaking.where(topic: Topic.where(name:'Youth')).each do |pm|
+  policy_plan = PolicyPlan.new(policy_making: pm, name: Faker::Movies::HarryPotter.character, short_description: "With 75\% of its GHG emissions coming from the energy sector, the EU has launched the European Green Deal in an effort to become the first climate-neutral continent by 2050.", content: "The Deal comprises multiple strategies towards reaching climate neutrality. With the goal of cleaner energies, it is focused on ensuring a secure energy supply, promoting renewables and increasing energy efficiency. The objectives of the Deal are legally binding through the Climate Law. Supplementary strategies, such as the Climate Pact, are formulated to ensure that all member states have equal access to knowledge to guide them towards a sustainable future.", video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", strategy: false)
+  policy_plan.save
+  pps.push(policy_plan)
+  (1..10).to_a.each do |i|
     Goal.new(name: Faker::Movies::StarWars.character, description: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10), policy_plan: policy_plan, order: i).save
     question = GameQuestion.new(policy_plan: policy_plan, name: Faker::Movies::StarWars.character, context: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10), question: "#{Faker::GreekPhilosophers.quote}?", order: i)
     question.save
@@ -152,7 +169,7 @@ pms.each do |pm|
     end
   end
 end
-puts "#{PolicyPlan.count} policy plans with #{Timestep.count} time steps, #{Goal.count} goals, #{GameQuestion.count} gamebook questions and #{GameAnswer.count} answers created! \n\n"
+puts "#{PolicyPlan.count} policy plans & strategies with #{Goal.count} goals, #{GameQuestion.count} gamebook questions and #{GameAnswer.count} answers in total! \n\n"
 
 puts "Creating young contributors..."
 pps.each do |pp|
