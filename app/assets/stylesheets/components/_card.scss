@@ -55,6 +55,15 @@
   }
 }
 
+.card-answer-link {
+  p {
+    color: $grey_dark;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .selector {
   font-size: 25px;
   color: $grey_dark;
