@@ -1,25 +1,25 @@
 <div class="d-flex timestep">
   <div class="timestep-date">
-    <p><%= question.date.strftime('%d %b %Y') %></p>
+    <p><%= game_question.date.strftime('%d %b %Y') %></p>
   </div>
   <div class="timestep-separator">
     <div class="timestep-circle-outer">
       <div class="timestep-circle-inner"></div>
     </div>
-    <div class="<%= (question.id == questions[-1].id) ? '' : 'timestep-line' %>"></div>
+    <div class="<%= (game_question.id == game_questions[-1].id) ? '' : 'timestep-line' %>"></div>
   </div>
   <div>
     <div class="timestep-card card-all my-3">
       <div class="px-4">
-        <h2><%= question.name %></h2>
-        <p><%= question.context %></p>
+        <h2><%= game_question.name %></h2>
+        <p><%= game_question.context %></p>
       </div>
     </div>
-    <p class="mt-5"><strong><%= question.question %></strong></p>
-    <div class="mb-4" id="answers-question-<%= question.id %>">
-      <%= render 'shared/answers_before',
-          question: question,
-          answers: answers %>
+    <p class="mt-5"><strong><%= game_question.question %></strong></p>
+    <div class="mb-4" id="answers-question-<%= game_question.id %>">
+      <%= render 'policy_plans/partials/answer_before',
+          game_question: game_question,
+          game_answers: game_answers %>
     </div>
   </div>
 </div>

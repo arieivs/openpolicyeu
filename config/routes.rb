@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :policy_plans, except: [:destroy], shallow: true do
     resources :policy_plans_institutions, only: [:create, :edit, :update, :destroy]
   end
+  get 'game_questions/:game_question_id/select_answer_gamebook/:game_answer_id/', to: 'game_questions#select_answer_gamebook', as: :select_answer_gamebook
   resources :institutions, except: [:show, :destroy]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

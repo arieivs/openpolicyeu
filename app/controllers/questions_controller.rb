@@ -18,7 +18,7 @@ class QuestionsController < ApplicationController
   def update
     @question = Question.find(params[:id])
     @question.update(question_params)
-    @new_answer= Answer.new
+    @new_answer = Answer.new
     respond_to { |format| format.js }
   end
 
