@@ -36,9 +36,16 @@
     </section>
   <% end %>
   <% if @policy_plan.strategy && !@goals.empty? %>
-    <!-- render goals -->
+    <section class="py-5">
+      <div class="container">
+        <h2 class="mb-5"><mark class="mark-yllw">Goals</mark></h2>
+        <%= render 'policy_plans/partials/goals_open',
+            goal: @goals.first,
+            goal_question: @next_question,
+            goal_answers: @next_answers %>
+      </div>
+    </section>
   <% elsif !@timesteps.empty? && !@game_questions.empty? %>
-    <!-- render Gamebook with Timeline -->
     <section class="py-5">
       <div id="tab">
         <%= render 'policy_plans/partials/tab',

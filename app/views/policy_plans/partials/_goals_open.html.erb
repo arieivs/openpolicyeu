@@ -1,0 +1,17 @@
+<div class="card-all card-selected">
+  <div class="px-4 py-3">
+    <div class="d-flex justify-content-between">
+      <h3><strong><%= goal.name %></strong></h3>
+      <i class="fas fa-chevron-down accordion-open-btn"></i>
+    </div>
+    <div class="container-short">
+      <p><%= goal.description %></p>
+      <p class="mt-5"><strong><%= goal_question.question %></strong></p>
+      <div id="answers-question-<%= goal_question.id %>">
+        <%= render 'policy_makings/partials/answers_before',
+            question: goal_question,
+            answers: goal_answers %>
+      </div>
+    </div>
+  </div>
+</div>
