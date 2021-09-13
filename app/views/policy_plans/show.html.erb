@@ -41,6 +41,7 @@
         <h2 class="mb-5"><mark class="mark-yllw">Goals</mark></h2>
         <div id="goal-<%= @goals.first.id %>">
           <%= render 'policy_plans/partials/goal_open',
+              policy_plan: @policy_plan,
               goal: @goals.first,
               game_question: @next_question,
               game_answers: @next_answers %>

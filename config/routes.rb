@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get 'policy_plans/:id/choose_gamebook', to: 'policy_plans#choose_gamebook', as: :choose_gamebook
   get 'policy_plans/:id/choose_timeline', to: 'policy_plans#choose_timeline', as: :choose_timeline
   get 'policy_plans/:policy_plan_id/open_accordion/:goal_id', to: 'policy_plans#open_accordion', as: :open_accordion
-  get 'policy_plans/:id/close_accordion', to: 'policy_plans#close_accordion', as: :close_accordion
+  get 'policy_plans/:policy_plan_id/close_accordion/:goal_id', to: 'policy_plans#close_accordion', as: :close_accordion
   resources :policy_plans, except: [:destroy], shallow: true do
     resources :policy_plans_institutions, only: [:create, :edit, :update, :destroy]
   end
