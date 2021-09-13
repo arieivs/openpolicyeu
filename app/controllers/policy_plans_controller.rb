@@ -7,10 +7,7 @@ class PolicyPlansController < ApplicationController
     @policy_plan_institutions = PolicyPlanInstitution.where(policy_plan: @policy_plan)
     @goals = Goal.where(policy_plan: @policy_plan).order(:order)
     @timesteps = Timestep.where(policy_plan: @policy_plan).order(:date)
-    @game_questions = GameQuestion.where(policy_plan: @policy_plan)
-    @game_questions = @policy_plan.strategy ? @game_questions.order(:order) : @game_questions.order(:date)
-    @next_question = @game_questions.first
-    @next_answers = GameAnswer.where(game_question: @next_question)
+    set_gamebook
   end
 
   def choose_institution
@@ -25,17 +22,26 @@ class PolicyPlansController < ApplicationController
 
   def choose_gamebook
     @selected = 'gamebook'
-    render :choose_tab
+    set_policy_plan
+    set_gamebook
   end
 
   def choose_timeline
     @selected = 'timeline'
-    render :choose_tab
+    set_policy_plan
+    @timesteps = Timestep.where(policy_plan: @policy_plan).order(:date)
   end
 
   private
 
   def set_policy_plan
     @policy_plan = PolicyPlan.find(params[:id])
+  end
+
+  def set_gamebook
+    @game_questions = GameQuestion.where(policy_plan: @policy_plan)
+    @game_questions = @policy_plan.strategy ? @game_questions.order(:order) : @game_questions.order(:date)
+    @next_question = @game_questions.first
+    @next_answers = GameAnswer.where(game_question: @next_question)
   end
 end

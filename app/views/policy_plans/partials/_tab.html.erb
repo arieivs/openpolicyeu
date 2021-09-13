@@ -1,9 +1,9 @@
 <div class="container pb-5">
   <div class="tab">
-    <%= link_to choose_gamebook_path, remote: true do %>
+    <%= link_to choose_gamebook_path(policy_plan.id), remote: true do %>
       <button class="btn-all <%= selected == 'gamebook' ? 'tab-selected' : 'tab-nonselected' %>">Gamebook</button>
     <% end %>
-    <%= link_to choose_timeline_path, remote: true do %>
+    <%= link_to choose_timeline_path(policy_plan.id), remote: true do %>
       <button class="btn-all <%= selected == 'timeline' ? 'tab-selected' : 'tab-nonselected' %>">Timeline</button>
     <% end %>
   </div>

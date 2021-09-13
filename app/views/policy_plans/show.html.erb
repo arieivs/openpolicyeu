@@ -41,7 +41,9 @@
     <!-- render Gamebook with Timeline -->
     <section class="py-5">
       <div id="tab">
-        <%= render 'policy_plans/partials/tab', selected: 'gamebook' %>
+        <%= render 'policy_plans/partials/tab',
+            policy_plan: @policy_plan,
+            selected: 'gamebook' %>
       </div>
       <div id="gamebook-timeline">
         <%= render 'policy_plans/partials/gamebook',
