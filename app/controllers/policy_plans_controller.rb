@@ -8,6 +8,7 @@ class PolicyPlansController < ApplicationController
     @goals = Goal.where(policy_plan: @policy_plan).order(:order)
     @timesteps = Timestep.where(policy_plan: @policy_plan).order(:date)
     set_gamebook
+    @young_contributors = YoungContributor.where(policy_plan: @policy_plan)
   end
 
   def choose_institution
