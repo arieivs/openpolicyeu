@@ -1,19 +1,17 @@
 <% game_answers.each do |game_answer| %>
-  <%= link_to select_answer_gamebook_path(game_question_id: game_question.id, game_answer_id: game_answer.id), class: 'card-answer-link', remote: true do %>
-    <% if game_answer.id == selected_answer.id %>
-      <div class="d-flex card-all card-answer <%= game_answer.right ? 'card-answer-right' : 'card-answer-wrong' %>">
-    <% else %>
-      <div class="d-flex card-all card-answer card-clickable">
-    <% end %>
-        <% if game_answer.id == selected_answer.id && game_answer.right %>
-          <i class="selector-right fas fa-check-circle"></i>
-        <% elsif game_answer.id == selected_answer.id %>
-          <i class="selector-wrong fas fa-times-circle"></i>
-        <% else %>
-          <i class="selector far fa-circle"></i>
-        <% end %>
-        <p><%= game_answer.answer %></p>
-      </div>
+  <% if game_answer.id == selected_answer.id %>
+    <div class="d-flex card-all card-answer <%= game_answer.right ? 'card-answer-right' : 'card-answer-wrong' %>">
+  <% else %>
+    <div class="d-flex card-all card-answer">
   <% end %>
+      <% if game_answer.id == selected_answer.id && game_answer.right %>
+        <i class="selector-right fas fa-check-circle"></i>
+      <% elsif game_answer.id == selected_answer.id %>
+        <i class="selector-wrong fas fa-times-circle"></i>
+      <% else %>
+        <i class="selector far fa-circle"></i>
+      <% end %>
+      <p><%= game_answer.answer %></p>
+    </div>
 <% end %>
 <p><%= selected_answer.explanation %></p>

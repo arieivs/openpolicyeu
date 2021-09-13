@@ -18,6 +18,7 @@
     <p class="mt-5"><strong><%= game_question.question %></strong></p>
     <div class="mb-4" id="answers-question-<%= game_question.id %>">
       <%= render 'policy_plans/partials/answer_before',
+          policy_plan: policy_plan,
           game_question: game_question,
           game_answers: game_answers %>
     </div>

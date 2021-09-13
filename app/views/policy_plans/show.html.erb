@@ -47,12 +47,17 @@
         </div>
       </div>
       <div id="gamebook-timeline">
-        <%= render 'policy_plans/partials/gamebook', game_questions: @game_questions, next_question: @next_question, next_answers: @next_answers %>
+        <%= render 'policy_plans/partials/gamebook',
+            policy_plan: @policy_plan,
+            game_questions: @game_questions,
+            next_question: @next_question,
+            next_answers: @next_answers %>
       </div>
     </section>
   <% elsif !@timesteps.empty? %>
     <section class="py-5">
-      <%= render 'policy_plans/partials/timeline', timesteps: @timesteps %>
+      <%= render 'policy_plans/partials/timeline',
+          timesteps: @timesteps %>
     </section>
   <% end %>
 </main>
