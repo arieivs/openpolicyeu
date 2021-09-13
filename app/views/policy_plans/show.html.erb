@@ -39,10 +39,13 @@
     <section class="py-5">
       <div class="container">
         <h2 class="mb-5"><mark class="mark-yllw">Goals</mark></h2>
-        <%= render 'policy_plans/partials/goals_open',
+        <%= render 'policy_plans/partials/goal_open',
             goal: @goals.first,
             goal_question: @next_question,
             goal_answers: @next_answers %>
+        <% @goals.slice(1..).each do |goal| %>
+          <%= render 'policy_plans/partials/goal_closed', goal: goal %>
+        <% end %>
       </div>
     </section>
   <% elsif !@timesteps.empty? && !@game_questions.empty? %>

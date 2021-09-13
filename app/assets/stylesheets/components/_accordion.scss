@@ -1,4 +1,16 @@
-.accordion-open-btn {
+.accordion-close {
+  h3 {
+    margin-bottom: 0;
+  }
+  .accordion-btn {
+  color: $blue-light;
+}
+}
+
+.accordion-btn {
   font-size: 26px;
+}
+
+.accordion-open-btn {
   color: $blue;
 }
