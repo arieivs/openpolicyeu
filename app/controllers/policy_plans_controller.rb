@@ -1,5 +1,5 @@
 class PolicyPlansController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show, :choose_institution]
+  skip_before_action :authenticate_user!, only: [:show, :choose_institution, :choose_gamebook, :choose_timeline]
 
   def show
     set_policy_plan
@@ -21,6 +21,16 @@ class PolicyPlansController < ApplicationController
     @policy_plan_institution = PolicyPlanInstitution.find(params[:policy_plan_institution_id])
     # then it renders choose_institution.js.erb automatically
     # which in turn renders the institution_description.html.erb partial
+  end
+
+  def choose_gamebook
+    @selected = 'gamebook'
+    render :choose_tab
+  end
+
+  def choose_timeline
+    @selected = 'timeline'
+    render :choose_tab
   end
 
   private

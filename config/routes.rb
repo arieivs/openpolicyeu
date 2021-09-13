@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   end
   get 'questions/:question_id/select_answer_quiz/:answer_id/', to: 'questions#select_answer_quiz', as: :select_answer_quiz
   get 'policy_plans/:policy_plan_id/choose_institution/:policy_plan_institution_id', to: 'policy_plans#choose_institution', as: :pp_choose_institution
+  get 'policy_plans/choose_gamebook', to: 'policy_plans#choose_gamebook', as: :choose_gamebook
+  get 'policy_plans/choose_timeline', to: 'policy_plans#choose_timeline', as: :choose_timeline
   resources :policy_plans, except: [:destroy], shallow: true do
     resources :policy_plans_institutions, only: [:create, :edit, :update, :destroy]
   end
