@@ -4,12 +4,10 @@
   <% else %>
     <div class="d-flex card-all card-answer">
   <% end %>
-      <% if game_answer.id == selected_answer.id && game_answer.right %>
+      <% if game_answer.right %>
         <i class="selector-right fas fa-check-circle"></i>
-      <% elsif game_answer.id == selected_answer.id %>
-        <i class="selector-wrong fas fa-times-circle"></i>
       <% else %>
-        <i class="selector far fa-circle"></i>
+        <i class="selector-wrong fas fa-times-circle"></i>
       <% end %>
       <p><%= game_answer.answer %></p>
     </div>
