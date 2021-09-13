@@ -6,11 +6,11 @@
     </div>
     <div class="container-short">
       <p><%= goal.description %></p>
-      <p class="mt-5"><strong><%= goal_question.question %></strong></p>
-      <div id="answers-question-<%= goal_question.id %>">
-        <%= render 'policy_makings/partials/answers_before',
-            question: goal_question,
-            answers: goal_answers %>
+      <p class="mt-5"><strong><%= game_question.question %></strong></p>
+      <div id="answers-question-<%= game_question.id %>">
+        <%= render 'policy_plans/partials/answer_before_goal',
+            game_question: game_question,
+            game_answers: game_answers %>
       </div>
     </div>
   </div>
