@@ -1,5 +1,5 @@
 class PolicyPlansController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show, :choose_institution, :choose_gamebook, :choose_timeline]
+  skip_before_action :authenticate_user!, only: [:show, :choose_institution, :choose_gamebook, :choose_timeline, :open_accordion]
 
   def show
     set_policy_plan
@@ -30,6 +30,13 @@ class PolicyPlansController < ApplicationController
     @selected = 'timeline'
     set_policy_plan
     @timesteps = Timestep.where(policy_plan: @policy_plan).order(:date)
+  end
+
+  def open_accordion
+    @policy_plan = PolicyPlan.find(params[:policy_plan_id])
+    @goal = Goal.find(params[:goal_id])
+    @game_question = GameQuestion.where(policy_plan: @policy_plan).find_by(order: @goal.order)
+    @game_answers = GameAnswer.where(game_question: @game_question)
   end
 
   private

@@ -5,9 +5,16 @@
   padding: 20px;
 }
 
-.card-link p {
-  color: $grey_dark;
-  text-decoration: none;
+.card-link {
+  p {
+    color: $grey_dark;
+    text-decoration: none;
+  }
+  h3 {
+    color: $grey_dark;
+    text-decoration: none;
+  }
+
 }
 
 .card-clickable:hover {

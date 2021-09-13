@@ -39,12 +39,18 @@
     <section class="py-5">
       <div class="container">
         <h2 class="mb-5"><mark class="mark-yllw">Goals</mark></h2>
-        <%= render 'policy_plans/partials/goal_open',
-            goal: @goals.first,
-            game_question: @next_question,
-            game_answers: @next_answers %>
+        <div id="goal-<%= @goals.first.id %>">
+          <%= render 'policy_plans/partials/goal_open',
+              goal: @goals.first,
+              game_question: @next_question,
+              game_answers: @next_answers %>
+        </div>
         <% @goals.slice(1..).each do |goal| %>
-          <%= render 'policy_plans/partials/goal_closed', goal: goal %>
+          <div id="goal-<%= goal.id %>">
+            <%= render 'policy_plans/partials/goal_closed',
+                policy_plan: @policy_plan,
+                goal: goal %>
+          </div>
         <% end %>
       </div>
     </section>

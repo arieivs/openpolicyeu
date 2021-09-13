@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about', as: :about
   get 'explore', to: 'pages#explore', as: :explore
   get 'join', to: 'volunteers#index', as: :join
+
   get 'policy_makings/:policy_making_id/choose_institution/:policy_making_institution_id', to: 'policy_makings#choose_institution', as: :pm_choose_institution
   resources :policy_makings, except: [:destroy], shallow: true do
     resources :questions, only: [:create, :edit, :update], shallow: true do
@@ -12,14 +13,18 @@ Rails.application.routes.draw do
     resources :policy_making_institutions, only: [:create, :edit, :update, :destroy]
   end
   get 'questions/:question_id/select_answer_quiz/:answer_id/', to: 'questions#select_answer_quiz', as: :select_answer_quiz
+
   get 'policy_plans/:policy_plan_id/choose_institution/:policy_plan_institution_id', to: 'policy_plans#choose_institution', as: :pp_choose_institution
   get 'policy_plans/:id/choose_gamebook', to: 'policy_plans#choose_gamebook', as: :choose_gamebook
   get 'policy_plans/:id/choose_timeline', to: 'policy_plans#choose_timeline', as: :choose_timeline
+  get 'policy_plans/:policy_plan_id/open_accordion/:goal_id', to: 'policy_plans#open_accordion', as: :open_accordion
+  get 'policy_plans/:id/close_accordion', to: 'policy_plans#close_accordion', as: :close_accordion
   resources :policy_plans, except: [:destroy], shallow: true do
     resources :policy_plans_institutions, only: [:create, :edit, :update, :destroy]
   end
   get 'policy_plans/:policy_plan_id/game_questions/:game_question_id/:game_question_index/select_answer_gamebook/:game_answer_id/', to: 'game_questions#select_answer_gamebook', as: :select_answer_gamebook
   get 'game_questions/:game_question_id/select_answer_goal/:game_answer_id', to: 'game_questions#select_answer_goal', as: :select_answer_goal
+
   resources :institutions, except: [:show, :destroy]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
