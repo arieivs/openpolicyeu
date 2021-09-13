@@ -8,8 +8,8 @@
     </div>
     <div class="<%= (game_question.id == game_questions[-1].id) ? '' : 'timestep-line' %>"></div>
   </div>
-  <div>
-    <div class="timestep-card card-all my-3">
+  <div class="timestep-card">
+    <div class="card-all my-3">
       <div class="px-4">
         <h3><%= game_question.name %></h3>
         <p><%= game_question.context %></p>
