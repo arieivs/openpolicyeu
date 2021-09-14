@@ -1,5 +1,9 @@
 class PolicyPlansController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show, :choose_institution, :choose_gamebook, :choose_timeline, :open_accordion, :close_accordion]
+  skip_before_action :authenticate_user!, only: [:index, :show, :choose_institution, :choose_gamebook, :choose_timeline, :open_accordion, :close_accordion]
+
+  def index
+    @policy_plans = PolicyPlan.all
+  end
 
   def show
     set_policy_plan
