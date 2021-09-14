@@ -14,4 +14,8 @@ class PolicyMaking < ApplicationRecord
   def question(scope)
     questions.find_by(scope: scope)
   end
+
+  def to_s
+    "#{topic} in #{country}"
+  end
 end
