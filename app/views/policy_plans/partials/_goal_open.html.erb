@@ -8,12 +8,14 @@
     </div>
     <div class="container-short">
       <p><%= goal.description %></p>
-      <p class="mt-5"><strong><%= game_question.question %></strong></p>
-      <div id="answers-question-<%= game_question.id %>">
-        <%= render 'policy_plans/partials/answer_before_goal',
-            game_question: game_question,
-            game_answers: game_answers %>
-      </div>
+      <% if game_question %>
+        <p class="mt-5"><strong><%= game_question.question %></strong></p>
+        <div id="answers-question-<%= game_question.id %>">
+          <%= render 'policy_plans/partials/answer_before_goal',
+              game_question: game_question,
+              game_answers: game_answers %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
