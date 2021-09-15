@@ -91,6 +91,7 @@ class PolicyPlansController < ApplicationController
   end
 
   def prepare_data_for_policy_plan_edit
+    @policy_making = @policy_plan.policy_making
     @policy_plan_institutions = PolicyPlanInstitution.where(policy_plan: @policy_plan)
     @new_policy_plan_institution = PolicyPlanInstitution.new
     @new_institution = Institution.new

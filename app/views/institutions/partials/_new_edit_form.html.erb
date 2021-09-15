@@ -1,8 +1,8 @@
 <%= simple_form_for institution, remote: true do |f| %>
-  <% if policy_making %>
+  <% if !policy_making.nil? %>
     <%= f.input :country_id, as: :hidden, input_html: { value: policy_making.country.id}  %>
-  <% elsif policy_plan %>
-    <%= f.input :country_id, as: :hidden, input_html: { value: policy_plan.country.id}  %>
+  <% elsif !policy_plan.nil? %>
+    <%= f.input :country_id, as: :hidden, input_html: { value: policy_plan.policy_making.country.id}  %>
   <% else %>
     <%= f.input :country_id, placeholder: "Choose a country/region", required: true, collection: Country.all %>
   <% end %>
@@ -14,10 +14,10 @@
   <%= f.input :video_source, label: "Who’s the creator/holds the rights to the video?", hint: "Make sure to add a source if you added a video", required: false %>
   <!-- Ambassador once we have them -->
   <%= f.input :logo, as: :file, label:"Add a logo", required: true %>
-  <% if policy_making %>
-    <%= f.input :policy_making_id, as: :hidden, input_html: { value: policy_making.id } %>
-  <% elsif policy_plan %>
+  <% if !policy_plan.nil? %>
     <%= f.input :policy_plan_id, as: :hidden, input_html: { value: policy_plan.id }  %>
+  <% elsif !policy_making.nil? %>
+    <%= f.input :policy_making_id, as: :hidden, input_html: { value: policy_making.id } %>
   <% end %>
   <%= f.button :submit, "SAVE", class: 'btn-all btn-prim' %>
 <% end %>
