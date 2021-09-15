@@ -1,4 +1,4 @@
-<%= simple_form_for policy_plan do |f| %>
+<%= simple_form_for policy_plan, remote: true do |f| %>
   <div class="pm-form">
     <%= f.input :policy_making_id, required: true, collection: PolicyMaking.all %>
   </div>
