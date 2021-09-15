@@ -7,11 +7,7 @@ class GameQuestionsController < ApplicationController
     set_data_for_answer_after
     # for showing next question:
     set_data_for_next_question
-    if @next_question.nil?
-      render :select_answer_last_question_gamebook
-    else
-      render :select_answer_next_question_gamebook
-    end
+    render :select_answer_gamebook
     # then it renders game_questions > select_answer_gamebook.js.erb automatically
   end
 
