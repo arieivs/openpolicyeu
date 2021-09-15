@@ -22,6 +22,14 @@ class PolicyPlanInstitutionsController < ApplicationController
     respond_to { |format| format.js }
   end
 
+  def destroy
+    @policy_plan_institution = PolicyPlanInstitution.find(params[:id])
+    @policy_plan = @policy_plan_institution.policy_plan
+    @policy_plan_institution.destroy
+    @policy_plan_institutions = PolicyPlanInstitution.where(policy_plan: @policy_plan)
+    respond_to { |format| format.js }
+  end
+
   private
 
   def ppi_params
