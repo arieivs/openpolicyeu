@@ -18,6 +18,10 @@
       <div id="new-ppi-form">
         <%= render 'policy_plans/partials/new_policy_plan_institution', policy_plan: @policy_plan, policy_plan_institution: @new_policy_plan_institution %>
       </div>
+      <p>Can't find the Institution you are looking for? <strong>Add a new Institution:</strong></p>
+      <div id="new-institution-form">
+        <%= render 'institutions/partials/new_edit_form', institution: @institution, policy_plan: @policy_plan %>
+      </div>
     </div>
   </section>
 </main>

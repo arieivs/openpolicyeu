@@ -14,7 +14,9 @@ class InstitutionsController < ApplicationController
       @institution.save
       @new_policy_making_institution = PolicyMakingInstitution.new
       @new_institution = Institution.new
-      respond_to { |format| format.js { flash[:notice] = "Institution created! It's ready to be selected above." } }
+      respond_to do |format|
+        format.js { render :create_from_pm, flash.now[:notice] = ["Institution created! It's ready to be selected above."] }
+      end
     else
       @institution.save ? (redirect_to institutions_path) : (render :new)
     end
@@ -38,5 +40,4 @@ class InstitutionsController < ApplicationController
   def institution_params
     params.require(:institution).permit(:country_id, :name, :website_url, :video_url, :video_alt_text, :video_source, :ambassador_id, :logo)
   end
-
 end
