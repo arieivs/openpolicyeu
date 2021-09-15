@@ -2,8 +2,8 @@
   <div class="px-4">
     <h3><mark class="mark-blue"><%= ppi.institution.name %></mark></h3>
     <p><%= ppi.description %></p>
-    <%= link_to edit_policy_plan_institution_path(ppi), remote: true do %>
-      <button class='btn-all btn-sec'>EDIT</button>
+    <%= link_to edit_policy_plan_institution_path(ppi), class: 'btn-link', remote: true do %>
+      <button class='btn-all btn-sec mr-3'>EDIT</button>
     <% end %>
     <%= link_to policy_plan_institution_path(ppi),
         method: :delete,
