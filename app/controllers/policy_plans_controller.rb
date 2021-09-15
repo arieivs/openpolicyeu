@@ -30,9 +30,13 @@ class PolicyPlansController < ApplicationController
 
   def edit
     set_policy_plan
+    prepare_data_for_policy_plan_edit
   end
 
   def update
+    set_policy_plan
+    @policy_plan.update(policy_plan_params)
+    respond_to { |format| format.js }
   end
 
   def choose_institution
@@ -84,5 +88,11 @@ class PolicyPlansController < ApplicationController
 
   def policy_plan_params
     params.require(:policy_plan).permit(:policy_making_id, :name, :short_description, :content, :strategy, :video_url, :video_alt_text, :video_source, :ambassador_id)
+  end
+
+  def prepare_data_for_policy_plan_edit
+    @policy_plan_institutions = PolicyPlanInstitution.where(policy_plan: @policy_plan)
+    @new_policy_plan_institution = PolicyPlanInstitution.new
+    @new_institution = Institution.new
   end
 end
