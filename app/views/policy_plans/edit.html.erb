@@ -14,6 +14,10 @@
       <div id="ppi-cards">
         <%= render 'policy_plans/partials/ppi_cards', policy_plan_institutions: @policy_plan_institutions %>
       </div>
+      <h3 class="mt-5"><mark class="mark-blue">Add an Institution</mark></h3>
+      <div id="new-ppi-form">
+        <%= render 'policy_plans/partials/new_policy_plan_institution', policy_plan: @policy_plan, policy_plan_institution: @new_policy_plan_institution %>
+      </div>
     </div>
   </section>
 </main>

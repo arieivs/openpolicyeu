@@ -1,11 +1,6 @@
-<%= simple_form_for ([policy_making, policy_making_institution]), remote: true do |f| %>
-
+<%= simple_form_for ([policy_plan, policy_plan_institution]), remote: true do |f| %>
   <%= f.input :institution_id, collection: Institution.all, label: "Browse through institutions", required: true %>
-
   <%= f.input :description, as: :text, :input_html => { :cols => 5, :rows => 5 } %>
   <!-- Number of characters (min/max) for "description" to be implemented later -->
-
   <%= f.button :submit, "SAVE", class: 'btn-all btn-prim' %>
-
 <% end %>
-
