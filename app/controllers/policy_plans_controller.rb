@@ -28,6 +28,13 @@ class PolicyPlansController < ApplicationController
     end
   end
 
+  def edit
+    set_policy_plan
+  end
+
+  def update
+  end
+
   def choose_institution
     # when the user clicks in one of the institutions cards
     # we call this method and pass the needed ids in the params
