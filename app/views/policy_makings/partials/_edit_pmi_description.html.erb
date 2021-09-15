@@ -1,6 +1,10 @@
-<h3><mark class="mark-blue"><%= policy_making_institution.institution.name %></mark></h3>
-<%= simple_form_for policy_making_institution, remote: true do |f| %>
-  <%= f.input :description, as: :text, :input_html => { :cols => 5, :rows => 5 } %>
-  <!-- Number of characters (min/max) for "description" to be implemented later -->
-  <%= f.button :submit, "SAVE", class: 'btn-all btn-prim' %>
-<% end %>
+<div class="card-all my-3">
+  <div class="px-4">
+    <h3><mark class="mark-blue"><%= policy_making_institution.institution.name %></mark></h3>
+    <%= simple_form_for policy_making_institution, remote: true do |f| %>
+      <%= f.input :description, as: :text, :input_html => { :cols => 5, :rows => 5 } %>
+      <!-- Number of characters (min/max) for "description" to be implemented later -->
+      <%= f.button :submit, "SAVE", class: 'btn-all btn-prim' %>
+    <% end %>
+  </div>
+</div>
