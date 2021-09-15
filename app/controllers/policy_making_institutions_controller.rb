@@ -1,5 +1,4 @@
 class PolicyMakingInstitutionsController < ApplicationController
-
   def create
     @policy_making = PolicyMaking.find(params[:policy_making_id])
     @institution = Institution.find(params[:policy_making_institution][:institution_id])
