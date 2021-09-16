@@ -38,15 +38,9 @@
   <section class="py-5">
     <div class="container">
       <h2><mark class="mark-yllw">Gamebook</mark></h2>
-      <% @game_questions.each do |game_question| %>
-        <div class="card-all my-3">
-          <div class="px-4">
-            <div id="game_question-<%= game_question.id %>">
-              <%= render 'policy_plans/partials/show_game_question_edit_pp', game_question: game_question %>
-            </div>
-          </div>
-        </div>
-      <% end %>
+      <div id="game_questions">
+        <%= render 'policy_plans/partials/gamebook_edit_pp', game_questions: @game_questions %>
+      </div>
     </div>
   </section>
 </main>

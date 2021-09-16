@@ -13,6 +13,14 @@ class GameQuestionsController < ApplicationController
     respond_to { |format| format.js }
   end
 
+  def destroy
+    @game_question = GameQuestion.find(params[:id])
+    @policy_plan = @game_question.policy_plan
+    @game_question.destroy
+    set_game_questions
+    respond_to { |format| format.js }
+  end
+
   def select_answer_gamebook
     # when the user clicks in one of the answers from the Gamebook
     # for showing if the answer is right or wrong + explanation:
@@ -35,6 +43,11 @@ class GameQuestionsController < ApplicationController
     params.require(:game_question).permit(:name, :date, :order, :context, :question, :policy_plan_id)
   end
 
+  def set_game_questions
+    @game_questions = GameQuestion.where(policy_plan: @policy_plan)
+    @game_questions = @policy_plan.strategy ? @game_questions.order(:order) : @game_questions.order(:date)
+  end
+
   def set_data_for_answer_after
     @game_question = GameQuestion.find(params[:game_question_id])
     @game_answers = GameAnswer.where(game_question: @game_question)
@@ -43,8 +56,7 @@ class GameQuestionsController < ApplicationController
 
   def set_data_for_next_question
     @policy_plan = PolicyPlan.find(params[:policy_plan_id])
-    @game_questions = GameQuestion.where(policy_plan: @policy_plan)
-    @game_questions = @policy_plan.strategy ? @game_questions.order(:order) : @game_questions.order(:date)
+    set_game_questions
     @game_question_index = params[:game_question_index].to_i + 1
     @next_question = @game_questions[@game_question_index]
     @next_answers = GameAnswer.where(game_question: @next_question)

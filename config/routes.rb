@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :policy_plans, except: [:destroy], shallow: true do
     resources :policy_plan_institutions, only: [:create, :edit, :update, :destroy]
     resources :timesteps, only: [:create, :edit, :update, :destroy]
-    resources :game_questions, only: [:create, :edit, :update], shallow: true do
+    resources :game_questions, only: [:create, :edit, :update, :destroy], shallow: true do
       resources :game_answers, only: [:create, :edit, :update, :destroy]
     end
   end
