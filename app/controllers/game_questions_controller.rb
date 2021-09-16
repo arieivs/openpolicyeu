@@ -22,6 +22,7 @@ class GameQuestionsController < ApplicationController
     @game_questions.each do |game_question|
       @game_answers[game_question.id] = GameAnswer.where(game_question: game_question)
     end
+    @new_game_answer = GameAnswer.new
     respond_to { |format| format.js }
   end
 
