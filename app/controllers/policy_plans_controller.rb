@@ -95,5 +95,7 @@ class PolicyPlansController < ApplicationController
     @policy_plan_institutions = PolicyPlanInstitution.where(policy_plan: @policy_plan)
     @new_policy_plan_institution = PolicyPlanInstitution.new
     @new_institution = Institution.new
+    @timesteps = Timestep.where(policy_plan: @policy_plan).order(:date)
+    @new_timestep = Timestep.new
   end
 end
