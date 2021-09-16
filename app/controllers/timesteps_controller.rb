@@ -1,5 +1,12 @@
 class TimestepsController < ApplicationController
   def create
+    @timestep = Timestep.new(timestep_params)
+    @policy_plan = PolicyPlan.find(params[:policy_plan_id])
+    @timestep.policy_plan = @policy_plan
+    @timestep.save
+    @timesteps = Timestep.where(policy_plan: @policy_plan).order(:date)
+    @new_timestep = Timestep.new
+    respond_to { |format| format.js }
   end
 
   def edit
