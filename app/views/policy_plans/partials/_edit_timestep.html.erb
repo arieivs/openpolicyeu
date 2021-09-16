@@ -1,0 +1,8 @@
+<div class="card-all my-3">
+  <%= simple_form_for timestep, remote: true do |f| %>
+    <%= f.input :date, required: true %>
+    <%= f.input :name, required: true %>
+    <%= f.input :description, as: :text, label: "Description", required: true, :input_html => { :cols => 5, :rows => 5 } %>
+    <%= f.button :submit, "Save", class: 'btn-all btn-prim' %>
+  <% end %>
+</div>

@@ -1,33 +1,35 @@
 <div class="container">
   <h2><mark class="mark-yllw">Timeline</mark></h2>
   <% timesteps.each do |timestep| %>
-    <div class="d-flex timestep">
-      <div class="timestep-date">
-        <p><%= timestep.date.strftime('%d %b %Y') %></p>
-      </div>
-      <div class="timestep-separator">
-        <div class="timestep-circle-outer">
-          <div class="timestep-circle-inner"></div>
+    <div id="timestep-<%= timestep.id %>">
+      <div class="d-flex timestep">
+        <div class="timestep-date">
+          <p><%= timestep.date.strftime('%d %b %Y') %></p>
         </div>
-        <div class="<%= (timestep.id == timesteps[-1].id) ? '' : 'timestep-line' %>"></div>
-      </div>
-      <div class="timestep-card card-all my-3">
-        <div class="px-4">
-          <h3><%= timestep.name %></h3>
-          <p><%= timestep.description %></p>
-          <% if user_signed_in? %>
-            <div class="d-flex">
-              <%= link_to edit_timestep_path(timestep) do %>
-                <button class="btn-all btn-sec my-2 mr-3">Edit</button>
-              <% end %>
-              <%= link_to timestep_path(timestep),
-                  method: :delete,
-                  data: { confirm: "Are you sure you want to delete this step?" },
-                  remote: true do %>
-                <button class='btn-all btn-sec my-2'>Remove</button>
-              <% end %>
-            </div>
-          <% end %>
+        <div class="timestep-separator">
+          <div class="timestep-circle-outer">
+            <div class="timestep-circle-inner"></div>
+          </div>
+          <div class="<%= (timestep.id == timesteps[-1].id) ? '' : 'timestep-line' %>"></div>
+        </div>
+        <div class="timestep-card card-all my-3">
+          <div class="px-4">
+            <h3><%= timestep.name %></h3>
+            <p><%= timestep.description %></p>
+            <% if user_signed_in? %>
+              <div class="d-flex">
+                <%= link_to edit_timestep_path(timestep), remote: true do %>
+                  <button class="btn-all btn-sec my-2 mr-3">Edit</button>
+                <% end %>
+                <%= link_to timestep_path(timestep),
+                    method: :delete,
+                    data: { confirm: "Are you sure you want to delete this step?" },
+                    remote: true do %>
+                  <button class='btn-all btn-sec my-2'>Remove</button>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
