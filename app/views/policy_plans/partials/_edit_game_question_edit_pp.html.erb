@@ -1,6 +1,6 @@
 <%= simple_form_for game_question, remote: true do |f| %>
   <% if policy_plan.strategy %>
-    <%= f.input :order, required: true %>
+    <%= f.input :order, required: true, hint: 'It must be the same as for the correspondent goal! You cannot have two questions with the same order.' %>
   <% else %>
     <%= f.input :date, required: true %>
   <% end %>

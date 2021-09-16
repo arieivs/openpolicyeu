@@ -105,7 +105,7 @@ class PolicyPlansController < ApplicationController
       @game_answers[game_question.id] = GameAnswer.where(game_question: game_question)
     end
     @new_game_answer = GameAnswer.new
-    @goals = Goal.where(policy_plan: @policy_plan)
+    @goals = Goal.where(policy_plan: @policy_plan).order(:order)
     @goals_n_games = []
     if @policy_plan.strategy
       @goals.each do |goal|
