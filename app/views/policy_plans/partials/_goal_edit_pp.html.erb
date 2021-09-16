@@ -1,0 +1,12 @@
+<h3 class="mt-2"><strong><%= goal.name %></strong></h3>
+<p><%= goal.description %></p>
+<%= link_to edit_goal_path(goal), remote: true, class: 'btn-link' do %>
+  <button class="btn-all btn-sec my-2 mr-3">Edit</button>
+<% end %>
+<%= link_to goal_path(goal),
+    method: :delete,
+    data: { confirm: "Are you sure you want to delete this goal?" },
+    remote: true,
+    class: 'btn-link' do %>
+  <button class="btn-all btn-sec my-2">Remove</button>
+<% end %>

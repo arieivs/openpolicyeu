@@ -24,23 +24,34 @@
       </div>
     </div>
   </section>
-  <section class="py-5">
-    <div id="timeline">
-      <%= render 'policy_plans/partials/timeline', timesteps: @timesteps %>
-    </div>
-    <div class="container">
-      <h3 class="mt-5"><mark class="mark-blue">Add a step to the timeline</mark></h3>
-      <div id="new-timestep">
-        <%= render 'policy_plans/partials/new_timestep', policy_plan: @policy_plan, new_timestep: @new_timestep %>
+  <% if @policy_plan.strategy %>
+    <section class="py-5">
+      <div class="container">
+        <h2><mark class="mark-yllw">Goals</mark></h2>
+        <div id="goals">
+          <%= render 'policy_plans/partials/goals_edit_pp', goals_n_games: @goals_n_games, new_game_answer: @new_game_answer %>
+        </div>
       </div>
-    </div>
-  </section>
-  <section class="py-5">
-    <div class="container">
-      <h2><mark class="mark-yllw">Gamebook</mark></h2>
-      <div id="game_questions">
-        <%= render 'policy_plans/partials/gamebook_edit_pp', game_questions: @game_questions, game_answers: @game_answers, new_game_answer: @new_game_answer %>
+    </section>
+  <% else %>
+    <section class="py-5">
+      <div id="timeline">
+        <%= render 'policy_plans/partials/timeline', timesteps: @timesteps %>
       </div>
-    </div>
-  </section>
+      <div class="container">
+        <h3 class="mt-5"><mark class="mark-blue">Add a step to the timeline</mark></h3>
+        <div id="new-timestep">
+          <%= render 'policy_plans/partials/new_timestep', policy_plan: @policy_plan, new_timestep: @new_timestep %>
+        </div>
+      </div>
+    </section>
+    <section class="py-5">
+      <div class="container">
+        <h2><mark class="mark-yllw">Gamebook</mark></h2>
+        <div id="game_questions">
+          <%= render 'policy_plans/partials/gamebook_edit_pp', game_questions: @game_questions, game_answers: @game_answers, new_game_answer: @new_game_answer %>
+        </div>
+      </div>
+    </section>
+  <% end %>
 </main>
