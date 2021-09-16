@@ -100,5 +100,10 @@ class PolicyPlansController < ApplicationController
     @game_questions = GameQuestion.where(policy_plan: @policy_plan)
     @game_questions = @policy_plan.strategy ? @game_questions.order(:order) : @game_questions.order(:date)
     @new_game_question = GameQuestion.new
+    @game_answers = {}
+    @game_questions.each do |game_question|
+      @game_answers[game_question.id] = GameAnswer.where(game_question: game_question)
+    end
+    @new_game_answer = GameAnswer.new
   end
 end
