@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'policy_makings/:policy_making_id/choose_institution/:policy_making_institution_id', to: 'policy_makings#choose_institution', as: :pm_choose_institution
   resources :policy_makings, except: [:destroy], shallow: true do
     resources :questions, only: [:create, :edit, :update], shallow: true do
-      resources :answers, only: [:create, :edit, :update]
+      resources :answers, only: [:create, :edit, :update, :destroy]
     end
     resources :policy_making_institutions, only: [:create, :edit, :update, :destroy]
   end

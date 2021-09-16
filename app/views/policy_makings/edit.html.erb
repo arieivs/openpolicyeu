@@ -7,10 +7,10 @@
         <%= render 'policy_makings/partials/edit_policy_making', policy_making: @policy_making %>
       </div>
       <h3 class="mt-5"><mark class="mark-blue">Question on "How does it work?"</mark></h3>
+      <div id="create-content-question">
+        <%= render 'policy_makings/partials/create_question', policy_making: @policy_making, question_scope: "content", question: @question %>
+      </div>
       <div id="content-question">
-        <div id="create-content-question">
-          <%= render 'policy_makings/partials/create_question', policy_making: @policy_making, question_scope: "content", question: @question %>
-        </div>
         <%= render 'policy_makings/partials/show_question', policy_making: @policy_making, question_scope: "content", new_answer: @new_answer %>
       </div>
     </div>
@@ -30,10 +30,10 @@
         <%= render 'institutions/partials/new_edit_form', institution: @institution, policy_making: @policy_making, policy_plan: nil %>
       </div>
       <h3 class="mt-5"><mark class="mark-blue">Question on the Institutions</mark></h3>
+      <div id="create-institutions-question">
+        <%= render 'policy_makings/partials/create_question', policy_making: @policy_making, question_scope: "institutions", question: @question %>
+      </div>
       <div id="institutions-question">
-        <div id="create-institutions-question">
-          <%= render 'policy_makings/partials/create_question', policy_making: @policy_making, question_scope: "institutions", question: @question %>
-        </div>
         <%= render 'policy_makings/partials/show_question', policy_making: @policy_making, question_scope: "institutions", new_answer: @new_answer %>
       </div>
     </div>
