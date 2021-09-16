@@ -1,0 +1,5 @@
+<%= simple_form_for game_answer, remote: true do |f| %>
+  <%= f.input :answer, required: true %>
+  <%= f.input :explanation, required: true, as: :text, :input_html => { :cols => 5, :rows => 5 } %>
+  <%= f.button :submit, "SAVE", class: 'btn-all btn-prim' %>
+<% end %>
