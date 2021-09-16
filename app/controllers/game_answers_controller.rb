@@ -1,4 +1,14 @@
 class GameAnswersController < ApplicationController
+  def create
+    @game_answer = GameAnswer.new(game_answer_params)
+    @game_question = GameQuestion.find(params[:game_question_id])
+    @game_answer.game_question = @game_question
+    @game_answer.save
+    @game_answers = GameAnswer.where(game_question: @game_question)
+    @new_game_answer = GameAnswer.new
+    respond_to { |format| format.js }
+  end
+
   def edit
     @game_answer = GameAnswer.find(params[:id])
     respond_to { |format| format.js }

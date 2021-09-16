@@ -1,0 +1,2 @@
+document.getElementById('game_answers-<%= @game_question.id %>').innerHTML = "<%= j render 'policy_plans/partials/game_answers_edit_pp', game_answers: @game_answers %>";
+document.getElementById('new_game_answer').innerHTML = "<%= j render 'policy_plans/partials/new_game_answer', game_question: @game_question, new_game_answer: @new_game_answer %>";
