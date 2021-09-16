@@ -1,0 +1,10 @@
+<div class="d-flex align-items-center">
+  <p class="blue"><strong><%= game_question.date.strftime('%d %b %Y') %></strong></p>
+  <div class="timestep-circle-inner mx-3"></div>
+  <h3 class="m-0"><%= game_question.name %></h3>
+</div>
+<p><strong>Context:</strong> <%= game_question.context %></p>
+<p><strong>Question:</strong> <%= game_question.question %></p>
+<%= link_to edit_game_question_path(game_question), remote: true do %>
+  <button class="btn-all btn-sec">Edit</button>
+<% end %>

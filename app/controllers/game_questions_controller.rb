@@ -1,6 +1,18 @@
 class GameQuestionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:select_answer_gamebook, :select_answer_goal]
 
+  def edit
+    @game_question = GameQuestion.find(params[:id])
+    @policy_plan = @game_question.policy_plan
+    respond_to { |format| format.js }
+  end
+
+  def update
+    @game_question = GameQuestion.find(params[:id])
+    @game_question.update(game_question_params)
+    respond_to { |format| format.js }
+  end
+
   def select_answer_gamebook
     # when the user clicks in one of the answers from the Gamebook
     # for showing if the answer is right or wrong + explanation:
@@ -18,6 +30,10 @@ class GameQuestionsController < ApplicationController
   end
 
   private
+
+  def game_question_params
+    params.require(:game_question).permit(:name, :date, :order, :context, :question, :policy_plan_id)
+  end
 
   def set_data_for_answer_after
     @game_question = GameQuestion.find(params[:game_question_id])

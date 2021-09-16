@@ -97,5 +97,8 @@ class PolicyPlansController < ApplicationController
     @new_institution = Institution.new
     @timesteps = Timestep.where(policy_plan: @policy_plan).order(:date)
     @new_timestep = Timestep.new
+    @game_questions = GameQuestion.where(policy_plan: @policy_plan)
+    @game_questions = @policy_plan.strategy ? @game_questions.order(:order) : @game_questions.order(:date)
+    @new_game_question = GameQuestion.new
   end
 end

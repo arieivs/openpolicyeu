@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   resources :policy_plans, except: [:destroy], shallow: true do
     resources :policy_plan_institutions, only: [:create, :edit, :update, :destroy]
     resources :timesteps, only: [:create, :edit, :update, :destroy]
+    resources :game_questions, only: [:create, :edit, :update], shallow: true do
+      resources :game_answers, only: [:create, :edit, :update, :destroy]
+    end
   end
   get 'policy_plans/:policy_plan_id/game_questions/:game_question_id/:game_question_index/select_answer_gamebook/:game_answer_id/', to: 'game_questions#select_answer_gamebook', as: :select_answer_gamebook
   get 'game_questions/:game_question_id/select_answer_goal/:game_answer_id', to: 'game_questions#select_answer_goal', as: :select_answer_goal
