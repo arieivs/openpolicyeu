@@ -20,6 +20,14 @@ class GameAnswersController < ApplicationController
     respond_to { |format| format.js }
   end
 
+  def destroy
+    @game_answer = GameAnswer.find(params[:id])
+    @game_question = @game_answer.game_question
+    @game_answer.destroy
+    @game_answers = GameAnswer.where(game_question: @game_question)
+    respond_to { |format| format.js }
+  end
+
   private
 
   def game_answer_params
