@@ -18,6 +18,10 @@ class GameQuestionsController < ApplicationController
     @policy_plan = @game_question.policy_plan
     @game_question.destroy
     set_game_questions
+    @game_answers = {}
+    @game_questions.each do |game_question|
+      @game_answers[game_question.id] = GameAnswer.where(game_question: game_question)
+    end
     respond_to { |format| format.js }
   end
 
