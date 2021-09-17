@@ -120,7 +120,7 @@ class PolicyPlansController < ApplicationController
         @goals_n_games.push({ goal: goal, game_question: game_question, game_answers: game_answers })
       end
       @new_goal = Goal.new
-      @new_goal_order = @goals.last.order + 1
+      @new_goal_order = @goals.empty? ? 1 : @goals.last.order + 1
     end
   end
 end

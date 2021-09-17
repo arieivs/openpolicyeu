@@ -43,6 +43,7 @@ class GoalsController < ApplicationController
       game_answers = GameAnswer.where(game_question: game_question)
       @goals_n_games.push({ goal: goal, game_question: game_question, game_answers: game_answers })
     end
+    @new_game_question = GameQuestion.new
     @new_game_answer = GameAnswer.new
   end
 end

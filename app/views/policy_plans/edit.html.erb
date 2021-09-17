@@ -2,7 +2,7 @@
   <section class="py-5">
     <div class="container">
       <h1>Edit <%= @policy_plan.name %></h1>
-      <h2><mark class="mark-yllw">Details</mark></h2>
+      <h2><mark class="mark-yllw"><%= @policy_plan.strategy ? 'Strategy' : 'Policy Plan' %> Details</mark></h2>
       <div id="edit-policy-plan">
         <%= render 'policy_plans/partials/new_edit_form', policy_plan: @policy_plan %>
       </div>

@@ -3,7 +3,6 @@ class PolicyMakingsController < ApplicationController
 
   def index
     @policy_makings = PolicyMaking.all
-
     # For the filters (to search for a policymaking in a specific country or topic)
     @policy_making = PolicyMaking.new
     if params[:policy_making].present?
@@ -11,6 +10,10 @@ class PolicyMakingsController < ApplicationController
       topic_id = params[:policy_making][:topic_id]
       @policy_makings = @policy_makings.where(country_id: country_id) unless country_id.empty?
       @policy_makings = @policy_makings.where(topic_id: topic_id) unless topic_id.empty?
+    end
+    @policy_plans_per_pm = {}
+    @policy_makings.each do |pm|
+      @policy_plans_per_pm[pm.id] = PolicyPlan.where(policy_making: pm)
     end
   end
 
