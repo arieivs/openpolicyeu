@@ -41,7 +41,7 @@ class GameQuestionsController < ApplicationController
     # for gamebook/policy plan
     set_game_questions
     set_game_answers
-    @new_game_answer = GameAnswer.new # should this be nil?
+    @new_game_answer = GameAnswer.new
     respond_to { |format| format.js }
   end
 
