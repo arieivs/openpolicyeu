@@ -1,1 +1,5 @@
-document.getElementById('game_questions').innerHTML = "<%= j render 'policy_plans/partials/gamebook_edit_pp', game_questions: @game_questions, game_answers: @game_answers, new_game_answer: @new_game_answer %>";
+<% if @policy_plan.strategy %>
+  document.getElementById('goal-game-<%= @goal.id %>').innerHTML = "<%= j render 'policy_plans/partials/goal_game_edit_pp', game_question: nil, game_answers: nil, new_game_answer: @new_game_answer %>";
+<% else %>
+  document.getElementById('game_questions').innerHTML = "<%= j render 'policy_plans/partials/gamebook_edit_pp', game_questions: @game_questions, game_answers: @game_answers, new_game_answer: @new_game_answer %>";
+<% end %>

@@ -16,13 +16,18 @@ class GameQuestionsController < ApplicationController
   def destroy
     @game_question = GameQuestion.find(params[:id])
     @policy_plan = @game_question.policy_plan
+    # for goals/strategy
+    if @policy_plan.strategy
+      @goal = Goal.where(policy_plan: @policy_plan).find_by(order: @game_question.order)
+    end
     @game_question.destroy
+    # for gamebook/policy plan
     set_game_questions
     @game_answers = {}
     @game_questions.each do |game_question|
       @game_answers[game_question.id] = GameAnswer.where(game_question: game_question)
     end
-    @new_game_answer = GameAnswer.new
+    @new_game_answer = GameAnswer.new # should this be nil?
     respond_to { |format| format.js }
   end
 

@@ -110,7 +110,8 @@ class PolicyPlansController < ApplicationController
     if @policy_plan.strategy
       @goals.each do |goal|
         game_question = @game_questions.find_by(order: goal.order)
-        @goals_n_games.push({ goal: goal, game_question: game_question, game_answers: @game_answers[game_question.id] })
+        game_answers = game_question.nil? ? nil : @game_answers[game_question.id]
+        @goals_n_games.push({ goal: goal, game_question: game_question, game_answers: game_answers })
       end
     end
   end

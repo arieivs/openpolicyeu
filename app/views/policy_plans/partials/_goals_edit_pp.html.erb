@@ -4,19 +4,9 @@
       <div id="goal-<%= goal_n_game[:goal].id %>">
         <%= render 'policy_plans/partials/goal_edit_pp', goal: goal_n_game[:goal] %>
       </div>
-      <% if goal_n_game[:game_question].nil? %>
-
-      <% else %>
-        <div id="game_question-<%= goal_n_game[:game_question].id %>">
-          <%= render 'policy_plans/partials/game_question_edit_pp', game_question: goal_n_game[:game_question] %>
-        </div>
-        <div id="game_answers-<%= goal_n_game[:game_question].id %>">
-          <%= render 'policy_plans/partials/game_answers_edit_pp', game_answers: goal_n_game[:game_answers] %>
-        </div>
-        <div id="new_game_answer">
-          <%= render 'policy_plans/partials/new_game_answer', game_question: goal_n_game[:game_question], new_game_answer: new_game_answer %>
-        </div>
-      <% end %>
+      <div id="goal-game-<%= goal_n_game[:goal].id %>">
+        <%= render 'policy_plans/partials/goal_game_edit_pp', game_question: goal_n_game[:game_question], game_answers: goal_n_game[:game_answers], new_game_answer: new_game_answer %>
+      </div>
     </div>
   </div>
 <% end %>
