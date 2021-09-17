@@ -2,10 +2,17 @@
   <div class="card-all my-3">
     <div class="px-4">
       <div id="goal-<%= goal_n_game[:goal].id %>">
-        <%= render 'policy_plans/partials/goal_edit_pp', goal: goal_n_game[:goal] %>
+        <%= render 'policy_plans/partials/goal_edit_pp',
+            goal: goal_n_game[:goal] %>
       </div>
       <div id="goal-game-<%= goal_n_game[:goal].id %>">
-        <%= render 'policy_plans/partials/goal_game_edit_pp', game_question: goal_n_game[:game_question], game_answers: goal_n_game[:game_answers], new_game_answer: new_game_answer %>
+        <%= render 'policy_plans/partials/goal_game_edit_pp',
+            policy_plan: policy_plan,
+            goal: goal_n_game[:goal],
+            game_question: goal_n_game[:game_question],
+            new_game_question: new_game_question,
+            game_answers: goal_n_game[:game_answers],
+            new_game_answer: new_game_answer %>
       </div>
     </div>
   </div>

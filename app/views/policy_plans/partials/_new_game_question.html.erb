@@ -1,5 +1,7 @@
-<%= simple_form_for game_question, remote: true do |f| %>
-  <% if !policy_plan.strategy %>
+<%= simple_form_for [policy_plan, new_game_question], remote: true do |f| %>
+  <% if policy_plan.strategy %>
+    <%= f.input :order, as: :hidden, input_html: { value: new_game_question_order}  %>
+  <% else %>
     <%= f.input :date, required: true %>
   <% end %>
   <%= f.input :name, required: true %>

@@ -1,6 +1,5 @@
 <%= simple_form_for goal, remote: true do |f| %>
   <%= f.input :name, required: true %>
   <%= f.input :description, required: true %>
-  <%= f.input :order, required: true, hint: 'This will determine the order of appearance. It must be the same as for the correspondent question. You cannot have two goals with the same order.' %>
   <%= f.button :submit, "SAVE", class: 'btn-all btn-prim' %>
 <% end %>

@@ -1,6 +1,19 @@
 class GameQuestionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:select_answer_gamebook, :select_answer_goal]
 
+  def create
+    @game_question = GameQuestion.new(game_question_params)
+    @policy_plan = PolicyPlan.find(params[:policy_plan_id])
+    @game_question.policy_plan = @policy_plan
+    @game_question.save
+    @game_answers = GameAnswer.where(game_question: @game_question)
+    @new_game_answer = GameAnswer.new
+    if @policy_plan.strategy
+      @goal = Goal.where(policy_plan: @policy_plan).find_by(order: @game_question.order)
+    end
+    respond_to { |format| format.js }
+  end
+
   def edit
     @game_question = GameQuestion.find(params[:id])
     @policy_plan = @game_question.policy_plan
