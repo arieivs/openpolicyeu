@@ -31,6 +31,10 @@
         <div id="goals">
           <%= render 'policy_plans/partials/goals_edit_pp', goals_n_games: @goals_n_games, new_game_answer: @new_game_answer %>
         </div>
+        <h3 class="mt-5"><mark class="mark-blue">Add a Goal</mark></h3>
+        <div id="new-goal">
+          <%= render 'policy_plans/partials/new_goal', policy_plan: @policy_plan, new_goal: @new_goal, new_goal_order: @new_goal_order %>
+        </div>
       </div>
     </section>
   <% else %>

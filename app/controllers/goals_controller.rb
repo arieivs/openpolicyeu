@@ -1,4 +1,15 @@
 class GoalsController < ApplicationController
+  def create
+    @goal = Goal.new(goal_params)
+    @policy_plan = PolicyPlan.find(params[:policy_plan_id])
+    @goal.policy_plan = @policy_plan
+    @goal.save
+    prepare_data_for_goals_edit_pp
+    @new_goal = Goal.new
+    @new_goal_order = @goal.order + 1
+    respond_to { |format| format.js }
+  end
+
   def edit
     @goal = Goal.find(params[:id])
     respond_to { |format| format.js }
@@ -14,6 +25,17 @@ class GoalsController < ApplicationController
     @goal = Goal.find(params[:id])
     @policy_plan = @goal.policy_plan
     @goal.destroy
+    prepare_data_for_goals_edit_pp
+    respond_to { |format| format.js }
+  end
+
+  private
+
+  def goal_params
+    params.require(:goal).permit(:name, :order, :description)
+  end
+
+  def prepare_data_for_goals_edit_pp
     @goals = Goal.where(policy_plan: @policy_plan).order(:order)
     @goals_n_games = []
     @goals.each do |goal|
@@ -22,12 +44,5 @@ class GoalsController < ApplicationController
       @goals_n_games.push({ goal: goal, game_question: game_question, game_answers: game_answers })
     end
     @new_game_answer = GameAnswer.new
-    respond_to { |format| format.js }
-  end
-
-  private
-
-  def goal_params
-    params.require(:goal).permit(:name, :order, :description)
   end
 end

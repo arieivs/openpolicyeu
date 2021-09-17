@@ -91,12 +91,17 @@ class PolicyPlansController < ApplicationController
   end
 
   def prepare_data_for_policy_plan_edit
+    # Institutions
     @policy_making = @policy_plan.policy_making
     @policy_plan_institutions = PolicyPlanInstitution.where(policy_plan: @policy_plan)
     @new_policy_plan_institution = PolicyPlanInstitution.new
     @new_institution = Institution.new
-    @timesteps = Timestep.where(policy_plan: @policy_plan).order(:date)
-    @new_timestep = Timestep.new
+    # Timesteps -> only for Policy Plans
+    if !@policy_plan.strategy
+      @timesteps = Timestep.where(policy_plan: @policy_plan).order(:date)
+      @new_timestep = Timestep.new
+    end
+    # Gamebook/Questions for Goals
     @game_questions = GameQuestion.where(policy_plan: @policy_plan)
     @game_questions = @policy_plan.strategy ? @game_questions.order(:order) : @game_questions.order(:date)
     @new_game_question = GameQuestion.new
@@ -105,14 +110,17 @@ class PolicyPlansController < ApplicationController
       @game_answers[game_question.id] = GameAnswer.where(game_question: game_question)
     end
     @new_game_answer = GameAnswer.new
-    @goals = Goal.where(policy_plan: @policy_plan).order(:order)
-    @goals_n_games = []
+    # Goals -> only for Strategies
     if @policy_plan.strategy
+      @goals = Goal.where(policy_plan: @policy_plan).order(:order)
+      @goals_n_games = []
       @goals.each do |goal|
         game_question = @game_questions.find_by(order: goal.order)
         game_answers = game_question.nil? ? nil : @game_answers[game_question.id]
         @goals_n_games.push({ goal: goal, game_question: game_question, game_answers: game_answers })
       end
+      @new_goal = Goal.new
+      @new_goal_order = @goals.last.order + 1
     end
   end
 end
