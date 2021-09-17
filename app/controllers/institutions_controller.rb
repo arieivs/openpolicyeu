@@ -9,12 +9,20 @@ class InstitutionsController < ApplicationController
 
   def create
     @institution = Institution.new(institution_params)
-    if params[:institution][:policy_making_id].present? # If this action is called from PolicyMakings#edit
+    # If this action is called from PolicyMakings#edit
+    if params[:institution][:policy_making_id].present?
       @policy_making = PolicyMaking.find(params[:institution][:policy_making_id])
       @institution.save
       @new_policy_making_institution = PolicyMakingInstitution.new
       @new_institution = Institution.new
-      respond_to { |format| format.js { flash[:notice] = "Institution created! It's ready to be selected above." } }
+      respond_to { |format| format.js { flash.now[:notice] = "Institution created! It's ready to be selected above." } }
+    # If this action is called from PolicyPlans#edit
+    elsif params[:institution][:policy_plan_id].present?
+      @policy_plan = PolicyPlan.find(params[:institution][:policy_plan_id])
+      @institution.save
+      @new_policy_plan_institution = PolicyPlanInstitution.new
+      @new_institution = Institution.new
+      respond_to { |format| format.js { flash.now[:notice] = "Institution created! It's ready to be selected above." } }
     else
       @institution.save ? (redirect_to institutions_path) : (render :new)
     end
@@ -36,7 +44,6 @@ class InstitutionsController < ApplicationController
   private
 
   def institution_params
-    params.require(:institution).permit(:country_id, :name, :website_url, :video_url, :video_alt_text, :video_source, :ambassador_id)
+    params.require(:institution).permit(:country_id, :name, :website_url, :video_url, :video_alt_text, :video_source, :ambassador_id, :logo)
   end
-
 end

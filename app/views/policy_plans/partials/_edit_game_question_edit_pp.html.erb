@@ -1,0 +1,9 @@
+<%= simple_form_for game_question, remote: true do |f| %>
+  <% if !policy_plan.strategy %>
+    <%= f.input :date, required: true %>
+  <% end %>
+  <%= f.input :name, required: true %>
+  <%= f.input :context, as: :text, :input_html => { :cols => 5, :rows => 5 } %>
+  <%= f.input :question, as: :text, :input_html => { :cols => 5, :rows => 5 } %>
+  <%= f.button :submit, "SAVE", class: 'btn-all btn-prim' %>
+<% end %>

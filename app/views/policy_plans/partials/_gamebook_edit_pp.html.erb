@@ -1,0 +1,15 @@
+<% game_questions.each do |game_question| %>
+  <div class="card-all my-3">
+    <div class="px-4">
+      <div id="game_question-<%= game_question.id %>">
+        <%= render 'policy_plans/partials/game_question_edit_pp', game_question: game_question %>
+      </div>
+      <div id="game_answers-<%= game_question.id %>">
+        <%= render 'policy_plans/partials/game_answers_edit_pp', game_answers: game_answers[game_question.id] %>
+      </div>
+      <div id="new_game_answer-<%= game_question.id %>">
+        <%= render 'policy_plans/partials/new_game_answer', game_question: game_question, new_game_answer: new_game_answer %>
+      </div>
+    </div>
+  </div>
+<% end %>

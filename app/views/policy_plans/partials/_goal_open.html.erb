@@ -1,0 +1,21 @@
+<div class="card-all card-selected my-3">
+  <div class="px-4 py-3">
+    <div class="d-flex justify-content-between">
+      <h3><strong><%= goal.name %></strong></h3>
+      <%= link_to close_accordion_path(policy_plan_id: policy_plan.id, goal_id: goal.id), remote: true do %>
+        <i class="fas fa-chevron-down accordion-btn accordion-open-btn"></i>
+      <% end %>
+    </div>
+    <div class="container-short">
+      <p><%= goal.description %></p>
+      <% if game_question %>
+        <p class="mt-5"><strong><%= game_question.question %></strong></p>
+        <div id="answers-question-<%= game_question.id %>">
+          <%= render 'policy_plans/partials/answer_before_goal',
+              game_question: game_question,
+              game_answers: game_answers %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

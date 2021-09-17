@@ -1,2 +1,9 @@
-document.getElementById('new-pmi-form').innerHTML = '<%= j render 'policy_makings/partials/new_policy_making_institution', policy_making: @policy_making, policy_making_institution: @new_policy_making_institution %>';
-document.getElementById('new-institution-form').innerHTML = "<%= j render 'policy_makings/partials/new_institution', policy_making: @policy_making, institution: @new_institution %><%= j render 'shared/flashes' %>";
+<% if @policy_making.nil? && @policy_plan.nil? %>
+  console.log("I am not supposed to appear");
+<% elsif @policy_plan.nil? %>
+  document.getElementById('new-pmi-form').innerHTML = "<%= j render 'policy_makings/partials/new_policy_making_institution', policy_making: @policy_making, policy_making_institution: @new_policy_making_institution %>";
+  document.getElementById('new-institution-form').innerHTML = "<%= j render 'institutions/partials/new_edit_form', policy_making: @policy_making, institution: @new_institution, policy_plan: nil %><%= j render 'shared/flashes' %>";
+<% else %>
+  document.getElementById('new-ppi-form').innerHTML = "<%= j render 'policy_plans/partials/new_policy_plan_institution', policy_plan: @policy_plan, policy_plan_institution: @new_policy_plan_institution %>";
+  document.getElementById('new-institution-form').innerHTML = "<%= j render 'institutions/partials/new_edit_form', policy_making: @policy_making, institution: @new_institution, policy_plan: @policy_plan %><%= j render 'shared/flashes' %>";
+<% end %>

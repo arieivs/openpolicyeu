@@ -19,6 +19,15 @@ class AnswersController < ApplicationController
     respond_to { |format| format.js }
   end
 
+  def destroy
+    @answer = Answer.find(params[:id])
+    @question = @answer.question
+    @policy_making = @question.policy_making
+    @answer.destroy
+    @new_answer = Answer.new
+    respond_to { |format| format.js }
+  end
+
   private
 
   def answer_params

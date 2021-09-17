@@ -1,0 +1,10 @@
+<% game_answers.each_with_index do |game_answer, i| %>
+  <div class="card-all my-3">
+    <div class="px-4">
+      <p><strong>Answer <%= i+1 %></strong>:</p>
+      <div id="game_answer-<%= game_answer.id %>">
+        <%= render 'policy_plans/partials/game_answer_edit_pp', game_answer: game_answer %>
+      </div>
+    </div>
+  </div>
+<% end %>

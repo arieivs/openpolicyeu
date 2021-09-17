@@ -12,6 +12,10 @@ textarea {
   max-width: 75%;
 }
 
+.pm-form {
+  max-width: 40%;
+}
+
 .country-topic {
   flex-grow: 1;
 }
@@ -31,11 +35,19 @@ textarea {
   .country-topic-form {
     max-width: 100%;
   }
+
+  .pm-form {
+    max-width: 60%;
+  }
 }
 
 @media (max-width: 600px) {
   .country-topic-submit {
     align-self: start;
     margin: 0;
+  }
+
+  .pm-form {
+    max-width: 100%;
   }
 }

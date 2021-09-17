@@ -1,0 +1,15 @@
+<div class="d-flex flex-column flex-lg-row justify-content-between card-all card-large">
+  <div class="<%= policy_plan_institution.institution.video_url && !policy_plan_institution.institution.video_url.empty? ? 'container-half' : '' %> card-large-column">
+    <h3><mark class="mark-blue"><%= policy_plan_institution.institution.name %></mark></h3>
+    <p><%= policy_plan_institution.description %></p>
+    <%= link_to "Learn more", policy_plan_institution.institution.website_url, target: "_blank", class: "text-link" %>
+  </div>
+  <% if policy_plan_institution.institution.video_url && !policy_plan_institution.institution.video_url.empty?%>
+    <div class="container-half card-large-column">
+      <iframe class="video-small mt-3" src="<%= policy_plan_institution.institution.video_url %>" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+      <% if policy_plan.video_source %>
+        <p class="subtitle"><em>by <%= policy_plan_institution.institution.video_source %></em></p>
+      <% end %>
+    </div>
+  <% end %>
+</div>

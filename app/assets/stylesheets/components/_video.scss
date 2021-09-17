@@ -3,8 +3,23 @@
   height: 383px;
 }
 
+.video-small {
+  height: 250px;
+  width: 100%;
+}
+
+@media (max-width: 880px) {
+  .video-small {
+    height: 383px;
+  }
+}
+
 @media (max-width: 600px) {
   .video {
     height: 306px;
+  }
+
+  .video-small {
+    height: 250px;
   }
 }

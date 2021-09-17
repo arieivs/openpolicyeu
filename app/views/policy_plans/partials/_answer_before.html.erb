@@ -1,0 +1,8 @@
+<% game_answers.each do |game_answer| %>
+  <%= link_to select_answer_gamebook_path(policy_plan_id: policy_plan.id, game_question_id: game_question.id, game_question_index: game_question_index, game_answer_id: game_answer.id), class: 'card-answer-link', remote: true do %>
+    <div class="d-flex card-all card-answer card-clickable">
+      <i class="selector far fa-circle"></i>
+      <p><%= game_answer.answer %></p>
+    </div>
+  <% end %>
+<% end %>

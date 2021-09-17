@@ -1,0 +1,14 @@
+<div class="container d-flex">
+  <div class="row w-100 pt-4">
+    <% policy_plan_institutions.each do |ppi| %>
+      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 institutions-list">
+        <%= link_to pp_choose_institution_path(policy_plan_id: policy_plan.id, policy_plan_institution_id: ppi.id), remote: true, class: 'card-link' do %>
+          <div class="card-all card-square card-clickable <%= ppi.id == ppi_selected.id ? 'card-selected' : '' %> mx-auto">
+            <%= cl_image_tag ppi.institution.logo.key, crop: :thumb, height: 300, width: 300, class:"avatar-large" %>
+            <p><%= ppi.institution.name %></p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

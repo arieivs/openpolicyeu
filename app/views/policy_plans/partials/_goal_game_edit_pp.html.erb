@@ -1,0 +1,21 @@
+<% if game_question.nil? %>
+  <h3 class="mt-4">Add a Question:</h3>
+  <%= render 'policy_plans/partials/new_game_question',
+      policy_plan: policy_plan,
+      new_game_question: new_game_question,
+      new_game_question_order: goal.order %>
+<% else %>
+  <div id="game_question-<%= game_question.id %>">
+    <%= render 'policy_plans/partials/game_question_edit_pp',
+        game_question: game_question %>
+  </div>
+  <div id="game_answers-<%= game_question.id %>">
+    <%= render 'policy_plans/partials/game_answers_edit_pp',
+        game_answers: game_answers %>
+  </div>
+  <div id="new_game_answer-<%= game_question.id %>">
+    <%= render 'policy_plans/partials/new_game_answer',
+        game_question: game_question,
+        new_game_answer: new_game_answer %>
+  </div>
+<% end %>

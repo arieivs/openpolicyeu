@@ -1,14 +1,1 @@
-<%= simple_form_for @institution do |f| %>
-  <%= f.input :country_id, placeholder: "Choose a country/region", required: true, collection: Country.all %>
-  <%= f.input :name, label: "Name", required: true %>
-  <%= f.input :website_url, label: "Website URL", required: false %>
-  <%= f.input :video_url, label: "Video URL", required: false %>
-  <%= f.input :video_alt_text, label: "Video short description", required: false %>
-  <!-- TO DO : Number of characters (min/max) for "video_alt_text" to be implemented later -->
-  <%= f.input :video_source, label: "Who’s the creator/holds the rights to the video?", required: false %>
-  <%= f.input :ambassador_id, required: false, collection: Ambassador.all %>
-
-  <div class="btn-container"><%= f.button :submit, "SAVE", class: 'btn-all btn-yllw' %></div>
-<% end %>
-
-<!-- TO DO : attach logo (cloudinary) -->
+<%= render 'institutions/partials/new_edit_form', institution: @institution %>

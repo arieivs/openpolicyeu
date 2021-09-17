@@ -1,0 +1,49 @@
+<main>
+  <section class="py-5">
+    <div class="container">
+      <h1>Policy Plans</h1>
+      <div class="container-short text-center">
+        <% if user_signed_in? %>
+          <div class="d-flex justify-content-center align-items-center">
+            <p>Add a new Policy Plan or Strategy:</p>
+            <%= link_to new_policy_plan_path do %>
+              <button class="btn-all btn-sec mx-3">NEW</button>
+            <% end %>
+          </div>
+          <p>Or look for an existing Policy Plan or Strategy:</p>
+        <% else %>
+          <p class="mt-5">Policies are <strong>plans on how to reach certain objectives</strong>. A Public Policy (in the political/governance area) tells you not only how but also how much of public resources are used to invest in the objectives.</p>
+          <p class="mb-5">Generally speaking, a <strong>Policy</strong> is a <strong>long-term</strong> plan, while a <strong>Strategy</strong> focuses on more <strong>specific</strong> actions and <strong>short or medium-term goals</strong>.</p>
+        <% end %>
+      </div>
+      <% @policy_plans.each do |policy_plan| %>
+        <div class="card-all my-3">
+          <div class="px-4">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+              <h2 class="m-0"><strong><%= policy_plan.name %></strong></h2>
+              <div class="d-flex">
+                <p class="tag tag-light-blue mr-3"><%= policy_plan.policy_making.country.name %></p>
+                <p class="tag tag-light-blue"><%= policy_plan.policy_making.topic.name %></p>
+              </div>
+            </div>
+            <p><%= policy_plan.short_description %></p>
+            <% if user_signed_in? %>
+              <div class="d-flex">
+                <%= link_to policy_plan_path(policy_plan) do %>
+                  <button class="btn-all btn-sec my-2 mr-3">See Page</button>
+                <% end %>
+                <%= link_to edit_policy_plan_path(policy_plan) do %>
+                  <button class="btn-all btn-prim my-2">Edit</button>
+                <% end %>
+              </div>
+            <% else %>
+              <%= link_to policy_plan_path(policy_plan) do %>
+                <button class="btn-all btn-prim my-2">Learn more</button>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </section>
+</main>

@@ -70,8 +70,8 @@
           <%= cl_image_tag volunteer.photo.key, crop: :thumb, height: 300, width: 300, class:"avatar-large" %>
           <p><strong><%= volunteer.name %></strong></p>
           <p class="volunteer-role"><em><%= volunteer.role %></em></p>
-          <% if volunteer.linked_link %>
-            <%= link_to volunteer.linked_link, target:"_blank", aria_label:"LinkedIn", class:"icon-link" do %>
+          <% if volunteer.linkedin_link %>
+            <%= link_to volunteer.linkedin_link, target:"_blank", aria_label:"LinkedIn", class:"icon-link" do %>
               <i class="fab fa-linkedin"></i>
             <% end %>
           <% end %>

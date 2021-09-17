@@ -12,8 +12,16 @@ require 'open-uri'
 
 puts "Cleaning ANSWERS database..."
 Answer.destroy_all
+GameAnswer.destroy_all
 puts "Cleaning QUESTIONS database..."
 Question.destroy_all
+GameQuestion.destroy_all
+puts "Cleaning POLICY_PLANS database..."
+YoungContributor.destroy_all
+Goal.destroy_all
+Timestep.destroy_all
+PolicyPlanInstitution.destroy_all
+PolicyPlan.destroy_all
 puts "Cleaning POLICY_MAKINGS database..."
 PolicyMakingInstitution.destroy_all
 PolicyMaking.destroy_all
@@ -55,7 +63,7 @@ COUNTRIES.each do |country|
   new_country.flag.attach(io: file, filename: "flag.png", content_type: 'image/png')
   new_country.save
   3.times do
-    new_institution = Institution.new(country: new_country, name: Faker::Company.name, website_url: Faker::Internet.url, video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", video_alt_text: "bla")
+    new_institution = Institution.new(country: new_country, name: Faker::Company.name, website_url: Faker::Internet.url, video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", video_alt_text: "bla")
     file = URI.open("https://globalaccessibilitynews.com/files/2013/03/European-Commission-logo.png")
     new_institution.logo.attach(io: file, filename: "profilepic.png", content_type: 'image/png')
     new_institution.save
@@ -77,22 +85,22 @@ puts "#{Country.count} countries and #{Institution.count} institutions created! 
 
 puts "Creating policymakings..."
 pms = []
-pm = PolicyMaking.new(country: Country.first, topic: Topic.first, video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
+pm = PolicyMaking.new(country: Country.first, topic: Topic.first, video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
 pm.save
 pms.push(pm)
-pm = PolicyMaking.new(country: Country.first, topic: Topic.second, video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
+pm = PolicyMaking.new(country: Country.first, topic: Topic.second, video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
 pm.save
 pms.push(pm)
-pm = PolicyMaking.new(country: Country.second, topic: Topic.first, video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
+pm = PolicyMaking.new(country: Country.second, topic: Topic.first, video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
 pm.save
 pms.push(pm)
-pm = PolicyMaking.new(country: Country.second, topic: Topic.second, video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
+pm = PolicyMaking.new(country: Country.second, topic: Topic.second, video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
 pm.save
 pms.push(pm)
-pm = PolicyMaking.new(country: Country.third, topic: Topic.first, video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
+pm = PolicyMaking.new(country: Country.third, topic: Topic.first, video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
 pm.save
 pms.push(pm)
-pm = PolicyMaking.new(country: Country.third, topic: Topic.second, video_url: "https://www.youtube.com/watch?v=BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
+pm = PolicyMaking.new(country: Country.third, topic: Topic.second, video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
 pm.save
 pms.push(pm)
 puts "#{PolicyMaking.count} policymakings created! \n\n"
@@ -109,6 +117,7 @@ puts "#{PolicyMakingInstitution.count} policymaking_institutions created! \n\n"
 # ----------- QUESTIONS & ANSWERS ----------
 
 puts "Creating questions and answers for policymakings..."
+
 pms.each do |pm|
   content_question = Question.new(policy_making: pm, scope: 'content', question: "#{Faker::Quotes::Shakespeare.hamlet}?")
   content_question.save
@@ -125,11 +134,68 @@ pms.each do |pm|
 end
 puts "#{Question.count} questions and #{Answer.count} answers created! \n\n"
 
+# --------------- POLICY PLANS ---------------
+
+puts "Creating policy plans, time steps and gamebook..."
+pps = []
+PolicyMaking.where(topic: Topic.where(name:'Energy & Climate')).each do |pm|
+  policy_plan = PolicyPlan.new(policy_making: pm, name: Faker::Movies::HarryPotter.character, short_description: "With 75\% of its GHG emissions coming from the energy sector, the EU has launched the European Green Deal in an effort to become the first climate-neutral continent by 2050.", content: "The Deal comprises multiple strategies towards reaching climate neutrality. With the goal of cleaner energies, it is focused on ensuring a secure energy supply, promoting renewables and increasing energy efficiency. The objectives of the Deal are legally binding through the Climate Law. Supplementary strategies, such as the Climate Pact, are formulated to ensure that all member states have equal access to knowledge to guide them towards a sustainable future.", video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", strategy: false)
+  policy_plan.save
+  pps.push(policy_plan)
+  (1..10).to_a.each do |i|
+    Timestep.new(date: Faker::Date.between(from: '2014-09-23', to: '2016-09-25'), name: Faker::Movies::StarWars.character, description: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10), policy_plan: policy_plan).save
+    question = GameQuestion.new(date: Faker::Date.between(from: '2014-09-23', to: '2016-09-25'), policy_plan: policy_plan, name: Faker::Movies::StarWars.character, context: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10), question: "#{Faker::GreekPhilosophers.quote}?")
+    question.save
+    GameAnswer.new(game_question: question, answer: Faker::Movies::HarryPotter.quote, explanation: Faker::Movies::Ghostbusters.quote, right: true).save
+    rand(2..4).times do
+      GameAnswer.new(game_question: question, answer: Faker::Movies::HarryPotter.quote, explanation: Faker::Movies::Ghostbusters.quote, right: false).save
+    end
+  end
+end
+puts "#{PolicyPlan.count} policy plans with #{Timestep.count} time steps, #{Goal.count} goals, #{GameQuestion.count} gamebook questions and #{GameAnswer.count} answers created! \n\n"
+
+puts "Creating strategies, goals and quizzes..."
+PolicyMaking.where(topic: Topic.where(name:'Youth')).each do |pm|
+  policy_plan = PolicyPlan.new(policy_making: pm, name: Faker::Movies::HarryPotter.character, short_description: "With 75\% of its GHG emissions coming from the energy sector, the EU has launched the European Green Deal in an effort to become the first climate-neutral continent by 2050.", content: "The Deal comprises multiple strategies towards reaching climate neutrality. With the goal of cleaner energies, it is focused on ensuring a secure energy supply, promoting renewables and increasing energy efficiency. The objectives of the Deal are legally binding through the Climate Law. Supplementary strategies, such as the Climate Pact, are formulated to ensure that all member states have equal access to knowledge to guide them towards a sustainable future.", video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", strategy: true)
+  policy_plan.save
+  pps.push(policy_plan)
+  (1..10).to_a.each do |i|
+    Goal.new(name: Faker::Movies::StarWars.character, description: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10), policy_plan: policy_plan, order: i).save
+    question = GameQuestion.new(policy_plan: policy_plan, name: Faker::Movies::StarWars.character, context: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10), question: "#{Faker::GreekPhilosophers.quote}?", order: i)
+    question.save
+    GameAnswer.new(game_question: question, answer: Faker::Movies::HarryPotter.quote, explanation: Faker::Movies::Ghostbusters.quote, right: true).save
+    rand(2..4).times do
+      GameAnswer.new(game_question: question, answer: Faker::Movies::HarryPotter.quote, explanation: Faker::Movies::Ghostbusters.quote, right: false).save
+    end
+  end
+end
+puts "#{PolicyPlan.count} policy plans & strategies with #{Goal.count} goals, #{GameQuestion.count} gamebook questions and #{GameAnswer.count} answers in total! \n\n"
+
+puts "Creating young contributors..."
+pps.each do |pp|
+  2.times do
+    contributor = YoungContributor.new(policy_plan: pp, name: "Fridays for Future (FFF)", description: "FFF is a youth-led organised movement that started in August 2018. FFF activists have very strongly criticised the economic stimulus packages, the EU's agricultural reforms and the recent 'Fit for 55' package . Their mass protests have been crucial way for young people to enter the political sphere, and these movements continue to put pressure on  decision-makers, leading to improved communication between policymakers and youth.", website_url: "https://www.iedonline.eu/download/climate-crisis/Tenti_Duccio_IED-Climate-Paper_2019.pdf")
+    file = URI.open("https://globalaccessibilitynews.com/files/2013/03/European-Commission-logo.png")
+    contributor.logo.attach(io: file, filename: "logo.png", content_type: 'image/png')
+    contributor.save
+  end
+end
+puts "#{YoungContributor.count} young contributors created! \n\n"
+
+puts "Associating institutions to policyplans..."
+pps.each do |pp|
+  institutions = Institution.where(country: pp.policy_making.country)
+  institutions.each do |i|
+    PolicyPlanInstitution.new(policy_plan: pp, institution: i, description: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10)).save
+  end
+end
+puts "#{PolicyPlanInstitution.count} policy_plan_institutions created! \n\n"
+
 # --------------- VOLUNTEERS ---------------
 
 puts "Creating volunteers..."
 5.times do
-  new_volunteer = Volunteer.new(name: Faker::Superhero.name, role: Faker::Superhero.power, linked_link:"")
+  new_volunteer = Volunteer.new(name: Faker::Superhero.name, role: Faker::Superhero.power, linkedin_link:"")
   file = URI.open("https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80")
   new_volunteer.photo.attach(io: file, filename: "profilepic.png", content_type: 'image/png')
   new_volunteer.save

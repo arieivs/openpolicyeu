@@ -41,28 +41,42 @@
             </div>
           </div>
           <!-- if policy_plans with this policy_making -->
-          <div class="card-all d-flex flex-column flex-lg-row justify-content-between align-items-center my-3">
-            <div class="d-flex align-self-start">
-              <!-- if it's a policy plan (strategy is false) -->
-              <p class="tag tag-yllw">Policy Plan</p>
-              <!-- else (strategy is true) -->
-              <!-- <p class="tag tag-blue">Strategy</p> -->
-              <p>Policy Plan Name</p>
+          <% if @policy_plans_per_pm[policy_making.id] %>
+            <% @policy_plans_per_pm[policy_making.id].each do |policy_plan| %>
+              <div class="card-all d-flex flex-column flex-lg-row justify-content-between align-items-center my-3">
+                <div class="d-flex align-self-start">
+                  <% if policy_plan.strategy %>
+                    <p class="tag tag-blue">Strategy</p>
+                  <% else %>
+                    <p class="tag tag-yllw">Policy Plan</p>
+                  <% end %>
+                  <p><%= policy_plan.name %></p>
+                </div>
+                <div class="align-self-end">
+                  <%= link_to policy_plan_path(policy_plan) do%>
+                    <button class="btn-all btn-sec my-0 mr-3">SEE PAGE</button>
+                  <% end %>
+                  <%= link_to edit_policy_plan_path(policy_plan) do %>
+                    <button class="btn-all btn-prim my-0">EDIT</button>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+            <div class="d-flex align-items-center">
+              <p>Add a Policy Plan:</p>
+              <%= link_to new_policy_plan_path do %>
+                <button class="btn-all btn-sec mx-3">NEW</button>
+              <% end %>
             </div>
-            <div class="align-self-end">
-              <button class="btn-all btn-sec my-0 mr-3">SEE PAGE</button>
-              <button class="btn-all btn-prim my-0">EDIT</button>
-            </div>
-          </div>
-          <!-- <div class="d-flex align-items-center">
-            <p>Add a Policy Plan:</p>
-            <button class="btn-all btn-sec mx-3">NEW</button>
-          </div> -->
           <!-- else (there's no policy plans not strategies yet) -->
-          <div class="d-flex align-items-center">
-            <p>There are still no Policy Plans for <%= policy_making.topic.name %> in <%= policy_making.country.name %>! Add one:</p>
-            <button class="btn-all btn-prim mx-3">NEW</button>
-          </div>
+          <% else %>
+            <div class="d-flex align-items-center">
+              <p>There are still no Policy Plans for <%= policy_making.topic.name %> in <%= policy_making.country.name %>! Add one:</p>
+              <%= link_to new_policy_plan_path do %>
+                <button class="btn-all btn-prim mx-3">NEW</button>
+              <% end %>
+            </div>
+          <% end %>
         </div>
       <% end %>
       <div class="container-short text-center">
