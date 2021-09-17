@@ -13,7 +13,7 @@
     <%= render 'policy_plans/partials/game_answers_edit_pp',
         game_answers: game_answers %>
   </div>
-  <div id="new_game_answer">
+  <div id="new_game_answer-<%= game_question.id %>">
     <%= render 'policy_plans/partials/new_game_answer',
         game_question: game_question,
         new_game_answer: new_game_answer %>
