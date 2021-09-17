@@ -6,11 +6,15 @@ class GameQuestionsController < ApplicationController
     @policy_plan = PolicyPlan.find(params[:policy_plan_id])
     @game_question.policy_plan = @policy_plan
     @game_question.save
-    @game_answers = GameAnswer.where(game_question: @game_question)
-    @new_game_answer = GameAnswer.new
     if @policy_plan.strategy
       @goal = Goal.where(policy_plan: @policy_plan).find_by(order: @game_question.order)
+      @game_answers = GameAnswer.where(game_question: @game_question)
+    else
+      set_game_questions
+      set_game_answers
+      @new_game_question = GameQuestion.new
     end
+    @new_game_answer = GameAnswer.new
     respond_to { |format| format.js }
   end
 
@@ -36,10 +40,7 @@ class GameQuestionsController < ApplicationController
     @game_question.destroy
     # for gamebook/policy plan
     set_game_questions
-    @game_answers = {}
-    @game_questions.each do |game_question|
-      @game_answers[game_question.id] = GameAnswer.where(game_question: game_question)
-    end
+    set_game_answers
     @new_game_answer = GameAnswer.new # should this be nil?
     respond_to { |format| format.js }
   end
@@ -69,6 +70,13 @@ class GameQuestionsController < ApplicationController
   def set_game_questions
     @game_questions = GameQuestion.where(policy_plan: @policy_plan)
     @game_questions = @policy_plan.strategy ? @game_questions.order(:order) : @game_questions.order(:date)
+  end
+
+  def set_game_answers
+    @game_answers = {}
+    @game_questions.each do |game_question|
+      @game_answers[game_question.id] = GameAnswer.where(game_question: game_question)
+    end
   end
 
   def set_data_for_answer_after

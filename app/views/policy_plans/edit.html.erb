@@ -16,11 +16,16 @@
       </div>
       <h3 class="mt-5"><mark class="mark-blue">Add an Institution</mark></h3>
       <div id="new-ppi-form">
-        <%= render 'policy_plans/partials/new_policy_plan_institution', policy_plan: @policy_plan, policy_plan_institution: @new_policy_plan_institution %>
+        <%= render 'policy_plans/partials/new_policy_plan_institution',
+            policy_plan: @policy_plan,
+            policy_plan_institution: @new_policy_plan_institution %>
       </div>
       <p>Can't find the Institution you are looking for? <strong>Add a new Institution:</strong></p>
       <div id="new-institution-form">
-        <%= render 'institutions/partials/new_edit_form', institution: @new_institution, policy_plan: @policy_plan, policy_making: @policy_making %>
+        <%= render 'institutions/partials/new_edit_form',
+            institution: @new_institution,
+            policy_plan: @policy_plan,
+            policy_making: @policy_making %>
       </div>
     </div>
   </section>
@@ -29,11 +34,18 @@
       <div class="container">
         <h2><mark class="mark-yllw">Goals</mark></h2>
         <div id="goals">
-          <%= render 'policy_plans/partials/goals_edit_pp', policy_plan: @policy_plan, goals_n_games: @goals_n_games, new_game_question: @new_game_question, new_game_answer: @new_game_answer %>
+          <%= render 'policy_plans/partials/goals_edit_pp',
+              policy_plan: @policy_plan,
+              goals_n_games: @goals_n_games,
+              new_game_question: @new_game_question,
+              new_game_answer: @new_game_answer %>
         </div>
         <h3 class="mt-5"><mark class="mark-blue">Add a Goal</mark></h3>
         <div id="new-goal">
-          <%= render 'policy_plans/partials/new_goal', policy_plan: @policy_plan, new_goal: @new_goal, new_goal_order: @new_goal_order %>
+          <%= render 'policy_plans/partials/new_goal',
+              policy_plan: @policy_plan,
+              new_goal: @new_goal,
+              new_goal_order: @new_goal_order %>
         </div>
       </div>
     </section>
@@ -45,7 +57,9 @@
       <div class="container">
         <h3 class="mt-5"><mark class="mark-blue">Add a step to the timeline</mark></h3>
         <div id="new-timestep">
-          <%= render 'policy_plans/partials/new_timestep', policy_plan: @policy_plan, new_timestep: @new_timestep %>
+          <%= render 'policy_plans/partials/new_timestep',
+              policy_plan: @policy_plan,
+              new_timestep: @new_timestep %>
         </div>
       </div>
     </section>
@@ -53,7 +67,16 @@
       <div class="container">
         <h2><mark class="mark-yllw">Gamebook</mark></h2>
         <div id="game_questions">
-          <%= render 'policy_plans/partials/gamebook_edit_pp', game_questions: @game_questions, game_answers: @game_answers, new_game_answer: @new_game_answer %>
+          <%= render 'policy_plans/partials/gamebook_edit_pp',
+              game_questions: @game_questions,
+              game_answers: @game_answers,
+              new_game_answer: @new_game_answer %>
+        </div>
+        <h3 class="mt-5"><mark class="mark-blue">Add a step to the gamebook</mark></h3>
+        <div id="new_game_question">
+          <%= render 'policy_plans/partials/new_game_question',
+              policy_plan: @policy_plan,
+              new_game_question: @new_game_question %>
         </div>
       </div>
     </section>
