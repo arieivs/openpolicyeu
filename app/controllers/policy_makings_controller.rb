@@ -35,6 +35,7 @@ class PolicyMakingsController < ApplicationController
     @policy_making = PolicyMaking.new(policy_making_params)
     if @policy_making.save
       redirect_to edit_policy_making_path(@policy_making)
+      flash[:notice] = "Policymaking created successfully! Scroll down and keep editing."
     else
       if params[:policy_making][:country_id].empty?
         flash[:alert] = "Please select a country."

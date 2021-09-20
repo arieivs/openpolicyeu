@@ -23,6 +23,7 @@ class PolicyPlansController < ApplicationController
     @policy_plan = PolicyPlan.new(policy_plan_params)
     if @policy_plan.save
       redirect_to edit_policy_plan_path(@policy_plan)
+      flash[:notice] = "Policy Plan/Strategy created successfully! Scroll down and keep editing."
     else
       render :new
     end
@@ -35,8 +36,11 @@ class PolicyPlansController < ApplicationController
 
   def update
     set_policy_plan
-    @policy_plan.update(policy_plan_params)
-    respond_to { |format| format.js }
+    if @policy_plan.update(policy_plan_params)
+      respond_to { |format| format.js { flash[:notice] = "Policy Plan/Strategy updated successfully!" } }
+    else
+      respond_to { |format| format.js { flash[:alert] = "Something went wrong. Please review your inputs above." } }
+    end
   end
 
   def choose_institution
