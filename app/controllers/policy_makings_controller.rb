@@ -56,8 +56,11 @@ class PolicyMakingsController < ApplicationController
 
   def update
     set_policy_making
-    @policy_making.update(policy_making_params)
-    respond_to { |format| format.js }
+    if @policy_making.update(policy_making_params)
+      respond_to { |format| format.js { flash[:notice] = "Policymaking updated successfully!" } }
+    else
+      respond_to { |format| format.js { flash[:alert] = "Something went wrong. Please review your inputs above." } }
+    end
   end
 
   def choose_institution
