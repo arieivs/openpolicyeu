@@ -2,7 +2,7 @@ class PolicyPlansController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :choose_institution, :choose_gamebook, :choose_timeline, :open_accordion, :close_accordion]
 
   def index
-    @policy_plans = PolicyPlan.all
+    @policy_plans = PolicyPlan.all.order(:name)
   end
 
   def show

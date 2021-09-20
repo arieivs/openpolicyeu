@@ -2,7 +2,7 @@ class PolicyMakingsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :choose_institution]
 
   def index
-    @policy_makings = PolicyMaking.all
+    @policy_makings = PolicyMaking.all.order(:country_id).order(:topic_id)
     # For the filters (to search for a policymaking in a specific country or topic)
     @policy_making = PolicyMaking.new
     if params[:policy_making].present?
