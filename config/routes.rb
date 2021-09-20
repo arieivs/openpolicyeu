@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, skip: :registrations
+  devise_scope :user do
+    get 'users/edit', to: 'devise/registrations#edit', as: 'edit_user_registration'
+    put 'users', to: 'devise/registrations#update', as: 'user_registration'
+  end
   root to: 'pages#home'
   get 'about', to: 'pages#about', as: :about
   get 'explore', to: 'pages#explore', as: :explore
