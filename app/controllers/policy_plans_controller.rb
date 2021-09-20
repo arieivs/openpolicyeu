@@ -25,6 +25,7 @@ class PolicyPlansController < ApplicationController
       redirect_to edit_policy_plan_path(@policy_plan)
       flash[:notice] = "Policy Plan/Strategy created successfully! Scroll down and keep editing."
     else
+      flash[:alert] = "Something went wrong. Please review your inputs above."
       render :new
     end
   end
