@@ -7,7 +7,7 @@ class AnswersController < ApplicationController
     if @answer.save
       respond_to { |format| format.js }
     else
-      respond_to { |format| format.js { flash[:alert] = "Please add all the required fields to create an answer." } }
+      respond_to { |format| format.js { flash.now[:alert] = "Please add all the required fields to create an answer." } }
     end
   end
 
