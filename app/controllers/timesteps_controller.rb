@@ -20,10 +20,14 @@ class TimestepsController < ApplicationController
 
   def update
     @timestep = Timestep.find(params[:id])
-    @timestep.update(timestep_params)
+    save_successful = @timestep.update(timestep_params)
     @policy_plan = @timestep.policy_plan
     @timesteps = Timestep.where(policy_plan: @policy_plan).order(:date)
-    respond_to { |format| format.js }
+    if save_successful
+      respond_to { |format| format.js }
+    else
+      render :edit
+    end
   end
 
   def destroy
