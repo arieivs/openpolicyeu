@@ -3,11 +3,15 @@ class GoalsController < ApplicationController
     @goal = Goal.new(goal_params)
     @policy_plan = PolicyPlan.find(params[:policy_plan_id])
     @goal.policy_plan = @policy_plan
-    @goal.save
+    save_successful = @goal.save
     prepare_data_for_goals_edit_pp
     @new_goal = Goal.new
     @new_goal_order = @goal.order + 1
-    respond_to { |format| format.js }
+    if save_successful
+      respond_to { |format| format.js }
+    else
+      respond_to { |format| format.js { flash.now[:alert] = "Please add all the required fields to create a goal." } }
+    end
   end
 
   def edit
@@ -17,8 +21,11 @@ class GoalsController < ApplicationController
 
   def update
     @goal = Goal.find(params[:id])
-    @goal.update(goal_params)
-    respond_to { |format| format.js }
+    if @goal.update(goal_params)
+      respond_to { |format| format.js }
+    else
+      render :edit
+    end
   end
 
   def destroy
