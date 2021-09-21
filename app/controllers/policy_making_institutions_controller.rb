@@ -26,8 +26,11 @@ class PolicyMakingInstitutionsController < ApplicationController
 
   def update
     @policy_making_institution = PolicyMakingInstitution.find(params[:id])
-    @policy_making_institution.update(pmi_params)
-    respond_to { |format| format.js }
+    if @policy_making_institution.update(pmi_params)
+      respond_to { |format| format.js }
+    else
+      render :edit
+    end
   end
 
   def destroy
