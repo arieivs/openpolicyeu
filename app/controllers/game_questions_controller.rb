@@ -42,6 +42,7 @@ class GameQuestionsController < ApplicationController
     # for goals/strategy
     if @policy_plan.strategy
       @goal = Goal.where(policy_plan: @policy_plan).find_by(order: @game_question.order)
+      @new_game_question = GameQuestion.new
     end
     @game_question.destroy
     # for gamebook/policy plan
