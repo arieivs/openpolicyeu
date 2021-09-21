@@ -27,7 +27,7 @@
         <%= f.input :answer, required: true %>
         <%= f.input :explanation, required: true, as: :text, :input_html => { :cols => 5, :rows => 5 } %>
         <p>
-          Is this answer correct? &ensp; &ensp;
+          Is this answer correct? * &ensp; &ensp;
           <%= f.radio_button :right, true, required: true %> Yes &ensp; &ensp;
           <%= f.radio_button :right, false, required: true %> No
         </p>
