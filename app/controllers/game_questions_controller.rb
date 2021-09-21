@@ -5,7 +5,7 @@ class GameQuestionsController < ApplicationController
     @game_question = GameQuestion.new(game_question_params)
     @policy_plan = PolicyPlan.find(params[:policy_plan_id])
     @game_question.policy_plan = @policy_plan
-    @game_question.save
+    save_successful = @game_question.save
     if @policy_plan.strategy
       @goal = Goal.where(policy_plan: @policy_plan).find_by(order: @game_question.order)
       @game_answers = GameAnswer.where(game_question: @game_question)
@@ -15,7 +15,13 @@ class GameQuestionsController < ApplicationController
       @new_game_question = GameQuestion.new
     end
     @new_game_answer = GameAnswer.new
-    respond_to { |format| format.js }
+    if save_successful
+      @new_game_question = nil
+      respond_to { |format| format.js }
+    else
+      @new_game_question = GameQuestion.new
+      respond_to { |format| format.js { flash.now[:alert] = "Please add all the required fields to create a question." } }
+    end
   end
 
   def edit
