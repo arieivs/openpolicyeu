@@ -9,6 +9,7 @@ class GameQuestionsController < ApplicationController
     if @policy_plan.strategy
       @goal = Goal.where(policy_plan: @policy_plan).find_by(order: @game_question.order)
       @game_answers = GameAnswer.where(game_question: @game_question)
+      @new_game_question = nil
     else
       set_game_questions
       set_game_answers
@@ -16,7 +17,6 @@ class GameQuestionsController < ApplicationController
     end
     @new_game_answer = GameAnswer.new
     if save_successful
-      @new_game_question = nil
       respond_to { |format| format.js }
     else
       @new_game_question = GameQuestion.new
