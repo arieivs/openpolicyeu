@@ -1,2 +1,2 @@
 document.getElementById('timeline').innerHTML = "<%= j render 'policy_plans/partials/timeline', timesteps: @timesteps %>";
-document.getElementById('new_timestep').innerHTML = "<%= j render 'policy_plans/partials/new_timestep', policy_plan: @policy_plan, new_timestep: @new_timestep %>";
+document.getElementById('new_timestep').innerHTML = "<%= j render 'policy_plans/partials/new_timestep', policy_plan: @policy_plan, new_timestep: @new_timestep %><%= j render 'shared/flashes' %>";
