@@ -26,6 +26,15 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def destroy
+    @question = Question.find(params[:id])
+    @question_scope = @question.scope
+    @policy_making = @question.policy_making
+    @question.destroy
+    @new_question = Question.new
+    respond_to { |format| format.js }
+  end
+
   def select_answer_quiz
     # when the user clicks in one of the answers from anywhere but the Gamebook
     @question = Question.find(params[:question_id])
