@@ -18,9 +18,12 @@ class QuestionsController < ApplicationController
 
   def update
     @question = Question.find(params[:id])
-    @question.update(question_params)
     @new_answer = Answer.new
-    respond_to { |format| format.js }
+    if @question.update(question_params)
+      respond_to { |format| format.js }
+    else
+      render :edit
+    end
   end
 
   def select_answer_quiz
