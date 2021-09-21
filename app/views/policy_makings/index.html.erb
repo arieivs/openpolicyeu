@@ -32,10 +32,10 @@
           <div class="card-all d-flex flex-column flex-lg-row justify-content-between align-items-center my-3">
             <p class="align-self-start"><%= policy_making.topic.name %> Policymaking in <%= policy_making.country.name %></p>
             <div class="align-self-end">
-              <%= link_to policy_making_path(policy_making) do %>
+              <%= link_to policy_making_path(policy_making, anchor: 'nav') do %>
                 <button class="btn-all btn-sec my-0 mr-3">SEE PAGE</button>
               <% end %>
-              <%= link_to edit_policy_making_path(policy_making) do %>
+              <%= link_to edit_policy_making_path(policy_making, anchor: 'nav') do %>
                 <button class="btn-all btn-prim my-0">EDIT</button>
               <% end %>
             </div>
@@ -53,10 +53,10 @@
                   <p><%= policy_plan.name %></p>
                 </div>
                 <div class="align-self-end">
-                  <%= link_to policy_plan_path(policy_plan) do%>
+                  <%= link_to policy_plan_path(policy_plan, anchor: 'nav') do%>
                     <button class="btn-all btn-sec my-0 mr-3">SEE PAGE</button>
                   <% end %>
-                  <%= link_to edit_policy_plan_path(policy_plan) do %>
+                  <%= link_to edit_policy_plan_path(policy_plan, anchor: 'nav') do %>
                     <button class="btn-all btn-prim my-0">EDIT</button>
                   <% end %>
                 </div>
@@ -64,7 +64,7 @@
             <% end %>
             <div class="d-flex align-items-center">
               <p>Add a Policy Plan:</p>
-              <%= link_to new_policy_plan_path do %>
+              <%= link_to new_policy_plan_path(anchor: 'nav') do %>
                 <button class="btn-all btn-sec mx-3">NEW</button>
               <% end %>
             </div>
@@ -72,7 +72,7 @@
           <% else %>
             <div class="d-flex align-items-center">
               <p>There are still no Policy Plans for <%= policy_making.topic.name %> in <%= policy_making.country.name %>! Add one:</p>
-              <%= link_to new_policy_plan_path do %>
+              <%= link_to new_policy_plan_path(anchor: 'nav') do %>
                 <button class="btn-all btn-prim mx-3">NEW</button>
               <% end %>
             </div>
@@ -81,7 +81,7 @@
       <% end %>
       <div class="container-short text-center">
         <p>Couldn’t find an explanation for Policymaking in the region and topic you were looking for? Add it:</p>
-        <%= link_to new_policy_making_path do %>
+        <%= link_to new_policy_making_path(anchor: 'nav') do %>
           <button class="btn-all btn-prim">NEW</button>
         <% end %>
       </div>

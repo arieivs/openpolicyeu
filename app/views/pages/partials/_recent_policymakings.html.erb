@@ -5,7 +5,7 @@
     <div class="row">
       <% recent_policy_makings.each do |pm| %>
         <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
-          <%= link_to policy_making_path(pm), class: 'card-link' do %>
+          <%= link_to policy_making_path(pm, anchor: 'nav'), class: 'card-link' do %>
             <div class="card-all card-square card-clickable policy-recent d-flex flex-column justify-content-between mx-auto">
               <i class="<%= pm.topic.icon %> <%= pm.topic.icon_color %>"></i>
               <div>
