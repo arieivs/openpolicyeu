@@ -25,7 +25,7 @@ class PolicyPlansController < ApplicationController
       redirect_to edit_policy_plan_path(@policy_plan)
       flash[:notice] = "Policy Plan/Strategy created successfully! Scroll down and keep editing."
     else
-      flash[:alert] = "Something went wrong. Please review your inputs above."
+      flash.now[:alert] = "Something went wrong. Please review your inputs above."
       render :new
     end
   end
@@ -38,9 +38,9 @@ class PolicyPlansController < ApplicationController
   def update
     set_policy_plan
     if @policy_plan.update(policy_plan_params)
-      respond_to { |format| format.js { flash[:notice] = "Policy Plan/Strategy updated successfully!" } }
+      respond_to { |format| format.js { flash.now[:notice] = "Policy Plan/Strategy updated successfully!" } }
     else
-      respond_to { |format| format.js { flash[:alert] = "Something went wrong. Please review your inputs above." } }
+      respond_to { |format| format.js { flash.now[:alert] = "Something went wrong. Please review your inputs above." } }
     end
   end
 

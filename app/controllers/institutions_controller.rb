@@ -15,9 +15,9 @@ class InstitutionsController < ApplicationController
       @new_policy_making_institution = PolicyMakingInstitution.new
       @new_institution = Institution.new
       if @institution.save
-        respond_to { |format| format.js { flash[:notice] = "Institution created! It's ready to be selected above." } }
+        respond_to { |format| format.js { flash.now[:notice] = "Institution created! It's ready to be selected above." } }
       else
-        respond_to { |format| format.js { flash[:alert] = "Please add all the required fields to create an Institution." } }
+        respond_to { |format| format.js { flash.now[:alert] = "Please add all the required fields to create an Institution." } }
       end
     # If this action is called from PolicyPlans#edit
     elsif params[:institution][:policy_plan_id].present?
@@ -25,9 +25,9 @@ class InstitutionsController < ApplicationController
       @new_policy_plan_institution = PolicyPlanInstitution.new
       @new_institution = Institution.new
       if @institution.save
-        respond_to { |format| format.js { flash[:notice] = "Institution created! It's ready to be selected above." } }
+        respond_to { |format| format.js { flash.now[:notice] = "Institution created! It's ready to be selected above." } }
       else
-        respond_to { |format| format.js { flash[:alert] = "Please add all the required fields to create an Institution." } }
+        respond_to { |format| format.js { flash.now[:alert] = "Please add all the required fields to create an Institution." } }
       end
     else
       @institution.save ? (redirect_to institutions_path) : (render :new)

@@ -38,13 +38,13 @@ class PolicyMakingsController < ApplicationController
       flash[:notice] = "Policymaking created successfully! Scroll down and keep editing."
     else
       if params[:policy_making][:country_id].empty?
-        flash[:alert] = "Please select a country."
+        flash.now[:alert] = "Please select a country."
       elsif params[:policy_making][:topic_id].empty?
-        flash[:alert] = "Please select a topic."
+        flash.now[:alert] = "Please select a topic."
       elsif PolicyMaking.where(country_id: params[:policy_making][:country_id]).find_by(topic_id: params[:policy_making][:topic_id])
-        flash[:alert] = "There is already a policymaking page for this country/topic pair!"
+        flash.now[:alert] = "There is already a policymaking page for this country/topic pair!"
       elsif params[:policy_making][:content].empty?
-        flash[:alert] = "Please describe how does policymaking work in this region/country for this topic."
+        flash.now[:alert] = "Please describe how does policymaking work in this region/country for this topic."
       end
       render :new
     end
@@ -58,9 +58,9 @@ class PolicyMakingsController < ApplicationController
   def update
     set_policy_making
     if @policy_making.update(policy_making_params)
-      respond_to { |format| format.js { flash[:notice] = "Policymaking updated successfully!" } }
+      respond_to { |format| format.js { flash.now[:notice] = "Policymaking updated successfully!" } }
     else
-      respond_to { |format| format.js { flash[:alert] = "Something went wrong. Please review your inputs above." } }
+      respond_to { |format| format.js { flash.now[:alert] = "Something went wrong. Please review your inputs above." } }
     end
   end
 
