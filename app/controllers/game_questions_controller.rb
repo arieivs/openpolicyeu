@@ -32,8 +32,12 @@ class GameQuestionsController < ApplicationController
 
   def update
     @game_question = GameQuestion.find(params[:id])
-    @game_question.update(game_question_params)
-    respond_to { |format| format.js }
+    @policy_plan = @game_question.policy_plan
+    if @game_question.update(game_question_params)
+      respond_to { |format| format.js }
+    else
+      render :edit
+    end
   end
 
   def destroy
