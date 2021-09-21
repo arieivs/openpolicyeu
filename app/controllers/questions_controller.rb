@@ -5,9 +5,10 @@ class QuestionsController < ApplicationController
     @policy_making = PolicyMaking.find(params[:policy_making_id])
     @question = Question.new(question_params)
     @question.policy_making = @policy_making
-    @question.save
     @new_answer = Answer.new
-    respond_to { |format| format.js }
+    if @question.save
+      respond_to { |format| format.js }
+    end
   end
 
   def edit
