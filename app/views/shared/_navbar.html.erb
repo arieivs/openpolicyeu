@@ -38,7 +38,6 @@
           <!-- Take Action -->
           <li class="nav-item nav-item-ours"><%= link_to "About us", about_path, class: "nav-link nav-link-ours #{current_page?(controller: '/pages', action: 'about') ? 'active' : ''}" %></li>
           <li class="nav-item nav-item-ours"><%= link_to "Join us", join_path, class: "nav-link nav-link-ours #{current_page?(controller: '/volunteers', action: 'index') ? 'active' : ''}" %></li>
-          <li class="nav-item nav-item-ours"><%= link_to "Login", new_user_session_path, class: "nav-link nav-link-ours" %></li>
         <% end %>
       </ul>
     </div>

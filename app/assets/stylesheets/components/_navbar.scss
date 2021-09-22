@@ -54,6 +54,10 @@
   display: inline-block;
 }
 
+.nav-link-ours.active {
+  padding-bottom: calc(1rem - 2px) !important;
+}
+
 .nav-item-ours {
   padding-right: 50px !important;
 }
