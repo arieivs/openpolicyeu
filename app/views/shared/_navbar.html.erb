@@ -26,7 +26,9 @@
           <li class="nav-item nav-item-ours"><%= link_to "Policy Plans", policy_plans_path, class: "nav-link nav-link-ours #{current_page?(controller: '/policy_plans') ? 'active' : ''}" %></li>
           <!-- Take Action -->
           <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <div class="avatar fake-avatar" id="navbarDropdown" data-toggle="dropdown" aria-haspopup='true' aria-expanded='false'>
+              <%= current_user.first_name[0].upcase %><%= current_user.last_name[0].upcase %>
+            </div>
             <div class="dropdown-menu dropdown-menu-ours card-all dropdown-menu-right" aria-labelledby="navbarDropdown">
               <%= link_to "My Profile", edit_user_registration_path, class: "dropdown-item dropdown-item-ours" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item dropdown-item-ours" %>
