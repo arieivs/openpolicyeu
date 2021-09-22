@@ -1,8 +1,16 @@
-<nav class="navbar navbar-expand-md navbar-light navbar-all <%= current_page?(controller: '/pages', action: 'home') ? 'navbar-transp' : 'navbar-white' %>" id="nav">
+<nav class="navbar navbar-expand-lg navbar-light navbar-all <%= current_page?(controller: '/pages', action: 'home') ? 'navbar-transp' : 'navbar-white' %>" id="nav">
   <div class="container">
     <div class="horizontal-list">
       <ul>
-        <li class="nav-item nav-item-ours"><%= link_to "Home", root_path, class: "nav-link nav-link-ours #{current_page?(controller: '/pages', action: 'home') ? 'active' : ''}" %></li>
+        <li class="nav-item nav-item-ours">
+          <%= link_to root_path do %>
+            <% if current_page?(controller: '/pages', action: 'home') %>
+              <%= image_tag "https://res.cloudinary.com/dqmjwsj8t/image/upload/v1632310214/permanent_assets/logo_negative_vjmlgw.png", class: 'nav-logo' %>
+            <% else %>
+              <%= image_tag "https://res.cloudinary.com/dqmjwsj8t/image/upload/v1632310214/permanent_assets/logo_yob8om.png", class: 'nav-logo' %>
+            <% end %>
+          <% end %>
+        </li>
       </ul>
     </div>
 
