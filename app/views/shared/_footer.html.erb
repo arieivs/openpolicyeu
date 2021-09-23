@@ -1,14 +1,32 @@
 <footer>
-  <div class="container d-flex justify-content-between flex-column flex-lg-row horizontal-list">
-    <div>
-      <ul>
-        <li>Follow us</li>
-        <li><a href="https://www.facebook.com/openpolicyeurope" target="_blank" aria-label="Facebook" class="footer-link"><i class="fab fa-facebook"></i></a></li>
-        <li><a href="https://instagram.com/openpolicyeurope" target="_blank" aria-label="Instagram" class="footer-link"><i class="fab fa-instagram"></i></a></li>
-        <li><a href="https://www.linkedin.com/company/openpolicy-europe/" target="_blank" aria-label="LinkedIn" class="footer-link"><i class="fab fa-linkedin"></i></a></li>
+  <div class="container d-flex flex-column flex-lg-row justify-content-between footer-flex">
+    <div class="d-flex flex-column flex-md-row">
+      <ul class="footer-nav-list">
+        <li><%= link_to "Explore", explore_path, class: "footer-link" %></li>
+        <li><%= link_to "Policy Plans", policy_plans_path, class: "footer-link" %></li>
+        <!-- Take Action -->
+        <li><%= link_to "About us", about_path, class: "footer-link" %></li>
+        <li><%= link_to "Join us", join_path, class: "footer-link" %></li>
+        <li><%= link_to "Login", new_user_session_path, class: "footer-link" %></li>
       </ul>
-      <p class="footer-email"><a href="mailto:info@openpolicy.eu" class="footer-link">info@openpolicy.eu</a></p>
+      <div class="horizontal-list">
+        <p class="mt-0 mb-2"><strong>Follow us</strong></p>
+        <ul>
+          <li><a href="https://www.facebook.com/openpolicyeurope" target="_blank" aria-label="Facebook" class="footer-link"><i class="fab fa-facebook"></i></a></li>
+          <li><a href="https://instagram.com/openpolicyeurope" target="_blank" aria-label="Instagram" class="footer-link"><i class="fab fa-instagram"></i></a></li>
+          <li><a href="https://www.linkedin.com/company/openpolicy-europe/" target="_blank" aria-label="LinkedIn" class="footer-link"><i class="fab fa-linkedin"></i></a></li>
+          <li><a href="https://discord.gg/q2gUUFFG" target="_blank" aria-label="Discord" class="footer-link"><i class="fab fa-discord"></i></a></li>
+        </ul>
+        <p class="mt-4 mb-0"><strong>Contact us</strong></p>
+        <p class="mt-0"><a href="mailto:info@openpolicy.eu" class="footer-link">info@openpolicy.eu</a></p>
+      </div>
     </div>
-    <p class="footer-origins">The OpenPolicy Europe is a project from the <a href="https://youthenergy.eu" target="_blank" class="footer-link">European Youth Energy Network</a></p>
+    <div class="footer-origins">
+      <div class="d-flex flex-column flex-md-row align-items-center">
+        <%= image_tag "https://res.cloudinary.com/dqmjwsj8t/image/upload/v1632310214/permanent_assets/logo_negative_vjmlgw.png", class: 'footer-logo footer-first-logo' %>
+        <%= image_tag "https://res.cloudinary.com/dqmjwsj8t/image/upload/v1632316179/permanent_assets/LOGO_EYEN-VERSION_BLANCO_kue8j9.png", class: 'footer-logo' %>
+      </div>
+      <p class="text-center">OpenPolicy Europe is a project from the <a href="https://youthenergy.eu" target="_blank" class="footer-link">European Youth Energy Network</a></p>
+    </div>
   </div>
 </footer>

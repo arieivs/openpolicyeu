@@ -1,8 +1,16 @@
-<nav class="navbar navbar-expand-md navbar-light navbar-all <%= current_page?(controller: '/pages', action: 'home') ? 'navbar-transp' : 'navbar-white' %>" id="nav">
+<nav class="navbar navbar-expand-lg navbar-light navbar-all <%= current_page?(controller: '/pages', action: 'home') ? 'navbar-transp' : 'navbar-white' %>" id="nav">
   <div class="container">
     <div class="horizontal-list">
       <ul>
-        <li class="nav-item nav-item-ours"><%= link_to "Home", root_path, class: "nav-link nav-link-ours #{current_page?(controller: '/pages', action: 'home') ? 'active' : ''}" %></li>
+        <li class="nav-item nav-item-ours">
+          <%= link_to root_path do %>
+            <% if current_page?(controller: '/pages', action: 'home') %>
+              <%= image_tag "https://res.cloudinary.com/dqmjwsj8t/image/upload/v1632310214/permanent_assets/logo_negative_vjmlgw.png", class: 'nav-logo' %>
+            <% else %>
+              <%= image_tag "https://res.cloudinary.com/dqmjwsj8t/image/upload/v1632310214/permanent_assets/logo_yob8om.png", class: 'nav-logo' %>
+            <% end %>
+          <% end %>
+        </li>
       </ul>
     </div>
 
@@ -18,7 +26,9 @@
           <li class="nav-item nav-item-ours"><%= link_to "Policy Plans", policy_plans_path, class: "nav-link nav-link-ours #{current_page?(controller: '/policy_plans') ? 'active' : ''}" %></li>
           <!-- Take Action -->
           <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <div class="avatar fake-avatar" id="navbarDropdown" data-toggle="dropdown" aria-haspopup='true' aria-expanded='false'>
+              <%= current_user.first_name[0].upcase %><%= current_user.last_name[0].upcase %>
+            </div>
             <div class="dropdown-menu dropdown-menu-ours card-all dropdown-menu-right" aria-labelledby="navbarDropdown">
               <%= link_to "My Profile", edit_user_registration_path, class: "dropdown-item dropdown-item-ours" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item dropdown-item-ours" %>
@@ -30,7 +40,6 @@
           <!-- Take Action -->
           <li class="nav-item nav-item-ours"><%= link_to "About us", about_path, class: "nav-link nav-link-ours #{current_page?(controller: '/pages', action: 'about') ? 'active' : ''}" %></li>
           <li class="nav-item nav-item-ours"><%= link_to "Join us", join_path, class: "nav-link nav-link-ours #{current_page?(controller: '/volunteers', action: 'index') ? 'active' : ''}" %></li>
-          <li class="nav-item nav-item-ours"><%= link_to "Login", new_user_session_path, class: "nav-link nav-link-ours" %></li>
         <% end %>
       </ul>
     </div>
