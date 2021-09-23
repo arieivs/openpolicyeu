@@ -1,0 +1,20 @@
+<% if !game_question.date.nil? %>
+  <div class="d-flex align-items-center">
+    <p class="blue"><strong><%= game_question.date.strftime('%d %b %Y') %></strong></p>
+    <div class="timestep-circle-inner mx-3"></div>
+    <h3 class="mb-0"><%= game_question.name %></h3>
+  </div>
+<% else %>
+  <h3 class="mt-4">Question - <%= game_question.name %></h3>
+<% end %>
+<p><strong>Context:</strong> <%= game_question.context %></p>
+<p><strong>Question:</strong> <%= game_question.question %></p>
+<%= link_to edit_game_question_path(game_question), remote: true, class:'btn-link' do %>
+  <button class="btn-all btn-sec my-2 mr-3">Edit</button>
+<% end %>
+<%= link_to game_question_path(game_question),
+  method: :delete,
+  data: { confirm: "Are you sure you want to delete this question?" },
+  remote: true do %>
+  <button class='btn-all btn-sec my-2'>Remove</button>
+<% end %>

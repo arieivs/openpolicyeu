@@ -1,0 +1,12 @@
+<p><%= game_answer.answer %></p>
+<p><strong>Explanation:</strong> <%= game_answer.explanation %></p>
+<p class="<%= game_answer.right ? 'green' : 'red' %>"><%= game_answer.right ? 'Correct' : 'Wrong' %> answer</p>
+<%= link_to edit_game_answer_path(game_answer), remote: true, class: 'btn-link' do %>
+  <button class="btn-all btn-sec mr-3">EDIT</button>
+<% end %>
+<%= link_to game_answer_path(game_answer),
+  method: :delete,
+  data: { confirm: "Are you sure you want to delete this answer?" },
+  remote: true do %>
+  <button class='btn-all btn-sec'>REMOVE</button>
+<% end %>

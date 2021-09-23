@@ -1,0 +1,67 @@
+.timestep-date {
+  width: 130px;
+  min-width: 130px;
+  p {
+    background-color: $yellow;
+    color: $blue;
+    border-radius: 10px;
+    padding: 8px 10px;
+    text-align: center;
+    font-weight: bold;
+  }
+}
+
+.timestep-separator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timestep-circle-outer {
+  border: solid 1px #E5E5E5;
+  border-radius: 50%;
+  padding: 4px;
+  margin: 1.5rem;
+}
+
+.timestep-circle-inner {
+  background-color: $blue;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+.timestep-line {
+  width:1px;
+  height: 100%;
+  background-color: #E5E5E5;
+}
+
+.timestep-card h3 {
+  background-color: #1267FB;
+  display: inline;
+  color: #fff;
+  padding: 0 2px;
+}
+
+@media (max-width: 880px) {
+  .timestep {
+    position: relative;
+  }
+
+  .timestep-separator {
+    order: 1;
+  }
+
+  .timestep-date {
+    order: 2;
+    position: absolute;
+    left: 72px;
+  }
+
+  .timestep-card {
+    order: 3;
+    margin-top: 76px !important;
+    margin-bottom: 50px !important;
+  }
+}

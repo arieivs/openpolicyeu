@@ -1,0 +1,2 @@
+document.getElementById('new-ppi-form').innerHTML = "<%= j render 'policy_plans/partials/new_policy_plan_institution', policy_plan: @policy_plan, policy_plan_institution: @new_policy_plan_institution %>";
+document.getElementById('ppi-cards').innerHTML = "<%= j render 'policy_plans/partials/ppi_cards', policy_plan_institutions: @policy_plan_institutions %>";

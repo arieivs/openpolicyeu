@@ -1,0 +1,5 @@
+<% policy_plan_institutions.each do |ppi| %>
+  <div id="ppi-<%= ppi.id %>-card">
+    <%= render 'policy_plans/partials/ppi_card', ppi: ppi %>
+  </div>
+<% end %>

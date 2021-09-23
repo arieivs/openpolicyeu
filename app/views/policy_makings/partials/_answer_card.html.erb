@@ -1,7 +1,12 @@
 <p><%= answer.answer %></p>
-<p><strong>Explanation:</strong></p>
-<p><%= answer.explanation %></p>
+<p><strong>Explanation:</strong> <%= answer.explanation %></p>
 <p class="<%= answer.right ? 'green' : 'red' %>"><%= answer.right ? 'Correct' : 'Wrong' %> answer</p>
-<%= link_to edit_answer_path(answer), remote: true do %>
-  <button class="btn-all btn-sec">EDIT</button>
+<%= link_to edit_answer_path(answer), remote: true, class: 'btn-link' do %>
+  <button class="btn-all btn-sec mr-3">EDIT</button>
+<% end %>
+<%= link_to answer_path(answer),
+  method: :delete,
+  data: { confirm: "Are you sure you want to delete this answer?" },
+  remote: true do %>
+  <button class='btn-all btn-sec'>REMOVE</button>
 <% end %>

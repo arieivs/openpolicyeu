@@ -1,0 +1,84 @@
+<main>
+  <section class="py-5">
+    <div class="container">
+      <h1>Edit <%= @policy_plan.name %></h1>
+      <h2><mark class="mark-yllw"><%= @policy_plan.strategy ? 'Strategy' : 'Policy Plan' %> Details</mark></h2>
+      <div id="edit-policy-plan">
+        <%= render 'policy_plans/partials/new_edit_form', policy_plan: @policy_plan %>
+      </div>
+    </div>
+  </section>
+  <section class="py-5">
+    <div class="container">
+      <h2><mark class="mark-yllw">Institutions</mark></h2>
+      <div id="ppi-cards">
+        <%= render 'policy_plans/partials/ppi_cards', policy_plan_institutions: @policy_plan_institutions %>
+      </div>
+      <h3 class="mt-5"><mark class="mark-blue">Add an Institution</mark></h3>
+      <div id="new-ppi-form">
+        <%= render 'policy_plans/partials/new_policy_plan_institution',
+            policy_plan: @policy_plan,
+            policy_plan_institution: @new_policy_plan_institution %>
+      </div>
+      <p>Can't find the Institution you are looking for? <strong>Add a new Institution:</strong></p>
+      <div id="new-institution-form">
+        <%= render 'institutions/partials/new_edit_form',
+            institution: @new_institution,
+            policy_plan: @policy_plan,
+            policy_making: @policy_making %>
+      </div>
+    </div>
+  </section>
+  <% if @policy_plan.strategy %>
+    <section class="py-5">
+      <div class="container">
+        <h2><mark class="mark-yllw">Goals</mark></h2>
+        <div id="goals">
+          <%= render 'policy_plans/partials/goals_edit_pp',
+              policy_plan: @policy_plan,
+              goals_n_games: @goals_n_games,
+              new_game_question: @new_game_question,
+              new_game_answer: @new_game_answer %>
+        </div>
+        <h3 class="mt-5"><mark class="mark-blue">Add a Goal</mark></h3>
+        <div id="new-goal">
+          <%= render 'policy_plans/partials/new_goal',
+              policy_plan: @policy_plan,
+              new_goal: @new_goal,
+              new_goal_order: @new_goal_order %>
+        </div>
+      </div>
+    </section>
+  <% else %>
+    <section class="py-5">
+      <div id="timeline">
+        <%= render 'policy_plans/partials/timeline', timesteps: @timesteps %>
+      </div>
+      <div class="container">
+        <h3 class="mt-5"><mark class="mark-blue">Add a step to the timeline</mark></h3>
+        <div id="new-timestep">
+          <%= render 'policy_plans/partials/new_timestep',
+              policy_plan: @policy_plan,
+              new_timestep: @new_timestep %>
+        </div>
+      </div>
+    </section>
+    <section class="py-5">
+      <div class="container">
+        <h2><mark class="mark-yllw">Gamebook</mark></h2>
+        <div id="game_questions">
+          <%= render 'policy_plans/partials/gamebook_edit_pp',
+              game_questions: @game_questions,
+              game_answers: @game_answers,
+              new_game_answer: @new_game_answer %>
+        </div>
+        <h3 class="mt-5"><mark class="mark-blue">Add a step to the gamebook</mark></h3>
+        <div id="new_game_question">
+          <%= render 'policy_plans/partials/new_game_question',
+              policy_plan: @policy_plan,
+              new_game_question: @new_game_question %>
+        </div>
+      </div>
+    </section>
+  <% end %>
+</main>
