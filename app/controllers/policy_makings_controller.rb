@@ -2,7 +2,7 @@ class PolicyMakingsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :choose_institution]
 
   def index
-    @policy_makings = PolicyMaking.all
+    @policy_makings = PolicyMaking.all.order(:country_id).order(:topic_id)
     # For the filters (to search for a policymaking in a specific country or topic)
     @policy_making = PolicyMaking.new
     if params[:policy_making].present?
@@ -35,15 +35,16 @@ class PolicyMakingsController < ApplicationController
     @policy_making = PolicyMaking.new(policy_making_params)
     if @policy_making.save
       redirect_to edit_policy_making_path(@policy_making)
+      flash[:notice] = "Policymaking created successfully! Scroll down and keep editing."
     else
       if params[:policy_making][:country_id].empty?
-        flash[:alert] = "Please select a country."
+        flash.now[:alert] = "Please select a country."
       elsif params[:policy_making][:topic_id].empty?
-        flash[:alert] = "Please select a topic."
+        flash.now[:alert] = "Please select a topic."
       elsif PolicyMaking.where(country_id: params[:policy_making][:country_id]).find_by(topic_id: params[:policy_making][:topic_id])
-        flash[:alert] = "There is already a policymaking page for this country/topic pair!"
+        flash.now[:alert] = "There is already a policymaking page for this country/topic pair!"
       elsif params[:policy_making][:content].empty?
-        flash[:alert] = "Please describe how does policymaking work in this region/country for this topic."
+        flash.now[:alert] = "Please describe how does policymaking work in this region/country for this topic."
       end
       render :new
     end
@@ -56,8 +57,11 @@ class PolicyMakingsController < ApplicationController
 
   def update
     set_policy_making
-    @policy_making.update(policy_making_params)
-    respond_to { |format| format.js }
+    if @policy_making.update(policy_making_params)
+      respond_to { |format| format.js { flash.now[:notice] = "Policymaking updated successfully!" } }
+    else
+      respond_to { |format| format.js { flash.now[:alert] = "Something went wrong. Please review your inputs above." } }
+    end
   end
 
   def choose_institution

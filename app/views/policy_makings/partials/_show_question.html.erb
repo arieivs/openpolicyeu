@@ -3,7 +3,8 @@
     <div class="px-4">
       <p><strong>Question:</strong></p>
       <div id="show-<%= question_scope %>-question">
-        <%= render 'policy_makings/partials/show_question_inner', policy_making: policy_making, question_scope: question_scope %>
+        <%= render 'policy_makings/partials/show_question_inner',
+            question: policy_making.question(question_scope) %>
       </div>
 
       <!-- All answers are displayed here -->
@@ -27,7 +28,7 @@
         <%= f.input :answer, required: true %>
         <%= f.input :explanation, required: true, as: :text, :input_html => { :cols => 5, :rows => 5 } %>
         <p>
-          Is this answer correct? &ensp; &ensp;
+          Is this answer correct? * &ensp; &ensp;
           <%= f.radio_button :right, true, required: true %> Yes &ensp; &ensp;
           <%= f.radio_button :right, false, required: true %> No
         </p>
