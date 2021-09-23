@@ -19,7 +19,7 @@
               </div>
               <div class="modal-body d-flex">
                 <i class="fas fa-chevron-left card-icon mr-4" data-target="#pmi-<%= policy_making_institutions[i - 1] ? policy_making_institutions[i - 1].id : policy_making_institutions[-1].id %>-modal" data-toggle="modal" data-dismiss="modal"></i>
-                <div class="d-flex flex-column flex-lg-row justify-content-between">
+                <div class="flex-grow-1 d-flex flex-column flex-lg-row justify-content-between">
                   <div class="<%= pmi.institution.video_url && !pmi.institution.video_url.empty? ? 'container-half' : '' %>">
                     <p><%= pmi.description %></p>
                     <%= link_to "Learn more", pmi.institution.website_url, target: "_blank", class: "text-link" %>
