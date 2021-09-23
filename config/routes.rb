@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   get 'explore', to: 'pages#explore', as: :explore
   get 'join', to: 'volunteers#index', as: :join
 
-  get 'policy_makings/:policy_making_id/choose_institution/:policy_making_institution_id', to: 'policy_makings#choose_institution', as: :pm_choose_institution
   resources :policy_makings, except: [:destroy], shallow: true do
     resources :questions, only: [:create, :edit, :update], shallow: true do
       resources :answers, only: [:create, :edit, :update, :destroy]
