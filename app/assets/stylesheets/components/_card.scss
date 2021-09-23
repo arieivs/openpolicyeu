@@ -35,7 +35,11 @@
   padding: 0 20px;
 }
 
-.card-icon {
+.card-close {
+  font-size: 26px;
+}
+
+.card-arrow {
   font-size: 26px;
   align-self: center;
   cursor: pointer;
@@ -101,4 +105,9 @@
   font-size: 25px;
 }
 
-
+@media (max-width: 880px) {
+  .card-arrow {
+    margin-top: 18px;
+    align-self: start;
+  }
+}
