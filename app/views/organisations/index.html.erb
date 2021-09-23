@@ -1,0 +1,13 @@
+<h1>Take action!</h1>
+
+<%= render 'organisations/partials/filter_by_country' %>
+
+<%= render 'organisations/partials/filter_by_topic' %>
+
+<%= render 'organisations/partials/filter_by_type' %>
+
+
+
+<% @organisations.each do |organisation| %>
+  <%= render 'organisations/partials/organisation_card', organisation: organisation %>
+<% end %>

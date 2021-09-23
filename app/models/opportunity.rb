@@ -1,5 +1,6 @@
 class Opportunity < ApplicationRecord
   belongs_to :organisation
+  belongs_to :opportunity_type
 
-  validates :type, presence: true
+  validates :opportunity_type, presence: true
 end

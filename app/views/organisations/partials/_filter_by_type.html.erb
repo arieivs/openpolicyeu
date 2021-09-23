@@ -1,0 +1,14 @@
+<%= simple_form_for :organisation_type, url: organisations_path, method: :get do |f| %>
+  <%= f.input :type, required: false, collection: OpportunityType.distinct.pluck(:name), input_html: { class: "select2-type", multiple: ""} %>
+
+  <%= f.input :country, as: :hidden %>
+  <%= f.input :topic, as: :hidden %>
+
+  <% f.button :submit, "Filter by type", class: 'btn-all btn-yllw' %>
+<% end %>
+
+<% if @selected_types.nil? %>
+  <div class="d-none" id="retained-selected-types" data-retained-selected-types="<%=  %>"></div>
+<% else %>
+  <div class="d-none" id="retained-selected-types" data-retained-selected-types="<%= @selected_types.reject(&:blank?).join(',') %>"></div>
+<% end %>

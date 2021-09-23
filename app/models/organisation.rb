@@ -4,6 +4,7 @@ class Organisation < ApplicationRecord
   has_many :organisation_topics, dependent: :destroy
   has_many :countries, through: :organisation_countries
   has_many :topics, through: :organisation_topics
+  has_many :opportunity_types, through: :opportunities
   has_one_attached :logo
 
 
