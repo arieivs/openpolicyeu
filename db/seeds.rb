@@ -33,9 +33,20 @@ puts "Cleaning COUNTRIES database..."
 Country.destroy_all
 puts "Cleaning TOPICS database..."
 Topic.destroy_all
+puts "Cleaning OPPORTUNITY_TYPES database..."
+OpportunityType.destroy_all
 puts "Cleaning VOLUNTEERS database..."
 Volunteer.destroy_all
+puts "Cleaning ORGANISATIONS database..."
+Organisation.destroy_all
+puts "Cleaning ORGANISATION_COUNTRIES database..."
+OrganisationCountry.destroy_all
+puts "Cleaning ORGANISATIONS_TOPICS database..."
+OrganisationTopic.destroy_all
+puts "Cleaning OPPORTUNITIES database..."
+Opportunity.destroy_all
 puts "Empty database \n\n"
+
 
 # --------------- TOPICS ---------------
 
@@ -201,5 +212,40 @@ puts "Creating volunteers..."
   new_volunteer.save
 end
 puts "#{Volunteer.count} volunteers created! \n\n"
+
+# --------------- ORGANISATIONS ---------------
+
+puts "Creating organisations..."
+5.times do
+  new_organisation = Organisation.new(name: Faker::Company.name, description: Faker::Company.catch_phrase, learn_more_link: "http://youthenergy.eu")
+  file = URI.open(Faker::Company.logo)
+  new_organisation.logo.attach(io: file, filename: "logo.png", content_type: 'image/png')
+  new_organisation.save
+end
+puts "#{Organisation.count} organisations created! \n\n"
+
+puts "Associating countries, topics and opportunities to organisations..."
+OPPORTUNITY_TYPES = ['job', 'volunteer']
+OPPORTUNITY_TYPES.each { |opp| OpportunityType.create(name: opp) }
+
+Organisation.all.each do |organisation|
+  ORGANISATION_COUNTRIES = Country.all.sample(rand(1..3))
+  ORGANISATION_COUNTRIES.each do |country|
+    OrganisationCountry.create(organisation: organisation, country: country)
+  end
+  puts "#{OrganisationCountry.count} organisation_countries created!"
+
+  TOPICS = Topic.all.sample(rand(1..3))
+  TOPICS.each do |topic|
+    OrganisationTopic.create(organisation: organisation, topic: topic)
+  end
+  puts "#{OrganisationTopic.count} organisation_topics created!"
+
+  nb_of_opportunities = rand(1..3)
+  nb_of_opportunities.times do
+    Opportunity.create(organisation: organisation, opportunity_type: OpportunityType.all.sample)
+  end
+  puts "#{Opportunity.count} opportunities created!"
+end
 
 puts 'Done :)'

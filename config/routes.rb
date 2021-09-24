@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   get 'game_questions/:game_question_id/select_answer_goal/:game_answer_id', to: 'game_questions#select_answer_goal', as: :select_answer_goal
 
   resources :institutions, except: [:show, :destroy]
+  resources :organisations, only: [:index]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -22,10 +22,11 @@ ActiveStorage.start()
 import "bootstrap";
 // import { csrfToken } from "@rails/ujs";
 
-// Internal imports, e.g:
-// import { initSelect2 } from '../components/init_select2';
+// Internal imports
+import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
-  // Call your functions here, e.g:
-  // initSelect2();
+
+  initSelect2();
+
 });

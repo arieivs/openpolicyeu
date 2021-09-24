@@ -1,0 +1,17 @@
+<h2> <%= organisation.name %> </h2>
+
+<% organisation.countries.each do |country| %>
+  <p> <%= country.name %> </p>
+<% end %>
+
+<p> <% organisation.topics.each do |topic| %> </p>
+  <p> <%= topic.name %> </p>
+<% end %>
+
+<p> <% organisation.opportunity_types.uniq.each do |opportunity_type| %> </p>
+  <p> <%= opportunity_type.name %> </p>
+<% end %>
+
+<p> <%= organisation.description %> </p>
+
+<%= link_to "LEARN MORE", organisation.learn_more_link, class: 'btn-all btn-yllw' %>
