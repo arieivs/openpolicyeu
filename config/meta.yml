@@ -1,5 +1,5 @@
 meta_product_name: "OpenPolicy Europe"
 meta_title: "OpenPolicy Europe - understand and engage with policymaking"
 meta_description: "Policymaking sounds overcomplicated? You don't know how to impact it? Explore your digital hub for understanding and engaging with policymaking."
-meta_image: "flag-eu-square.jpeg" # in `app/assets/images/`
+meta_image: "https://res.cloudinary.com/dqmjwsj8t/image/upload/v1632497051/permanent_assets/flag-eu-square_s3y7jq.jpg" # if relative: in `app/assets/images/`
 # twitter_account: "@product_twitter_account" # required for Twitter Cards
