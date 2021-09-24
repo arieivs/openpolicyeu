@@ -5,8 +5,14 @@ footer {
   padding: 3em 0;
 }
 
+footer ul {
+  padding-left: 0;
+
+}
+
 footer li {
   padding-right: 10px;
+  list-style: none;
 }
 
 footer i {
@@ -22,20 +28,58 @@ footer i {
   color: white;
 }
 
-.footer-email {
-  margin-bottom: 0;
+.footer-nav-list {
+  min-width: 150px;
+  line-height: 2em;
+  margin-right: 40px;
+  a {
+    text-decoration: none;
+  }
 }
 
-.footer-origins {
-  margin: auto 0 0 0;
+.footer-logo {
+  max-width: 300px;
+  max-height: 100px;
+  object-fit: contain;
 }
 
-@media (max-width: 880px) {
+.footer-first-logo {
+  margin-right: 56px;
+}
+
+@media (max-width: 1200px) {
+  .footer-nav-list {
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 960px) {
+  .footer-flex {
+    flex-direction: column !important;
+    align-items: center;
+  }
+
+  .footer-nav-list {
+    margin-right: 40px;
+  }
+
+  .footer-origins {
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 599px) {
   footer {
     text-align: center;
   }
 
-  .footer-origins {
-    margin-top: 30px;
+  .footer-nav-list {
+    margin-right: 0;
+    margin-bottom: 40px;
+  }
+
+  .footer-first-logo {
+    margin-right: 0;
+    margin-bottom: 30px;
   }
 }

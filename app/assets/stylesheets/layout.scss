@@ -40,6 +40,10 @@ html {
   max-height: 400px;
 }
 
+.img-width-400 {
+  max-width: 400px;
+}
+
 @media (max-width: 880px) {
   .container-half {
     width: 100%;
@@ -49,5 +53,12 @@ html {
 
   .img-height-400 {
     max-height: 350px;
+  }
+}
+
+@media (max-width: 420px) {
+  .img-width-400 {
+    padding: 0 10px;
+    max-width: 100%;
   }
 }

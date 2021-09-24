@@ -5,9 +5,10 @@ class QuestionsController < ApplicationController
     @policy_making = PolicyMaking.find(params[:policy_making_id])
     @question = Question.new(question_params)
     @question.policy_making = @policy_making
-    @question.save
     @new_answer = Answer.new
-    respond_to { |format| format.js }
+    if @question.save
+      respond_to { |format| format.js }
+    end
   end
 
   def edit
@@ -17,8 +18,20 @@ class QuestionsController < ApplicationController
 
   def update
     @question = Question.find(params[:id])
-    @question.update(question_params)
     @new_answer = Answer.new
+    if @question.update(question_params)
+      respond_to { |format| format.js }
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @question = Question.find(params[:id])
+    @question_scope = @question.scope
+    @policy_making = @question.policy_making
+    @question.destroy
+    @new_question = Question.new
     respond_to { |format| format.js }
   end
 

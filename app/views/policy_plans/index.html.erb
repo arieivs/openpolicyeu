@@ -29,15 +29,15 @@
             <p><%= policy_plan.short_description %></p>
             <% if user_signed_in? %>
               <div class="d-flex">
-                <%= link_to policy_plan_path(policy_plan) do %>
+                <%= link_to policy_plan_path(policy_plan, anchor: 'nav') do %>
                   <button class="btn-all btn-sec my-2 mr-3">See Page</button>
                 <% end %>
-                <%= link_to edit_policy_plan_path(policy_plan) do %>
+                <%= link_to edit_policy_plan_path(policy_plan, anchor: 'nav') do %>
                   <button class="btn-all btn-prim my-2">Edit</button>
                 <% end %>
               </div>
             <% else %>
-              <%= link_to policy_plan_path(policy_plan) do %>
+              <%= link_to policy_plan_path(policy_plan, anchor: 'nav') do %>
                 <button class="btn-all btn-prim my-2">Learn more</button>
               <% end %>
             <% end %>

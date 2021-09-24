@@ -1,4 +1,4 @@
-<% if game_question.nil? %>
+<% if game_question.nil? || game_question.id.nil? %>
   <h3 class="mt-4">Add a Question:</h3>
   <%= render 'policy_plans/partials/new_game_question',
       policy_plan: policy_plan,

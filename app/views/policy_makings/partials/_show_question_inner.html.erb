@@ -1,4 +1,10 @@
-<p><%= policy_making.question(question_scope).question %></p>
-<%= link_to edit_question_path(policy_making.question(question_scope)), remote: true do %>
-  <button class="btn-all btn-sec">EDIT</button>
+<p><%= question.question %></p>
+<%= link_to edit_question_path(question), remote: true, class: "btn-link" do %>
+  <button class="btn-all btn-sec my-2 mr-3">EDIT</button>
+<% end %>
+<%= link_to question_path(question),
+  method: :delete,
+  data: { confirm: "Are you sure you want to delete this question?" },
+  remote: true do %>
+  <button class='btn-all btn-sec my-2'>REMOVE</button>
 <% end %>

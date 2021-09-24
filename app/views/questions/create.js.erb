@@ -1,2 +1,2 @@
-document.getElementById('<%= @question.scope %>-question').innerHTML = '<%= j render 'policy_makings/partials/show_question', policy_making: @policy_making, question_scope: @question.scope, new_answer: @new_answer %>';
-document.getElementById('create-<%= @question.scope %>-question').innerHTML = '';
+document.getElementById('<%= @question.scope %>-question').innerHTML = "<%= j render 'policy_makings/partials/show_question', policy_making: @policy_making, question_scope: @question.scope, new_answer: @new_answer %>";
+document.getElementById('create-<%= @question.scope %>-question').innerHTML = "<%= j render 'policy_makings/partials/create_question', policy_making: @policy_making, question_scope: @question.scope, question: @question %>";

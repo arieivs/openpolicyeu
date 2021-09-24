@@ -2,7 +2,7 @@ class PolicyPlansController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :choose_institution, :choose_gamebook, :choose_timeline, :open_accordion, :close_accordion]
 
   def index
-    @policy_plans = PolicyPlan.all
+    @policy_plans = PolicyPlan.all.order(:name)
   end
 
   def show
@@ -23,7 +23,9 @@ class PolicyPlansController < ApplicationController
     @policy_plan = PolicyPlan.new(policy_plan_params)
     if @policy_plan.save
       redirect_to edit_policy_plan_path(@policy_plan)
+      flash[:notice] = "Policy Plan/Strategy created successfully! Scroll down and keep editing."
     else
+      flash.now[:alert] = "Something went wrong. Please review your inputs above."
       render :new
     end
   end
@@ -35,8 +37,11 @@ class PolicyPlansController < ApplicationController
 
   def update
     set_policy_plan
-    @policy_plan.update(policy_plan_params)
-    respond_to { |format| format.js }
+    if @policy_plan.update(policy_plan_params)
+      respond_to { |format| format.js { flash.now[:notice] = "Policy Plan/Strategy updated successfully!" } }
+    else
+      respond_to { |format| format.js { flash.now[:alert] = "Something went wrong. Please review your inputs above." } }
+    end
   end
 
   def choose_institution

@@ -63,7 +63,7 @@
             <div class="px-4">
               <h2><mark class="mark-blue"><%= policy_plan.name %></mark></h2>
               <p><%= policy_plan.short_description %></p>
-              <%= link_to policy_plan_path(policy_plan) do %>
+              <%= link_to policy_plan_path(policy_plan, anchor: 'nav') do %>
                 <button class="btn-all btn-prim my-2">Learn more</button>
               <% end %>
             </div>

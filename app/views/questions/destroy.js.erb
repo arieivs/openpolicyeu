@@ -1,0 +1,2 @@
+document.getElementById('create-<%= @question_scope %>-question').innerHTML = "<%= j render 'policy_makings/partials/create_question', policy_making: @policy_making, question_scope: @question_scope, question: @new_question %>";
+document.getElementById('<%= @question.scope %>-question').innerHTML = "";

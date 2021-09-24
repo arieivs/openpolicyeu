@@ -16,7 +16,7 @@
           <div class="px-4">
             <h3><%= timestep.name %></h3>
             <p><%= timestep.description %></p>
-            <% if user_signed_in? %>
+            <% if current_page?(controller: '/policy_plans', action: 'edit') || controller_name == 'timesteps' %>
               <div class="d-flex">
                 <%= link_to edit_timestep_path(timestep), remote: true do %>
                   <button class="btn-all btn-sec my-2 mr-3">Edit</button>

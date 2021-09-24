@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
+  get '/404', to: 'errors#not_found'
+  get '/422', to: 'errors#unprocessable'
+  get '/500', to: 'errors#internal'
+
   devise_for :users, skip: :registrations
   devise_scope :user do
     get 'users/edit', to: 'devise/registrations#edit', as: 'edit_user_registration'
     put 'users', to: 'devise/registrations#update', as: 'user_registration'
   end
+
   root to: 'pages#home'
   get 'about', to: 'pages#about', as: :about
   get 'explore', to: 'pages#explore', as: :explore
@@ -11,7 +16,7 @@ Rails.application.routes.draw do
 
   get 'policy_makings/:policy_making_id/choose_institution/:policy_making_institution_id', to: 'policy_makings#choose_institution', as: :pm_choose_institution
   resources :policy_makings, except: [:destroy], shallow: true do
-    resources :questions, only: [:create, :edit, :update], shallow: true do
+    resources :questions, only: [:create, :edit, :update, :destroy], shallow: true do
       resources :answers, only: [:create, :edit, :update, :destroy]
     end
     resources :policy_making_institutions, only: [:create, :edit, :update, :destroy]
