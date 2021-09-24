@@ -29,24 +29,22 @@ PolicyMaking.destroy_all
 # Ambassador.destroy_all
 puts "Cleaning INSTITUIONS database..."
 Institution.destroy_all
+puts "Cleaning OPPORTUNITIES database..."
+Opportunity.destroy_all
+puts "Cleaning OPPORTUNITY_TYPES database..."
+OpportunityType.destroy_all
+puts "Cleaning ORGANISATIONS database..."
+OrganisationCountry.destroy_all
+OrganisationTopic.destroy_all
+Organisation.destroy_all
 puts "Cleaning COUNTRIES database..."
 Country.destroy_all
 puts "Cleaning TOPICS database..."
 Topic.destroy_all
-puts "Cleaning OPPORTUNITY_TYPES database..."
-OpportunityType.destroy_all
 puts "Cleaning VOLUNTEERS database..."
 Volunteer.destroy_all
-puts "Cleaning ORGANISATIONS database..."
-Organisation.destroy_all
-puts "Cleaning ORGANISATION_COUNTRIES database..."
-OrganisationCountry.destroy_all
-puts "Cleaning ORGANISATIONS_TOPICS database..."
-OrganisationTopic.destroy_all
-puts "Cleaning OPPORTUNITIES database..."
-Opportunity.destroy_all
-puts "Empty database \n\n"
 
+puts "Empty database \n\n"
 
 # --------------- TOPICS ---------------
 
@@ -229,23 +227,24 @@ OPPORTUNITY_TYPES = ['job', 'volunteer']
 OPPORTUNITY_TYPES.each { |opp| OpportunityType.create(name: opp) }
 
 Organisation.all.each do |organisation|
-  ORGANISATION_COUNTRIES = Country.all.sample(rand(1..3))
-  ORGANISATION_COUNTRIES.each do |country|
+  organisation_countries = Country.all.sample(rand(1..3))
+  organisation_countries.each do |country|
     OrganisationCountry.create(organisation: organisation, country: country)
   end
-  puts "#{OrganisationCountry.count} organisation_countries created!"
 
-  TOPICS = Topic.all.sample(rand(1..3))
-  TOPICS.each do |topic|
+  topics = Topic.all.sample(rand(1..3))
+  topics.each do |topic|
     OrganisationTopic.create(organisation: organisation, topic: topic)
   end
-  puts "#{OrganisationTopic.count} organisation_topics created!"
 
   nb_of_opportunities = rand(1..3)
   nb_of_opportunities.times do
     Opportunity.create(organisation: organisation, opportunity_type: OpportunityType.all.sample)
   end
-  puts "#{Opportunity.count} opportunities created!"
 end
+
+puts "#{OrganisationCountry.count} organisation_countries created!"
+puts "#{OrganisationTopic.count} organisation_topics created!"
+puts "#{Opportunity.count} opportunities created!"
 
 puts 'Done :)'

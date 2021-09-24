@@ -6,7 +6,7 @@ class CreatePolicyPlans < ActiveRecord::Migration[6.1]
       t.string :video_url
       t.string :video_alt_text
       t.string :video_source
-      t.boolean :strategy, default: false
+      t.boolean :strategy
       t.references :policy_making, null: false, foreign_key: true
       t.references :ambassador, null: true, foreign_key: true
 
