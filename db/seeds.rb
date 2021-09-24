@@ -229,14 +229,14 @@ OPPORTUNITY_TYPES = ['job', 'volunteer']
 OPPORTUNITY_TYPES.each { |opp| OpportunityType.create(name: opp) }
 
 Organisation.all.each do |organisation|
-  ORGANISATION_COUNTRIES = Country.all.sample(rand(1..3))
-  ORGANISATION_COUNTRIES.each do |country|
+  organisation_countries = Country.all.sample(rand(1..3))
+  organisation_countries.each do |country|
     OrganisationCountry.create(organisation: organisation, country: country)
   end
   puts "#{OrganisationCountry.count} organisation_countries created!"
 
-  TOPICS = Topic.all.sample(rand(1..3))
-  TOPICS.each do |topic|
+  topics = Topic.all.sample(rand(1..3))
+  topics.each do |topic|
     OrganisationTopic.create(organisation: organisation, topic: topic)
   end
   puts "#{OrganisationTopic.count} organisation_topics created!"
