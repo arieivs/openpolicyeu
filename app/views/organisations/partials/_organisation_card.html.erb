@@ -2,15 +2,15 @@
   <%= cl_image_tag organisation.logo.key, crop: :thumb, height: 300, width: 300, class:"avatar-large m-4" %>
   <div>
     <h3 ><mark class="mark-blue"><%= organisation.name %></mark></h3>
-    <div class="d-flex">
+    <div class="d-flex flex-wrap">
       <% organisation.countries.each do |country| %>
-        <p class="tag tag-light-blue mr-3 my-0"><%= country.name %></p>
+        <p class="tag tag-light-blue mr-2 my-1"><%= country.name %></p>
       <% end %>
       <% organisation.topics.each do |topic| %>
-        <p class="tag tag-light-blue mr-3 my-0"><%= topic.name %></p>
+        <p class="tag tag-light-blue mr-2 my-1"><%= topic.name %></p>
       <% end %>
       <% organisation.opportunity_types.uniq.each do |opportunity_type| %>
-        <p class="tag tag-light-blue mr-3 my-0"><%= opportunity_type.name %></p>
+        <p class="tag tag-light-blue mr-2 my-1"><%= opportunity_type.name %></p>
       <% end %>
     </div>
     <p><%= organisation.description %></p>
