@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   get 'explore', to: 'pages#explore', as: :explore
   get 'join', to: 'volunteers#index', as: :join
 
-  get 'policy_makings/:policy_making_id/choose_institution/:policy_making_institution_id', to: 'policy_makings#choose_institution', as: :pm_choose_institution
   resources :policy_makings, except: [:destroy], shallow: true do
     resources :questions, only: [:create, :edit, :update, :destroy], shallow: true do
       resources :answers, only: [:create, :edit, :update, :destroy]
@@ -23,7 +22,6 @@ Rails.application.routes.draw do
   end
   get 'questions/:question_id/select_answer_quiz/:answer_id/', to: 'questions#select_answer_quiz', as: :select_answer_quiz
 
-  get 'policy_plans/:policy_plan_id/choose_institution/:policy_plan_institution_id', to: 'policy_plans#choose_institution', as: :pp_choose_institution
   get 'policy_plans/:id/choose_gamebook', to: 'policy_plans#choose_gamebook', as: :choose_gamebook
   get 'policy_plans/:id/choose_timeline', to: 'policy_plans#choose_timeline', as: :choose_timeline
   get 'policy_plans/:policy_plan_id/open_accordion/:goal_id', to: 'policy_plans#open_accordion', as: :open_accordion

@@ -1,5 +1,5 @@
 class PolicyMakingsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show, :choose_institution]
+  skip_before_action :authenticate_user!, only: [:show]
 
   def index
     @policy_makings = PolicyMaking.all.order(:country_id).order(:topic_id)
@@ -62,16 +62,6 @@ class PolicyMakingsController < ApplicationController
     else
       respond_to { |format| format.js { flash.now[:alert] = "Something went wrong. Please review your inputs above." } }
     end
-  end
-
-  def choose_institution
-    # when the user clicks in one of the institutions cards
-    # we call this method and pass the needed ids in the params
-    @policy_making = PolicyMaking.find(params[:policy_making_id])
-    @policy_making_institutions = PolicyMakingInstitution.where(policy_making: @policy_making)
-    @policy_making_institution = PolicyMakingInstitution.find(params[:policy_making_institution_id])
-    # then it renders choose_institution.js.erb automatically
-    # which in turn renders the institution_description.html.erb partial
   end
 
   private
