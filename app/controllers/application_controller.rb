@@ -8,4 +8,10 @@ class ApplicationController < ActionController::Base
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name])
   end
+
+  def default_url_options
+    { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
+  # don't forget to set the production DOMAIN variable
+  # heroku config:set DOMAIN=www.my_product.com
 end
