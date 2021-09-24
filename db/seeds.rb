@@ -231,19 +231,20 @@ Organisation.all.each do |organisation|
   organisation_countries.each do |country|
     OrganisationCountry.create(organisation: organisation, country: country)
   end
-  puts "#{OrganisationCountry.count} organisation_countries created!"
 
   topics = Topic.all.sample(rand(1..3))
   topics.each do |topic|
     OrganisationTopic.create(organisation: organisation, topic: topic)
   end
-  puts "#{OrganisationTopic.count} organisation_topics created!"
 
   nb_of_opportunities = rand(1..3)
   nb_of_opportunities.times do
     Opportunity.create(organisation: organisation, opportunity_type: OpportunityType.all.sample)
   end
-  puts "#{Opportunity.count} opportunities created!"
 end
+
+puts "#{OrganisationCountry.count} organisation_countries created!"
+puts "#{OrganisationTopic.count} organisation_topics created!"
+puts "#{Opportunity.count} opportunities created!"
 
 puts 'Done :)'
