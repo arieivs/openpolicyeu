@@ -29,24 +29,22 @@ PolicyMaking.destroy_all
 # Ambassador.destroy_all
 puts "Cleaning INSTITUIONS database..."
 Institution.destroy_all
+puts "Cleaning OPPORTUNITIES database..."
+Opportunity.destroy_all
+puts "Cleaning OPPORTUNITY_TYPES database..."
+OpportunityType.destroy_all
+puts "Cleaning ORGANISATIONS database..."
+OrganisationCountry.destroy_all
+OrganisationTopic.destroy_all
+Organisation.destroy_all
 puts "Cleaning COUNTRIES database..."
 Country.destroy_all
 puts "Cleaning TOPICS database..."
 Topic.destroy_all
-puts "Cleaning OPPORTUNITY_TYPES database..."
-OpportunityType.destroy_all
 puts "Cleaning VOLUNTEERS database..."
 Volunteer.destroy_all
-puts "Cleaning ORGANISATIONS database..."
-Organisation.destroy_all
-puts "Cleaning ORGANISATION_COUNTRIES database..."
-OrganisationCountry.destroy_all
-puts "Cleaning ORGANISATIONS_TOPICS database..."
-OrganisationTopic.destroy_all
-puts "Cleaning OPPORTUNITIES database..."
-Opportunity.destroy_all
-puts "Empty database \n\n"
 
+puts "Empty database \n\n"
 
 # --------------- TOPICS ---------------
 
