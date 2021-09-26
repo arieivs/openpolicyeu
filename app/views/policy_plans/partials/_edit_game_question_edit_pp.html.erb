@@ -1,5 +1,5 @@
 <%= simple_form_for game_question, remote: true do |f| %>
-  <% if !policy_plan.strategy %>
+  <% if !policy_plan.goals %>
     <%= f.input :date, required: true %>
   <% end %>
   <%= f.input :name, required: true %>
