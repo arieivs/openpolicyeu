@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_23_155815) do
+ActiveRecord::Schema.define(version: 2021_09_26_152326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -215,7 +215,7 @@ ActiveRecord::Schema.define(version: 2021_09_23_155815) do
     t.string "video_url"
     t.string "video_alt_text"
     t.string "video_source"
-    t.boolean "strategy"
+    t.boolean "goals"
     t.bigint "policy_making_id", null: false
     t.bigint "ambassador_id"
     t.datetime "created_at", precision: 6, null: false

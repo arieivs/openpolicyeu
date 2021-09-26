@@ -6,5 +6,5 @@ class PolicyPlan < ApplicationRecord
   validates :name, presence: true
   validates :content, presence: true
   validates :short_description, presence: true
-  validates :strategy, inclusion: { in: [true, false] }
+  validates :goals, inclusion: { in: [true, false] }
 end

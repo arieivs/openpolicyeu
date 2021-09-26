@@ -126,9 +126,9 @@ puts "#{Question.count} questions and #{Answer.count} answers created! \n\n"
 # --------------- POLICY PLANS ---------------
 
 puts "Creating policy plans..."
-# index,policy_making_index,policy_making,name,short_description,content,video_url,video_alt_text,video_source,strategy
+# index,policy_making_index,policy_making,name,short_description,content,video_url,video_alt_text,video_source,goals
 CSV.foreach('db/initial_seeds/policy_plans.csv', csv_reading_options) do |row|
-  PolicyPlan.new(policy_making: policy_makings[row[1].to_i], name: row[3], short_description: row[4], content: row[5], video_url: row[6], video_source: row[8], strategy: (row[9] == 'true')).save
+  PolicyPlan.new(policy_making: policy_makings[row[1].to_i], name: row[3], short_description: row[4], content: row[5], video_url: row[6], video_source: row[8], goals: (row[9] == 'true')).save
 end
 policy_plans = PolicyPlan.all.order(:id)
 puts "#{PolicyPlan.count} policy plans created! \n\n"
