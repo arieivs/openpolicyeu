@@ -2,18 +2,7 @@
   <section class="py-5">
     <div class="container">
       <h1>Take action!</h1>
-      <p>Ready to get involved in policymaking? Find out with who and how:</p>
-      <div class="d-flex flex-column flex-md-row mt-4 mb-5">
-        <div class="country-topic-field">
-          <%= render 'organisations/partials/filter_by_country' %>
-        </div>
-        <div class="country-topic-field">
-          <%= render 'organisations/partials/filter_by_topic' %>
-        </div>
-        <div class="d-none">
-          <%= render 'organisations/partials/filter_by_type' %>
-        </div>
-      </div>
+      <p class="mb-5">Ready to get involved in policymaking? Find out with who and how:</p>
       <% @organisations.each do |organisation| %>
         <%= render 'organisations/partials/organisation_card', organisation: organisation %>
       <% end %>
