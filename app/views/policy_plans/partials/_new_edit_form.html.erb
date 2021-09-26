@@ -12,10 +12,10 @@
   <%= f.input :video_source, label: "Who’s the creator/holds the rights to the video?", required: false %>
   <!-- Ambassador to be added once we have ambassadors -->
   <% if policy_plan.id.nil? %>
-    <p>Is this a Policy Plan or a Strategy? *</p>
+    <p>Will you add a timeline or goals? *</p>
     <p>
-      <%= f.radio_button :strategy, false, required: true %> Policy Plan &ensp; &ensp;
-      <%= f.radio_button :strategy, true, required: true %> Strategy
+      <%= f.radio_button :goals, false, required: true %> Timeline &ensp; &ensp;
+      <%= f.radio_button :goals, true, required: true %> Goals
     </p>
   <% end %>
   <%= f.button :submit, "Save", class: 'btn-all btn-prim' %>

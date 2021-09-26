@@ -28,11 +28,11 @@
       </div>
       <% @policy_makings.each do |policy_making| %>
         <div class="my-4">
-          <h3><mark class="mark-blue"><%= policy_making.topic.name %> in <%= policy_making.country.name %></mark></h3>
+          <h3><mark class="mark-blue"><%= policy_making.topic.name %></mark> in <%= policy_making.country.name == 'European Union' ? 'the ' : '' %><mark class="mark-blue"><%= policy_making.country.name %></mark></h3>
           <div class="card-all d-flex flex-column flex-lg-row justify-content-between align-items-center my-3">
-            <p class="align-self-start"><%= policy_making.topic.name %> Policymaking in <%= policy_making.country.name %></p>
+            <p class="align-self-start"><%= policy_making %></p>
             <div class="align-self-end">
-              <%= link_to policy_making_path(policy_making, anchor: 'nav') do %>
+              <%= link_to policy_making_path(policy_making, anchor: 'nav'), class: 'btn-link' do %>
                 <button class="btn-all btn-sec my-0 mr-3">SEE PAGE</button>
               <% end %>
               <%= link_to edit_policy_making_path(policy_making, anchor: 'nav') do %>
@@ -45,15 +45,11 @@
             <% @policy_plans_per_pm[policy_making.id].each do |policy_plan| %>
               <div class="card-all d-flex flex-column flex-lg-row justify-content-between align-items-center my-3">
                 <div class="d-flex align-self-start">
-                  <% if policy_plan.strategy %>
-                    <p class="tag tag-blue">Strategy</p>
-                  <% else %>
-                    <p class="tag tag-yllw">Policy Plan</p>
-                  <% end %>
+
                   <p><%= policy_plan.name %></p>
                 </div>
                 <div class="align-self-end">
-                  <%= link_to policy_plan_path(policy_plan, anchor: 'nav') do%>
+                  <%= link_to policy_plan_path(policy_plan, anchor: 'nav'), class: 'btn-link' do%>
                     <button class="btn-all btn-sec my-0 mr-3">SEE PAGE</button>
                   <% end %>
                   <%= link_to edit_policy_plan_path(policy_plan, anchor: 'nav') do %>

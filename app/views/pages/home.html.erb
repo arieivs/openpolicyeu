@@ -59,7 +59,9 @@
         <h2><mark class="mark-yllw">Get involved!</mark></h2>
         <p>Discover volunteering, internship or job opportunities where you can be actively involved with policymaking across Europe.</p>
         <p>Find out how and with who <strong>you can make a meaningful impact:</strong></p>
-        <button class="btn-all btn-prim">Engage</button>
+        <%= link_to organisations_path(anchor: 'nav'), class: 'btn-link' do %>
+          <button class="btn-all btn-prim">Engage</button>
+        <% end %>
       </div>
       <div class="container-half d-flex justify-content-center align-items-center">
         <img class="img-height-300" src="https://res.cloudinary.com/dhnsnkxbe/image/upload/v1630965968/openpolicyeu/Brainstorming_Session-color_1_copy_ftqjzi.png" alt="">

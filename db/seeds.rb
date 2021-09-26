@@ -7,6 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'open-uri'
+require 'csv'
+
+csv_reading_options = { col_sep: ',', quote_char: '"', headers: :first_row }
 
 # --------------- CLEANING ---------------
 
@@ -25,8 +28,6 @@ PolicyPlan.destroy_all
 puts "Cleaning POLICY_MAKINGS database..."
 PolicyMakingInstitution.destroy_all
 PolicyMaking.destroy_all
-# puts "Cleaning AMBASSADORS database..."
-# Ambassador.destroy_all
 puts "Cleaning INSTITUIONS database..."
 Institution.destroy_all
 puts "Cleaning OPPORTUNITIES database..."
@@ -49,202 +50,184 @@ puts "Empty database \n\n"
 # --------------- TOPICS ---------------
 
 puts "Creating topics..."
-# TOPICS = ['Energy', 'Climate', 'Education', 'Health & food safety', 'Mobility', 'Interregional cooperation', 'Defense, Industry, Space']
 TOPICS = [{name:'Energy & Climate', icon: 'fas fa-bolt', icon_color: 'yellow'},
           {name:'Youth', icon: 'fas fa-child', icon_color: 'blue'}]
 TOPICS.each do |topic|
   Topic.new(name: topic[:name], icon: topic[:icon], icon_color: topic[:icon_color]).save
 end
+topics = Topic.all.order(:id)
 puts "#{Topic.count} topics created! \n\n"
 
-# ------- COUNTRIES & INSTITUTIONS -------
+# ------- COUNTRIES -------
 
-puts "Creating countries and institutions..."
-# COUNTRIES = ['Europe', 'Austria', 'Belgium', 'Bulgaria', 'Croatia', 'Republic of Cyprus', 'Czech Republic', 'Denmark', 'Estonia', 'Finland', 'France', 'Germany', 'Greece', 'Hungary', 'Ireland', 'Italy', 'Latvia', 'Lithuania', 'Luxembourg', 'Malta', 'Netherlands', 'Poland', 'Portugal', 'Romania', 'Slovakia', 'Slovenia', 'Spain', 'Sweden']
-COUNTRIES = [{name: 'Europe', flag_url: 'https://www.flags.co.uk/client/uploads/5/european-union.png'},
+puts "Creating countries..."
+COUNTRIES = [{name: 'European Union', flag_url: 'https://www.flags.co.uk/client/uploads/5/european-union.png'},
              {name: 'Germany', flag_url: 'https://2.bp.blogspot.com/-sq6_up5jZ4I/T-iZxEPPX6I/AAAAAAAAEk4/031CmrTmj4Y/s1600/Germany+Flag.jpg'},
-             {name: 'Portugal', flag_url: 'https://www.bestcustomflags.com/wp-content/uploads/2016/06/portugal-flag.jpg'},
              {name: 'Italy', flag_url: 'https://cdn.freelogovectors.net/wp-content/uploads/2012/05/italy-flag.jpg'},
+             {name: 'Portugal', flag_url: 'https://www.bestcustomflags.com/wp-content/uploads/2016/06/portugal-flag.jpg'},
              {name: 'Slovenia', flag_url: 'https://i1.wp.com/worldflags.com/wp-content/uploads/Slovenia-flag.gif?fit=850%2C564'}]
 COUNTRIES.each do |country|
   new_country = Country.new(name: country[:name])
   file = URI.open(country[:flag_url])
   new_country.flag.attach(io: file, filename: "flag.png", content_type: 'image/png')
   new_country.save
-  3.times do
-    new_institution = Institution.new(country: new_country, name: Faker::Company.name, website_url: Faker::Internet.url, video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", video_alt_text: "bla")
-    file = URI.open("https://globalaccessibilitynews.com/files/2013/03/European-Commission-logo.png")
-    new_institution.logo.attach(io: file, filename: "profilepic.png", content_type: 'image/png')
-    new_institution.save
-  end
 end
-puts "#{Country.count} countries and #{Institution.count} institutions created! \n\n"
+countries = Country.all.order(:id)
+puts "#{Country.count} countries created! \n\n"
 
-# --------------- AMBASSADORS ---------------
+# ------- INSTITUTIONS -------
 
-# puts "Creating ambassadors..."
-# 5.times do
-#   new_ambassador = Ambassador.new(name: Faker::Superhero.name, description: Faker::Superhero.power, social_profile_link:"")
-#   file = URI.open("https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80")
-#   new_ambassador.photo.attach(io: file, filename: "profilepic.png", content_type: 'image/png')
-#   new_ambassador.save
-# end
+puts "Creating institutions..."
+# index,country_index,country,name,logo,website_url,video_url,video_alt_text,video_source
+CSV.foreach('db/initial_seeds/institutions.csv', csv_reading_options) do |row|
+  new_institution = Institution.new(country: countries[row[1].to_i], name: row[3], website_url: row[5], video_url: row[6], video_source: row[8], video_alt_text: row[7])
+  file = URI.open(row[4])
+  new_institution.logo.attach(io: file, filename: "logo.png", content_type: 'image/png')
+  new_institution.save
+  puts "created institution #{new_institution.name} \n"
+end
+institutions = Institution.all.order(:id)
+puts "#{Institution.count} institutions created! \n\n"
 
 # --------------- POLICY MAKINGS ---------------
 
 puts "Creating policymakings..."
-pms = []
-pm = PolicyMaking.new(country: Country.first, topic: Topic.first, video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
-pm.save
-pms.push(pm)
-pm = PolicyMaking.new(country: Country.first, topic: Topic.second, video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
-pm.save
-pms.push(pm)
-pm = PolicyMaking.new(country: Country.second, topic: Topic.first, video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
-pm.save
-pms.push(pm)
-pm = PolicyMaking.new(country: Country.second, topic: Topic.second, video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
-pm.save
-pms.push(pm)
-pm = PolicyMaking.new(country: Country.third, topic: Topic.first, video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
-pm.save
-pms.push(pm)
-pm = PolicyMaking.new(country: Country.third, topic: Topic.second, video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", content: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10))
-pm.save
-pms.push(pm)
+# index,country_index,country,topic_index,topic,content,video_url,video_alt_text,video_source
+CSV.foreach('db/initial_seeds/policy_makings.csv', csv_reading_options) do |row|
+  PolicyMaking.new(country: countries[row[1].to_i], topic: topics[row[3].to_i], video_url: row[6], video_source: row[8], content: row[5]).save
+end
+policy_makings = PolicyMaking.all.order(:id)
 puts "#{PolicyMaking.count} policymakings created! \n\n"
 
 puts "Associating institutions to policymakings..."
-pms.each do |pm|
-  institutions = Institution.where(country: pm.country)
-  institutions.each do |i|
-    PolicyMakingInstitution.new(policy_making: pm, institution: i, description: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10)).save
-  end
+# index,policy_making_index,policy_making,institution_index,institution,description
+CSV.foreach('db/initial_seeds/policy_making_institutions.csv', csv_reading_options) do |row|
+  puts "#{policy_makings[row[1].to_i]} #{institutions[row[3].to_i].name}"
+  PolicyMakingInstitution.new(policy_making: policy_makings[row[1].to_i], institution: institutions[row[3].to_i], description: row[5]).save
 end
 puts "#{PolicyMakingInstitution.count} policymaking_institutions created! \n\n"
 
 # ----------- QUESTIONS & ANSWERS ----------
 
 puts "Creating questions and answers for policymakings..."
-
-pms.each do |pm|
-  content_question = Question.new(policy_making: pm, scope: 'content', question: "#{Faker::Quotes::Shakespeare.hamlet}?")
-  content_question.save
-  Answer.new(question: content_question, answer: Faker::TvShows::BojackHorseman.quote, explanation: Faker::Movies::HitchhikersGuideToTheGalaxy.quote, right: true).save
-  rand(2..4).times do
-    Answer.new(question: content_question, answer: Faker::TvShows::BojackHorseman.quote, explanation: Faker::Movies::HitchhikersGuideToTheGalaxy.quote, right: false).save
-  end
-  question_institution = Question.new(policy_making: pm, scope: 'institutions', question: "#{Faker::Quotes::Shakespeare.hamlet}?")
-  question_institution.save
-  Answer.new(question: question_institution, answer: Faker::TvShows::BojackHorseman.quote, explanation: Faker::Movies::HitchhikersGuideToTheGalaxy.quote, right: true).save
-  rand(2..4).times do
-    Answer.new(question: question_institution, answer: Faker::TvShows::BojackHorseman.quote, explanation: Faker::Movies::HitchhikersGuideToTheGalaxy.quote, right: false).save
-  end
+# index,policy_making_index,policy_making,scope,question
+CSV.foreach('db/initial_seeds/questions.csv', csv_reading_options) do |row|
+  Question.new(policy_making: policy_makings[row[1].to_i], scope: row[3], question: row[4]).save
 end
+questions = Question.all.order(:id)
+
+# index,question_index,answer,explanation,right
+CSV.foreach('db/initial_seeds/answers.csv', csv_reading_options) do |row|
+  Answer.new(question: questions[row[1].to_i], answer: row[2], explanation: row[3], right: (row[4] == 'true')).save
+end
+
 puts "#{Question.count} questions and #{Answer.count} answers created! \n\n"
 
 # --------------- POLICY PLANS ---------------
 
-puts "Creating policy plans, time steps and gamebook..."
-pps = []
-PolicyMaking.where(topic: Topic.where(name:'Energy & Climate')).each do |pm|
-  policy_plan = PolicyPlan.new(policy_making: pm, name: Faker::Movies::HarryPotter.character, short_description: "With 75\% of its GHG emissions coming from the energy sector, the EU has launched the European Green Deal in an effort to become the first climate-neutral continent by 2050.", content: "The Deal comprises multiple strategies towards reaching climate neutrality. With the goal of cleaner energies, it is focused on ensuring a secure energy supply, promoting renewables and increasing energy efficiency. The objectives of the Deal are legally binding through the Climate Law. Supplementary strategies, such as the Climate Pact, are formulated to ensure that all member states have equal access to knowledge to guide them towards a sustainable future.", video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", strategy: false)
-  policy_plan.save
-  pps.push(policy_plan)
-  (1..10).to_a.each do |i|
-    Timestep.new(date: Faker::Date.between(from: '2014-09-23', to: '2016-09-25'), name: Faker::Movies::StarWars.character, description: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10), policy_plan: policy_plan).save
-    question = GameQuestion.new(date: Faker::Date.between(from: '2014-09-23', to: '2016-09-25'), policy_plan: policy_plan, name: Faker::Movies::StarWars.character, context: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10), question: "#{Faker::GreekPhilosophers.quote}?")
-    question.save
-    GameAnswer.new(game_question: question, answer: Faker::Movies::HarryPotter.quote, explanation: Faker::Movies::Ghostbusters.quote, right: true).save
-    rand(2..4).times do
-      GameAnswer.new(game_question: question, answer: Faker::Movies::HarryPotter.quote, explanation: Faker::Movies::Ghostbusters.quote, right: false).save
-    end
-  end
+puts "Creating policy plans..."
+# index,policy_making_index,policy_making,name,short_description,content,video_url,video_alt_text,video_source,goals
+CSV.foreach('db/initial_seeds/policy_plans.csv', csv_reading_options) do |row|
+  PolicyPlan.new(policy_making: policy_makings[row[1].to_i], name: row[3], short_description: row[4], content: row[5], video_url: row[6], video_source: row[8], goals: (row[9] == 'true')).save
 end
-puts "#{PolicyPlan.count} policy plans with #{Timestep.count} time steps, #{Goal.count} goals, #{GameQuestion.count} gamebook questions and #{GameAnswer.count} answers created! \n\n"
-
-puts "Creating strategies, goals and quizzes..."
-PolicyMaking.where(topic: Topic.where(name:'Youth')).each do |pm|
-  policy_plan = PolicyPlan.new(policy_making: pm, name: Faker::Movies::HarryPotter.character, short_description: "With 75\% of its GHG emissions coming from the energy sector, the EU has launched the European Green Deal in an effort to become the first climate-neutral continent by 2050.", content: "The Deal comprises multiple strategies towards reaching climate neutrality. With the goal of cleaner energies, it is focused on ensuring a secure energy supply, promoting renewables and increasing energy efficiency. The objectives of the Deal are legally binding through the Climate Law. Supplementary strategies, such as the Climate Pact, are formulated to ensure that all member states have equal access to knowledge to guide them towards a sustainable future.", video_url: "https://www.youtube.com/embed/BUMyjwCMzSI", video_source: "EU Council", strategy: true)
-  policy_plan.save
-  pps.push(policy_plan)
-  (1..10).to_a.each do |i|
-    Goal.new(name: Faker::Movies::StarWars.character, description: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10), policy_plan: policy_plan, order: i).save
-    question = GameQuestion.new(policy_plan: policy_plan, name: Faker::Movies::StarWars.character, context: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10), question: "#{Faker::GreekPhilosophers.quote}?", order: i)
-    question.save
-    GameAnswer.new(game_question: question, answer: Faker::Movies::HarryPotter.quote, explanation: Faker::Movies::Ghostbusters.quote, right: true).save
-    rand(2..4).times do
-      GameAnswer.new(game_question: question, answer: Faker::Movies::HarryPotter.quote, explanation: Faker::Movies::Ghostbusters.quote, right: false).save
-    end
-  end
-end
-puts "#{PolicyPlan.count} policy plans & strategies with #{Goal.count} goals, #{GameQuestion.count} gamebook questions and #{GameAnswer.count} answers in total! \n\n"
-
-puts "Creating young contributors..."
-pps.each do |pp|
-  2.times do
-    contributor = YoungContributor.new(policy_plan: pp, name: "Fridays for Future (FFF)", description: "FFF is a youth-led organised movement that started in August 2018. FFF activists have very strongly criticised the economic stimulus packages, the EU's agricultural reforms and the recent 'Fit for 55' package . Their mass protests have been crucial way for young people to enter the political sphere, and these movements continue to put pressure on  decision-makers, leading to improved communication between policymakers and youth.", website_url: "https://www.iedonline.eu/download/climate-crisis/Tenti_Duccio_IED-Climate-Paper_2019.pdf")
-    file = URI.open("https://globalaccessibilitynews.com/files/2013/03/European-Commission-logo.png")
-    contributor.logo.attach(io: file, filename: "logo.png", content_type: 'image/png')
-    contributor.save
-  end
-end
-puts "#{YoungContributor.count} young contributors created! \n\n"
+policy_plans = PolicyPlan.all.order(:id)
+puts "#{PolicyPlan.count} policy plans created! \n\n"
 
 puts "Associating institutions to policyplans..."
-pps.each do |pp|
-  institutions = Institution.where(country: pp.policy_making.country)
-  institutions.each do |i|
-    PolicyPlanInstitution.new(policy_plan: pp, institution: i, description: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 10)).save
-  end
+# index,policy_plan_index,policy_plan,institution_index,institution,description
+CSV.foreach('db/initial_seeds/policy_plan_institutions.csv', csv_reading_options) do |row|
+  PolicyPlanInstitution.new(policy_plan: policy_plans[row[1].to_i], institution: institutions[row[3].to_i], description: row[5]).save
 end
 puts "#{PolicyPlanInstitution.count} policy_plan_institutions created! \n\n"
+
+# --------------- TIMESTEPS & GOALS ---------------
+
+puts "Creating time steps and goals..."
+# index,policy_plan_index,policy_plan,day,month,year,name,description
+CSV.foreach('db/initial_seeds/timesteps.csv', csv_reading_options) do |row|
+  Timestep.new(date: Date.new(row[5].to_i, row[4].to_i, row[3].to_i), name: row[6], description: row[7], policy_plan: policy_plans[row[1].to_i]).save
+end
+
+# index,policy_plan_index,policy_plan,name,description,order
+CSV.foreach('db/initial_seeds/goals.csv', csv_reading_options) do |row|
+  Goal.new(name: row[3], description: row[4], policy_plan: policy_plans[row[1].to_i], order: row[5].to_i).save
+end
+puts "#{Timestep.count} time steps and #{Goal.count} goals created! \n\n"
+
+# -------- GAMEQUESTIONS & GAMEANSWERS ---------
+
+puts "Creating gamebook..."
+# index,policy_plan_index,policy_plan,day,month,year,order,name,context,question
+CSV.foreach('db/initial_seeds/game_questions.csv', csv_reading_options) do |row|
+  if row[6].nil? # if there's no order
+    GameQuestion.new(date: Date.new(row[5].to_i, row[4].to_i, row[3].to_i), policy_plan: policy_plans[row[1].to_i], name: row[7], context: row[8], question: row[9]).save
+  else
+    GameQuestion.new(order: row[6].to_i, policy_plan: policy_plans[row[1].to_i], name: row[7], context: row[8], question: row[9]).save
+  end
+end
+game_questions = GameQuestion.all.order(:id)
+
+# index,game_question_index,answer,explanation,right
+CSV.foreach('db/initial_seeds/game_answers.csv', csv_reading_options) do |row|
+  GameAnswer.new(game_question: game_questions[row[1].to_i], answer: row[2], explanation: row[3], right: (row[4] == 'true')).save
+end
+puts "#{GameQuestion.count} gamebook questions and #{GameAnswer.count} answers created! \n\n"
+
+# -------- YOUNG CONTRIBUTORS ---------
+
+puts "Creating young contributors..."
+# index,policy_plan_index,policy_plan,name,description,website_url,logo
+CSV.foreach('db/initial_seeds/young_contributors.csv', csv_reading_options) do |row|
+  new_contributor = YoungContributor.new(policy_plan: policy_plans[row[1].to_i], name: row[3], description: row[4], website_url: row[5])
+  file = URI.open(row[6])
+  new_contributor.logo.attach(io: file, filename: "logo.png", content_type: 'image/png')
+  new_contributor.save
+  puts "created young contributor #{new_contributor.name} \n"
+end
+puts "#{YoungContributor.count} young contributors created! \n\n"
 
 # --------------- VOLUNTEERS ---------------
 
 puts "Creating volunteers..."
-5.times do
-  new_volunteer = Volunteer.new(name: Faker::Superhero.name, role: Faker::Superhero.power, linkedin_link:"")
-  file = URI.open("https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80")
+# index,name,role,linkedin_link,photo
+CSV.foreach('db/initial_seeds/volunteers.csv', csv_reading_options) do |row|
+  new_volunteer = Volunteer.new(name: row[1], role: row[2], linkedin_link:row[3])
+  file = URI.open(row[4])
   new_volunteer.photo.attach(io: file, filename: "profilepic.png", content_type: 'image/png')
   new_volunteer.save
+  puts "created volunteer #{new_volunteer.name} \n"
 end
 puts "#{Volunteer.count} volunteers created! \n\n"
 
 # --------------- ORGANISATIONS ---------------
 
 puts "Creating organisations..."
-5.times do
-  new_organisation = Organisation.new(name: Faker::Company.name, description: Faker::Company.catch_phrase, learn_more_link: "http://youthenergy.eu")
-  file = URI.open(Faker::Company.logo)
+# index,name,description,learn_more_link,logo
+CSV.foreach('db/initial_seeds/organisations.csv', csv_reading_options) do |row|
+  new_organisation = Organisation.new(name: row[1], description: row[2], learn_more_link: row[3])
+  file = URI.open(row[4])
   new_organisation.logo.attach(io: file, filename: "logo.png", content_type: 'image/png')
   new_organisation.save
+  puts "created organisation #{new_organisation.name} \n"
 end
+organisations = Organisation.all.order(:id)
 puts "#{Organisation.count} organisations created! \n\n"
 
-puts "Associating countries, topics and opportunities to organisations..."
-OPPORTUNITY_TYPES = ['job', 'volunteer']
-OPPORTUNITY_TYPES.each { |opp| OpportunityType.create(name: opp) }
-
-Organisation.all.each do |organisation|
-  organisation_countries = Country.all.sample(rand(1..3))
-  organisation_countries.each do |country|
-    OrganisationCountry.create(organisation: organisation, country: country)
-  end
-
-  topics = Topic.all.sample(rand(1..3))
-  topics.each do |topic|
-    OrganisationTopic.create(organisation: organisation, topic: topic)
-  end
-
-  nb_of_opportunities = rand(1..3)
-  nb_of_opportunities.times do
-    Opportunity.create(organisation: organisation, opportunity_type: OpportunityType.all.sample)
-  end
+puts "Associating countries and topics to organisations..."
+# index,country_index,country,organisation_index,organisation
+CSV.foreach('db/initial_seeds/organisation_countries.csv', csv_reading_options) do |row|
+  OrganisationCountry.create(organisation: organisations[row[3].to_i], country: countries[row[1].to_i])
 end
 
-puts "#{OrganisationCountry.count} organisation_countries created!"
-puts "#{OrganisationTopic.count} organisation_topics created!"
-puts "#{Opportunity.count} opportunities created!"
+# index,topic_index,topic,organisation_index,organisation
+CSV.foreach('db/initial_seeds/organisation_topics.csv', csv_reading_options) do |row|
+  OrganisationTopic.create(organisation: organisations[row[3].to_i], topic: topics[row[1].to_i])
+end
+puts "#{OrganisationCountry.count} organisation_countries and #{OrganisationTopic.count} organisation_topics created!"
+
+# Later for Opportunitties:
+# OPPORTUNITY_TYPES = ['Job', 'Volunteer', 'Internship']
+# OPPORTUNITY_TYPES.each { |opp| OpportunityType.create(name: opp) }
+# puts "#{Opportunity.count} opportunities created!"
 
 puts 'Done :)'

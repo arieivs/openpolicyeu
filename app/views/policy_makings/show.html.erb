@@ -1,8 +1,8 @@
 <main>
   <section class="bkg-blue py-5">
     <div class="container">
-      <h1><%= @policy_making.topic.name %> Policymaking in <%= @policy_making.country.name %></h1>
-      <h2><mark class="mark-yllw">How does it work?</mark></h2>
+      <h1><%= @policy_making %></h1>
+      <h2 class="pt-3 pb-4"><mark class="mark-yllw">How does it work?</mark></h2>
       <div class="container-short">
         <% if @policy_making.video_url && !@policy_making.video_url.empty? %>
           <div class="my-5">
@@ -52,13 +52,22 @@
         <% @policy_plans.each do |policy_plan| %>
           <div class="card-all my-3">
             <div class="px-4">
-              <h2><mark class="mark-blue"><%= policy_plan.name %></mark></h2>
+              <h2><strong><%= policy_plan.name %></strong></h2>
               <p><%= policy_plan.short_description %></p>
               <%= link_to policy_plan_path(policy_plan, anchor: 'nav') do %>
                 <button class="btn-all btn-prim my-2">Learn more</button>
               <% end %>
             </div>
           </div>
+        <% end %>
+      </div>
+    </section>
+  <% end %>
+  <% if user_signed_in? %>
+    <section class="pb-5">
+      <div class="container text-center">
+        <%= link_to edit_policy_making_path(@policy_making, anchor: 'nav'), class: 'btn-link' do %>
+          <button class="btn-all btn-prim">Edit page</button>
         <% end %>
       </div>
     </section>

@@ -76,13 +76,13 @@ class PolicyPlansController < ApplicationController
 
   def set_gamebook
     @game_questions = GameQuestion.where(policy_plan: @policy_plan)
-    @game_questions = @policy_plan.strategy ? @game_questions.order(:order) : @game_questions.order(:date)
+    @game_questions = @policy_plan.goals ? @game_questions.order(:order) : @game_questions.order(:date)
     @next_question = @game_questions.first
     @next_answers = GameAnswer.where(game_question: @next_question)
   end
 
   def policy_plan_params
-    params.require(:policy_plan).permit(:policy_making_id, :name, :short_description, :content, :strategy, :video_url, :video_alt_text, :video_source, :ambassador_id)
+    params.require(:policy_plan).permit(:policy_making_id, :name, :short_description, :content, :goals, :video_url, :video_alt_text, :video_source, :ambassador_id)
   end
 
   def prepare_data_for_policy_plan_edit
@@ -92,13 +92,13 @@ class PolicyPlansController < ApplicationController
     @new_policy_plan_institution = PolicyPlanInstitution.new
     @new_institution = Institution.new
     # Timesteps -> only for Policy Plans
-    if !@policy_plan.strategy
+    if !@policy_plan.goals
       @timesteps = Timestep.where(policy_plan: @policy_plan).order(:date)
       @new_timestep = Timestep.new
     end
     # Gamebook/Questions for Goals
     @game_questions = GameQuestion.where(policy_plan: @policy_plan)
-    @game_questions = @policy_plan.strategy ? @game_questions.order(:order) : @game_questions.order(:date)
+    @game_questions = @policy_plan.goals ? @game_questions.order(:order) : @game_questions.order(:date)
     @new_game_question = GameQuestion.new
     @game_answers = {}
     @game_questions.each do |game_question|
@@ -106,7 +106,7 @@ class PolicyPlansController < ApplicationController
     end
     @new_game_answer = GameAnswer.new
     # Goals -> only for Strategies
-    if @policy_plan.strategy
+    if @policy_plan.goals
       @goals = Goal.where(policy_plan: @policy_plan).order(:order)
       @goals_n_games = []
       @goals.each do |goal|

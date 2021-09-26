@@ -2,7 +2,7 @@
   <section class="py-5">
     <div class="container">
       <h1>Edit <%= @policy_plan.name %></h1>
-      <h2><mark class="mark-yllw"><%= @policy_plan.strategy ? 'Strategy' : 'Policy Plan' %> Details</mark></h2>
+      <h2><mark class="mark-yllw">Policy Plan/Strategy Details</mark></h2>
       <div id="edit-policy-plan">
         <%= render 'policy_plans/partials/new_edit_form', policy_plan: @policy_plan %>
       </div>
@@ -29,7 +29,7 @@
       </div>
     </div>
   </section>
-  <% if @policy_plan.strategy %>
+  <% if @policy_plan.goals %>
     <section class="py-5">
       <div class="container">
         <h2><mark class="mark-yllw">Goals</mark></h2>
@@ -81,4 +81,11 @@
       </div>
     </section>
   <% end %>
+  <section class="pb-5">
+    <div class="container text-center">
+      <%= link_to policy_plan_path(@policy_plan, anchor: 'nav'), class: 'btn-link' do %>
+        <button class="btn-all btn-prim">See page</button>
+      <% end %>
+    </div>
+  </section>
 </main>

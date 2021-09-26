@@ -1,7 +1,7 @@
 <main>
   <section class="py-5">
     <div class="container">
-      <h1>Edit <%= @policy_making.topic.name %> Policymaking in <%= @policy_making.country.name %></h1>
+      <h1>Edit <%= @policy_making %></h1>
       <h2><mark class="mark-yllw">How does it work?</mark></h2>
       <div id="edit-policy-making">
         <%= render 'policy_makings/partials/edit_policy_making', policy_making: @policy_making %>
@@ -36,6 +36,13 @@
       <div id="institutions-question">
         <%= render 'policy_makings/partials/show_question', policy_making: @policy_making, question_scope: "institutions", new_answer: @new_answer %>
       </div>
+    </div>
+  </section>
+  <section class="pb-5">
+    <div class="container text-center">
+      <%= link_to policy_making_path(@policy_making, anchor: 'nav'), class: 'btn-link' do %>
+        <button class="btn-all btn-prim">See page</button>
+      <% end %>
     </div>
   </section>
 </main>
