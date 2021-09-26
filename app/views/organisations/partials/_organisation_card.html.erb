@@ -1,7 +1,7 @@
 <div class="card-all d-flex flex-column flex-md-row my-3">
-  <%= cl_image_tag organisation.logo.key, crop: :thumb, height: 300, width: 300, class:"avatar-large m-4" %>
+  <%= cl_image_tag organisation.logo.key, crop: :thumb, height: 300, width: 300, class:"logo mx-4 mb-4 mt-2" %>
   <div>
-    <h3 ><mark class="mark-blue"><%= organisation.name %></mark></h3>
+    <h3><strong><%= organisation.name %></strong></h3>
     <div class="d-flex flex-wrap">
       <% organisation.countries.each do |country| %>
         <p class="tag tag-light-blue mr-2 my-1"><%= country.name %></p>
