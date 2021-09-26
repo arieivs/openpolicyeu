@@ -3,7 +3,7 @@
     <div class="container">
       <p class="pb-5 breadcrumbs"><%= link_to "#{@policy_making.topic.name} in #{@policy_making.country.name}", policy_making_path(@policy_making) %> / <%= @policy_plan.name %></p>
       <h1><%= @policy_plan.name %></h1>
-      <div class="container-short">
+      <div class="container-short pt-3">
         <p><%= @policy_plan.content %></p>
         <% if @policy_plan.video_url && !@policy_plan.video_url.empty? %>
           <div class="my-5">
@@ -73,7 +73,7 @@
         <h2 class="mb-5"><mark class="mark-yllw">Youth Contribution</mark></h2>
         <% @young_contributors.each do |contributor| %>
           <div class="card-all d-flex flex-column flex-md-row my-3">
-            <%= cl_image_tag contributor.logo.key, crop: :thumb, height: 300, width: 300, class:"avatar-large m-4" %>
+            <%= cl_image_tag contributor.logo.key, crop: :thumb, height: 300, width: 300, class:"logo mx-4 mb-4 mt-2" %>
             <div>
               <h3><mark class="mark-blue"><%= contributor.name %></mark></h3>
               <p><%= contributor.description %></p>
