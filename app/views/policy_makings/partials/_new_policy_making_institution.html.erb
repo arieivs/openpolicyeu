@@ -1,6 +1,6 @@
 <%= simple_form_for ([policy_making, policy_making_institution]), remote: true do |f| %>
 
-  <%= f.input :institution_id, collection: Institution.all, label: "Browse through institutions", required: true %>
+  <%= f.input :institution_id, collection: Institution.where(country: policy_making.country), label: "Browse through institutions", required: true %>
 
   <%= f.input :description, as: :text, :input_html => { :cols => 5, :rows => 5 } %>
   <!-- Number of characters (min/max) for "description" to be implemented later -->
