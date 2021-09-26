@@ -37,7 +37,7 @@
         <% else %>
           <li class="nav-item nav-item-ours"><%= link_to "Explore", explore_path, class: "nav-link nav-link-ours #{current_page?(controller: '/pages', action: 'explore') ? 'active' : ''}" %></li>
           <li class="nav-item nav-item-ours"><%= link_to "Policy Plans", policy_plans_path, class: "nav-link nav-link-ours #{current_page?(controller: '/policy_plans') ? 'active' : ''}" %></li>
-          <!-- Take Action -->
+          <li class="nav-item nav-item-ours"><%= link_to "Take action", organisations_path, class: "nav-link nav-link-ours #{current_page?(controller: '/organisations', action: 'index') ? 'active' : ''}" %></li>
           <li class="nav-item nav-item-ours"><%= link_to "About us", about_path, class: "nav-link nav-link-ours #{current_page?(controller: '/pages', action: 'about') ? 'active' : ''}" %></li>
           <li class="nav-item nav-item-ours"><%= link_to "Join us", join_path, class: "nav-link nav-link-ours #{current_page?(controller: '/volunteers', action: 'index') ? 'active' : ''}" %></li>
         <% end %>
