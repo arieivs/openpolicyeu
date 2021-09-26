@@ -1,7 +1,7 @@
 index,name,role,linkedin_link,photo
-0,Jacopo Sala,Project Lead,https://www.linkedin.com/in/jacopo3sala/,https://drive.google.com/file/d/127Y96KYaHb_phDX5PhvqyMhQsH0Mki0f/view?usp=sharing
-1,Federico Barbieri,"Financial Lead, Policy assistant",https://www.linkedin.com/in/federico-barbieri-mn95/,https://drive.google.com/file/d/1xcemxStiEMvVf7LNP7mRqCLV8vZTAcCN/view?usp=sharing
-2,Andrea Mili,Energy Policy Team Lead,https://www.linkedin.com/in/andrea-mili/,https://drive.google.com/file/d/10ZzZdNcrPy0wMaVjODJhzjXynoRgGLdV/view?usp=sharing
+0,Jacopo Sala,Project Lead,https://www.linkedin.com/in/jacopo3sala/,https://res.cloudinary.com/dqmjwsj8t/image/upload/v1632692694/initial_seeds/Jacopo_Sala_Board_s9vmyu.jpg
+1,Federico Barbieri,"Financial Lead, Policy assistant",https://www.linkedin.com/in/federico-barbieri-mn95/,https://res.cloudinary.com/dqmjwsj8t/image/upload/v1632692693/initial_seeds/Federico_Barbieri_Board_izpdis.jpg
+2,Andrea Mili,Energy Policy Team Lead,https://www.linkedin.com/in/andrea-mili/,https://res.cloudinary.com/dqmjwsj8t/image/upload/v1632692694/initial_seeds/Andrea_Mili_Board_gje03d.jpg
 3,Linda Brunelli,Youth Policy Team Lead,,https://ca.slack-edge.com/T0201TVLDHD-U029E5N9T37-8d060a195245-512
 4,Sara Vieira,Web development Team Lead,https://www.linkedin.com/in/vieirasara,https://ca.slack-edge.com/T0201TVLDHD-U0216FV5JNL-ee41ef004a50-512
 5,Giulia Fabrizi,Communication Lead,,https://ca.slack-edge.com/T0201TVLDHD-U020GUE8AAX-37ef19efad76-512
@@ -9,15 +9,18 @@ index,name,role,linkedin_link,photo
 7,Nadia Arteeva,Ambassador Programme Lead,,https://media-exp1.licdn.com/dms/image/C4D03AQGZKIMOuHf6TA/profile-displayphoto-shrink_200_200/0/1626729094732?e=1638403200&v=beta&t=QkSp4s9_oGDkmIO4w09OLFiupjA23LlNOKCVQf79AY8
 8,Baptiste Josse,Full-stack developer,,https://ca.slack-edge.com/T0201TVLDHD-U0221N45YQ2-4489e146de2d-512
 9,Saila Nieminen,Front-end developer,,https://ca.slack-edge.com/T0201TVLDHD-U022MJH0AKW-gc52c3d842cf-512
-10,Siddharth Pandit,EU Policy Team Coordinator,https://www.linkedin.com/in/siddharth-pandit-nitt/,https://drive.google.com/file/d/1Q_WUsyURu_PHpvUfnQ7qgDBTSQs58LEC/view?usp=sharing
-11,Nicolas Pittas,EU Policy Expert,https://www.linkedin.com/in/nicolas-pittas-,https://drive.google.com/file/d/1gOvDQQP6V3c3pcRkqatFjs6OsIfDiObj/view?usp=sharing
-12,Leandro Costa Sousa,EU Policy Expert,http://www.linkedin.com/in/leandro-h-c-sousa,https://drive.google.com/file/d/17LgN3wgwdAWbJhBfHYRBMrqcyP2QHy3J/view?usp=sharing
-13,Silvia Candotti,EU Policy Expert,https://www.linkedin.com/in/silvia-candotti-3a5b931b8/,https://drive.google.com/file/d/1-bQvcBPCgdT7gdhQ5yzxzWC98h1Tjc5q/view?usp=sharing
-14,Maria Cristina Pinto,Italy Policy Team Coordinator,https://www.linkedin.com/in/maria-cristina-pinto7,https://drive.google.com/file/d/16WRJanDFF7u3ofIWw3_iVxmvos7i-360/view?usp=sharing
-15,Federica Matone,Italy Policy Expert,https://www.linkedin.com/in/federica-matone-481481198/,https://drive.google.com/file/d/1xprLl464622St2SIh_mhvxutdZSso16_/view?usp=sharing
-16,Gabriele Falciani,Italy Policy Expert,https://www.linkedin.com/in/gabriele-falciani-773035150/,https://drive.google.com/file/d/1Icdj_qYPPE0hRP-gQfDpIO-kawveTWGY/view?usp=sharing
-17,Bartłomiej Kupiec,Germany Policy Team Coordinator,https://www.linkedin.com/in/bartłomiej-kupiec-062036148/?originalSubdomain=pl,https://drive.google.com/file/d/1yaUQVYNKwzl9TGmILzv-EprAJJgf9Xfg/view?usp=sharing
-18,Lucia Fernandez,Germany Policy Expert,https://www.linkedin.com/in/luc%C3%ADa-fern%C3%A1ndez-mart%C3%ADnez-9991181b9/,https://res.cloudinary.com/dqmjwsj8t/image/upload/v1632655697/initial_seeds/Lucia_Fernandez_Germany_ht5pd5.jpg
-19,Najam Memon,Germany Policy Expert,https://www.linkedin.com/in/najam-memon-71352225/,https://drive.google.com/file/d/1quGRJqg8k8cAmH993-4d9EEaEcXWafiO/view?usp=sharing
-20,Aisha Al Balushi,Germany Policy Expert,https://www.linkedin.com/in/aisha-al-balushi-29a276141/,https://drive.google.com/file/d/1S3fAjvqjuOl_64XJjcT13a6XQmPDtzvw/view?usp=sharing
-21,Paula Baltar Lorenzo,Slovenia Policy Expert,http://www.linkedin.com/in/paula-baltar-lorenzo-25b81a1b4,https://drive.google.com/file/d/1vtN9vo_zg3onMFMn6zrFH2WrI2a84Nzo/view?usp=sharing
+10,Siddharth Shetty,EU Policy Team Coordinator,,https://ca.slack-edge.com/T0201TVLDHD-U0230GSR3PZ-af0af27d1d2a-512
+11,Silvia Candotti,EU Policy Expert,https://www.linkedin.com/in/silvia-candotti-3a5b931b8/,https://res.cloudinary.com/dqmjwsj8t/image/upload/v1632692693/initial_seeds/Silvia_Candotti_EU_iyevox.jpg
+12,Siddharth Pandit,EU Policy Expert,https://www.linkedin.com/in/siddharth-pandit-nitt/,https://res.cloudinary.com/dqmjwsj8t/image/upload/v1632692693/initial_seeds/Siddharth_Pandit_EU_kz9sua.jpg
+13,Nicolas Pittas,EU Policy Expert,https://www.linkedin.com/in/nicolas-pittas-,https://res.cloudinary.com/dqmjwsj8t/image/upload/v1632692694/initial_seeds/Nicolas_Pittas_EU_wlpy32.jpg
+14,Leandro Costa Sousa,EU Policy Expert,http://www.linkedin.com/in/leandro-h-c-sousa,https://res.cloudinary.com/dqmjwsj8t/image/upload/v1632692695/initial_seeds/Leandro_Costa_Sousa_EU_jusr26.jpg
+15,Maria Cristina Pinto,Italy Policy Team Coordinator,https://www.linkedin.com/in/maria-cristina-pinto7,https://res.cloudinary.com/dqmjwsj8t/image/upload/v1632692694/initial_seeds/Maria_Cristina_Pinto_Italy_hwl6so.jpg
+16,Federica Matone,Italy Policy Expert,https://www.linkedin.com/in/federica-matone-481481198/,https://res.cloudinary.com/dqmjwsj8t/image/upload/v1632692695/initial_seeds/Federica_Matone_Italy_dmlafi.jpg
+17,Gabriele Falciani,Italy Policy Expert,https://www.linkedin.com/in/gabriele-falciani-773035150/,https://res.cloudinary.com/dqmjwsj8t/image/upload/v1632692695/initial_seeds/Gabriele_Falciani_Italy_xlvnyd.jpg
+18,Erika Puntillo,Italy Policy Expert,,https://ca.slack-edge.com/T0201TVLDHD-U022Y0128K0-a7bd0c7faa0d-512
+19,Bartłomiej Kupiec,Germany Policy Team Coordinator,https://www.linkedin.com/in/bartłomiej-kupiec-062036148/?originalSubdomain=pl,https://res.cloudinary.com/dqmjwsj8t/image/upload/v1632695861/initial_seeds/Bart%C5%82omiej_Kupiec_oxrn6p.png
+20,Lucia Fernandez,Germany Policy Expert,https://www.linkedin.com/in/luc%C3%ADa-fern%C3%A1ndez-mart%C3%ADnez-9991181b9/,https://res.cloudinary.com/dqmjwsj8t/image/upload/v1632655697/initial_seeds/Lucia_Fernandez_Germany_ht5pd5.jpg
+21,Najam Memon,Germany Policy Expert,https://www.linkedin.com/in/najam-memon-71352225/,https://res.cloudinary.com/dqmjwsj8t/image/upload/v1632692695/initial_seeds/Najam_Memon_Germany_mlptfs.jpg
+22,Aisha Al Balushi,Germany Policy Expert,https://www.linkedin.com/in/aisha-al-balushi-29a276141/,https://res.cloudinary.com/dqmjwsj8t/image/upload/v1632692694/initial_seeds/Aisha_Al_Balushi_Germany_txakth.jpg
+23,Sofia Barbeiro,Portugal Policy Expert,,https://ca.slack-edge.com/T0201TVLDHD-U023MG0KSU8-6097d1965823-512
+24,Paula Baltar Lorenzo,Slovenia Policy Expert,http://www.linkedin.com/in/paula-baltar-lorenzo-25b81a1b4,https://res.cloudinary.com/dqmjwsj8t/image/upload/v1632692696/initial_seeds/Paula_Baltar_Lorenzo_Slovenia_nkwmhb.jpg
