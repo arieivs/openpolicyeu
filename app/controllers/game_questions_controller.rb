@@ -6,7 +6,7 @@ class GameQuestionsController < ApplicationController
     @policy_plan = PolicyPlan.find(params[:policy_plan_id])
     @game_question.policy_plan = @policy_plan
     save_successful = @game_question.save
-    if @policy_plan.strategy
+    if @policy_plan.goals
       @goal = Goal.where(policy_plan: @policy_plan).find_by(order: @game_question.order)
       @game_answers = GameAnswer.where(game_question: @game_question)
       @new_game_question = nil
@@ -43,8 +43,8 @@ class GameQuestionsController < ApplicationController
   def destroy
     @game_question = GameQuestion.find(params[:id])
     @policy_plan = @game_question.policy_plan
-    # for goals/strategy
-    if @policy_plan.strategy
+    # for goals/goals
+    if @policy_plan.goals
       @goal = Goal.where(policy_plan: @policy_plan).find_by(order: @game_question.order)
       @new_game_question = GameQuestion.new
     end
@@ -80,7 +80,7 @@ class GameQuestionsController < ApplicationController
 
   def set_game_questions
     @game_questions = GameQuestion.where(policy_plan: @policy_plan)
-    @game_questions = @policy_plan.strategy ? @game_questions.order(:order) : @game_questions.order(:date)
+    @game_questions = @policy_plan.goals ? @game_questions.order(:order) : @game_questions.order(:date)
   end
 
   def set_game_answers
