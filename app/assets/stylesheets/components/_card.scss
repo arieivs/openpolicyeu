@@ -27,6 +27,14 @@
   background-color: $blue_bkg;
 }
 
+.logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 5px;
+  object-fit: contain;
+  object-position: 50% 50%;
+}
+
 .card-large {
   margin: 30px 15px;
 }
