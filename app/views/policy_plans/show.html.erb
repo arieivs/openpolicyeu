@@ -84,4 +84,13 @@
       </div>
     </section>
   <% end %>
+  <% if user_signed_in? %>
+    <section class="pb-5">
+      <div class="container text-center">
+        <%= link_to edit_policy_plan_path(@policy_plan, anchor: 'nav'), class: 'btn-link' do %>
+          <button class="btn-all btn-prim">Edit page</button>
+        <% end %>
+      </div>
+    </section>
+  <% end %>
 </main>
