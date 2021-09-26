@@ -4,7 +4,7 @@
       <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 institutions-list">
         <!-- card -->
         <div class="card-all card-square card-clickable mx-auto" data-toggle="modal" data-target="#pi-<%= pi.id %>-modal">
-          <%= cl_image_tag pi.institution.logo.key, crop: :thumb, height: 300, width: 300, class:"logo" %>
+          <%= cl_image_tag pi.institution.logo.key, height: 300, width: 300, class:"logo" %>
           <p><%= pi.institution.name %></p>
         </div>
         <!-- modal -->
