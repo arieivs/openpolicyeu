@@ -1,4 +1,4 @@
-index,country_id,country,name,logo,website_url,video_url,video_alt_text,video_source
+index,country_index,country,name,logo,website_url,video_url,video_alt_text,video_source
 0,0,EU,European Commission: Directorate-General of Energy (DG ENER),https://globalaccessibilitynews.com/files/2013/03/European-Commission-logo.png,https://ec.europa.eu/energy/home_en,https://www.youtube.com/embed/nWpgO1EPO_Y,,European Commission
 1,0,EU,European Commission: Directorate-General of Climate Action (DG CLIMA),https://globalaccessibilitynews.com/files/2013/03/European-Commission-logo.png,https://ec.europa.eu/clima/index_en,https://www.youtube.com/embed/nWpgO1EPO_Y,,European Commission
 2,0,EU,European Parliament,https://cpmr.org/wp-content/uploads/2019/02/EP-logo-RGB_EN-e1550160627666.png,https://www.europarl.europa.eu/about-parliament/en,https://www.youtube.com/embed/UKwJL04XQEU,,EPinUK
