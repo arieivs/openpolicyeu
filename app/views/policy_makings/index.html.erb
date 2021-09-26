@@ -28,9 +28,9 @@
       </div>
       <% @policy_makings.each do |policy_making| %>
         <div class="my-4">
-          <h3><mark class="mark-blue"><%= policy_making %></mark></h3>
+          <h3><mark class="mark-blue"><%= policy_making.topic.name %></mark> in <%= policy_making.country.name == 'European Union' ? 'the ' : '' %><mark class="mark-blue"><%= policy_making.country.name %></mark></h3>
           <div class="card-all d-flex flex-column flex-lg-row justify-content-between align-items-center my-3">
-            <p class="align-self-start"><%= policy_making.topic.name %> Policymaking in <%= policy_making.country.name %></p>
+            <p class="align-self-start"><%= policy_making %></p>
             <div class="align-self-end">
               <%= link_to policy_making_path(policy_making, anchor: 'nav') do %>
                 <button class="btn-all btn-sec my-0 mr-3">SEE PAGE</button>
