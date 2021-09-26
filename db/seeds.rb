@@ -55,7 +55,7 @@ TOPICS = [{name:'Energy & Climate', icon: 'fas fa-bolt', icon_color: 'yellow'},
 TOPICS.each do |topic|
   Topic.new(name: topic[:name], icon: topic[:icon], icon_color: topic[:icon_color]).save
 end
-topics = Topic.all
+topics = Topic.all.order(:id)
 puts "#{Topic.count} topics created! \n\n"
 
 # ------- COUNTRIES -------
@@ -72,7 +72,7 @@ COUNTRIES.each do |country|
   new_country.flag.attach(io: file, filename: "flag.png", content_type: 'image/png')
   new_country.save
 end
-countries = Country.all
+countries = Country.all.order(:id)
 puts "#{Country.count} countries created! \n\n"
 
 # ------- INSTITUTIONS -------
@@ -86,7 +86,7 @@ CSV.foreach('db/initial_seeds/institutions.csv', csv_reading_options) do |row|
   new_institution.save
   puts "created institution #{new_institution.name} \n"
 end
-institutions = Institution.all
+institutions = Institution.all.order(:id)
 puts "#{Institution.count} institutions created! \n\n"
 
 # --------------- POLICY MAKINGS ---------------
@@ -96,12 +96,13 @@ puts "Creating policymakings..."
 CSV.foreach('db/initial_seeds/policy_makings.csv', csv_reading_options) do |row|
   PolicyMaking.new(country: countries[row[1].to_i], topic: topics[row[3].to_i], video_url: row[6], video_source: row[8], content: row[5]).save
 end
-policy_makings = PolicyMaking.all
+policy_makings = PolicyMaking.all.order(:id)
 puts "#{PolicyMaking.count} policymakings created! \n\n"
 
 puts "Associating institutions to policymakings..."
 # index,policy_making_index,policy_making,institution_index,institution,description
 CSV.foreach('db/initial_seeds/policy_making_institutions.csv', csv_reading_options) do |row|
+  puts "#{policy_makings[row[1].to_i]} #{institutions[row[3].to_i].name}"
   PolicyMakingInstitution.new(policy_making: policy_makings[row[1].to_i], institution: institutions[row[3].to_i], description: row[5]).save
 end
 puts "#{PolicyMakingInstitution.count} policymaking_institutions created! \n\n"
@@ -113,7 +114,7 @@ puts "Creating questions and answers for policymakings..."
 CSV.foreach('db/initial_seeds/questions.csv', csv_reading_options) do |row|
   Question.new(policy_making: policy_makings[row[1].to_i], scope: row[3], question: row[4]).save
 end
-questions = Question.all
+questions = Question.all.order(:id)
 
 # index,question_index,answer,explanation,right
 CSV.foreach('db/initial_seeds/answers.csv', csv_reading_options) do |row|
@@ -129,7 +130,7 @@ puts "Creating policy plans..."
 CSV.foreach('db/initial_seeds/policy_plans.csv', csv_reading_options) do |row|
   PolicyPlan.new(policy_making: policy_makings[row[1].to_i], name: row[3], short_description: row[4], content: row[5], video_url: row[6], video_source: row[8], strategy: (row[9] == 'true')).save
 end
-policy_plans = PolicyPlan.all
+policy_plans = PolicyPlan.all.order(:id)
 puts "#{PolicyPlan.count} policy plans created! \n\n"
 
 puts "Associating institutions to policyplans..."
@@ -164,7 +165,7 @@ CSV.foreach('db/initial_seeds/game_questions.csv', csv_reading_options) do |row|
     GameQuestion.new(order: row[6].to_i, policy_plan: policy_plans[row[1].to_i], name: row[7], context: row[8], question: row[9]).save
   end
 end
-game_questions = GameQuestion.all
+game_questions = GameQuestion.all.order(:id)
 
 # index,game_question_index,answer,explanation,right
 CSV.foreach('db/initial_seeds/game_answers.csv', csv_reading_options) do |row|
@@ -209,7 +210,7 @@ CSV.foreach('db/initial_seeds/organisations.csv', csv_reading_options) do |row|
   new_organisation.save
   puts "created organisation #{new_organisation.name} \n"
 end
-organisations = Organisation.all
+organisations = Organisation.all.order(:id)
 puts "#{Organisation.count} organisations created! \n\n"
 
 puts "Associating countries and topics to organisations..."
