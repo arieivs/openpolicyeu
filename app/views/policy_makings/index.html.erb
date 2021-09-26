@@ -28,7 +28,7 @@
       </div>
       <% @policy_makings.each do |policy_making| %>
         <div class="my-4">
-          <h3><mark class="mark-blue"><%= policy_making.topic.name %> in <%= policy_making.country.name %></mark></h3>
+          <h3><mark class="mark-blue"><%= policy_making %></mark></h3>
           <div class="card-all d-flex flex-column flex-lg-row justify-content-between align-items-center my-3">
             <p class="align-self-start"><%= policy_making.topic.name %> Policymaking in <%= policy_making.country.name %></p>
             <div class="align-self-end">

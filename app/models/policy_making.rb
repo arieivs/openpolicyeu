@@ -16,6 +16,6 @@ class PolicyMaking < ApplicationRecord
   end
 
   def to_s
-    "#{topic} in #{country}"
+    "#{topic} Policymaking in #{country.name == 'European Union' ? 'the ' : ''}#{country}"
   end
 end
