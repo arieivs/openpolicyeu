@@ -1,0 +1,43 @@
+index,question_index,answer,explanation,right
+0,0,The Parliament and the Council of the EU,"Oops, that’s incorrect! The Parliament and Council are indeed the bodies who need to reach an agreement, but they are not the only ones involved in trilogue negotiations. Try again!",false
+1,0,The Commission and the Parliament,"Oops, that’s incorrect! The Commission and Parliament are both involved in trilogue negotiations, but you're missing a key legislative body who needs to be involved. Try again!",false
+2,0,"The Commission, Parliament and Council of the EU","That’s right! In trilogue negotiations, the Parliament and Council of the EU negotiate to reach an agreement, and the Commission mediates these negotiations. Good job!",true
+3,1,Council of the EU and European Commission,Correct! This partnership began in 1998 and one of its objectives is to foster cooperation among EU institutions and Member States in the youth sector. Want to know more? Visit the <a href=“https://pjp-eu.coe.int/en/web/youth-partnership/about-us ” target=“_blank” class=“text-link”>Youth Partnership website</a> ,true
+4,1,European Commission and European Parliament,Oops! The Commission and the Parliament do not have a partnership aimed at the youth sector.,false
+5,1,European Parliament and European Council,Oops! The Parliament and the European Council do not have a partnership aimed at the youth sector.,false
+6,2,European Commission,"Oops! The European Commission is the only European institution with the right to propose laws as well as the EU budget, for the Council of the European Union and the European Parliament to co-amend, approve.and adopt.",false
+7,2,The Council of the European Union,"Correct! The Council of the EU is one of the two institutions (alongside European Parliament) responsible for amending and adopting legislation as well as the EU budget, proposed by the Commission.",true
+8,2,European Council,Oops! The European Council is responsible for identifying the bigger picture in which the Council of the European Union and the European Parliament work together to negotiate and adopt new laws and policies.,false
+9,3,1919,Oops! Try again.,false
+10,3,1949,Correct! The founding meeting of the Bundesrat was held on 7 September 1949.,true
+11,3,1991,Oops! Try again.,false
+12,4,Forests ,Correct! Preserving German forests falls under the respondibility of the Federal Ministry for Food and Agriculture.,true
+13,4,Species protection,"Oops! Species protection is among the responsibilities of the Federal Ministry for the Environment, Nature Conservation and Nuclear Safety.",false
+14,4,Waste ,"Oops! Waste Management is among the responsibilities of the Federal Ministry for the  Environment, Nature Conservation and Nuclear Safety.",false
+15,5,Chancellor,Oops! The Chancellor countersigns the law which has to be signed by another actor first.,false
+16,5,Federal President,"Correct! Without the Federal President's signature, no law is valid in Germany.",true
+17,5,Federal Parliament,"Oops! The Parliament has the legislative power, but is not the institution responsible for the promulgation of the laws.",false
+18,6,1953,Oops! In 1953 the Federal Ministry for Family Affairs was created. This institution is at the basis of the current Ministry.,false
+19,6,1991,"Oops! In 1991 the Federal Ministry for Health was removed from the Federal Ministry for Youth, Family, Women, and Health, becoming an independent Ministry.",false
+20,6,1994,Correct! In 1994 the Federal Ministry for Women and Youth and the Federal Ministry for Family and Senior Citizens were recombined into the current BMFSFJ.,true
+21,7,Chamber of Deputy only,Oops! Try again!,false
+22,7,The Senate only,Oops! Try again!,false
+23,7,Both,"Correct! The identical text must be approved by both the Chamber of Deputies and the Senate, since the Italian legislature is a bicameral one.",true
+24,8,The state only,Oops! Try again!,false
+25,8,State and regions,Oops! Try again!,false
+26,8,"The state, the regions, and a multitude of actors",Correct! A strategic cooperation is needed among different actors at different level to develop coordinated youth strategies.,true
+27,9,1999,Oops! Try again!,false
+28,9,2005,Oops! Try again!,false
+29,9,2021,"Correct! In January 2019 Inštitut 8. marec (Institute of March 8) launched a petition to redefine the crime of rape and sexual violence. In February 2021, the Institute started a petition of gathering signatures and in June 2021, they successfully brought.",true
+30,10,"Government Office for Development and European cohesion policy, Ministry of Education, Science and Sport, Ministry of Labour, Family, Social Affairs and Equal Opportunities and Ministry of Public Administration","Oops! This working group guides the Operational Programme for the implementation of the EU cohesion policy for the period 2014-2020 and is led by a representative of the Government Office for Development and European cohesion policy. Also, it includes 4 representatives of the youth sector.",false
+31,10,"Ministry of Labour, Family, Social Affairs and Equal Opportunities, Ministry of Education, Science and Sport, Ministry of Public Administration, Ministry of Justice and Ministry of Finance","Oops! This working group focuses on apprenticeships and internships for young people and is led by the Ministry of Labour, Family, Social Affairs and Equal Opportunities. Also, it includes 5 representatives of the youth sector.",false
+32,10,"Office for Youth, Ministry of Education, Science and Sport, Ministry of Labour, Family, Social Affairs and Equal Opportunities and Ministry of Public Administration",Correct! The working group includes 4 representatives of the youth sector and is led by the Office for Youth.,true
+33,11,Health,Correct! This field is not included in the list of special protection areas.,true
+34,11,Education,"Oops! Education is included in the list of special protection areas, together with vocational training, culture, physical education, sport, access to housing and a first job and finally, the use of one's own free time.",false
+35,11,Culture,"Oops! Culture is included in the list of special protection areas, together with vocational training, education, physical education, sport, access to housing and a first job and finally, the use of one's own free time.",false
+36,12,National Youth Council (CNJ),Correct! The Council was created in 1985 yet its legal status was defined in 2006.,true
+37,12,National Federation of Youth Associations (FNAJ),Oops! FNAJ does not have a statute defined by law.,false
+38,12,Portuguese Institute for Sport and Youth (IPDJ),"Oops! The scope and responsibilities of the Institute are regulated by the <a href=“https://dre.pt/web/guest/pesquisa/-/search/671032/details/normal” target=“_blank” class=“text-link”>Decree-Law 98/2011</a>, its amendment <a href=“https://dre.pt/home/-/dre/56396777/details/maximized” target=“_blank” class=“text-link”>Decree-Law 134/2014</a> and by the <a href=“https://dre.pt/pesquisa/-/search/477150/details/maximized” target=“_blank” class=“text-link”>Ordinance 11/2012</a>.",false
+39,13,Regional Directorate of Energy of Azores and Regional Directorate for Land Economy and Transport of Madeira,"Oops! Although both Regional Directorates are part of the governance system for Energy policy in Portugal, they are not part of the PNEC 2030 Coordination Group.",false
+40,13,Portuguese Environment Agency and Directorate General of Energy and Geology,"Correct! The Coordination Group  aims to coordinate and promote the preparation and revision of the PNEC 2030, in conjunction with the entities provided for in the National System of Policies and Measures (SPeM).",true
+41,13,Ministry of Education and Directorate General of Cultural Patrimony,Oops! Try again!,false
