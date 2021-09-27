@@ -23,7 +23,9 @@
     </div>
     <div class="container-half pb-3">
       <p>Do you want to find out how you can get actively involved? Engage in policymaking today:</p>
-      <button class="btn-all btn-prim my-0">Engage</button>
+      <%= link_to organisations_path, class: 'btn-link' do %>
+        <button class="btn-all btn-prim my-0">Engage</button>
+      <% end %>
     </div>
     <div class="text-center">
       <a href="#policy"><i class="fas fa-chevron-down"></i></a>
