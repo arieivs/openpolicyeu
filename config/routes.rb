@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about', as: :about
   get 'explore', to: 'pages#explore', as: :explore
   get 'join', to: 'volunteers#index', as: :join
+  get 'ambassadors', to: 'ambassadors#index', as: :ambassadors
 
   resources :policy_makings, except: [:destroy], shallow: true do
     resources :questions, only: [:create, :edit, :update, :destroy], shallow: true do
