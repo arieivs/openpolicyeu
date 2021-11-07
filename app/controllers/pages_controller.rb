@@ -10,7 +10,9 @@ class PagesController < ApplicationController
     @volunteers = Volunteer.all.order(:id)
   end
 
-  def join; end
+  def join
+    @volunteer_positions = VolunteerPosition.all
+  end
 
   def explore
     @recent_policy_makings = PolicyMaking.all.order(updated_at: :desc).slice(0..3)
