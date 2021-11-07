@@ -6,7 +6,9 @@ class PagesController < ApplicationController
     prepare_data_for_country_topic_filter(:home)
   end
 
-  def about; end
+  def about
+    @volunteers = Volunteer.all.order(:id)
+  end
 
   def explore
     @recent_policy_makings = PolicyMaking.all.order(updated_at: :desc).slice(0..3)
