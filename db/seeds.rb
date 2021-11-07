@@ -10,7 +10,7 @@ require 'open-uri'
 require 'csv'
 
 csv_reading_options = { col_sep: ',', quote_char: '"', headers: :first_row }
-
+=begin
 # --------------- CLEANING ---------------
 
 puts "Cleaning ANSWERS database..."
@@ -229,5 +229,10 @@ puts "#{OrganisationCountry.count} organisation_countries and #{OrganisationTopi
 # OPPORTUNITY_TYPES = ['Job', 'Volunteer', 'Internship']
 # OPPORTUNITY_TYPES.each { |opp| OpportunityType.create(name: opp) }
 # puts "#{Opportunity.count} opportunities created!"
+=end
+
+# --------- TEAMS & OPEN POSITIONS ------------
+
+puts "Creating teams and open positions"
 
 puts 'Done :)'
