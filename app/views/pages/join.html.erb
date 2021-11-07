@@ -62,21 +62,4 @@
     <p>Fill in the application form below. We look forward to hearing from you!</p>
     <a href="https://docs.google.com/forms/d/e/1FAIpQLScHd9nco1X4KzRDsMO_0_SGmtZtfyliD-1qy9NFb--38m6NDg/viewform?usp=sf_link" target="_blank"><button class="btn-all btn-prim">Apply</button></a>
   </section>
-  <section class="container py-5 text-center">
-    <h2><mark class="mark-yllw">Meet your future team</mark></h2>
-    <div class="row pt-4">
-      <% @volunteers.each do |volunteer| %>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 volunteer">
-          <%= cl_image_tag volunteer.photo.key, crop: :thumb, height: 300, width: 300, class:"avatar-large" %>
-          <p><strong><%= volunteer.name %></strong></p>
-          <p class="volunteer-role"><em><%= volunteer.role %></em></p>
-          <% if volunteer.linkedin_link %>
-            <%= link_to volunteer.linkedin_link, target:"_blank", aria_label:"LinkedIn", class:"icon-link" do %>
-              <i class="fab fa-linkedin"></i>
-            <% end %>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-  </section>
 </main>

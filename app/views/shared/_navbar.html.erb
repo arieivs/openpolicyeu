@@ -39,7 +39,7 @@
           <li class="nav-item nav-item-ours"><%= link_to "Policy Plans", policy_plans_path, class: "nav-link nav-link-ours #{current_page?(controller: '/policy_plans') ? 'active' : ''}" %></li>
           <li class="nav-item nav-item-ours"><%= link_to "Take action", organisations_path, class: "nav-link nav-link-ours #{current_page?(controller: '/organisations', action: 'index') ? 'active' : ''}" %></li>
           <li class="nav-item nav-item-ours"><%= link_to "About us", about_path, class: "nav-link nav-link-ours #{current_page?(controller: '/pages', action: 'about') ? 'active' : ''}" %></li>
-          <li class="nav-item nav-item-ours"><%= link_to "Join us", join_path, class: "nav-link nav-link-ours #{current_page?(controller: '/volunteers', action: 'index') ? 'active' : ''}" %></li>
+          <li class="nav-item nav-item-ours"><%= link_to "Join us", join_path, class: "nav-link nav-link-ours #{current_page?(controller: '/pages', action: 'join') ? 'active' : ''}" %></li>
         <% end %>
       </ul>
     </div>
