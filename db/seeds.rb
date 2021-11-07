@@ -44,7 +44,10 @@ puts "Cleaning TOPICS database..."
 Topic.destroy_all
 puts "Cleaning VOLUNTEERS database..."
 Volunteer.destroy_all
-
+=end
+puts "Cleaning VOLUNTEER POSITIONS database..."
+VolunteerPosition.destroy_all
+=begin
 puts "Empty database \n\n"
 
 # --------------- TOPICS ---------------
@@ -186,19 +189,6 @@ CSV.foreach('db/initial_seeds/young_contributors.csv', csv_reading_options) do |
 end
 puts "#{YoungContributor.count} young contributors created! \n\n"
 
-# --------------- VOLUNTEERS ---------------
-
-puts "Creating volunteers..."
-# index,name,role,linkedin_link,photo
-CSV.foreach('db/initial_seeds/volunteers.csv', csv_reading_options) do |row|
-  new_volunteer = Volunteer.new(name: row[1], role: row[2], linkedin_link:row[3])
-  file = URI.open(row[4])
-  new_volunteer.photo.attach(io: file, filename: "profilepic.png", content_type: 'image/png')
-  new_volunteer.save
-  puts "created volunteer #{new_volunteer.name} \n"
-end
-puts "#{Volunteer.count} volunteers created! \n\n"
-
 # --------------- ORGANISATIONS ---------------
 
 puts "Creating organisations..."
@@ -229,10 +219,29 @@ puts "#{OrganisationCountry.count} organisation_countries and #{OrganisationTopi
 # OPPORTUNITY_TYPES = ['Job', 'Volunteer', 'Internship']
 # OPPORTUNITY_TYPES.each { |opp| OpportunityType.create(name: opp) }
 # puts "#{Opportunity.count} opportunities created!"
+
+# --------------- VOLUNTEERS ---------------
+
+puts "Creating volunteers..."
+# index,name,role,linkedin_link,photo
+CSV.foreach('db/initial_seeds/volunteers.csv', csv_reading_options) do |row|
+  new_volunteer = Volunteer.new(name: row[1], role: row[2], linkedin_link:row[3])
+  file = URI.open(row[4])
+  new_volunteer.photo.attach(io: file, filename: "profilepic.png", content_type: 'image/png')
+  new_volunteer.save
+  puts "created volunteer #{new_volunteer.name} \n"
+end
+puts "#{Volunteer.count} volunteers created! \n\n"
+
 =end
 
-# --------- TEAMS & OPEN POSITIONS ------------
+# --------- VOLUNTEER POSITIONS ------------
 
-puts "Creating teams and open positions"
+puts "Creating volunteering positions..."
+# index,team,name,description,requirements
+CSV.foreach('db/initial_seeds/volunteer_positions.csv', csv_reading_options) do |row|
+  VolunteerPosition.new(team: row[1], name: row[2], description: row[3], requirements:row[4]).save
+end
+puts "#{VolunteerPosition.count} volunteering positions created! \n\n"
 
 puts 'Done :)'
