@@ -3,7 +3,7 @@
     <div class="d-flex justify-content-between">
       <h3><strong><%= goal.name %></strong></h3>
       <%= link_to close_accordion_path(policy_plan_id: policy_plan.id, goal_id: goal.id), remote: true do %>
-        <i class="fas fa-chevron-down accordion-btn accordion-open-btn"></i>
+        <i class="fas fa-chevron-up accordion-btn accordion-open-btn"></i>
       <% end %>
     </div>
     <div class="container-short">
