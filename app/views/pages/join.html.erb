@@ -23,37 +23,54 @@
       <p>In other words… Do you want to learn more about policymaking or help others to do so? Do you fancy a challenge? Do you (warning: cliché sentence coming) want to be the change you wish to see in the world? Then find out how you can contribute:</p>
     </div>
   </section>
-  <section class="bkg-blue py-5">
-    <div class="container d-flex flex-column">
+  <section class="py-5">
+    <div class="container">
       <h2><mark class="mark-yllw">How can I help?</mark></h2>
-      <p>You can help by joining one of the following teams:</p>
-      <div class="d-flex flex-column flex-lg-row align-self-start my-5">
-        <i class="fas fa-gavel icon-large"></i>
-        <div class="team-description">
-          <h3><mark class="mark-blue">Policy Analysis</mark></h3>
-          <p>We create the content for the tool by <strong>analysing and coding major policies</strong>. Until September, we are focusing on energy, climate and youth policies in place in the European Union, Portugal, Germany, Slovenia and Italy. We also research the main institutions involved and their role. Finally, we wish to follow the evolution of a specific policy plan, to fully understand and show the process behind it.</p>
-        </div>
+      <p>You can help by joining us as a volunteer! Check out our open positions:</p>
+      <div class="mt-5">
+        <h3><mark class="mark-blue">Policy Analysis</mark> & <mark class="mark-blue">Content creation</mark></h3>
+        <% @policy_positions.each do |volunteer_position| %>
+          <div id="volunteer_position-<%= volunteer_position.id %>">
+            <%= render 'pages/partials/position_closed',
+                volunteer_position: volunteer_position %>
+          </div>
+        <% end %>
       </div>
-      <div class="d-flex flex-column flex-lg-row align-self-end mb-5">
-        <i class="fas fa-laptop-code icon-large"></i>
-        <div class="team-description">
-          <h3><mark class="mark-blue">Web Development</mark> & <mark class="mark-blue">UX Design</mark></h3>
-          <p>Our job is to effectively <strong>create the platform</strong> where it all takes place. After designing the first version of our website and user testing it, we will code it from scratch. Experience in UX design or full-stack development is required to join this team - our stack is Ruby on Rails.</p>
-        </div>
+      <div class="mt-5">
+        <h3><mark class="mark-blue">Web Development</mark> & <mark class="mark-blue">UX Design</mark></h3>
+        <% @dev_positions.each do |volunteer_position| %>
+          <div id="volunteer_position-<%= volunteer_position.id %>">
+            <%= render 'pages/partials/position_closed',
+                volunteer_position: volunteer_position %>
+          </div>
+        <% end %>
       </div>
-      <div class="d-flex flex-column flex-lg-row align-self-start mb-5">
-        <i class="fas fa-comments icon-large"></i>
-        <div class="team-description">
-          <h3><mark class="mark-blue">Marketing</mark> & <mark class="mark-blue">Communication</mark></h3>
-          <p>One of the biggest challenges our institutional partners have is <strong>how to reach youth</strong>. In this team you can shape the outreach strategy, create content to spread the word, assure all written content is aligned with our voice or help fine tuning our ambassadorship programme and looking for potential ambassadors for our tool.</p>
-        </div>
+      <div class="mt-5">
+        <h3><mark class="mark-blue">Marketing</mark> & <mark class="mark-blue">Communication</mark></h3>
+        <% @comms_positions.each do |volunteer_position| %>
+          <div id="volunteer_position-<%= volunteer_position.id %>">
+            <%= render 'pages/partials/position_closed',
+                volunteer_position: volunteer_position %>
+          </div>
+        <% end %>
       </div>
-      <div class="d-flex flex-column flex-lg-row align-self-end mb-5">
-        <i class="fas fa-handshake icon-large"></i>
-        <div class="team-description">
-          <h3><mark class="mark-blue">Partnerships</mark></h3>
-          <p>Support us in <strong>building long-term partnerships</strong> to make OpenPolicy Europe successful. We’re seeking to collaborate with a diverse range of partners, such as think tanks, academia, government institutions or policy advocacy organisations. As part of the partnerships team, you’ll have the chance to think creatively, shape our outreach strategy and engage with interesting organisations across Europe.</p>
-        </div>
+      <div class="mt-5">
+        <h3><mark class="mark-blue">Ambassadors Programme</mark></h3>
+        <% @ambassadors_positions.each do |volunteer_position| %>
+          <div id="volunteer_position-<%= volunteer_position.id %>">
+            <%= render 'pages/partials/position_closed',
+                volunteer_position: volunteer_position %>
+          </div>
+        <% end %>
+      </div>
+      <div class="mt-5">
+        <h3><mark class="mark-blue">Partnership</mark></h3>
+        <% @partners_positions.each do |volunteer_position| %>
+          <div id="volunteer_position-<%= volunteer_position.id %>">
+            <%= render 'pages/partials/position_closed',
+                volunteer_position: volunteer_position %>
+          </div>
+        <% end %>
       </div>
     </div>
   </section>

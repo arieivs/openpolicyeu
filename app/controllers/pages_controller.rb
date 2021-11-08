@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :about, :join, :explore]
+  skip_before_action :authenticate_user!, only: [:home, :about, :join, :explore, :open_accordion, :close_accordion]
 
   def home
     @recent_policy_makings = PolicyMaking.all.order(updated_at: :desc).slice(0..3)
@@ -10,13 +10,25 @@ class PagesController < ApplicationController
     @volunteers = Volunteer.all.order(:id)
   end
 
-  def join
-    @volunteer_positions = VolunteerPosition.all
-  end
-
   def explore
     @recent_policy_makings = PolicyMaking.all.order(updated_at: :desc).slice(0..3)
     prepare_data_for_country_topic_filter(:explore)
+  end
+
+  def join
+    @policy_positions = VolunteerPosition.where(team: 'policy')
+    @dev_positions = VolunteerPosition.where(team: 'dev')
+    @comms_positions = VolunteerPosition.where(team: 'comms')
+    @ambassadors_positions = VolunteerPosition.where(team: 'ambassadors')
+    @partners_positions = VolunteerPosition.where(team: 'partners')
+  end
+
+  def open_accordion
+    @volunteer_position = VolunteerPosition.find(params[:volunteer_position_id])
+  end
+
+  def close_accordion
+    @volunteer_position = VolunteerPosition.find(params[:volunteer_position_id])
   end
 
   private
