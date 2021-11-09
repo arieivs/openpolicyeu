@@ -1,5 +1,5 @@
-<%= simple_form_for :organisation_type, url: organisations_path, method: :get do |f| %>
-  <%= f.input :type, required: false, collection: OpportunityType.distinct.pluck(:name), input_html: { class: "select2-type", multiple: ""} %>
+<%= simple_form_for :organisation_type, url: organisations_path, method: :get, remote: true do |f| %>
+  <%= f.input :type, required: false, collection: OpportunityType.distinct.pluck(:name), input_html: { class: "select2-type", multiple: "multiple"} %>
 
   <%= f.input :country, as: :hidden %>
   <%= f.input :topic, as: :hidden %>
