@@ -1,4 +1,4 @@
-<%= simple_form_for :organisation_topic, url: organisations_path, method: :get, remote: true do |f| %>
+<%= simple_form_for :organisation_topic, url: organisations_path, html: { class: "w-48"}, method: :get, remote: true do |f| %>
   <%= f.input :topic, required: false, collection: Topic.distinct.pluck(:name), input_html: { class: "select2-topic", multiple: "multiple"} %>
 
   <%= f.input :country, as: :hidden %>
