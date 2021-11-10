@@ -2,17 +2,17 @@ class PolicyPlansController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :choose_institution, :choose_gamebook, :choose_timeline, :open_accordion, :close_accordion]
 
   def index
-    @policy_plans = PolicyPlan.all.order(:name)
+    @policy_plans = PolicyPlan.all.includes(policy_making: [:country, :topic]).order(:name)
   end
 
   def show
     set_policy_plan
     @policy_making = @policy_plan.policy_making
-    @policy_plan_institutions = PolicyPlanInstitution.where(policy_plan: @policy_plan)
+    @policy_plan_institutions = PolicyPlanInstitution.includes(institution: {logo_attachment: :blob}).where(policy_plan: @policy_plan)
     @goals = Goal.where(policy_plan: @policy_plan).order(:order)
     @timesteps = Timestep.where(policy_plan: @policy_plan).order(:date)
     set_gamebook
-    @young_contributors = YoungContributor.where(policy_plan: @policy_plan)
+    @young_contributors = YoungContributor.includes(logo_attachment: :blob).where(policy_plan: @policy_plan)
   end
 
   def new
