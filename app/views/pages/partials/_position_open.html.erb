@@ -1,0 +1,18 @@
+<div class="card-all card-selected my-3">
+  <div class="px-4 py-3">
+    <div class="d-flex justify-content-between">
+      <h3><strong><%= volunteer_position.name %></strong></h3>
+      <%= link_to close_position_path(volunteer_position_id: volunteer_position.id), remote: true do %>
+        <i class="fas fa-chevron-up accordion-btn accordion-open-btn"></i>
+      <% end %>
+    </div>
+    <div class="container-short">
+      <p><%= volunteer_position.description %></p>
+      <% if volunteer_position.requirements %>
+        <p class="mb-0"><strong>Requirements</strong></p>
+        <p class="mt-0"><%= volunteer_position.requirements %></p>
+      <% end %>
+      <p><strong>Please apply by filling in <a href="https://docs.google.com/forms/d/e/1FAIpQLScHd9nco1X4KzRDsMO_0_SGmtZtfyliD-1qy9NFb--38m6NDg/viewform?usp=sf_link" target="_blank" class="text-link">this form</a>.</strong> Looking forward to meet you!</p>
+    </div>
+  </div>
+</div>

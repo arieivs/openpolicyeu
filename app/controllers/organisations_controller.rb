@@ -2,25 +2,25 @@ class OrganisationsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
-    @organisations = Organisation.all.order(:name).includes(:countries, :topics, :opportunity_types)
+    @organisations = Organisation.includes({logo_attachment: :blob}, :organisation_countries, :countries, :organisation_topics, :topics, :opportunities, :opportunity_types).order(:name)
     # # Once Select2 library is fully working (not today)
-    # if params[:organisation_country].present? || params[:organisation_topic].present? || params[:organisation_type].present?
-    #   filter_params = get_filter_params
+    if params[:organisation_country].present? || params[:organisation_topic].present? || params[:organisation_type].present?
+      filter_params = get_filter_params
 
-    #   @selected_countries = filter_params[:country].split(',').flatten
-    #   get_selected_countries_ids
-    #   @organisations = @organisations.joins(:organisation_countries).where(organisation_countries: {country_id: @selected_countries_ids}) unless @selected_countries_ids.empty?
+      @selected_countries = filter_params[:country].split(',').flatten
+      get_selected_countries_ids
+      @organisations = @organisations.joins(:organisation_countries).where(organisation_countries: {country_id: @selected_countries_ids}) unless @selected_countries_ids.empty?
 
-    #   @selected_topics = filter_params[:topic].split(',').flatten
-    #   get_selected_topics_ids
-    #   @organisations = @organisations.joins(:organisation_topics).where(organisation_topics: {topic_id: @selected_topics_ids}) unless @selected_topics_ids.empty?
+      @selected_topics = filter_params[:topic].split(',').flatten
+      get_selected_topics_ids
+      @organisations = @organisations.joins(:organisation_topics).where(organisation_topics: {topic_id: @selected_topics_ids}) unless @selected_topics_ids.empty?
 
-    #   @selected_types = filter_params[:type].split(',').flatten
-    #   get_selected_types_ids
-    #   @organisations = @organisations.joins(:opportunities).where(opportunities: {opportunity_type_id: @selected_types_ids}) unless @selected_types.empty?
+      # @selected_types = filter_params[:type].split(',').flatten
+      # get_selected_types_ids
+      # @organisations = @organisations.joins(:opportunities).where(opportunities: {opportunity_type_id: @selected_types_ids}) unless @selected_types.empty?
 
-    #   @organisations = @organisations.uniq
-    # end
+      @organisations = @organisations.uniq
+    end
   end
 
   private

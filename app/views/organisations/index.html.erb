@@ -3,6 +3,11 @@
     <div class="container">
       <h1>Take action!</h1>
       <p class="mb-5">Ready to get involved in policymaking? Find out with who and how:</p>
+      <div class="d-flex flex-column flex-lg-row justify-content-between">
+        <%= render 'organisations/partials/filter_by_country' %>
+        <%= render 'organisations/partials/filter_by_topic' %>
+        <%#= render 'organisations/partials/filter_by_type' %>
+      </div>
       <% @organisations.each do |organisation| %>
         <%= render 'organisations/partials/organisation_card', organisation: organisation %>
       <% end %>

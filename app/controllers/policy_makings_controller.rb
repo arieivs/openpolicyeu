@@ -2,7 +2,7 @@ class PolicyMakingsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
 
   def index
-    @policy_makings = PolicyMaking.all.order(:country_id).order(:topic_id)
+    @policy_makings = PolicyMaking.includes(:topic, :country).order(:country_id).order(:topic_id)
     # For the filters (to search for a policymaking in a specific country or topic)
     @policy_making = PolicyMaking.new
     if params[:policy_making].present?
@@ -21,7 +21,7 @@ class PolicyMakingsController < ApplicationController
     set_policy_making
     @content_question = Question.where(policy_making: @policy_making).find_by(scope: 'content')
     @content_answers = Answer.where(question: @content_question)
-    @policy_making_institutions = PolicyMakingInstitution.where(policy_making: @policy_making)
+    @policy_making_institutions = PolicyMakingInstitution.includes(institution: {logo_attachment: :blob}).where(policy_making: @policy_making)
     @institution_question = Question.where(policy_making: @policy_making).find_by(scope: 'institutions')
     @institution_answers = Answer.where(question: @institution_question)
     @policy_plans = PolicyPlan.where(policy_making: @policy_making)
@@ -79,6 +79,6 @@ class PolicyMakingsController < ApplicationController
     @new_answer = Answer.new
     @policy_making_institution = PolicyMakingInstitution.new
     @institution = Institution.new
-    @policy_making_institutions = PolicyMakingInstitution.where(policy_making: @policy_making)
+    @policy_making_institutions = PolicyMakingInstitution.includes(:institution).where(policy_making: @policy_making)
   end
 end

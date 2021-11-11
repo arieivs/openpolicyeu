@@ -1,7 +1,7 @@
-<%= link_to open_accordion_path(policy_plan_id: policy_plan.id, goal_id: goal.id), class: 'card-link', remote: true do %>
+<%= link_to open_position_path(volunteer_position_id: volunteer_position.id), class: 'card-link', remote: true do %>
   <div class="card-all card-clickable accordion-close my-3">
     <div class="d-flex justify-content-between px-4">
-      <h3><%= goal.name %></h3>
+      <h3><%= volunteer_position.name %></h3>
       <i class="fas fa-chevron-down accordion-btn"></i>
     </div>
   </div>
