@@ -1,0 +1,82 @@
+<main>
+  <div class="container">
+    <h1 class="my-5">Join us</h1>
+    <p style="max-width: 800px;">Are you passionate about youth participation in policymaking? Are you ready to catalyze youth engagement with key policies to shape our future? <strong>You’re in the right place</strong>, keep reading.</p>
+  </div>
+  <section class="py-5">
+    <div class="container d-flex justify-content-between flex-column flex-lg-row">
+      <div class="container-half">
+        <h2><mark class="mark-yllw">What's in it for me?</mark></h2>
+        <p>We asked ourselves what motivates us to be here. Here are the most common reasons:</p>
+        <ul>
+          <li><strong>Understand policymaking</strong>, and learn about its actors and outcomes</li>
+          <li>Work in an <strong>international environment</strong> and meet like-minded people</li>
+          <li>The opportunity to <strong>make a difference</strong></li>
+          <li>The belief that <strong>policymaking should be more collaborative and inclusive</strong>, and commitment  to increasing awareness and closing the knowledge gap</li>
+        </ul>
+      </div>
+      <div class="container-half d-flex justify-content-center align-items-center">
+        <img src="https://res.cloudinary.com/dhnsnkxbe/image/upload/v1628700838/openpolicyeu/day_dream_ptlngs.png">
+      </div>
+    </div>
+    <div class="container-short">
+      <p>In other words… Do you want to learn more about policymaking or help others to do so? Do you fancy a challenge? Do you (warning: cliché sentence coming) want to be the change you wish to see in the world? Then find out how you can contribute:</p>
+    </div>
+  </section>
+  <section class="py-5">
+    <div class="container">
+      <h2><mark class="mark-yllw">How can I help?</mark></h2>
+      <p>You can help by joining us as a volunteer! Check out our open positions:</p>
+      <div class="mt-5">
+        <h3><mark class="mark-blue">Policy Analysis</mark> & <mark class="mark-blue">Content creation</mark></h3>
+        <% @policy_positions.each do |volunteer_position| %>
+          <div id="volunteer_position-<%= volunteer_position.id %>">
+            <%= render 'pages/partials/position_closed',
+                volunteer_position: volunteer_position %>
+          </div>
+        <% end %>
+      </div>
+      <div class="mt-5">
+        <h3><mark class="mark-blue">Web Development</mark> & <mark class="mark-blue">UX Design</mark></h3>
+        <% @dev_positions.each do |volunteer_position| %>
+          <div id="volunteer_position-<%= volunteer_position.id %>">
+            <%= render 'pages/partials/position_closed',
+                volunteer_position: volunteer_position %>
+          </div>
+        <% end %>
+      </div>
+      <div class="mt-5">
+        <h3><mark class="mark-blue">Marketing</mark> & <mark class="mark-blue">Communication</mark></h3>
+        <% @comms_positions.each do |volunteer_position| %>
+          <div id="volunteer_position-<%= volunteer_position.id %>">
+            <%= render 'pages/partials/position_closed',
+                volunteer_position: volunteer_position %>
+          </div>
+        <% end %>
+      </div>
+      <div class="mt-5">
+        <h3><mark class="mark-blue">Ambassadors Programme</mark></h3>
+        <% @ambassadors_positions.each do |volunteer_position| %>
+          <div id="volunteer_position-<%= volunteer_position.id %>">
+            <%= render 'pages/partials/position_closed',
+                volunteer_position: volunteer_position %>
+          </div>
+        <% end %>
+      </div>
+      <div class="mt-5">
+        <h3><mark class="mark-blue">Partnership</mark></h3>
+        <% @partners_positions.each do |volunteer_position| %>
+          <div id="volunteer_position-<%= volunteer_position.id %>">
+            <%= render 'pages/partials/position_closed',
+                volunteer_position: volunteer_position %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+  <section class="container py-5 text-center">
+    <h2><mark class="mark-yllw">How can I join?</mark></h2>
+    <p>Fill in the application form below. We look forward to hearing from you!</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScHd9nco1X4KzRDsMO_0_SGmtZtfyliD-1qy9NFb--38m6NDg/viewform?usp=sf_link" target="_blank"><button class="btn-all btn-prim">Apply</button></a>
+  </section>
+</main>
