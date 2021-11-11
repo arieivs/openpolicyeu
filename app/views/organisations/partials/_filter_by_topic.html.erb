@@ -1,14 +1,16 @@
-<%= simple_form_for :organisation_topic, url: organisations_path, html: { class: "w-48"}, method: :get, remote: true do |f| %>
-  <%= f.input :topic, required: false, collection: Topic.distinct.pluck(:name), input_html: { class: "select2-topic", multiple: "multiple"} %>
+<div class="w-48">
+  <%= simple_form_for :organisation_topic, url: organisations_path, method: :get, remote: true do |f| %>
+    <%= f.input :topic, required: false, collection: Topic.distinct.pluck(:name), input_html: { class: "select2-topic", multiple: "multiple"} %>
 
-  <%= f.input :country, as: :hidden %>
-  <%= f.input :type, as: :hidden %>
+    <%= f.input :country, as: :hidden %>
+    <%= f.input :type, as: :hidden %>
 
-  <% f.button :submit, "Filter by topic", class: 'btn-all btn-yllw' %>
-<% end %>
+    <% f.button :submit, "Filter by topic", class: 'btn-all btn-yllw' %>
+  <% end %>
 
-<% if @selected_topics.nil? %>
-  <div class="d-none" id="retained-selected-topics" data-retained-selected-topics="<%=  %>"></div>
-<% else %>
-  <div class="d-none" id="retained-selected-topics" data-retained-selected-topics="<%= @selected_topics.reject(&:blank?).join(',') %>"></div>
-<% end %>
+  <% if @selected_topics.nil? %>
+    <div class="d-none" id="retained-selected-topics" data-retained-selected-topics="<%=  %>"></div>
+  <% else %>
+    <div class="d-none" id="retained-selected-topics" data-retained-selected-topics="<%= @selected_topics.reject(&:blank?).join(',') %>"></div>
+  <% end %>
+</div>
