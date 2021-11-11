@@ -2,14 +2,14 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :about, :explore]
 
   def home
-    @recent_policy_makings = PolicyMaking.all.order(updated_at: :desc).slice(0..3)
+    @recent_policy_makings = PolicyMaking.includes(:topic, country: {flag_attachment: :blob}).order(updated_at: :desc).slice(0..3)
     prepare_data_for_country_topic_filter(:home)
   end
 
   def about; end
 
   def explore
-    @recent_policy_makings = PolicyMaking.all.order(updated_at: :desc).slice(0..3)
+    @recent_policy_makings = PolicyMaking.includes(:topic, country: {flag_attachment: :blob}).order(updated_at: :desc).slice(0..3)
     prepare_data_for_country_topic_filter(:explore)
   end
 
