@@ -51,3 +51,31 @@ textarea {
     max-width: 100%;
   }
 }
+
+.organisation_country {
+  margin-right: 10px;
+}
+@media (max-width: 880px) {
+  .organisation_country {
+    margin: 0px;
+  }
+}
+
+.select2-container {
+  display: inline;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: $blue;
+  border-color: $blue;
+  color: white;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+  color: white;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+  background-color: $blue-hover;
+  color: white
+}
