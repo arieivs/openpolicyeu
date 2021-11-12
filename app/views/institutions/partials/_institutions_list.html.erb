@@ -26,7 +26,7 @@
                   </div>
                   <% if pi.institution.video_url && !pi.institution.video_url.empty?%>
                     <div class="container-half">
-                      <iframe class="video-small mt-3" src="<%= pi.institution.video_url %>" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                      <iframe class="video-small mt-3" src="<%= pi.institution.video_url %>" allow="" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
                       <% if pi.institution.video_source %>
                         <p class="subtitle"><em>by <%= pi.institution.video_source %></em></p>
                       <% end %>

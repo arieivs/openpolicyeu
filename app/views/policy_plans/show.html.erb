@@ -7,7 +7,7 @@
         <p><%= @policy_plan.content %></p>
         <% if @policy_plan.video_url && !@policy_plan.video_url.empty? %>
           <div class="my-5">
-            <iframe class="video" src="<%= @policy_plan.video_url %>" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+            <iframe class="video" src="<%= @policy_plan.video_url %>" allow="" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
             <% if @policy_plan.video_source && !@policy_plan.video_source.empty? %>
               <p class="subtitle"><em>by <%= @policy_plan.video_source %></em></p>
             <% end %>
