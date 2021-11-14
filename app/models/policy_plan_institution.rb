@@ -3,4 +3,5 @@ class PolicyPlanInstitution < ApplicationRecord
   belongs_to :institution
 
   validates :description, presence: true
+  validates :institution_id, uniqueness: true
 end

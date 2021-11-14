@@ -4,4 +4,5 @@ class PolicyMakingInstitution < ApplicationRecord
 
   validates :description, presence: true
   validates :policy_making, uniqueness: { scope: :institution }
+  validates :institution_id, uniqueness: true
 end

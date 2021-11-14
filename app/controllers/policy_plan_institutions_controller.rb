@@ -14,6 +14,8 @@ class PolicyPlanInstitutionsController < ApplicationController
       respond_to { |format| format.js }
     elsif params[:policy_plan_institution][:institution_id].empty?
       respond_to { |format| format.js { flash.now[:alert] = "Please select an Institution." } }
+    elsif @policy_plan.institution_ids.include?(params[:policy_plan_institution][:institution_id].to_i)
+      respond_to { |format| format.js { flash.now[:alert] = "This Institution was already added to this page." } }
     else
       respond_to { |format| format.js { flash.now[:alert] = "Please describe the role of this Institution." } }
     end
