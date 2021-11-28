@@ -19,9 +19,9 @@
       <% @policy_plans.each do |policy_plan| %>
         <div class="card-all my-3">
           <div class="px-4">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+            <div class="card-policyplan-header">
               <h2 class="m-0"><strong><%= policy_plan.name %></strong></h2>
-              <div class="d-flex">
+              <div class="card-policyplan-tags">
                 <p class="tag tag-light-blue mr-3"><%= policy_plan.policy_making.country.name %></p>
                 <p class="tag tag-light-blue"><%= policy_plan.policy_making.topic.name %></p>
               </div>

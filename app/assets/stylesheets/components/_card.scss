@@ -113,9 +113,32 @@
   font-size: 25px;
 }
 
+.card-policyplan-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-policyplan-tags {
+  display: flex;
+}
+
+@media (max-width: 440px) {
+  .card-policyplan-tags {
+    display: block;
+  }
+}
+
 @media (max-width: 880px) {
   .card-arrow {
     margin-top: 18px;
     align-self: start;
+  }
+}
+
+@media (max-width: 1200px) {
+  .card-policyplan-header {
+    flex-direction: column;
+    align-items: start;
   }
 }
