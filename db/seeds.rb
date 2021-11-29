@@ -10,7 +10,7 @@ require 'open-uri'
 require 'csv'
 
 csv_reading_options = { col_sep: ',', quote_char: '"', headers: :first_row }
-=begin
+
 # --------------- CLEANING ---------------
 
 puts "Cleaning ANSWERS database..."
@@ -44,10 +44,8 @@ puts "Cleaning TOPICS database..."
 Topic.destroy_all
 puts "Cleaning VOLUNTEERS database..."
 Volunteer.destroy_all
-=end
 puts "Cleaning VOLUNTEER POSITIONS database..."
 VolunteerPosition.destroy_all
-=begin
 puts "Empty database \n\n"
 
 # --------------- TOPICS ---------------
@@ -232,8 +230,6 @@ CSV.foreach('db/initial_seeds/volunteers.csv', csv_reading_options) do |row|
   puts "created volunteer #{new_volunteer.name} \n"
 end
 puts "#{Volunteer.count} volunteers created! \n\n"
-
-=end
 
 # --------- VOLUNTEER POSITIONS ------------
 

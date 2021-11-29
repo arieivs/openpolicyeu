@@ -13,7 +13,7 @@
   <!-- TO DO : Number of characters (min/max) for "video_alt_text" to be implemented later -->
   <%= f.input :video_source, label: "Who’s the creator/holds the rights to the video?", hint: "Make sure to add a source if you added a video", required: false %>
   <!-- Ambassador once we have them -->
-  <%= f.input :logo, as: :file, label:"Add a logo", required: true %>
+  <%= f.input :logo, as: :file, label:"Add a logo", hint: "Choose a square picture", required: true %>
   <% if !policy_plan.nil? %>
     <%= f.input :policy_plan_id, as: :hidden, input_html: { value: policy_plan.id }  %>
   <% elsif !policy_making.nil? %>

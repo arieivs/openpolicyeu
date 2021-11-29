@@ -37,6 +37,7 @@ class PolicyPlansController < ApplicationController
   end
 
   def update
+    @policy_makings = PolicyMaking.includes(:topic, :country)
     set_policy_plan
     if @policy_plan.update(policy_plan_params)
       respond_to { |format| format.js { flash.now[:notice] = "Policy Plan/Strategy updated successfully!" } }

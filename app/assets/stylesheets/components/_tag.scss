@@ -4,17 +4,14 @@
   margin-right: 10px;
 }
 
-.tag-yllw {
-  background-color: $yellow;
-  color: $blue;
-}
-
-.tag-blue {
-  background-color: $blue;
-  color: $yellow;
-}
-
 .tag-light-blue {
   background-color: $blue-bkg;
   color: $blue;
+}
+
+@media (max-width: 440px) {
+  .tag {
+    display: inline-block;
+    margin-bottom: 0;
+  }
 }
