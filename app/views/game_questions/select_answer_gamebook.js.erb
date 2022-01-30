@@ -1,4 +1,15 @@
-document.getElementById('answers-question-<%= @game_question.id %>').innerHTML = "<%= j render 'policy_plans/partials/answer_after', game_question: @game_question, game_answers: @game_answers, selected_answer: @selected_answer %>";
+var answers = document.getElementById('answers-question-<%= @game_question.id %>');
+answers.innerHTML = "<%= j render 'policy_plans/partials/answer_after', game_question: @game_question, game_answers: @game_answers, selected_answer: @selected_answer %>";
 <% if !@next_question.nil? %>
-  document.getElementById('game-questions').innerHTML += "<%= j render 'policy_plans/partials/game_question', policy_plan: @policy_plan, game_questions: @game_questions, game_question: @next_question, game_question_index: @game_question_index, game_answers: @next_answers %>";
+  var questions = document.getElementById('game-questions');
+  questions.innerHTML += "<%= j render 'policy_plans/partials/game_question', policy_plan: @policy_plan, game_questions: @game_questions, game_question: @next_question, game_question_index: @game_question_index, game_answers: @next_answers %>";
+  questions.scrollIntoView(false);
 <% end %>
+//window.scrollTo(0, answers.offsetHeight);
+//console.log(answers);
+//const footer = document.getElementsByTagName('footer')[0];
+//console.log(footer);
+//footer.scrollIntoView(true);
+//var explanation = answers.getElementsByClassName('answer-explanation')[0];
+//console.log(explanation.innerText);
+//explanation.scrollIntoView({block: 'start', inline: 'start', behavior: 'smooth'});
