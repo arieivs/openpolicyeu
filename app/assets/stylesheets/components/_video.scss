@@ -1,11 +1,17 @@
 .video {
   width: 100%;
   height: 383px;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .video-small {
   height: 250px;
   width: 100%;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 @media (max-width: 880px) {

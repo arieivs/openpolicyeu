@@ -6,7 +6,11 @@
       <div class="container-short">
         <% if @policy_making.video_url && !@policy_making.video_url.empty? %>
           <div class="my-5">
-            <iframe class="video" src="<%= @policy_making.video_url %>" allow="" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+            <% if @policy_making.video_url.match?(/youtube/) %>
+              <iframe class="video" src="<%= @policy_making.video_url %>" allow="" title="video player" frameborder="0" allowfullscreen=""></iframe>
+            <% else %>
+              <video class="video" src="<%= @policy_making.video_url %>" controls="controls"></video>
+            <% end %>
             <% if @policy_making.video_source && !@policy_making.video_source.empty? %>
               <p class="subtitle"><em>by <%= @policy_making.video_source %></em></p>
             <% end %>
