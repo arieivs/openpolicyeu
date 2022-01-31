@@ -1,4 +1,19 @@
-document.getElementById('answers-question-<%= @game_question.id %>').innerHTML = "<%= j render 'policy_plans/partials/answer_after', game_question: @game_question, game_answers: @game_answers, selected_answer: @selected_answer %>";
+var answers = document.getElementById('answers-question-<%= @game_question.id %>');
+answers.innerHTML = "<%= j render 'policy_plans/partials/answer_after', game_question: @game_question, game_answers: @game_answers, selected_answer: @selected_answer %>";
+
+var questions = document.getElementById('game-questions');
+var time_steps = questions.getElementsByClassName('timestep-card');
+var last_question_height = time_steps[time_steps.length - 1].offsetHeight;
 <% if !@next_question.nil? %>
-  document.getElementById('game-questions').innerHTML += "<%= j render 'policy_plans/partials/game_question', policy_plan: @policy_plan, game_questions: @game_questions, game_question: @next_question, game_question_index: @game_question_index, game_answers: @next_answers %>";
+  questions.innerHTML += "<%= j render 'policy_plans/partials/game_question', policy_plan: @policy_plan, game_questions: @game_questions, game_question: @next_question, game_question_index: @game_question_index, game_answers: @next_answers %>";
 <% end %>
+
+// using .scrollIntoView() did not work
+// neither when applied to the answers, nor to the explanation
+// I have no idea why
+// answers.offsetHeight = 0, also not sure why
+// answers.offsetTop = 0 as this counts from the parent element
+// so I came up with this... it's not great, I know
+// the '3' as purely empirical
+// I was desperate. Don't judge me.
+window.scrollTo(0, window.scrollY + last_question_height / 3);
