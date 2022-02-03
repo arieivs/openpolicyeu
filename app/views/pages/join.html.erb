@@ -27,51 +27,61 @@
     <div class="container">
       <h2><mark class="mark-yllw">How can I help?</mark></h2>
       <p>You can help by joining us as a volunteer! Check out our open positions:</p>
-      <div class="mt-5">
-        <h3><mark class="mark-blue">Policy Analysis</mark> & <mark class="mark-blue">Content creation</mark></h3>
-        <% @policy_positions.each do |volunteer_position| %>
-          <div id="volunteer_position-<%= volunteer_position.id %>">
-            <%= render 'pages/partials/position_closed',
-                volunteer_position: volunteer_position %>
-          </div>
-        <% end %>
-      </div>
-      <div class="mt-5">
-        <h3><mark class="mark-blue">Web Development</mark> & <mark class="mark-blue">UX Design</mark></h3>
-        <% @dev_positions.each do |volunteer_position| %>
-          <div id="volunteer_position-<%= volunteer_position.id %>">
-            <%= render 'pages/partials/position_closed',
-                volunteer_position: volunteer_position %>
-          </div>
-        <% end %>
-      </div>
-      <div class="mt-5">
-        <h3><mark class="mark-blue">Marketing</mark> & <mark class="mark-blue">Communication</mark></h3>
-        <% @comms_positions.each do |volunteer_position| %>
-          <div id="volunteer_position-<%= volunteer_position.id %>">
-            <%= render 'pages/partials/position_closed',
-                volunteer_position: volunteer_position %>
-          </div>
-        <% end %>
-      </div>
-      <div class="mt-5">
-        <h3><mark class="mark-blue">Ambassadors Programme</mark></h3>
-        <% @ambassadors_positions.each do |volunteer_position| %>
-          <div id="volunteer_position-<%= volunteer_position.id %>">
-            <%= render 'pages/partials/position_closed',
-                volunteer_position: volunteer_position %>
-          </div>
-        <% end %>
-      </div>
-      <div class="mt-5">
-        <h3><mark class="mark-blue">Partnership</mark></h3>
-        <% @partners_positions.each do |volunteer_position| %>
-          <div id="volunteer_position-<%= volunteer_position.id %>">
-            <%= render 'pages/partials/position_closed',
-                volunteer_position: volunteer_position %>
-          </div>
-        <% end %>
-      </div>
+      <% if !@policy_positions.empty? %>
+        <div class="mt-5">
+          <h3><mark class="mark-blue">Policy Analysis</mark> & <mark class="mark-blue">Content creation</mark></h3>
+          <% @policy_positions.each do |volunteer_position| %>
+            <div id="volunteer_position-<%= volunteer_position.id %>">
+              <%= render 'pages/partials/position_closed',
+                  volunteer_position: volunteer_position %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      <% if !@dev_positions.empty? %>
+        <div class="mt-5">
+          <h3><mark class="mark-blue">Web Development</mark> & <mark class="mark-blue">UX Design</mark></h3>
+          <% @dev_positions.each do |volunteer_position| %>
+            <div id="volunteer_position-<%= volunteer_position.id %>">
+              <%= render 'pages/partials/position_closed',
+                  volunteer_position: volunteer_position %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      <% if !@comms_positions.empty? %>
+        <div class="mt-5">
+          <h3><mark class="mark-blue">Marketing</mark> & <mark class="mark-blue">Communication</mark></h3>
+          <% @comms_positions.each do |volunteer_position| %>
+            <div id="volunteer_position-<%= volunteer_position.id %>">
+              <%= render 'pages/partials/position_closed',
+                  volunteer_position: volunteer_position %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      <% if !@ambassadors_positions.empty? %>
+        <div class="mt-5">
+          <h3><mark class="mark-blue">Ambassadors Programme</mark></h3>
+          <% @ambassadors_positions.each do |volunteer_position| %>
+            <div id="volunteer_position-<%= volunteer_position.id %>">
+              <%= render 'pages/partials/position_closed',
+                  volunteer_position: volunteer_position %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      <% if !@partners_positions.empty? %>
+        <div class="mt-5">
+          <h3><mark class="mark-blue">Partnership</mark></h3>
+          <% @partners_positions.each do |volunteer_position| %>
+            <div id="volunteer_position-<%= volunteer_position.id %>">
+              <%= render 'pages/partials/position_closed',
+                  volunteer_position: volunteer_position %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </section>
   <section class="container py-5 text-center">
