@@ -12,7 +12,12 @@
         <p class="mb-0"><strong>Requirements</strong></p>
         <p class="mt-0"><%= volunteer_position.requirements %></p>
       <% end %>
-      <p><strong>Please apply by filling in <a href="https://docs.google.com/forms/d/e/1FAIpQLScHd9nco1X4KzRDsMO_0_SGmtZtfyliD-1qy9NFb--38m6NDg/viewform?usp=sf_link" target="_blank" class="text-link">this form</a>.</strong> Looking forward to meet you!</p>
+      <p><strong>How to apply</strong></p>
+      <p>Please apply by sending an email to <a href="mailto:info@openpolicy.eu" class="text-link">info@openpolicy.eu</a> with your CV. Tell us a bit about yourself and how you would like to contribute to the OpenPolicy Europe project.
+      <% if volunteer_position.how_to_apply %>
+        <%= volunteer_position.how_to_apply %>
+      <% end %>
+      Looking forward to meet you!</p>
     </div>
   </div>
 </div>
