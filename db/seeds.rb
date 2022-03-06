@@ -236,7 +236,7 @@ puts "#{Volunteer.count} volunteers created! \n\n"
 puts "Creating volunteering positions..."
 # index,team,name,description,requirements
 CSV.foreach('db/initial_seeds/volunteer_positions.csv', csv_reading_options) do |row|
-  VolunteerPosition.new(team: row[1], name: row[2], description: row[3], requirements:row[4]).save
+  VolunteerPosition.new(team: row[1], name: row[2], description: row[3], requirements:row[4], how_to_apply: row[5]).save
 end
 puts "#{VolunteerPosition.count} volunteering positions created! \n\n"
 
