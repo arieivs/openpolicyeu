@@ -140,6 +140,7 @@ GEM
       pry (~> 0.13.0)
     pry-rails (0.3.9)
       pry (>= 0.10.4)
+    public_suffix (4.0.7)
     puma (5.3.2)
       nio4r (~> 2.0)
     racc (1.5.2)
@@ -227,6 +228,9 @@ GEM
       unf_ext
     unf_ext (0.0.7.7)
     uniform_notifier (1.14.2)
+    validate_url (1.0.13)
+      activemodel (>= 3.0.0)
+      public_suffix
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.1.0)
@@ -274,6 +278,7 @@ DEPENDENCIES
   turbolinks (~> 5)
   turbolinks_render
   tzinfo-data
+  validate_url
   web-console (>= 4.1.0)
   webpacker (~> 5.0)
 
@@ -281,4 +286,4 @@ RUBY VERSION
    ruby 2.7.3p183
 
 BUNDLED WITH
-   2.2.30
+   2.3.11
