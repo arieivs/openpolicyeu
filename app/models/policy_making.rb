@@ -10,7 +10,7 @@ class PolicyMaking < ApplicationRecord
 
   validates :content, presence: true
   validates :country, uniqueness: { scope: :topic }
-  validates :video_url, url: true
+  # validates :video_url, url: true
 
   def question(scope)
     questions.find_by(scope: scope)
