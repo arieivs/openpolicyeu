@@ -24,7 +24,7 @@ module Openpolicyeu
     config.action_view.embed_authenticity_token_in_remote_forms = true
 
     config.generators do |generate|
-      generate.assets false
+      generate.assets true
       generate.helper false
       generate.test_framework :test_unit, fixture: false
     end

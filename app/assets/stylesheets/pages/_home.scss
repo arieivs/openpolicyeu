@@ -1,5 +1,10 @@
 .header-banner {
-  background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0) 100%), url(https://images.unsplash.com/photo-1559589688-6ba6beafe1e5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=848&q=80);
+  background-image: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.6) 50%,
+      rgba(0, 0, 0, 0) 100%
+    ),
+    url(https://images.unsplash.com/photo-1559589688-6ba6beafe1e5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=848&q=80);
   background-size: cover;
   background-position: center;
 }
@@ -26,7 +31,7 @@
 }
 
 .slogan {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .img-decorative {
@@ -82,7 +87,7 @@
   }
   img {
     width: 60px;
-    border: solid 0.5px #CDCDCD;
+    border: solid 0.5px #cdcdcd;
     border-radius: 5px;
     margin: 0 0 0 auto;
     transform: rotate(10deg);
