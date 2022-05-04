@@ -4,15 +4,29 @@
   font-family: "Montserrat";
   src: url("Montserrat/Montserrat-Regular.ttf");
 }
+
+@font-face {
+  font-family: "Montserrat700";
+  src: url("Montserrat/Montserrat-Bold.ttf");
+}
+
 // Roboto
 @font-face {
   font-family: "Roboto";
   src: url("Roboto/Roboto-Regular.ttf");
 }
 
+@font-face {
+  font-family: "Roboto700";
+  src: url("Roboto/Roboto-Bold.ttf");
+  font-weight: 700;
+}
+
 // TYPOGRAPHY
 $body-font: "Roboto", "sans-serif";
-$headers-font: "Montserrat", "Roboto", "sans-serif";
+$headers-font: "Montserrat700", "Roboto700", "sans-serif";
+
+// Font defaults
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
