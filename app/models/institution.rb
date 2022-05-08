@@ -7,5 +7,5 @@ class Institution < ApplicationRecord
   validates :name, presence: true
   validates :website_url, presence: true
   validates :logo, presence: true
-  validates :video_url, url: true
+  validates :video_url, format: { with: URI::regexp(%w[http https]) }
 end

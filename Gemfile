@@ -37,7 +37,6 @@ gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'turbolinks_render'
-gem "validate_url"
 
 # Seeds with Faker
 gem 'faker'
