@@ -10,7 +10,8 @@ class PolicyMaking < ApplicationRecord
 
   validates :content, presence: true
   validates :country, uniqueness: { scope: :topic }
-
+  validates :video_url, format: { with: URI::regexp(%w[http https]) }
+ 
   def question(scope)
     questions.find_by(scope: scope)
   end
