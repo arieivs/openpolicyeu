@@ -164,7 +164,7 @@
 
 @font-face {
   font-family: "Roboto";
-  src: font-url("Roboto/Roboto-RegularItalic.ttf");
+  src: font-url("Roboto/Roboto-Italic.ttf");
   font-weight: 400;
   font-style: italic;
 }
@@ -212,8 +212,8 @@
 }
 
 // TYPOGRAPHY
-$body-font: "Roboto", "sans-serif";
-$headers-font: "Montserrat", "Roboto", "sans-serif";
+$body-font: "Roboto", sans-serif;
+$headers-font: "Montserrat", "Roboto", sans-serif;
 
 // Font defaults
 
