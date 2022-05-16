@@ -1,5 +1,4 @@
 class InstitutionsController < ApplicationController
-  # Added skip before action to allow page to load to visitors
   def index
     @institutions = Institution.all
   end
