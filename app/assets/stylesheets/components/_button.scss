@@ -12,10 +12,10 @@
 }
 
 .btn-prim {
-  color: #FFF;
+  color: #fff;
   background-color: $blue;
   &:hover {
-    color: #FFF;
+    color: #fff;
     background-color: $blue_hover;
   }
 }
@@ -25,9 +25,20 @@
   border: solid 2px $blue;
   background-color: #fff;
   &:hover {
-    color: #FFF;
+    color: #fff;
     background-color: $blue;
   }
+}
+
+.btn-small {
+  width: 83px;
+  height: 36px;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 14px;
+  padding: 0;
+  border-width: 3px;
+  box-shadow: 1px 0 3px rgba(54, 54, 54, 0.2);
 }
 
 .btn-yllw {
@@ -43,3 +54,14 @@
   text-decoration: none;
 }
 
+// Button text container where the button has text preceeding it
+.btn-text-container {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  .btn-text-container-text {
+    margin: auto 20px auto 0;
+  }
+}
