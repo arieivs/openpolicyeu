@@ -23,6 +23,7 @@
         <% if user_signed_in? %>
           <!-- Institutions -->
           <li class="nav-item nav-item-ours"><%= link_to "Policymakings", policy_makings_path, class: "nav-link nav-link-ours #{current_page?(controller: '/policy_makings') ? 'active' : ''}" %></li>
+          <li class="nav-item nav-item-ours"><%= link_to "Institutions", institutions_path, class: "nav-link nav-link-ours #{current_page?(controller: '/institutions', action: 'index') ? 'active' : ''}" %></li>
           <li class="nav-item nav-item-ours"><%= link_to "Policy Plans", policy_plans_path, class: "nav-link nav-link-ours #{current_page?(controller: '/policy_plans') ? 'active' : ''}" %></li>
           <!-- Take Action -->
           <li class="nav-item dropdown">
@@ -45,4 +46,3 @@
     </div>
   </div>
 </nav>
-

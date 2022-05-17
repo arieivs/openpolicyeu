@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
   get 'about', to: 'pages#about', as: :about
+  get 'institutions', to: 'institutions#index', as: :institutions_path
   get 'explore', to: 'pages#explore', as: :explore
   get 'join', to: 'pages#join', as: :join
   get 'join/open_accordion/:volunteer_position_id', to: 'pages#open_accordion', as: :open_position
