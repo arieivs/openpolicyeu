@@ -48,7 +48,7 @@ mark::after {
 }
 
 .text-link:visited {
-  color: #000DFF;
+  color: #000dff;
 }
 
 .text-link:hover {
@@ -74,8 +74,15 @@ mark::after {
   font-size: 15px;
 }
 
+.source-italic {
+  font-family: "Roboto";
+  font-style: italic;
+  margin: 0;
+}
+
 @media (max-width: 600px) {
-  h3, h4 {
+  h3,
+  h4 {
     font-size: 18px;
   }
 }

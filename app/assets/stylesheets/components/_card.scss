@@ -8,6 +8,20 @@
 .card-two-columns {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap-reverse;
+  margin-bottom: 30px;
+  .video-container {
+    flex: 1;
+    min-width: 400px;
+  }
+  .text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 15px;
+    flex: 1;
+    min-width: 300px;
+  }
 }
 
 .card-link {

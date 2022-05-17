@@ -8,15 +8,25 @@
   </div>
   <% @institutions.each do |institution| %>
     <div class="card-all card-two-columns">
-    <div>
-      <h3><%= institution.name %></h3>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo mollitia inventore temporibus beatae pariatur rem at, itaque fugit tempora natus voluptates facere dicta, in iure labore soluta, quod officia saepe.</p>
-      <p>Website: <%= link_to "#{institution.website_url}", institution.website_url %></p>
-      <button class="btn-all btn-primary">EDIT</button>
-    </div>
-    <% if institution.video_url %>
+    <div class="text-container">
       <div>
-        <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+        <h3><%= institution.name %></h3>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo mollitia inventore temporibus beatae pariatur rem at, itaque fugit tempora natus voluptates facere dicta, in iure labore soluta, quod officia saepe.</p>
+        <p>Website: <%= link_to "#{institution.website_url}", institution.website_url %></p>
+      </div>
+      <div>
+        <button class="btn-all btn-primary">EDIT</button>
+      </div>
+    </div>
+    <% if institution.video_url && institution.video_url.match?(/youtube/) %>
+      <div class="video-container">
+        <iframe class="video" src="<%= institution.video_url %>" allow="" title="video player" frameborder="0" allowfullscreen=""></iframe>
+        <p class="source-italic">source: <%= institution.video_source %></p>
+      </div>
+    <% elsif institution.video_url %>
+      <div class="video-container">
+        <video class="video" src="<%= @policy_making.video_url %>" controls="controls"></video>
+        <p class="source-italic">source: <%= institution.video_source %></p>
       </div>
     <% end %>
   </div>
