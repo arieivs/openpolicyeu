@@ -19,11 +19,4 @@ It is a tool that allows you to get a better understanding of how the policymaki
 
 <br />
 
-## 🙋 Can I join?
-Glad you asked!
-We are looking for volunteers to join this amazing team.
-Find out [how you can contribute here](https://openpolicy.eu/join.html).
-
-<br />
-
 👉 Learn more about the project: https://openpolicy.eu
