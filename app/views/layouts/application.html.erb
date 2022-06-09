@@ -27,9 +27,6 @@
     <% end %>
     <%= render 'shared/flashes' %>
     <%= yield %>
-    <% if !current_page?(controller: '/pages', action: 'join') %>
-      <%= render 'shared/join_us_section' %>
-    <% end %>
     <%= render 'shared/footer' %>
   </body>
 </html>
