@@ -7,5 +7,5 @@ class PolicyPlan < ApplicationRecord
   validates :content, presence: true
   validates :short_description, presence: true
   validates :goals, inclusion: { in: [true, false] }
-  validates :video_url, format: { with: URI::regexp(%w[http https]) }
+  #validates :video_url, format: { with: URI::regexp(%w[http https]) }
 end
