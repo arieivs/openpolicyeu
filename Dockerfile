@@ -71,12 +71,9 @@ RUN --mount=type=cache,id=dev-apt-cache,sharing=locked,target=/var/cache/apt \
 FROM build_deps as gems
 
 COPY Gemfile* ./
+# added because zlib wasn't being found (Sara)
 RUN apt-get update && apt-get upgrade -y
-# && apt-get dist-upgrade -y
 RUN apt-get install zlib1g-dev -y
-#&& apt-get install libxml2 -y && apt-get install build-essential -y
-#RUN gem install nokogiri
-#RUN gem install jbuilder
 RUN bundle install && rm -rf vendor/bundle/ruby/*/cache
 
 #######################################################################
@@ -87,6 +84,7 @@ FROM build_deps as node_modules
 
 COPY package*json ./
 COPY yarn.* ./
+RUN yarn config set enableImmutableInstalls false
 RUN yarn install
 
 #######################################################################
