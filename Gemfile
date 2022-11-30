@@ -31,7 +31,10 @@ gem 'cloudinary', '~> 1.16.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 # Required by bootsnap (very confusing...):
-gem 'net-smtp'
+# crashing in production as well...
+gem 'net-smtp', require: false
+gem 'net-imap', require: false
+gem 'net-pop', require: false
 
 gem 'devise'
 
@@ -43,7 +46,8 @@ gem 'turbolinks_render'
 # Seeds with Faker
 gem 'faker'
 
-group :development, :test do  gem 'pry-byebug'
+group :development, :test do
+  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
 

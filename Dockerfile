@@ -71,7 +71,7 @@ RUN --mount=type=cache,id=dev-apt-cache,sharing=locked,target=/var/cache/apt \
 FROM build_deps as gems
 
 COPY Gemfile* ./
-# added because zlib wasn't being found (Sara)
+# (Sara) added because zlib wasn't being found
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install zlib1g-dev -y
 RUN bundle install && rm -rf vendor/bundle/ruby/*/cache
@@ -84,7 +84,6 @@ FROM build_deps as node_modules
 
 COPY package*json ./
 COPY yarn.* ./
-RUN yarn config set enableImmutableInstalls false
 RUN yarn install
 
 #######################################################################
@@ -130,6 +129,8 @@ ENV SECRET_KEY_BASE 1
 
 # Run build task defined in lib/tasks/fly.rake
 ARG BUILD_COMMAND="bin/rails fly:build"
+# (Sara) added because of "Lockfile was going to be modified which is forbidden"
+RUN YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn install
 RUN ${BUILD_COMMAND}
 
 # Default server start instructions.  Generally Overridden by fly.toml.
