@@ -7,7 +7,7 @@ class PagesController < ApplicationController
   end
 
   def about
-    @volunteers = Volunteer.includes(photo_attachment: :blob).order(:id)
+    @volunteers = Volunteer.includes(photo_attachment: :blob).shuffle
   end
 
   def explore
